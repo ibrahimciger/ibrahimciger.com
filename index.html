@@ -175,6 +175,8 @@ nav {
   position:relative; z-index:2;
   padding: 0 80px 72px;
   max-width:700px;
+  margin-right: auto;
+  padding-right: 120px;
 }
 .hero-tag {
   font-family:'Josefin Sans',sans-serif; font-weight:100;
@@ -314,14 +316,14 @@ nav {
   display:flex; padding:0 80px; border-bottom:1px solid var(--border2);
 }
 .ntab {
-  font-family:'Josefin Sans',sans-serif; font-weight:200;
-  font-size:11px; letter-spacing:.18em; text-transform:uppercase;
-  color:var(--muted); padding:14px 22px; background:transparent; border:none;
+  font-family:'Josefin Sans',sans-serif; font-weight:400;
+  font-size:12px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink2); padding:16px 24px; background:transparent; border:none;
   border-bottom:2px solid transparent; cursor:pointer; transition:all .25s;
-  margin-bottom:-1px;
+  margin-bottom:-1px; opacity:0.85;
 }
-.ntab:hover { color:var(--ink); }
-.ntab.on { color:var(--gold); border-bottom-color:var(--gold); }
+.ntab:hover { color:var(--ink); opacity:1; }
+.ntab.on { color:var(--gold); border-bottom-color:var(--gold); opacity:1; }
 
 .news-grid {
   display:grid; grid-template-columns:repeat(3,1fr);
@@ -562,8 +564,8 @@ nav {
 /* Podcast inner */
 .pod-layout { display:grid; grid-template-columns:180px 1fr; min-height:calc(100vh - 62px); }
 .pod-sb { border-right:1px solid var(--border2); padding:28px 0; position:sticky; top:62px; height:calc(100vh - 62px); overflow-y:auto; background:var(--bg); transition:background .3s; }
-.pod-sb-lbl { font-family:'Space Mono',monospace; font-size:8px; letter-spacing:.2em; color:var(--muted); text-transform:uppercase; padding:0 20px 10px; opacity:.4; }
-.pod-ni { padding:13px 20px; cursor:pointer; font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:11.5px; letter-spacing:.12em; color:var(--ink2); text-transform:uppercase; transition:all .25s; border-left:2px solid transparent; margin-left:-1px; opacity:0.8; }
+.pod-sb-lbl { font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:10px; letter-spacing:.22em; color:var(--ink); text-transform:uppercase; padding:20px 20px 12px; opacity:0.7; border-bottom:1px solid var(--border2); margin-bottom:8px; }
+.pod-ni { padding:14px 20px; cursor:pointer; font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:11px; letter-spacing:.1em; color:var(--ink2); text-transform:uppercase; transition:all .25s; border-left:2px solid transparent; margin-left:-1px; opacity:0.85; line-height:1.3; }
 .pod-ni:hover{color:var(--ink);opacity:1;} .pod-ni.on{color:var(--gold);border-left-color:var(--gold);background:rgba(184,137,42,.06);opacity:1;}
 .pod-main { overflow-y:auto; max-height:calc(100vh - 62px); background:var(--bg); transition:background .3s; }
 .pod-sec{display:none;} .pod-sec.on{display:block;}
@@ -574,9 +576,9 @@ nav {
 .share-blk { padding:8px 40px; border-bottom:1px solid var(--border2); }
 .ep-list {
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  padding:24px;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  padding:20px;
 }
 .ep-item { display:flex; align-items:center; gap:0; border-bottom:1px solid var(--border2); cursor:default; transition:background .2s; }
 .ep-item:hover { background:var(--bg2); }
@@ -820,6 +822,29 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .vid-track { cursor:grab; user-select:none; }
 .vid-track.dragging { cursor:grabbing; }
 .ticker-track { pointer-events:none; }
+
+/* ── MuckRack news ticker ── */
+.muck-section { background:var(--bg2); border-top:1px solid var(--border2); padding:0; transition:background .3s; }
+.muck-header { display:flex; align-items:center; justify-content:space-between; padding:20px 80px 14px; }
+.muck-eye { font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); }
+.muck-link { font-family:'Josefin Sans',sans-serif; font-weight:200; font-size:9.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .25s; }
+.muck-link:hover { color:var(--gold); }
+.muck-wrap { overflow:hidden; border-top:1px solid var(--border2); border-bottom:1px solid var(--border2); position:relative; }
+.muck-wrap::before, .muck-wrap::after { content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none; }
+.muck-wrap::before { left:0; background:linear-gradient(to right,var(--bg2),transparent); }
+.muck-wrap::after { right:0; background:linear-gradient(to left,var(--bg2),transparent); }
+.muck-track { display:flex; flex-direction:row; width:max-content; animation:muckScroll 60s linear infinite; }
+.muck-track:hover { animation-play-state:paused; }
+.muck-item {
+  font-family:'Cormorant Garamond',serif; font-size:15px; font-weight:500;
+  color:var(--ink); text-decoration:none; white-space:nowrap;
+  padding:16px 48px; display:inline-flex; align-items:center;
+  border-right:1px solid var(--border2); transition:color .25s;
+  flex-shrink:0;
+}
+.muck-item:hover { color:var(--gold); }
+@keyframes muckScroll {{ from{{transform:translateX(0)}} to{{transform:translateX(-50%)}} }}
+@media(max-width:768px){{ .muck-header{{padding:16px 20px 12px;}} .muck-item{{font-size:14px;padding:14px 32px;}} }}
 </style>
 </head>
 <body>
@@ -896,6 +921,19 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
       <button class="ntab" onclick="filterHomeNews(this,'other')" data-tr="Diğer" data-en="Other">Diğer</button>
     </div>
     <div class="news-grid" id="home-news-grid"></div>
+
+  <!-- MuckRack news ticker -->
+  <div class="muck-section">
+    <div class="muck-header">
+      <div class="muck-eye">Haberler</div>
+      <a href="https://muckrack.com/halil-ibrahim-ciger" target="_blank" rel="noopener" class="muck-link">Tüm haberler ↗</a>
+    </div>
+    <div class="muck-wrap">
+      <div class="muck-track" id="muck-track">
+        <a class="muck-item" href="https://www.aa.com.tr/tr/ayrimcilikhatti/ayrimcilik/secmenler-gazze-meselesine-tepkilerini-sandikta-gostermek-istiyor/1821638" target="_blank" rel="noopener">Seçmenler, Gazze meselesine tepkilerini sandıkta göstermek istiyor</a><a class="muck-item" href="https://www.aa.com.tr/tr/gundem/hatayin-yeniden-canlandirilmasi-projesi-ile-hatay-master-planinin-lansmani-yapildi/3206450" target="_blank" rel="noopener">Hatay'ın Yeniden Canlandırılması Projesi ile Hatay Master Planının lansmanı yapıldı</a><a class="muck-item" href="https://www.aa.com.tr/tr/dunya/amerikan-islam-iliskileri-konseyi-gazze-deki-soykirim-nedeniyle-abd-yonetimine-dava-acti/3486493" target="_blank" rel="noopener">Amerikan İslam İlişkileri Konseyi, Gazze'deki soykırım nedeniyle ABD yönetimine dava açtı</a><a class="muck-item" href="https://www.aa.com.tr/tr/ayrimcilikhatti/ayrimcilik/georgia-eyalet-temsilcisi-romman-abd-secimlerinde-ilklerin-yasandigini-soyledi/1821707" target="_blank" rel="noopener">Georgia eyalet temsilcisi Romman, ABD seçimlerinde ilklerin yaşandığını söyledi</a><a class="muck-item" href="https://www.aa.com.tr/tr/israil-filistin-catismasi/israil-in-buldozerle-ezerek-oldurdugu-rachel-corrie-nin-anne-ve-babasi-anadolu-talk-zone-a-konustu/3042205" target="_blank" rel="noopener">İsrail'in buldozerle ezerek öldürdüğü Rachel Corrie'nin anne ve babası konuştu</a><a class="muck-item" href="https://www.aa.com.tr/tr/abd-baskanlik-secimleri-2024/abdde-israil-lobisi-aipac-netanyahuyu-alkislayan-senatorlere-milyonlarca-dolar-bagisladi/3331246" target="_blank" rel="noopener">ABD'de İsrail lobisi AIPAC, Netanyahu'yu alkışlayan senatörlere milyonlarca dolar bağışladı</a><a class="muck-item" href="https://www.aa.com.tr/tr/live-blog/israil-donanmasindan-uluslararasi-sularda-kuresel-sumud-filosuna-saldiri/1798" target="_blank" rel="noopener">İsrail donanmasından uluslararası sularda küresel Sumud filosuna saldırı</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/parents-of-rachel-corrie-who-was-crushed-to-death-by-israeli-bulldozers-spoke-to-anadolu-s-english-podcast-show/3042256" target="_blank" rel="noopener">Parents of Rachel Corrie spoke to Anadolu Agency English podcast</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/gaza-war-to-influence-2024-us-presidential-election/3329626" target="_blank" rel="noopener">Gaza War to influence 2024 US Presidential Election</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/bidens-human-rights-record-under-scrutiny-for-support-of-israeli-genocide-in-gaza/3459188" target="_blank" rel="noopener">Biden's human rights record under scrutiny for support of Israeli genocide in Gaza</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/council-on-american-islamic-relations-sues-us-government-over-genocide-in-gaza/3486926" target="_blank" rel="noopener">Council on American Islamic Relations sues US government over genocide in Gaza</a><a class="muck-item" href="https://www.aa.com.tr/en/middle-east/all-available-resources-mobilized-after-israeli-attack-disrupts-gaza-bound-aid-flotilla-organizer-says/3923348" target="_blank" rel="noopener">All available resources mobilized after Israeli attack disrupts Gaza-bound aid flotilla</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/many-firsts-in-us-politics-1st-muslim-woman-lawmaker-in-southern-state-of-georgia/3332737" target="_blank" rel="noopener">Many firsts in US politics: 1st Muslim woman lawmaker in southern state of Georgia</a><a class="muck-item" href="https://www.aa.com.tr/tr/ayrimcilikhatti/ayrimcilik/secmenler-gazze-meselesine-tepkilerini-sandikta-gostermek-istiyor/1821638" target="_blank" rel="noopener">Seçmenler, Gazze meselesine tepkilerini sandıkta göstermek istiyor</a><a class="muck-item" href="https://www.aa.com.tr/tr/gundem/hatayin-yeniden-canlandirilmasi-projesi-ile-hatay-master-planinin-lansmani-yapildi/3206450" target="_blank" rel="noopener">Hatay'ın Yeniden Canlandırılması Projesi ile Hatay Master Planının lansmanı yapıldı</a><a class="muck-item" href="https://www.aa.com.tr/tr/dunya/amerikan-islam-iliskileri-konseyi-gazze-deki-soykirim-nedeniyle-abd-yonetimine-dava-acti/3486493" target="_blank" rel="noopener">Amerikan İslam İlişkileri Konseyi, Gazze'deki soykırım nedeniyle ABD yönetimine dava açtı</a><a class="muck-item" href="https://www.aa.com.tr/tr/ayrimcilikhatti/ayrimcilik/georgia-eyalet-temsilcisi-romman-abd-secimlerinde-ilklerin-yasandigini-soyledi/1821707" target="_blank" rel="noopener">Georgia eyalet temsilcisi Romman, ABD seçimlerinde ilklerin yaşandığını söyledi</a><a class="muck-item" href="https://www.aa.com.tr/tr/israil-filistin-catismasi/israil-in-buldozerle-ezerek-oldurdugu-rachel-corrie-nin-anne-ve-babasi-anadolu-talk-zone-a-konustu/3042205" target="_blank" rel="noopener">İsrail'in buldozerle ezerek öldürdüğü Rachel Corrie'nin anne ve babası konuştu</a><a class="muck-item" href="https://www.aa.com.tr/tr/abd-baskanlik-secimleri-2024/abdde-israil-lobisi-aipac-netanyahuyu-alkislayan-senatorlere-milyonlarca-dolar-bagisladi/3331246" target="_blank" rel="noopener">ABD'de İsrail lobisi AIPAC, Netanyahu'yu alkışlayan senatörlere milyonlarca dolar bağışladı</a><a class="muck-item" href="https://www.aa.com.tr/tr/live-blog/israil-donanmasindan-uluslararasi-sularda-kuresel-sumud-filosuna-saldiri/1798" target="_blank" rel="noopener">İsrail donanmasından uluslararası sularda küresel Sumud filosuna saldırı</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/parents-of-rachel-corrie-who-was-crushed-to-death-by-israeli-bulldozers-spoke-to-anadolu-s-english-podcast-show/3042256" target="_blank" rel="noopener">Parents of Rachel Corrie spoke to Anadolu Agency English podcast</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/gaza-war-to-influence-2024-us-presidential-election/3329626" target="_blank" rel="noopener">Gaza War to influence 2024 US Presidential Election</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/bidens-human-rights-record-under-scrutiny-for-support-of-israeli-genocide-in-gaza/3459188" target="_blank" rel="noopener">Biden's human rights record under scrutiny for support of Israeli genocide in Gaza</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/council-on-american-islamic-relations-sues-us-government-over-genocide-in-gaza/3486926" target="_blank" rel="noopener">Council on American Islamic Relations sues US government over genocide in Gaza</a><a class="muck-item" href="https://www.aa.com.tr/en/middle-east/all-available-resources-mobilized-after-israeli-attack-disrupts-gaza-bound-aid-flotilla-organizer-says/3923348" target="_blank" rel="noopener">All available resources mobilized after Israeli attack disrupts Gaza-bound aid flotilla</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/many-firsts-in-us-politics-1st-muslim-woman-lawmaker-in-southern-state-of-georgia/3332737" target="_blank" rel="noopener">Many firsts in US politics: 1st Muslim woman lawmaker in southern state of Georgia</a>
+      </div>
+    </div>
+  </div>
   </section>
 
   <!-- PODCAST -->
@@ -956,7 +994,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">İsrail donanmasından Sumud filosuna saldırı</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -966,7 +1004,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Gazze haberleri</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -976,7 +1014,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Orta Doğu haberleri</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -996,7 +1034,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Mahreç Dünya — Bölüm 1</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1006,7 +1044,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Mahreç Dünya — Bölüm 2</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1016,7 +1054,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Mahreç Dünya — Bölüm 3</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1026,7 +1064,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Mahreç Dünya — Bölüm 4</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1036,7 +1074,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Mahreç Dünya — Bölüm 5</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1046,7 +1084,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Mahreç Dünya — Bölüm 6</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1056,7 +1094,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Bir Bakışta — Bölüm 1</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1066,7 +1104,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Bir Bakışta — Bölüm 2</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1076,7 +1114,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Bir Bakışta — Bölüm 3</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1086,7 +1124,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Bir Bakışta — Bölüm 4</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1096,7 +1134,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Bir Bakışta — Bölüm 5</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1106,7 +1144,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Bir Bakışta — Bölüm 6</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1116,7 +1154,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Bir Bakışta — Bölüm 7</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1126,7 +1164,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Bir Bakışta — Bölüm 8</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1136,7 +1174,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Bir Bakışta — Bölüm 9</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1146,7 +1184,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Bir Bakışta — Bölüm 10</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1156,7 +1194,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Bir Bakışta — Bölüm 11</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1166,7 +1204,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Bir Bakışta — Bölüm 12</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1176,7 +1214,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Bir Bakışta — Bölüm 13</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1186,7 +1224,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Portre — Bölüm 1</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1196,7 +1234,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Portre — Bölüm 2</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1206,7 +1244,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Portre — Bölüm 3</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1216,7 +1254,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Portre — Bölüm 4</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1226,7 +1264,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Portre — Bölüm 5</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1236,7 +1274,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Portre — Bölüm 6</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1246,7 +1284,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Portre — Bölüm 7</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1256,7 +1294,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Portre — Bölüm 8</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1266,7 +1304,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Portre — Bölüm 9</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1276,7 +1314,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Portre — Bölüm 10</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1286,7 +1324,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Portre — Bölüm 11</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1296,7 +1334,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Video</div>
+              <div class="vid-title">Portre — Bölüm 12</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1360,12 +1398,20 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
       </div>
       <div class="pod-sec" id="ps-analiz">
         <div class="pod-sh"><span class="pod-st">Analiz ve Görüşler</span><span class="pod-ct" id="ct-analiz"></span></div>
-        <div class="pod-emb">
-          <a href="https://analiz.transistor.fm/" target="_blank" rel="noopener" style="text-decoration:none;display:flex;align-items:center;gap:14px">
-            <img src="analiz_ve_gorusler.jpg" style="width:52px;height:52px;border-radius:4px;object-fit:cover" onerror="this.style.display='none'" alt="">
-            <div><div style="font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:var(--ink);transition:color .3s">Analiz ve Görüşler</div><div style="font-family:'Josefin Sans',sans-serif;font-weight:200;font-size:9px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-top:4px">analiz.transistor.fm ↗</div></div>
-          </a>
+        <!-- Cover + playlist embed side by side -->
+        <div style="display:grid;grid-template-columns:180px 1fr;gap:0;border-bottom:1px solid var(--border2);">
+          <div style="padding:28px 20px;display:flex;flex-direction:column;align-items:center;gap:12px;border-right:1px solid var(--border2);background:var(--bg2);">
+            <img src="analiz_ve_gorusler.jpg" style="width:120px;height:120px;border-radius:6px;object-fit:cover;filter:none!important" alt="">
+            <div style="font-family:'Playfair Display',serif;font-size:14px;font-style:italic;color:var(--ink);text-align:center;line-height:1.2;transition:color .3s">Analiz ve<br>Görüşler</div>
+            <a href="https://analiz.transistor.fm/" target="_blank" rel="noopener" style="font-family:'Josefin Sans',sans-serif;font-weight:200;font-size:8px;letter-spacing:.14em;color:var(--gold);text-decoration:none;text-transform:uppercase">transistor.fm ↗</a>
+          </div>
+          <div style="padding:16px;">
+            <iframe width="100%" height="390" frameborder="no" scrolling="no" seamless
+              src="https://share.transistor.fm/e/anadolu-ajansi/playlist"
+              style="display:block;border-radius:6px"></iframe>
+          </div>
         </div>
+        <!-- Episode list -->
         <div id="ep-analiz"><div class="loading">Yükleniyor...</div></div>
       </div>
       <div class="pod-sec" id="ps-birbakista">
@@ -1921,7 +1967,7 @@ function makeEpRow(title, url, date, num, progName, coverImg){
     <div class="ep-progress-wrap">
       <input class="ep-progress" type="range" value="0" min="0" max="100" step="0.1">
     </div>`;
-  row.querySelector('.ep-play-btn').onclick=()=>playEp(url, title, progName, coverImg, row);
+  row.querySelector('.ep-play-btn').onclick=()=>{ if(!url){console.warn('No audio URL for:',title);return;} playEp(url, title, progName, coverImg, row); };
   return row;
 }
 
