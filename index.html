@@ -371,6 +371,7 @@ nav {
 
 /* ════ PODCAST SECTION ════ */
 .pod-head { padding:80px 80px 0; }
+.pl-tabs { margin-top:24px; }
 
 /* Playlist tabs */
 .pl-tabs {
@@ -379,14 +380,15 @@ nav {
 }
 .pl-tabs::-webkit-scrollbar { display:none; }
 .pl-tab {
-  font-family:'Josefin Sans',sans-serif; font-weight:200;
-  font-size:11px; letter-spacing:.18em; text-transform:uppercase;
-  color:var(--muted); padding:14px 22px; white-space:nowrap;
+  font-family:'Josefin Sans',sans-serif; font-weight:400;
+  font-size:12px; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--ink2); padding:16px 24px; white-space:nowrap;
   background:transparent; border:none; border-bottom:2px solid transparent;
   cursor:pointer; transition:all .25s; flex-shrink:0; margin-bottom:-1px;
+  opacity:0.85;
 }
-.pl-tab:hover { color:var(--ink); }
-.pl-tab.on { color:var(--gold); border-bottom-color:var(--gold); }
+.pl-tab:hover { color:var(--ink); opacity:1; }
+.pl-tab.on { color:var(--gold); border-bottom-color:var(--gold); opacity:1; }
 
 /* Playlist body */
 .pl-body {
@@ -428,16 +430,16 @@ nav {
 /* Episode grid: 3 per row */
 .pl-eps {
   padding:16px;
-  display:flex;
-  flex-direction:column;
-  gap:0;
-  max-height:520px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+  max-height:560px;
   overflow-y:auto;
+  align-content:start;
 }
-/* 3-col grid for ep-row cards */
-.pl-eps:not(.embed-mode) { display:flex; flex-direction:column; }
 .pl-eps::-webkit-scrollbar { width:3px; }
 .pl-eps::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
+.pl-embed-item { grid-column:span 1; }
 
 /* ── EPISODE CARD (3-col grid) ── */
 .ep-row {
@@ -561,8 +563,8 @@ nav {
 .pod-layout { display:grid; grid-template-columns:180px 1fr; min-height:calc(100vh - 62px); }
 .pod-sb { border-right:1px solid var(--border2); padding:28px 0; position:sticky; top:62px; height:calc(100vh - 62px); overflow-y:auto; background:var(--bg); transition:background .3s; }
 .pod-sb-lbl { font-family:'Space Mono',monospace; font-size:8px; letter-spacing:.2em; color:var(--muted); text-transform:uppercase; padding:0 20px 10px; opacity:.4; }
-.pod-ni { padding:12px 20px; cursor:pointer; font-family:'Josefin Sans',sans-serif; font-weight:200; font-size:11px; letter-spacing:.13em; color:var(--muted); text-transform:uppercase; transition:all .25s; border-left:2px solid transparent; margin-left:-1px; }
-.pod-ni:hover{color:var(--ink);} .pod-ni.on{color:var(--gold);border-left-color:var(--gold);background:rgba(184,137,42,.06);}
+.pod-ni { padding:13px 20px; cursor:pointer; font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:11.5px; letter-spacing:.12em; color:var(--ink2); text-transform:uppercase; transition:all .25s; border-left:2px solid transparent; margin-left:-1px; opacity:0.8; }
+.pod-ni:hover{color:var(--ink);opacity:1;} .pod-ni.on{color:var(--gold);border-left-color:var(--gold);background:rgba(184,137,42,.06);opacity:1;}
 .pod-main { overflow-y:auto; max-height:calc(100vh - 62px); background:var(--bg); transition:background .3s; }
 .pod-sec{display:none;} .pod-sec.on{display:block;}
 .pod-sh { padding:28px 40px 18px; border-bottom:1px solid var(--border2); display:flex; align-items:baseline; gap:14px; position:sticky; top:0; background:var(--bg); z-index:10; transition:background .3s; }
@@ -1707,7 +1709,8 @@ const PLAYLISTS = [
   {
     label:'Anadolu Talks', cover:'anadolu_talk_zone.webp', link:'https://anadolutalkzone.transistor.fm/',
     embeds:[
-      'https://share.transistor.fm/e/3dc9b12d','https://share.transistor.fm/e/b0079bd3'
+      'https://share.transistor.fm/e/3dc9b12d',
+      'https://share.transistor.fm/e/b0079bd3'
     ]
   },
   {
@@ -2053,7 +2056,7 @@ function previewVid(el,id){
     if(!vt||vt.querySelector('iframe'))return;
     vt.style.position='relative';
     const iframe=document.createElement('iframe');
-    iframe.src=`https://www.youtube.com/embed/${id}?autoplay=1&mute=1&controls=0&loop=1&playlist=${id}&modestbranding=1`;
+    iframe.src=`https://www.youtube.com/embed/${id}?autoplay=1&mute=0&controls=1&modestbranding=1&rel=0`;
     iframe.frameBorder='0';
     iframe.allow='autoplay';
     iframe.style.cssText='position:absolute;inset:0;width:100%;height:100%;';
@@ -2082,57 +2085,34 @@ let analizAudio = null;
 let analizCurrent = null;
 
 function buildAnalizSection(container, coverImg){
-  container.innerHTML='<div class="loading">Yükleniyor...</div>';
-  // First 5: special embed cards
+  container.innerHTML='';
+  // Playlist embed at top
+  const playlistDiv=document.createElement('div');
+  playlistDiv.style.cssText='padding:0 0 16px;';
+  playlistDiv.innerHTML='<iframe width="100%" height="390" frameborder="no" scrolling="no" seamless src="https://share.transistor.fm/e/anadolu-ajansi/playlist" style="display:block;border-radius:6px"></iframe>';
+  container.appendChild(playlistDiv);
+
+  // RSS episode list
   fetch('https://feeds.transistor.fm/anadolu-ajansi').then(r=>r.text()).then(txt=>{
     const doc=new DOMParser().parseFromString(txt,'application/xml');
-    const allItems=Array.from(doc.querySelectorAll('item'));
-    container.innerHTML='';
-
-    // First 5 from transistor shares
-    ANALIZ_FIRST5.forEach((id,i)=>{
-      const ep=document.createElement('div');
-      ep.className='analiz-ep';
-      ep.innerHTML=`
-        <div class="analiz-ep-head">
-          <button class="analiz-play-btn" onclick="analizOpenShare('${id}')" aria-label="Dinle">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-          <div class="analiz-ep-info">
-            <div class="analiz-ep-num">0${i+1}</div>
-            <div class="analiz-ep-title">Bölüm ${i+1}</div>
-          </div>
-          <div class="analiz-ep-actions">
-            <a class="analiz-share-btn" href="https://open.spotify.com/search/Analiz%20ve%20Görüşler" target="_blank" title="Spotify">🎵</a>
-            <a class="analiz-share-btn" href="https://podcasts.apple.com/search?term=Analiz+ve+Görüşler" target="_blank" title="Apple Podcasts">🎙️</a>
-            <a class="analiz-share-btn" href="https://share.transistor.fm/s/${id}" target="_blank" title="Paylaş">🔗</a>
-          </div>
-        </div>
-        <div style="padding:0 56px 8px">
-          <iframe id="analiz-frame-${id}" width="100%" height="0" frameborder="no" scrolling="no" seamless
-            src="" loading="lazy" style="display:none;border-radius:4px;transition:height .3s"></iframe>
-        </div>`;
-      container.appendChild(ep);
-    });
-
-    // Remaining from RSS (skip first 5)
-    const rest=allItems.slice(5,35);
-    rest.forEach((it,i)=>{
-      const title=it.querySelector('title')?.textContent||'Bölüm '+(i+6);
+    const allItems=Array.from(doc.querySelectorAll('item')).slice(0,200);
+    const listWrap=document.createElement('div');
+    listWrap.style.cssText='display:flex;flex-direction:column;gap:0;';
+    allItems.forEach((it,i)=>{
+      const title=it.querySelector('title')?.textContent||'Bölüm '+(i+1);
       const audioUrl=it.querySelector('enclosure')?.getAttribute('url')||'';
       const pd=it.querySelector('pubDate')?.textContent||'';
-      const ds=pd?new Date(pd).toLocaleDateString('tr-TR',{day:'numeric',month:'short'}):'';
+      const ds=pd?new Date(pd).toLocaleDateString('tr-TR',{day:'numeric',month:'short',year:'numeric'}):'';
       const ep=document.createElement('div');
       ep.className='analiz-ep';
       ep.innerHTML=`
         <div class="analiz-ep-head">
-          <button class="analiz-play-btn" onclick="playAnalizEp(this)" aria-label="Dinle" data-url="${audioUrl}" data-title="${title.replace(/"/g,'&quot;').replace(/'/g,'&#39;')}" data-date="${ds}">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </button>
+          <button class="analiz-play-btn" onclick="playAnalizEp(this)" aria-label="Dinle"
+            data-url="${audioUrl}" data-title="${title.replace(/"/g,'&quot;').replace(/'/g,'&#39;')}">
             <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
           </button>
           <div class="analiz-ep-info">
-            <div class="analiz-ep-num">${String(i+6).padStart(2,'0')}</div>
+            <div class="analiz-ep-num">${String(i+1).padStart(2,'0')}</div>
             <div class="analiz-ep-title">${title}</div>
             <div class="analiz-ep-date">${ds}</div>
           </div>
@@ -2141,9 +2121,10 @@ function buildAnalizSection(container, coverImg){
             <a class="analiz-share-btn" href="https://podcasts.apple.com/search?term=${encodeURIComponent(title)}" target="_blank" title="Apple Podcasts">🎙️</a>
           </div>
         </div>`;
-      container.appendChild(ep);
+      listWrap.appendChild(ep);
     });
-  }).catch(()=>{container.innerHTML='<div class="loading">Yüklenemedi</div>';});
+    container.appendChild(listWrap);
+  }).catch(()=>{});
 }
 
 function analizOpenShare(id){
