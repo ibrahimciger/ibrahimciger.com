@@ -99,11 +99,12 @@ nav {
 }
 .nav-links a {
   font-family: 'Josefin Sans', sans-serif;
-  font-weight:300; font-size:12px; letter-spacing:.18em; text-transform:uppercase;
-  color: var(--muted);
+  font-weight:400; font-size:12.5px; letter-spacing:.16em; text-transform:uppercase;
+  color: var(--ink2);
   text-decoration:none; padding:0 18px; height:62px;
   display:flex; align-items:center; position:relative;
   transition: color .25s;
+  opacity: 0.85;
 }
 .nav-links a::after {
   content:''; position:absolute; bottom:0; left:18px; right:18px;
@@ -333,8 +334,9 @@ nav {
 .nbrick:hover { background:var(--surf); }
 .nbrick.feat { grid-column:span 2; }
 .nb-img { width:100%; overflow:hidden; background:var(--bg3); display:block; line-height:0; }
-.nbrick.feat .nb-img { aspect-ratio:auto; min-height:220px; }
-.nbrick.feat .nb-img img { object-fit:cover; object-position:center center; height:100%; min-height:220px; max-height:380px; width:100%; }
+.nbrick.feat .nb-img { aspect-ratio:16/9; }
+.nbrick.feat .nb-img img { object-fit:cover; object-position:center center; width:100%; height:100%; }
+.nbrick:not(.feat) .nb-img { aspect-ratio:16/9; }
 .nbrick:not(.feat) .nb-img { aspect-ratio:16/10; }
 .nb-noimg { display:flex; align-items:center; justify-content:center; }
 .nbrick.feat .nb-noimg { aspect-ratio:16/7; }
@@ -355,8 +357,10 @@ nav {
 .nb-lang::before { content:''; width:12px; height:1px; background:var(--gold); }
 .nb-title {
   font-family:'Cormorant Garamond',serif; font-weight:600;
-  line-height:1.44; color:var(--ink); flex:1; margin-bottom:16px;
+  line-height:1.44; color:var(--ink); margin-bottom:16px;
   transition:color .3s;
+  min-height:66px;
+  display:flex; align-items:flex-start;
 }
 .nbrick.feat .nb-title { font-size:22px; }
 .nbrick:not(.feat) .nb-title { font-size:17px; }
@@ -734,6 +738,90 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 @media(max-width:480px){
   .vod-grid{grid-template-columns:1fr 1fr;}
 }
+
+/* ── Principle tooltips ── */
+.p-w { position:relative; cursor:default; }
+.p-tip {
+  position:absolute;
+  top:calc(100% + 8px);
+  left:50%;
+  transform:translateX(-50%);
+  white-space:nowrap;
+  font-family:'Cormorant Garamond',serif;
+  font-size:12px;
+  font-style:italic;
+  color:var(--ink);
+  background:var(--bg2);
+  border:1px solid var(--border);
+  padding:5px 12px;
+  border-radius:2px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .25s;
+  z-index:100;
+  letter-spacing:.04em;
+  box-shadow:0 4px 16px rgba(0,0,0,.08);
+}
+.p-w:hover .p-tip { opacity:1; }
+
+/* ── Analiz ve Görüşler special design ── */
+.analiz-wrap { padding:0; }
+.analiz-ep {
+  display:flex; flex-direction:column;
+  border-bottom:1px solid var(--border2);
+  background:var(--card); transition:background .25s;
+}
+.analiz-ep:hover { background:var(--bg2); }
+.analiz-ep-head {
+  display:flex; align-items:center; gap:0;
+  cursor:pointer;
+}
+.analiz-play-btn {
+  width:56px; height:64px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  border:none; background:transparent;
+  border-right:1px solid var(--border2);
+  cursor:pointer; transition:background .25s;
+}
+.analiz-play-btn:hover { background:var(--gold); }
+.analiz-play-btn:hover svg { fill:#fff; }
+.analiz-play-btn svg { fill:var(--gold); width:18px; height:18px; transition:fill .2s; }
+.analiz-ep-info { flex:1; padding:12px 18px; overflow:hidden; }
+.analiz-ep-num { font-family:'Space Mono',monospace; font-size:8px; color:var(--muted); margin-bottom:4px; }
+.analiz-ep-title {
+  font-family:'Cormorant Garamond',serif; font-size:15px; font-weight:500;
+  color:var(--ink); line-height:1.38; transition:color .3s;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.analiz-ep-date { font-family:'Space Mono',monospace; font-size:8px; color:var(--muted); margin-top:3px; }
+.analiz-ep-actions {
+  display:flex; align-items:center; gap:8px;
+  padding:0 16px;
+}
+.analiz-share-btn {
+  font-size:16px; cursor:pointer; opacity:.6;
+  text-decoration:none; transition:opacity .2s;
+  display:flex; align-items:center;
+}
+.analiz-share-btn:hover { opacity:1; }
+.analiz-progress-bar {
+  height:2px; background:var(--border2); margin:0 56px;
+  display:none;
+}
+.analiz-progress-bar.visible { display:block; }
+.analiz-progress-bar input {
+  -webkit-appearance:none; width:100%; height:2px;
+  background:var(--border2); border-radius:1px; outline:none; cursor:pointer;
+}
+.analiz-progress-bar input::-webkit-slider-thumb {
+  -webkit-appearance:none; width:10px; height:10px;
+  border-radius:50%; background:var(--gold); cursor:pointer;
+}
+
+/* ── Swipe/drag cursor ── */
+.vid-track { cursor:grab; user-select:none; }
+.vid-track.dragging { cursor:grabbing; }
+.ticker-track { pointer-events:none; }
 </style>
 </head>
 <body>
@@ -747,7 +835,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   <ul class="nav-links">
     <li><a href="#" onclick="showHome()" id="nl-home" class="on" data-tr="Anasayfa" data-en="Home">Anasayfa</a></li>
     <li><a href="#" onclick="navTo('haberlerim')" id="nl-haberlerim" data-tr="Haberlerim" data-en="My Reports">Haberlerim</a></li>
-    <li><a href="#" onclick="navTo('perspektif')" id="nl-perspektif">Perspektif</a></li>
+    <li><a href="#" onclick="navTo('perspektif')" id="nl-perspektif" data-tr="Perspektif" data-en="Perspective">Perspektif</a></li>
     <li><a href="#" onclick="navTo('vodcast')" id="nl-vodcast">Vodcast</a></li>
     <li><a href="#" onclick="navTo('podcast')" id="nl-podcast">Podcast</a></li>
     <li><a href="#" onclick="navTo('hakkimda')" id="nl-hakkimda" data-tr="Hakkımda" data-en="About">Hakkımda</a></li>
@@ -781,9 +869,11 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
       <span class="hero-name">İBRAHİM</span>
       <span class="hero-name-last">Ciğer</span>
       <div class="hero-principles">
-        <span class="p-w">Tefe'ul</span><span class="p-sep"></span>
-        <span class="p-w">Tedebbür</span><span class="p-sep"></span>
-        <span class="p-w">Teenni</span>
+        <span class="p-w" data-tip-tr="Hayra yorma" data-tip-en="To maintain a positive outlook">Tefe'ul<span class="p-tip" id="tip-tefeul">Hayra yorma</span></span>
+        <span class="p-sep"></span>
+        <span class="p-w" data-tip-tr="Olmadan farketme" data-tip-en="Preemptive action">Tedebbür<span class="p-tip" id="tip-tedebbur">Olmadan farketme</span></span>
+        <span class="p-sep"></span>
+        <span class="p-w" data-tip-tr="Sakince kavrama" data-tip-en="Level-headedness">Teenni<span class="p-tip" id="tip-teenni">Sakince kavrama</span></span>
       </div>
       <a class="hero-scroll" href="#sec-haberler">
         <span class="hero-scroll-bar"></span>
@@ -842,19 +932,9 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
     <div class="vid-body">
       <div class="vid-track-wrap">
         <div class="vid-track" id="vid-track">
-          <div class="vid-card" onclick="window.open('https://youtu.be/EwX7lrKThiQ','_blank')" onmouseenter="previewVid(this,'EwX7lrKThiQ')" onmouseleave="stopPreview(this,'EwX7lrKThiQ')">
-            <div class="vid-thumb" id="vt-EwX7lrKThiQ">
-              <img src="https://img.youtube.com/vi/EwX7lrKThiQ/maxresdefault.jpg" alt="" loading="lazy" onerror="this.src='https://img.youtube.com/vi/EwX7lrKThiQ/hqdefault.jpg'">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Son Haberler</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
           <div class="vid-card" onclick="window.open('https://youtu.be/H9Yxw84F0PI','_blank')" onmouseenter="previewVid(this,'H9Yxw84F0PI')" onmouseleave="stopPreview(this,'H9Yxw84F0PI')">
             <div class="vid-thumb" id="vt-H9Yxw84F0PI">
-              <img src="https://img.youtube.com/vi/H9Yxw84F0PI/maxresdefault.jpg" alt="" loading="lazy" onerror="this.src='https://img.youtube.com/vi/H9Yxw84F0PI/hqdefault.jpg'">
+              <img src="https://img.youtube.com/vi/H9Yxw84F0PI/hqdefault.jpg" alt="" loading="lazy">
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
@@ -863,172 +943,362 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
             </div>
           </div>
           <div class="vid-card" onclick="window.open('https://youtu.be/4VIA5wig-pM','_blank')" onmouseenter="previewVid(this,'4VIA5wig-pM')" onmouseleave="stopPreview(this,'4VIA5wig-pM')">
-            <div class="vid-thumb" id="vt-4VIA5wig-pM">
-              <img src="https://img.youtube.com/vi/4VIA5wig-pM/maxresdefault.jpg" alt="" loading="lazy" onerror="this.src='https://img.youtube.com/vi/4VIA5wig-pM/hqdefault.jpg'">
+            <div class="vid-thumb" id="vt-4VIA5wig_pM">
+              <img src="https://img.youtube.com/vi/4VIA5wig-pM/hqdefault.jpg" alt="" loading="lazy">
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Hatay'ın Yeniden Canlandırılması Projesi — Hatay Master Planı</div>
+              <div class="vid-title">Hatay'ın Yeniden Canlandırılması Projesi</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/jNJ1Ver2k1w','_blank')" onmouseenter="previewVid(this,'jNJ1Ver2k1w')" onmouseleave="stopPreview(this,'jNJ1Ver2k1w')">
+            <div class="vid-thumb" id="vt-jNJ1Ver2k1w">
+              <img src="https://img.youtube.com/vi/jNJ1Ver2k1w/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Video</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/-52zObcHmQc','_blank')" onmouseenter="previewVid(this,'-52zObcHmQc')" onmouseleave="stopPreview(this,'-52zObcHmQc')">
+            <div class="vid-thumb" id="vt-_52zObcHmQc">
+              <img src="https://img.youtube.com/vi/-52zObcHmQc/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Video</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/wh9kkc71iMc','_blank')" onmouseenter="previewVid(this,'wh9kkc71iMc')" onmouseleave="stopPreview(this,'wh9kkc71iMc')">
+            <div class="vid-thumb" id="vt-wh9kkc71iMc">
+              <img src="https://img.youtube.com/vi/wh9kkc71iMc/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Video</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/EwX7lrKThiQ','_blank')" onmouseenter="previewVid(this,'EwX7lrKThiQ')" onmouseleave="stopPreview(this,'EwX7lrKThiQ')">
+            <div class="vid-thumb" id="vt-EwX7lrKThiQ">
+              <img src="https://img.youtube.com/vi/EwX7lrKThiQ/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Son Haberler</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
           <div class="vid-card" onclick="window.open('https://youtu.be/VD4OXLcfWvk','_blank')" onmouseenter="previewVid(this,'VD4OXLcfWvk')" onmouseleave="stopPreview(this,'VD4OXLcfWvk')">
             <div class="vid-thumb" id="vt-VD4OXLcfWvk">
-              <img src="https://img.youtube.com/vi/VD4OXLcfWvk/maxresdefault.jpg" alt="" loading="lazy" onerror="this.src='https://img.youtube.com/vi/VD4OXLcfWvk/hqdefault.jpg'">
+              <img src="https://img.youtube.com/vi/VD4OXLcfWvk/hqdefault.jpg" alt="" loading="lazy">
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Mahreç Dünya — Bölüm 1</div>
+              <div class="vid-title">Video</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
           <div class="vid-card" onclick="window.open('https://youtu.be/W-nfmxg-5xc','_blank')" onmouseenter="previewVid(this,'W-nfmxg-5xc')" onmouseleave="stopPreview(this,'W-nfmxg-5xc')">
-            <div class="vid-thumb" id="vt-W-nfmxg-5xc">
-              <img src="https://img.youtube.com/vi/W-nfmxg-5xc/maxresdefault.jpg" alt="" loading="lazy" onerror="this.src='https://img.youtube.com/vi/W-nfmxg-5xc/hqdefault.jpg'">
+            <div class="vid-thumb" id="vt-W_nfmxg_5xc">
+              <img src="https://img.youtube.com/vi/W-nfmxg-5xc/hqdefault.jpg" alt="" loading="lazy">
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Mahreç Dünya — Bölüm 2</div>
+              <div class="vid-title">Video</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
           <div class="vid-card" onclick="window.open('https://youtu.be/Xk7CX0U5dXo','_blank')" onmouseenter="previewVid(this,'Xk7CX0U5dXo')" onmouseleave="stopPreview(this,'Xk7CX0U5dXo')">
             <div class="vid-thumb" id="vt-Xk7CX0U5dXo">
-              <img src="https://img.youtube.com/vi/Xk7CX0U5dXo/maxresdefault.jpg" alt="" loading="lazy" onerror="this.src='https://img.youtube.com/vi/Xk7CX0U5dXo/hqdefault.jpg'">
+              <img src="https://img.youtube.com/vi/Xk7CX0U5dXo/hqdefault.jpg" alt="" loading="lazy">
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Mahreç Dünya — Bölüm 3</div>
+              <div class="vid-title">Video</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
           <div class="vid-card" onclick="window.open('https://youtu.be/IoOl8Bl4ELw','_blank')" onmouseenter="previewVid(this,'IoOl8Bl4ELw')" onmouseleave="stopPreview(this,'IoOl8Bl4ELw')">
             <div class="vid-thumb" id="vt-IoOl8Bl4ELw">
-              <img src="https://img.youtube.com/vi/IoOl8Bl4ELw/maxresdefault.jpg" alt="" loading="lazy" onerror="this.src='https://img.youtube.com/vi/IoOl8Bl4ELw/hqdefault.jpg'">
+              <img src="https://img.youtube.com/vi/IoOl8Bl4ELw/hqdefault.jpg" alt="" loading="lazy">
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Mahreç Dünya — Bölüm 4</div>
+              <div class="vid-title">Video</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
           <div class="vid-card" onclick="window.open('https://youtu.be/fdMmeoZQ_ts','_blank')" onmouseenter="previewVid(this,'fdMmeoZQ_ts')" onmouseleave="stopPreview(this,'fdMmeoZQ_ts')">
             <div class="vid-thumb" id="vt-fdMmeoZQ_ts">
-              <img src="https://img.youtube.com/vi/fdMmeoZQ_ts/maxresdefault.jpg" alt="" loading="lazy" onerror="this.src='https://img.youtube.com/vi/fdMmeoZQ_ts/hqdefault.jpg'">
+              <img src="https://img.youtube.com/vi/fdMmeoZQ_ts/hqdefault.jpg" alt="" loading="lazy">
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Mahreç Dünya — Bölüm 5</div>
+              <div class="vid-title">Video</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
           <div class="vid-card" onclick="window.open('https://youtu.be/qyjRzQrn0Hg','_blank')" onmouseenter="previewVid(this,'qyjRzQrn0Hg')" onmouseleave="stopPreview(this,'qyjRzQrn0Hg')">
             <div class="vid-thumb" id="vt-qyjRzQrn0Hg">
-              <img src="https://img.youtube.com/vi/qyjRzQrn0Hg/maxresdefault.jpg" alt="" loading="lazy" onerror="this.src='https://img.youtube.com/vi/qyjRzQrn0Hg/hqdefault.jpg'">
+              <img src="https://img.youtube.com/vi/qyjRzQrn0Hg/hqdefault.jpg" alt="" loading="lazy">
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Mahreç Dünya — Bölüm 6</div>
+              <div class="vid-title">Video</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
           <div class="vid-card" onclick="window.open('https://youtu.be/Lu7cR2fAIjw','_blank')" onmouseenter="previewVid(this,'Lu7cR2fAIjw')" onmouseleave="stopPreview(this,'Lu7cR2fAIjw')">
             <div class="vid-thumb" id="vt-Lu7cR2fAIjw">
-              <img src="https://img.youtube.com/vi/Lu7cR2fAIjw/maxresdefault.jpg" alt="" loading="lazy" onerror="this.src='https://img.youtube.com/vi/Lu7cR2fAIjw/hqdefault.jpg'">
+              <img src="https://img.youtube.com/vi/Lu7cR2fAIjw/hqdefault.jpg" alt="" loading="lazy">
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Bir Bakışta — Bölüm 1</div>
+              <div class="vid-title">Video</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
           <div class="vid-card" onclick="window.open('https://youtu.be/ofwHeNByhCE','_blank')" onmouseenter="previewVid(this,'ofwHeNByhCE')" onmouseleave="stopPreview(this,'ofwHeNByhCE')">
             <div class="vid-thumb" id="vt-ofwHeNByhCE">
-              <img src="https://img.youtube.com/vi/ofwHeNByhCE/maxresdefault.jpg" alt="" loading="lazy" onerror="this.src='https://img.youtube.com/vi/ofwHeNByhCE/hqdefault.jpg'">
+              <img src="https://img.youtube.com/vi/ofwHeNByhCE/hqdefault.jpg" alt="" loading="lazy">
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Bir Bakışta — Bölüm 2</div>
+              <div class="vid-title">Video</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
           <div class="vid-card" onclick="window.open('https://youtu.be/FrRadMTIf64','_blank')" onmouseenter="previewVid(this,'FrRadMTIf64')" onmouseleave="stopPreview(this,'FrRadMTIf64')">
             <div class="vid-thumb" id="vt-FrRadMTIf64">
-              <img src="https://img.youtube.com/vi/FrRadMTIf64/maxresdefault.jpg" alt="" loading="lazy" onerror="this.src='https://img.youtube.com/vi/FrRadMTIf64/hqdefault.jpg'">
+              <img src="https://img.youtube.com/vi/FrRadMTIf64/hqdefault.jpg" alt="" loading="lazy">
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Bir Bakışta — Bölüm 3</div>
+              <div class="vid-title">Video</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
           <div class="vid-card" onclick="window.open('https://youtu.be/f1Y7fSdb-v8','_blank')" onmouseenter="previewVid(this,'f1Y7fSdb-v8')" onmouseleave="stopPreview(this,'f1Y7fSdb-v8')">
-            <div class="vid-thumb" id="vt-f1Y7fSdb-v8">
-              <img src="https://img.youtube.com/vi/f1Y7fSdb-v8/maxresdefault.jpg" alt="" loading="lazy" onerror="this.src='https://img.youtube.com/vi/f1Y7fSdb-v8/hqdefault.jpg'">
+            <div class="vid-thumb" id="vt-f1Y7fSdb_v8">
+              <img src="https://img.youtube.com/vi/f1Y7fSdb-v8/hqdefault.jpg" alt="" loading="lazy">
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Bir Bakışta — Bölüm 4</div>
+              <div class="vid-title">Video</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
           <div class="vid-card" onclick="window.open('https://youtu.be/1AnAQXVYh60','_blank')" onmouseenter="previewVid(this,'1AnAQXVYh60')" onmouseleave="stopPreview(this,'1AnAQXVYh60')">
             <div class="vid-thumb" id="vt-1AnAQXVYh60">
-              <img src="https://img.youtube.com/vi/1AnAQXVYh60/maxresdefault.jpg" alt="" loading="lazy" onerror="this.src='https://img.youtube.com/vi/1AnAQXVYh60/hqdefault.jpg'">
+              <img src="https://img.youtube.com/vi/1AnAQXVYh60/hqdefault.jpg" alt="" loading="lazy">
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Bir Bakışta — Bölüm 5</div>
+              <div class="vid-title">Video</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/6uNYfSqtZ2U','_blank')" onmouseenter="previewVid(this,'6uNYfSqtZ2U')" onmouseleave="stopPreview(this,'6uNYfSqtZ2U')">
+            <div class="vid-thumb" id="vt-6uNYfSqtZ2U">
+              <img src="https://img.youtube.com/vi/6uNYfSqtZ2U/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Video</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/0wJwTkQhojw','_blank')" onmouseenter="previewVid(this,'0wJwTkQhojw')" onmouseleave="stopPreview(this,'0wJwTkQhojw')">
+            <div class="vid-thumb" id="vt-0wJwTkQhojw">
+              <img src="https://img.youtube.com/vi/0wJwTkQhojw/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Video</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/o-hloRqxfKk','_blank')" onmouseenter="previewVid(this,'o-hloRqxfKk')" onmouseleave="stopPreview(this,'o-hloRqxfKk')">
+            <div class="vid-thumb" id="vt-o_hloRqxfKk">
+              <img src="https://img.youtube.com/vi/o-hloRqxfKk/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Video</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/LCMei0pLEWk','_blank')" onmouseenter="previewVid(this,'LCMei0pLEWk')" onmouseleave="stopPreview(this,'LCMei0pLEWk')">
+            <div class="vid-thumb" id="vt-LCMei0pLEWk">
+              <img src="https://img.youtube.com/vi/LCMei0pLEWk/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Video</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/AxESQi3xOW8','_blank')" onmouseenter="previewVid(this,'AxESQi3xOW8')" onmouseleave="stopPreview(this,'AxESQi3xOW8')">
+            <div class="vid-thumb" id="vt-AxESQi3xOW8">
+              <img src="https://img.youtube.com/vi/AxESQi3xOW8/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Video</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/8k7BVjW9X-4','_blank')" onmouseenter="previewVid(this,'8k7BVjW9X-4')" onmouseleave="stopPreview(this,'8k7BVjW9X-4')">
+            <div class="vid-thumb" id="vt-8k7BVjW9X_4">
+              <img src="https://img.youtube.com/vi/8k7BVjW9X-4/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Video</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/I2IeBiPcojw','_blank')" onmouseenter="previewVid(this,'I2IeBiPcojw')" onmouseleave="stopPreview(this,'I2IeBiPcojw')">
+            <div class="vid-thumb" id="vt-I2IeBiPcojw">
+              <img src="https://img.youtube.com/vi/I2IeBiPcojw/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Video</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/wL2piThpUOo','_blank')" onmouseenter="previewVid(this,'wL2piThpUOo')" onmouseleave="stopPreview(this,'wL2piThpUOo')">
+            <div class="vid-thumb" id="vt-wL2piThpUOo">
+              <img src="https://img.youtube.com/vi/wL2piThpUOo/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Video</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
           <div class="vid-card" onclick="window.open('https://youtu.be/8Qk88LFh2vE','_blank')" onmouseenter="previewVid(this,'8Qk88LFh2vE')" onmouseleave="stopPreview(this,'8Qk88LFh2vE')">
             <div class="vid-thumb" id="vt-8Qk88LFh2vE">
-              <img src="https://img.youtube.com/vi/8Qk88LFh2vE/maxresdefault.jpg" alt="" loading="lazy" onerror="this.src='https://img.youtube.com/vi/8Qk88LFh2vE/hqdefault.jpg'">
+              <img src="https://img.youtube.com/vi/8Qk88LFh2vE/hqdefault.jpg" alt="" loading="lazy">
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Portre — Bölüm 1</div>
+              <div class="vid-title">Video</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
           <div class="vid-card" onclick="window.open('https://youtu.be/kURYH7P8LjY','_blank')" onmouseenter="previewVid(this,'kURYH7P8LjY')" onmouseleave="stopPreview(this,'kURYH7P8LjY')">
             <div class="vid-thumb" id="vt-kURYH7P8LjY">
-              <img src="https://img.youtube.com/vi/kURYH7P8LjY/maxresdefault.jpg" alt="" loading="lazy" onerror="this.src='https://img.youtube.com/vi/kURYH7P8LjY/hqdefault.jpg'">
+              <img src="https://img.youtube.com/vi/kURYH7P8LjY/hqdefault.jpg" alt="" loading="lazy">
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Portre — Bölüm 2</div>
+              <div class="vid-title">Video</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
           <div class="vid-card" onclick="window.open('https://youtu.be/4RxxQKkw5zI','_blank')" onmouseenter="previewVid(this,'4RxxQKkw5zI')" onmouseleave="stopPreview(this,'4RxxQKkw5zI')">
             <div class="vid-thumb" id="vt-4RxxQKkw5zI">
-              <img src="https://img.youtube.com/vi/4RxxQKkw5zI/maxresdefault.jpg" alt="" loading="lazy" onerror="this.src='https://img.youtube.com/vi/4RxxQKkw5zI/hqdefault.jpg'">
+              <img src="https://img.youtube.com/vi/4RxxQKkw5zI/hqdefault.jpg" alt="" loading="lazy">
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Portre — Bölüm 3</div>
+              <div class="vid-title">Video</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
           <div class="vid-card" onclick="window.open('https://youtu.be/E9TErHzBqk4','_blank')" onmouseenter="previewVid(this,'E9TErHzBqk4')" onmouseleave="stopPreview(this,'E9TErHzBqk4')">
             <div class="vid-thumb" id="vt-E9TErHzBqk4">
-              <img src="https://img.youtube.com/vi/E9TErHzBqk4/maxresdefault.jpg" alt="" loading="lazy" onerror="this.src='https://img.youtube.com/vi/E9TErHzBqk4/hqdefault.jpg'">
+              <img src="https://img.youtube.com/vi/E9TErHzBqk4/hqdefault.jpg" alt="" loading="lazy">
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Portre — Bölüm 4</div>
+              <div class="vid-title">Video</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
           <div class="vid-card" onclick="window.open('https://youtu.be/85Lw-xj0Oao','_blank')" onmouseenter="previewVid(this,'85Lw-xj0Oao')" onmouseleave="stopPreview(this,'85Lw-xj0Oao')">
-            <div class="vid-thumb" id="vt-85Lw-xj0Oao">
-              <img src="https://img.youtube.com/vi/85Lw-xj0Oao/maxresdefault.jpg" alt="" loading="lazy" onerror="this.src='https://img.youtube.com/vi/85Lw-xj0Oao/hqdefault.jpg'">
+            <div class="vid-thumb" id="vt-85Lw_xj0Oao">
+              <img src="https://img.youtube.com/vi/85Lw-xj0Oao/hqdefault.jpg" alt="" loading="lazy">
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Portre — Bölüm 5</div>
+              <div class="vid-title">Video</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/7UVqfaPRpWs','_blank')" onmouseenter="previewVid(this,'7UVqfaPRpWs')" onmouseleave="stopPreview(this,'7UVqfaPRpWs')">
+            <div class="vid-thumb" id="vt-7UVqfaPRpWs">
+              <img src="https://img.youtube.com/vi/7UVqfaPRpWs/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Video</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/td_TPXD7CPQ','_blank')" onmouseenter="previewVid(this,'td_TPXD7CPQ')" onmouseleave="stopPreview(this,'td_TPXD7CPQ')">
+            <div class="vid-thumb" id="vt-td_TPXD7CPQ">
+              <img src="https://img.youtube.com/vi/td_TPXD7CPQ/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Video</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/nbdcfaQ9ssQ','_blank')" onmouseenter="previewVid(this,'nbdcfaQ9ssQ')" onmouseleave="stopPreview(this,'nbdcfaQ9ssQ')">
+            <div class="vid-thumb" id="vt-nbdcfaQ9ssQ">
+              <img src="https://img.youtube.com/vi/nbdcfaQ9ssQ/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Video</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/N_xmvIiPQDY','_blank')" onmouseenter="previewVid(this,'N_xmvIiPQDY')" onmouseleave="stopPreview(this,'N_xmvIiPQDY')">
+            <div class="vid-thumb" id="vt-N_xmvIiPQDY">
+              <img src="https://img.youtube.com/vi/N_xmvIiPQDY/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Video</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/5FMUgnx4BdI','_blank')" onmouseenter="previewVid(this,'5FMUgnx4BdI')" onmouseleave="stopPreview(this,'5FMUgnx4BdI')">
+            <div class="vid-thumb" id="vt-5FMUgnx4BdI">
+              <img src="https://img.youtube.com/vi/5FMUgnx4BdI/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Video</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/q8nKNiOuSfU','_blank')" onmouseenter="previewVid(this,'q8nKNiOuSfU')" onmouseleave="stopPreview(this,'q8nKNiOuSfU')">
+            <div class="vid-thumb" id="vt-q8nKNiOuSfU">
+              <img src="https://img.youtube.com/vi/q8nKNiOuSfU/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Video</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/tRGdi6D06ww','_blank')" onmouseenter="previewVid(this,'tRGdi6D06ww')" onmouseleave="stopPreview(this,'tRGdi6D06ww')">
+            <div class="vid-thumb" id="vt-tRGdi6D06ww">
+              <img src="https://img.youtube.com/vi/tRGdi6D06ww/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Video</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1113,6 +1383,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
         <div class="pod-emb"><iframe width="100%" height="180" frameborder="no" scrolling="no" seamless src="https://share.transistor.fm/e/3dc9b12d" loading="lazy"></iframe></div>
         <div class="pod-emb" style="padding-top:8px"><iframe width="100%" height="180" frameborder="no" scrolling="no" seamless src="https://share.transistor.fm/e/b0079bd3" loading="lazy"></iframe></div>
       </div>
+      <!-- Mahreç Dünya removed from Anadolu Talks section -->
     </div>
   </div>
 </div>
@@ -1360,7 +1631,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 <!-- ══════ HAKKIMDA ══════ -->
 <div id="page-hakkimda" class="ip">
   <div class="void-page">
-    <div class="void-word">Hakkımda</div>
+    <div class="void-word" data-tr="Hakkımda" data-en="About Me">Hakkımda</div>
     <div class="void-line"></div>
     <div class="void-sub" data-tr="Yakında..." data-en="Coming Soon...">Yakında...</div>
   </div>
@@ -1485,6 +1756,11 @@ function toggleLang(){
   lang=lang==='tr'?'en':'tr';
   document.querySelector('.lang-btn').textContent=lang==='tr'?'EN':'TR';
   document.querySelectorAll('[data-tr]').forEach(el=>el.textContent=el.getAttribute('data-'+lang));
+  // Update tooltips
+  document.querySelectorAll('[data-tip-tr]').forEach(el=>{
+    const tip=el.querySelector('.p-tip');
+    if(tip)tip.textContent=el.getAttribute('data-tip-'+lang);
+  });
 }
 
 /* ══ ROUTING ══ */
@@ -1684,20 +1960,23 @@ function switchPl(idx){
   eps.innerHTML='<div class="loading">Yükleniyor...</div>';
 
   if(pl.type==='rss'){
-    // RSS-based: Analiz ve Görüşler
-    fetch(pl.rss).then(r=>r.text()).then(txt=>{
-      const doc=new DOMParser().parseFromString(txt,'application/xml');
-      const items=Array.from(doc.querySelectorAll('item')).slice(0,30);
-      document.getElementById('pl-ct').textContent=items.length+' bölüm';
-      eps.innerHTML='';
-      items.forEach((it,i)=>{
-        const title=it.querySelector('title')?.textContent||'Bölüm '+(i+1);
-        const audioUrl=it.querySelector('enclosure')?.getAttribute('url')||'';
-        const pd=it.querySelector('pubDate')?.textContent||'';
-        const ds=pd?new Date(pd).toLocaleDateString('tr-TR',{day:'numeric',month:'short'}):'';
-        eps.appendChild(makeEpRow(title,audioUrl,ds,String(i+1).padStart(2,'0'),pl.label,pl.cover));
-      });
-    }).catch(()=>{eps.innerHTML='<div class="loading">Yüklenemedi</div>';});
+    if(pl.label==='Analiz ve Görüşler'){
+      buildAnalizSection(eps, pl.cover);
+    } else {
+      fetch(pl.rss).then(r=>r.text()).then(txt=>{
+        const doc=new DOMParser().parseFromString(txt,'application/xml');
+        const items=Array.from(doc.querySelectorAll('item')).slice(0,30);
+        document.getElementById('pl-ct').textContent=items.length+' bölüm';
+        eps.innerHTML='';
+        items.forEach((it,i)=>{
+          const title=it.querySelector('title')?.textContent||'Bölüm '+(i+1);
+          const audioUrl=it.querySelector('enclosure')?.getAttribute('url')||'';
+          const pd=it.querySelector('pubDate')?.textContent||'';
+          const ds=pd?new Date(pd).toLocaleDateString('tr-TR',{day:'numeric',month:'short'}):'';
+          eps.appendChild(makeEpRow(title,audioUrl,ds,String(i+1).padStart(2,'0'),pl.label,pl.cover));
+        });
+      }).catch(()=>{eps.innerHTML='<div class="loading">Yüklenemedi</div>';});
+    }
   } else {
     // Embed-based: show Transistor iframes (title + player built in)
     setTimeout(()=>{
@@ -1774,7 +2053,7 @@ function vidScroll(dir){
 function previewVid(el,id){
   clearTimeout(pvTimers[id]);
   pvTimers[id]=setTimeout(()=>{
-    const vt=document.getElementById('vt-'+id);
+    const vt=el.querySelector('.vid-thumb');
     if(!vt||vt.querySelector('iframe'))return;
     vt.style.position='relative';
     const iframe=document.createElement('iframe');
@@ -1787,7 +2066,7 @@ function previewVid(el,id){
 }
 function stopPreview(el,id){
   clearTimeout(pvTimers[id]);
-  const vt=document.getElementById('vt-'+id);
+  const vt=el.querySelector('.vid-thumb');
   if(!vt)return;
   const iframe=vt.querySelector('iframe');
   if(iframe)iframe.remove();
@@ -1800,6 +2079,173 @@ document.addEventListener('DOMContentLoaded',()=>{
   buildPlaylists();
   showHome();
 });
+
+/* ══ ANALIZ VE GÖRÜŞLER SPECIAL PLAYER ══ */
+const ANALIZ_FIRST5 = ['772ce83c', '4ec6ccc4', '5b91640a', 'b0a6b377', 'a0bcd7a5'];
+let analizAudio = null;
+let analizCurrent = null;
+
+function buildAnalizSection(container, coverImg){
+  container.innerHTML='<div class="loading">Yükleniyor...</div>';
+  // First 5: special embed cards
+  fetch('https://feeds.transistor.fm/anadolu-ajansi').then(r=>r.text()).then(txt=>{
+    const doc=new DOMParser().parseFromString(txt,'application/xml');
+    const allItems=Array.from(doc.querySelectorAll('item'));
+    container.innerHTML='';
+
+    // First 5 from transistor shares
+    ANALIZ_FIRST5.forEach((id,i)=>{
+      const ep=document.createElement('div');
+      ep.className='analiz-ep';
+      ep.innerHTML=`
+        <div class="analiz-ep-head">
+          <button class="analiz-play-btn" onclick="analizOpenShare('${id}')" aria-label="Dinle">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <div class="analiz-ep-info">
+            <div class="analiz-ep-num">0${i+1}</div>
+            <div class="analiz-ep-title">Bölüm ${i+1}</div>
+          </div>
+          <div class="analiz-ep-actions">
+            <a class="analiz-share-btn" href="https://open.spotify.com/search/Analiz%20ve%20Görüşler" target="_blank" title="Spotify">🎵</a>
+            <a class="analiz-share-btn" href="https://podcasts.apple.com/search?term=Analiz+ve+Görüşler" target="_blank" title="Apple Podcasts">🎙️</a>
+            <a class="analiz-share-btn" href="https://share.transistor.fm/s/${id}" target="_blank" title="Paylaş">🔗</a>
+          </div>
+        </div>
+        <div style="padding:0 56px 8px">
+          <iframe id="analiz-frame-${id}" width="100%" height="0" frameborder="no" scrolling="no" seamless
+            src="" loading="lazy" style="display:none;border-radius:4px;transition:height .3s"></iframe>
+        </div>`;
+      container.appendChild(ep);
+    });
+
+    // Remaining from RSS (skip first 5)
+    const rest=allItems.slice(5,35);
+    rest.forEach((it,i)=>{
+      const title=it.querySelector('title')?.textContent||'Bölüm '+(i+6);
+      const audioUrl=it.querySelector('enclosure')?.getAttribute('url')||'';
+      const pd=it.querySelector('pubDate')?.textContent||'';
+      const ds=pd?new Date(pd).toLocaleDateString('tr-TR',{day:'numeric',month:'short'}):'';
+      const ep=document.createElement('div');
+      ep.className='analiz-ep';
+      ep.innerHTML=`
+        <div class="analiz-ep-head">
+          <button class="analiz-play-btn" onclick="playAnalizEp('${audioUrl}','${title.replace(/'/g,\"'\")}','${ds}')" aria-label="Dinle">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <div class="analiz-ep-info">
+            <div class="analiz-ep-num">${String(i+6).padStart(2,'0')}</div>
+            <div class="analiz-ep-title">${title}</div>
+            <div class="analiz-ep-date">${ds}</div>
+          </div>
+          <div class="analiz-ep-actions">
+            <a class="analiz-share-btn" href="https://open.spotify.com/search/${encodeURIComponent(title)}" target="_blank" title="Spotify">🎵</a>
+            <a class="analiz-share-btn" href="https://podcasts.apple.com/search?term=${encodeURIComponent(title)}" target="_blank" title="Apple Podcasts">🎙️</a>
+          </div>
+        </div>`;
+      container.appendChild(ep);
+    });
+  }).catch(()=>{container.innerHTML='<div class="loading">Yüklenemedi</div>';});
+}
+
+function analizOpenShare(id){
+  const iframe=document.getElementById('analiz-frame-'+id);
+  if(!iframe)return;
+  if(iframe.style.display==='none'){
+    iframe.src='https://share.transistor.fm/e/'+id;
+    iframe.style.display='block';
+    iframe.style.height='180px';
+  }else{
+    iframe.style.display='none';
+    iframe.style.height='0';
+    iframe.src='';
+  }
+}
+
+function playAnalizEp(url,title,date){
+  playEp(url,title,'Analiz ve Görüşler','analiz_ve_gorusler.jpg',null);
+}
+
+
+/* ══ SWIPE/DRAG for video carousel ══ */
+function initDragScroll(trackId){
+  const track=document.getElementById(trackId);
+  if(!track)return;
+  let isDragging=false, startX=0, startOffset=0, currentOff=0;
+  const cardW=()=>{const c=track.querySelector('.vid-card');return c?(c.offsetWidth+2):500;};
+
+  // Mouse
+  track.addEventListener('mousedown',e=>{
+    isDragging=true; startX=e.clientX; startOffset=currentOff;
+    track.classList.add('dragging');
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove',e=>{
+    if(!isDragging)return;
+    const dx=startX-e.clientX;
+    const maxOff=(track.children.length-1)*cardW();
+    currentOff=Math.max(0,Math.min(startOffset+dx,maxOff));
+    track.style.transform=`translateX(-${currentOff}px)`;
+  });
+  window.addEventListener('mouseup',()=>{
+    if(!isDragging)return;
+    isDragging=false;
+    track.classList.remove('dragging');
+    // Snap to nearest card
+    const w=cardW();
+    currentOff=Math.round(currentOff/w)*w;
+    track.style.transition='transform .35s cubic-bezier(.4,0,.2,1)';
+    track.style.transform=`translateX(-${currentOff}px)`;
+    setTimeout(()=>track.style.transition='',400);
+    vidOff=currentOff;
+  });
+
+  // Touch
+  track.addEventListener('touchstart',e=>{
+    startX=e.touches[0].clientX; startOffset=currentOff;
+  },{passive:true});
+  track.addEventListener('touchmove',e=>{
+    const dx=startX-e.touches[0].clientX;
+    const maxOff=(track.children.length-1)*cardW();
+    currentOff=Math.max(0,Math.min(startOffset+dx,maxOff));
+    track.style.transform=`translateX(-${currentOff}px)`;
+  },{passive:true});
+  track.addEventListener('touchend',()=>{
+    const w=cardW();
+    currentOff=Math.round(currentOff/w)*w;
+    track.style.transition='transform .35s cubic-bezier(.4,0,.2,1)';
+    track.style.transform=`translateX(-${currentOff}px)`;
+    setTimeout(()=>track.style.transition='',400);
+    vidOff=currentOff;
+  });
+
+  // Wheel (Apple trackpad horizontal scroll)
+  track.parentElement.addEventListener('wheel',e=>{
+    if(Math.abs(e.deltaX)<Math.abs(e.deltaY))return;
+    e.preventDefault();
+    const maxOff=(track.children.length-1)*cardW();
+    currentOff=Math.max(0,Math.min(currentOff+e.deltaX,maxOff));
+    track.style.transform=`translateX(-${currentOff}px)`;
+    vidOff=currentOff;
+  },{passive:false});
+}
+
+// Also update vidScroll to keep sync
+const _vidScroll=vidScroll;
+function vidScroll(dir){
+  const track=document.getElementById('vid-track');
+  if(!track)return;
+  const card=track.querySelector('.vid-card');
+  const w=(card?card.offsetWidth:500)+2;
+  const maxOff=(track.children.length-1)*w;
+  vidOff=Math.max(0,Math.min(vidOff+dir*w,maxOff));
+  track.style.transition='transform .4s cubic-bezier(.4,0,.2,1)';
+  track.style.transform=`translateX(-${vidOff}px)`;
+  setTimeout(()=>track.style.transition='',450);
+}
+
+// Init drag
+document.addEventListener('DOMContentLoaded',()=>initDragScroll('vid-track'));
 </script>
 </body>
 </html>
