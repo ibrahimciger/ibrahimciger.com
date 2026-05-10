@@ -432,12 +432,9 @@ nav {
 /* Episode grid: 3 per row */
 .pl-eps {
   padding:16px;
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:8px;
-  max-height:560px;
+  display:block;
+  max-height:700px;
   overflow-y:auto;
-  align-content:start;
 }
 .pl-eps::-webkit-scrollbar { width:3px; }
 .pl-eps::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
@@ -907,8 +904,8 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
     <li><a href="#" onclick="showHome()" id="nl-home" class="on" data-tr="Anasayfa" data-en="Home">Home</a></li>
     <li><a href="#" onclick="navTo('haberlerim')" id="nl-haberlerim" data-tr="Haberlerim" data-en="News">News</a></li>
     <li><a href="#" onclick="navTo('perspektif')" id="nl-perspektif" data-tr="Perspektif" data-en="Perspective">Perspektif</a></li>
-    <li><a href="#" onclick="navTo('vodcast')" id="nl-vodcast">Vodcast</a></li>
-    <li><a href="#" onclick="navTo('podcast')" id="nl-podcast">Podcast</a></li>
+    <li><a href="#" onclick="navTo('vodcast')" id="nl-vodcast" data-tr="Vodcast" data-en="Vodcast">Vodcast</a></li>
+    <li><a href="#" onclick="navTo('podcast')" id="nl-podcast" data-tr="Podcast" data-en="Podcast">Podcast</a></li>
     <li><a href="#" onclick="navTo('hakkimda')" id="nl-hakkimda" data-tr="Hakkımda" data-en="About">About</a></li>
   </ul>
   <div class="nav-right">
@@ -921,7 +918,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 
 <div class="mob-m" id="mob-m">
   <a href="#" onclick="showHome();toggleMob()" data-tr="Anasayfa" data-en="Home">Anasayfa</a>
-  <a href="#" onclick="navTo('haberlerim');toggleMob()" data-tr="Haberlerim" data-en="Reports">Haberlerim</a>
+  <a href="#" onclick="navTo('haberlerim');toggleMob()" data-tr="Haberlerim" data-en="News">News</a>
   <a href="#" onclick="navTo('perspektif');toggleMob()">Perspektif</a>
   <a href="#" onclick="navTo('vodcast');toggleMob()">Vodcast</a>
   <a href="#" onclick="navTo('podcast');toggleMob()">Podcast</a>
@@ -935,7 +932,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   <section id="hero">
     <div class="hero-photo"></div>
     <div class="hero-content">
-      <div class="hero-tag" data-tr="Gazeteci" data-en="Journalist">Gazeteci</div>
+      <div class="hero-tag" data-tr="Gazeteci" data-en="Journalist">Journalist</div>
       <span class="hero-name">HALİL</span>
       <span class="hero-name">İBRAHİM</span>
       <span class="hero-name-last">Ciğer</span>
@@ -964,9 +961,9 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
       <h2 class="sec-title" data-tr="Haberlerim" data-en="News">News</h2>
     </div>
     <div class="news-tabs">
-      <button class="ntab on" onclick="filterHomeNews(this,'tr')">Türkçe</button>
-      <button class="ntab" onclick="filterHomeNews(this,'en')">English</button>
-      <button class="ntab" onclick="filterHomeNews(this,'other')" data-tr="Diğer" data-en="Other">Diğer</button>
+      <button class="ntab" onclick="filterHomeNews(this,'tr')" data-tr="Türkçe" data-en="Turkish">Turkish</button>
+      <button class="ntab on" onclick="filterHomeNews(this,'en')" data-tr="İngilizce" data-en="English">English</button>
+      <button class="ntab" onclick="filterHomeNews(this,'other')" data-tr="Diğer" data-en="Other">Other</button>
     </div>
     <div class="news-grid" id="home-news-grid"></div>
 
@@ -1407,9 +1404,9 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
     <h1 class="iph-title" data-tr="Haberlerim" data-en="News">News</h1>
   </div>
   <div class="lf-bar">
-    <button class="lf-tab on" onclick="filterInner(this,'tr')">Türkçe</button>
-    <button class="lf-tab" onclick="filterInner(this,'en')">English</button>
-    <button class="lf-tab" onclick="filterInner(this,'other')" data-tr="Diğer" data-en="Other">Diğer</button>
+    <button class="lf-tab" onclick="filterInner(this,'tr')" data-tr="Türkçe" data-en="Turkish">Turkish</button>
+    <button class="lf-tab on" onclick="filterInner(this,'en')" data-tr="İngilizce" data-en="English">English</button>
+    <button class="lf-tab" onclick="filterInner(this,'other')" data-tr="Diğer" data-en="Other">Other</button>
   </div>
   <div class="nwall" id="nwall"></div>
   <footer><div class="f-sig" data-tr="Yeşil ve tatlı Dünya'dan hoş sadâlar" data-en="Pleasant echoes from the verdant and captivating Earth">Pleasant echoes from the verdant and captivating Earth</div><div class="f-dt" id="ft2"></div></footer>
@@ -1899,7 +1896,7 @@ function toggleMob(){document.getElementById('mob-m').classList.toggle('open');}
 function buildTicker(){
   const t=document.getElementById('hticker');
   const outer=document.querySelector('.ticker-outer');
-  const lm={tr:'Türkçe',en:'English',other:''};
+  const lm={tr:lang==='en'?'Turkish':'Türkçe',en:lang==='en'?'English':'İngilizce',other:''};
   // Order: current lang first, then others
   const ordered = lang==='en'
     ? [...ND.filter(n=>n.l==='en'), ...ND.filter(n=>n.l!=='en')]
@@ -1935,7 +1932,7 @@ function buildTicker(){
 
 /* ══ NEWS ══ */
 function newsHTML(n, feat){
-  const lbl=n.l==='tr'?'Türkçe':n.l==='en'?'English':(n.ll||'Diğer');
+  const lbl=n.l==='tr'?(lang==='en'?'Turkish':'Türkçe'):n.l==='en'?(lang==='en'?'English':'İngilizce'):(n.ll||'Other');
   const cls=feat?'nbrick feat':'nbrick';
   const imgH=n.i
     ?`<div class="nb-img"><img src="${n.i}" alt="" loading="lazy"></div>`
@@ -2196,7 +2193,7 @@ function showAllNews(){
   });
   ND.forEach(n=>{if(!sorted.includes(n))sorted.push(n);});
   list.innerHTML=sorted.map((n,i)=>{
-    const lbl=n.l==='tr'?'Türkçe':n.l==='en'?'English':(n.ll||n.l.toUpperCase());
+    const lbl=n.l==='tr'?(lang==='en'?'Turkish':'Türkçe'):n.l==='en'?(lang==='en'?'English':'İngilizce'):(n.ll||(lang==='en'?'Other':'Diğer'));
     const imgH=n.i?`<img src="${n.i}" alt="" style="width:90px;height:60px;object-fit:cover;border-radius:3px;flex-shrink:0;">`
       :'<div style="width:90px;height:60px;background:var(--bg3);border-radius:3px;flex-shrink:0;"></div>';
     return `<a class="all-news-item" href="${n.u}" target="_blank" rel="noopener">
@@ -2249,17 +2246,17 @@ function stopPreview(el,id){
 
 /* ══ INIT ══ */
 document.addEventListener('DOMContentLoaded',()=>{
-  // Set initial language state
-  document.querySelectorAll('[data-tr]').forEach(el=>el.textContent=el.getAttribute('data-en')||el.textContent);
+  // Init as English
+  document.querySelectorAll('[data-tr]').forEach(el=>{
+    const enVal=el.getAttribute('data-en');
+    if(enVal)el.textContent=enVal;
+  });
   document.querySelectorAll('[data-tip-tr]').forEach(el=>{
     const tip=el.querySelector('.p-tip');
-    if(tip)tip.textContent=el.getAttribute('data-tip-en')||tip.textContent;
+    if(tip){const v=el.getAttribute('data-tip-en');if(v)tip.textContent=v;}
   });
   buildTicker();
   buildHomeNews('en');
-  // Set EN tab active
-  const tabs=document.querySelectorAll('.ntab');
-  if(tabs.length>1){tabs.forEach(t=>t.classList.remove('on')); tabs[1].classList.add('on');}
   buildPlaylists();
   showHome();
 });
