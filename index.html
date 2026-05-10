@@ -192,7 +192,7 @@ nav {
   font-size: clamp(56px, 7vw, 108px);
   font-weight: 900;
   line-height: 1.0;
-  letter-spacing: .08em;
+  letter-spacing: .03em;
   color: #faf6ee;
   display: block;
   margin-bottom: 10px;
@@ -201,7 +201,7 @@ nav {
   font-family: 'Playfair Display', serif;
   font-size: clamp(56px, 7vw, 108px);
   font-weight: 900; font-style:italic;
-  line-height: 1.0; letter-spacing:.08em;
+  line-height: 1.0; letter-spacing:.03em;
   color: var(--gold2); display:block; margin-bottom:28px;
 }
 
@@ -230,9 +230,9 @@ nav {
 /* Ticker — right side center, vertical scroll, max 2 visible */
 .hero-ticker-wrap {
   position:absolute;
-  right:0; top:50%; transform:translateY(-50%);
-  width:38%; z-index:2;
-  padding:0 0 0 2px;
+  right:16px; top:50%; transform:translateY(-50%);
+  width:36%; z-index:2;
+  padding:0 10px 0 10px;
 }
 .ticker-label {
   font-family:'Josefin Sans',sans-serif; font-weight:100;
@@ -427,7 +427,7 @@ nav {
   border-bottom:1px solid var(--border2);
   padding:4px 0;
 }
-.pl-embed-item iframe { display:block; }
+.pl-embed-item iframe { display:block; touch-action:manipulation; }
 
 /* Episode grid: 3 per row */
 .pl-eps {
@@ -565,7 +565,7 @@ nav {
 .pod-layout { display:grid; grid-template-columns:180px 1fr; min-height:calc(100vh - 62px); }
 .pod-sb { border-right:1px solid var(--border2); padding:28px 0; position:sticky; top:62px; height:calc(100vh - 62px); overflow-y:auto; background:var(--bg); transition:background .3s; }
 .pod-sb-lbl { font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:10px; letter-spacing:.22em; color:var(--ink); text-transform:uppercase; padding:20px 20px 12px; opacity:0.7; border-bottom:1px solid var(--border2); margin-bottom:8px; }
-.pod-ni { padding:14px 20px; cursor:pointer; font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:11px; letter-spacing:.1em; color:var(--ink2); text-transform:uppercase; transition:all .25s; border-left:2px solid transparent; margin-left:-1px; opacity:0.85; line-height:1.3; }
+.pod-ni { padding:12px 20px; cursor:pointer; font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:10.5px; letter-spacing:.08em; color:var(--ink2); text-transform:uppercase; transition:all .25s; border-left:2px solid transparent; margin-left:-1px; opacity:0.85; line-height:1.4; word-break:keep-all; hyphens:none; }
 .pod-ni:hover{color:var(--ink);opacity:1;} .pod-ni.on{color:var(--gold);border-left-color:var(--gold);background:rgba(184,137,42,.06);opacity:1;}
 .pod-main { overflow-y:auto; max-height:calc(100vh - 62px); background:var(--bg); transition:background .3s; }
 .pod-sec{display:none;} .pod-sec.on{display:block;}
@@ -845,6 +845,52 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .muck-item:hover { color:var(--gold); }
 @keyframes muckScroll {{ from{{transform:translateX(0)}} to{{transform:translateX(-50%)}} }}
 @media(max-width:768px){{ .muck-header{{padding:16px 20px 12px;}} .muck-item{{font-size:14px;padding:14px 32px;}} }}
+
+/* ── All News Modal ── */
+.all-news-overlay {
+  position:fixed; inset:0; z-index:4000;
+  background:rgba(0,0,0,0.7); backdrop-filter:blur(6px);
+  display:none; align-items:center; justify-content:center; padding:40px;
+}
+.all-news-overlay.open { display:flex; }
+.all-news-modal {
+  background:var(--bg); width:100%; max-width:860px;
+  max-height:85vh; overflow-y:auto; border:1px solid var(--border2);
+  border-radius:4px;
+}
+.all-news-modal::-webkit-scrollbar { width:3px; }
+.all-news-modal::-webkit-scrollbar-thumb { background:var(--border); }
+.all-news-modal-head {
+  padding:28px 36px 20px; border-bottom:1px solid var(--border2);
+  display:flex; align-items:center; justify-content:space-between;
+  position:sticky; top:0; background:var(--bg); z-index:10;
+}
+.all-news-modal-title {
+  font-family:'Playfair Display',serif; font-size:22px; font-style:italic;
+  font-weight:700; color:var(--ink);
+}
+.all-news-close {
+  font-family:'Josefin Sans',sans-serif; font-weight:200; font-size:10px;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--muted);
+  background:none; border:none; cursor:pointer; transition:color .2s;
+}
+.all-news-close:hover { color:var(--ink); }
+.all-news-item {
+  display:flex; align-items:flex-start; gap:16px;
+  padding:18px 36px; border-bottom:1px solid var(--border2);
+  text-decoration:none; transition:background .2s;
+}
+.all-news-item:hover { background:var(--bg2); }
+.all-news-num { font-family:'Space Mono',monospace; font-size:9px; color:var(--muted); min-width:24px; padding-top:3px; }
+.all-news-body { flex:1; }
+.all-news-lang { font-family:'Space Mono',monospace; font-size:8px; color:var(--gold); letter-spacing:.1em; text-transform:uppercase; margin-bottom:5px; opacity:.8; }
+.all-news-t { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:500; color:var(--ink); line-height:1.42; }
+.all-news-src { font-family:'Josefin Sans',sans-serif; font-weight:200; font-size:8.5px; letter-spacing:.12em; color:var(--muted); text-transform:uppercase; margin-top:6px; }
+@media(max-width:768px){
+  .all-news-overlay{padding:16px;}
+  .all-news-item{padding:14px 20px;}
+  .all-news-modal-head{padding:20px 20px 16px;}
+}
 </style>
 </head>
 <body>
@@ -926,7 +972,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   <div class="muck-section">
     <div class="muck-header">
       <div class="muck-eye">Haberler</div>
-      <a href="https://muckrack.com/halil-ibrahim-ciger" target="_blank" rel="noopener" class="muck-link">Tüm haberler ↗</a>
+      <a href="#" onclick="showAllNews();return false;" class="muck-link" data-tr="Tüm haberler ↗" data-en="All news ↗">Tüm haberler ↗</a>
     </div>
     <div class="muck-wrap">
       <div class="muck-track" id="muck-track">
@@ -1420,12 +1466,12 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
       </div>
       <div class="pod-sec" id="ps-mahrec">
         <div class="pod-sh"><span class="pod-st">Mahreç Dünya</span></div>
+        <div class="pod-emb"><iframe width="100%" height="180" frameborder="no" scrolling="no" seamless src="https://share.transistor.fm/e/b0079bd3" loading="lazy"></iframe></div>
         <div id="ep-mahrec"><div class="loading">Yükleniyor...</div></div>
       </div>
       <div class="pod-sec" id="ps-atalks">
         <div class="pod-sh"><span class="pod-st">Anadolu Talks</span></div>
         <div class="pod-emb"><iframe width="100%" height="180" frameborder="no" scrolling="no" seamless src="https://share.transistor.fm/e/3dc9b12d" loading="lazy"></iframe></div>
-        <div class="pod-emb" style="padding-top:8px"><iframe width="100%" height="180" frameborder="no" scrolling="no" seamless src="https://share.transistor.fm/e/b0079bd3" loading="lazy"></iframe></div>
       </div>
       <!-- Mahreç Dünya removed from Anadolu Talks section -->
     </div>
@@ -1694,7 +1740,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   <input class="a-range" type="range" id="a-prog" value="0" min="0" max="100" step="0.1" oninput="seekAudio(this.value)">
   <span class="a-time" id="a-time">0:00 / 0:00</span>
   <button class="a-close" onclick="closeAudio()">✕ Kapat</button>
-  <audio id="main-audio"></audio>
+  <audio id="main-audio" playsinline webkit-playsinline preload="none"></audio>
 </div>
 
 <script>
@@ -1722,7 +1768,7 @@ const CAR = [ND[0],ND[1],ND[2],ND[7],ND[13],ND[14],ND[15]];
 
 const PORTRE_IDS = ['ac75772f','9ad2b242','81f75796','e3e6223d','23e2c015','4c6c3c9f','83e4259e','2e8c1d45','bcee0f32','49f5d41d','93925c9c','56755147'];
 const BBK_IDS   = ['752cedb0','8dfcc7d6','a19605bc','6ab99a5c','97e20023','d5ebc084','11c548dd','ee42c78a','ae5a9044','6565089f','d2d37580','bf7ee9ab','1b6e8af8','6614f82c','160a6798','72557115','02eac1ef','91086418','cecb658d'];
-const MHR_IDS   = ['c66d5301','d6c195c4','9227f276','ea4eaf17','adfad647','9f7dace5','599dbc49','bd7cc0b7'];
+const MHR_IDS   = ['b0079bd3','c66d5301','d6c195c4','9227f276','ea4eaf17','adfad647','9f7dace5','599dbc49','bd7cc0b7'];
 
 // Playlist definitions — cover from Transistor show pages
 const PLAYLISTS = [
@@ -1755,8 +1801,7 @@ const PLAYLISTS = [
   {
     label:'Anadolu Talks', cover:'anadolu_talk_zone.webp', link:'https://anadolutalkzone.transistor.fm/',
     embeds:[
-      'https://share.transistor.fm/e/3dc9b12d',
-      'https://share.transistor.fm/e/b0079bd3'
+      'https://share.transistor.fm/e/3dc9b12d'
     ]
   },
   {
@@ -1766,6 +1811,7 @@ const PLAYLISTS = [
   {
     label:'Mahreç Dünya', cover:'mahrec.jpg', link:'https://www.aa.com.tr/tr/podcast/mahrec-dunya',
     embeds:[
+      'https://share.transistor.fm/e/b0079bd3',
       'https://share.transistor.fm/e/c66d5301','https://share.transistor.fm/e/d6c195c4',
       'https://share.transistor.fm/e/9227f276','https://share.transistor.fm/e/ea4eaf17',
       'https://share.transistor.fm/e/adfad647','https://share.transistor.fm/e/9f7dace5',
@@ -1927,17 +1973,36 @@ function syncAudioUI(){
 }
 
 function playEp(url, title, progName, imgSrc, rowEl){
+  if(!url){console.warn('No URL:',title);return;}
   if(currentAudio===rowEl&&!audio.paused){audio.pause();return;}
-  if(currentAudio===rowEl&&audio.paused){audio.play();return;}
-  // new track
+  if(currentAudio===rowEl&&audio.paused){audio.load();audio.play().catch(()=>{});return;}
   currentAudio=rowEl;
   document.getElementById('a-title').textContent=title;
   document.getElementById('a-src').textContent=progName;
   const cover=document.getElementById('a-cover');
   cover.src=imgSrc||'';
   cover.style.display=imgSrc?'block':'none';
+  audio.pause();
   audio.src=url;
-  audio.play().catch(()=>{});
+  audio.load();
+  audio.play().catch(e=>{console.warn('Play failed:',e);});
+  document.getElementById('abar').classList.add('show');
+  document.getElementById('a-prog').value=0;
+}
+
+/* Shortcut for analiz cards */
+function playAudio(url,title,progName){
+  if(!url){console.warn('No URL:',title);return;}
+  currentAudio=null;
+  document.getElementById('a-title').textContent=title;
+  document.getElementById('a-src').textContent=progName||'Podcast';
+  const cover=document.getElementById('a-cover');
+  cover.src='analiz_ve_gorusler.jpg';
+  cover.style.display='block';
+  audio.pause();
+  audio.src=url;
+  audio.load();
+  audio.play().catch(e=>{console.warn('Play failed:',e);});
   document.getElementById('abar').classList.add('show');
   document.getElementById('a-prog').value=0;
 }
@@ -2086,7 +2151,38 @@ function initPod(){
   buildSharesInner('ep-mahrec',MHR_IDS,'Mahreç Dünya',MHR_COVER);
 }
 
-/* ══ VIDEO ══ */
+/* ══ ALL NEWS MODAL ══ */
+function showAllNews(){
+  const overlay=document.getElementById('all-news-overlay');
+  const list=document.getElementById('all-news-list');
+  overlay.classList.add('open');
+  document.body.style.overflow='hidden';
+  const order=['en','fr','tr','ru','ar','other'];
+  const langLabel={en:'English',fr:'Français',tr:'Türkçe',ru:'Русский',ar:'عربي',other:'Diğer'};
+  const sorted=[];
+  order.forEach(l=>{
+    ND.filter(n=>n.l===l).forEach(n=>{if(!sorted.includes(n))sorted.push(n);});
+  });
+  ND.forEach(n=>{if(!sorted.includes(n))sorted.push(n);});
+  list.innerHTML=sorted.map((n,i)=>{
+    const lbl=n.l==='tr'?'Türkçe':n.l==='en'?'English':(n.ll||n.l.toUpperCase());
+    return `<a class="all-news-item" href="${n.u}" target="_blank" rel="noopener">
+      <span class="all-news-num">${String(i+1).padStart(2,'0')}</span>
+      <div class="all-news-body">
+        <div class="all-news-lang">${lbl}</div>
+        <div class="all-news-t">${n.t}</div>
+        <div class="all-news-src">${n.s}</div>
+      </div>
+    </a>`;
+  }).join('');
+}
+function closeAllNews(e){
+  if(e&&e.target!==e.currentTarget)return;
+  document.getElementById('all-news-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+
 function vidScroll(dir){
   const track=document.getElementById('vid-track');
   const card=track.querySelector('.vid-card');
@@ -2143,30 +2239,33 @@ function buildAnalizSection(container, coverImg){
     const doc=new DOMParser().parseFromString(txt,'application/xml');
     const allItems=Array.from(doc.querySelectorAll('item')).slice(0,200);
     const listWrap=document.createElement('div');
-    listWrap.style.cssText='display:flex;flex-direction:column;gap:0;';
+    listWrap.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:20px;';
     allItems.forEach((it,i)=>{
       const title=it.querySelector('title')?.textContent||'Bölüm '+(i+1);
       const audioUrl=it.querySelector('enclosure')?.getAttribute('url')||'';
       const pd=it.querySelector('pubDate')?.textContent||'';
       const ds=pd?new Date(pd).toLocaleDateString('tr-TR',{day:'numeric',month:'short',year:'numeric'}):'';
       const ep=document.createElement('div');
-      ep.className='analiz-ep';
+      ep.className='analiz-card';
+      ep.style.cssText='border:1px solid var(--border2);border-radius:6px;overflow:hidden;background:var(--card);display:flex;flex-direction:column;transition:border-color .2s,background .2s;cursor:pointer;';
       ep.innerHTML=`
-        <div class="analiz-ep-head">
-          <button class="analiz-play-btn" onclick="playAnalizEp(this)" aria-label="Dinle"
-            data-url="${audioUrl}" data-title="${title.replace(/"/g,'&quot;').replace(/'/g,'&#39;')}">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <div style="padding:14px 16px;flex:1;">
+          <div style="font-family:'Space Mono',monospace;font-size:8px;color:var(--muted);margin-bottom:6px;">${String(i+1).padStart(2,'0')}</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:500;color:var(--ink);line-height:1.4;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">${title}</div>
+          <div style="font-family:'Space Mono',monospace;font-size:8px;color:var(--muted);margin-top:6px;">${ds}</div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-top:1px solid var(--border2);background:var(--bg2);">
+          <button onclick="event.stopPropagation();playAnalizEp(this)" data-url="${audioUrl}" data-title="${title.replace(/"/g,'&quot;').replace(/'/g,'&#39;')}"
+            style="display:flex;align-items:center;gap:6px;background:var(--gold);border:none;border-radius:3px;padding:6px 12px;cursor:pointer;font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#fff;">
+            <svg viewBox="0 0 24 24" style="width:10px;height:10px;fill:#fff"><path d="M8 5v14l11-7z"/></svg> Dinle
           </button>
-          <div class="analiz-ep-info">
-            <div class="analiz-ep-num">${String(i+1).padStart(2,'0')}</div>
-            <div class="analiz-ep-title">${title}</div>
-            <div class="analiz-ep-date">${ds}</div>
-          </div>
-          <div class="analiz-ep-actions">
-            <a class="analiz-share-btn" href="https://open.spotify.com/search/${encodeURIComponent(title)}" target="_blank" title="Spotify">🎵</a>
-            <a class="analiz-share-btn" href="https://podcasts.apple.com/search?term=${encodeURIComponent(title)}" target="_blank" title="Apple Podcasts">🎙️</a>
+          <div style="display:flex;gap:8px;">
+            <a href="https://open.spotify.com/search/${encodeURIComponent(title)}" target="_blank" style="font-size:16px;text-decoration:none;">🎵</a>
+            <a href="https://podcasts.apple.com/search?term=${encodeURIComponent(title)}" target="_blank" style="font-size:16px;text-decoration:none;">🎙️</a>
           </div>
         </div>`;
+      ep.addEventListener('mouseenter',()=>ep.style.borderColor='var(--gold)');
+      ep.addEventListener('mouseleave',()=>ep.style.borderColor='var(--border2)');
       listWrap.appendChild(ep);
     });
     container.appendChild(listWrap);
@@ -2189,8 +2288,9 @@ function analizOpenShare(id){
 
 function playAnalizEp(btn){
   const url=btn.getAttribute('data-url');
-  const title=btn.getAttribute('data-title');
-  playEp(url,title,'Analiz ve Görüşler','analiz_ve_gorusler.jpg',null);
+  const title=btn.getAttribute('data-title')||btn.getAttribute('data-title');
+  if(!url){console.warn('No audio URL');return;}
+  playAudio(url,title,'Analiz ve Görüşler');
 }
 
 
@@ -2274,5 +2374,16 @@ function vidScroll(dir){
 // Init drag
 document.addEventListener('DOMContentLoaded',()=>initDragScroll('vid-track'));
 </script>
+
+<!-- All News Modal -->
+<div class="all-news-overlay" id="all-news-overlay" onclick="closeAllNews(event)">
+  <div class="all-news-modal">
+    <div class="all-news-modal-head">
+      <div class="all-news-modal-title" data-tr="Tüm Haberler" data-en="All News">Tüm Haberler</div>
+      <button class="all-news-close" onclick="closeAllNews()">✕ Kapat</button>
+    </div>
+    <div id="all-news-list"></div>
+  </div>
+</div>
 </body>
 </html>
