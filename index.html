@@ -971,7 +971,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
     </div>
     <div class="news-tabs">
       <button class="ntab" onclick="filterHomeNews(this,'tr')" data-tr="Türkçe" data-en="Turkish">Turkish</button>
-      <button class="ntab on" onclick="filterHomeNews(this,'en')" data-tr="İngilizce" data-en="English">English</button>
+      <button class="ntab on" onclick="filterHomeNews(this,'en')" data-tr="EN" data-en="English">English</button>
       <button class="ntab" onclick="filterHomeNews(this,'other')" data-tr="Diğer" data-en="Other">Other</button>
     </div>
     <div class="news-grid" id="home-news-grid"></div>
@@ -1118,7 +1118,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Mahreç Dünya: Uluslararası İlişkiler</div>
+              <div class="vid-title">Mahreç Dünya: Uluslararasi Iliskiler</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1338,7 +1338,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Portre: İz Bırakanlar</div>
+              <div class="vid-title">Portre: Iz Birakanlar</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1414,7 +1414,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   </div>
   <div class="lf-bar">
     <button class="lf-tab" onclick="filterInner(this,'tr')" data-tr="Türkçe" data-en="Turkish">Turkish</button>
-    <button class="lf-tab on" onclick="filterInner(this,'en')" data-tr="İngilizce" data-en="English">English</button>
+    <button class="lf-tab on" onclick="filterInner(this,'en')" data-tr="EN" data-en="English">English</button>
     <button class="lf-tab" onclick="filterInner(this,'other')" data-tr="Diğer" data-en="Other">Other</button>
   </div>
   <div class="nwall" id="nwall"></div>
@@ -1913,7 +1913,7 @@ function toggleMob(){document.getElementById('mob-m').classList.toggle('open');}
 function buildTicker(){
   const t=document.getElementById('hticker');
   const outer=document.querySelector('.ticker-outer');
-  const lm={tr:lang==='en'?'Turkish':'Türkçe',en:lang==='en'?'English':'İngilizce',other:''};
+  const lm={tr:lang==='en'?'Turkish':'TR',en:lang==='en'?'English':'EN',other:''};
   // Order: current lang first, then others
   const ordered = lang==='en'
     ? [...ND.filter(n=>n.l==='en'), ...ND.filter(n=>n.l!=='en')]
@@ -1949,7 +1949,7 @@ function buildTicker(){
 
 /* ══ NEWS ══ */
 function newsHTML(n, feat){
-  const lbl=n.l==='tr'?(lang==='en'?'Turkish':'Türkçe'):n.l==='en'?(lang==='en'?'English':'İngilizce'):(n.ll||'Other');
+  const lbl=n.l==='tr'?(lang==='en'?'Turkish':'Türkçe'):n.l==='en'?(lang==='en'?'English':'EN'):(n.ll||'Other');
   const cls=feat?'nbrick feat':'nbrick';
   const imgH=n.i
     ?`<div class="nb-img"><img src="${n.i}" alt="" loading="lazy"></div>`
@@ -2235,7 +2235,7 @@ function showAllNews(){
   });
   ND.forEach(n=>{if(!sorted.includes(n))sorted.push(n);});
   list.innerHTML=sorted.map((n,i)=>{
-    const lbl=n.l==='tr'?(lang==='en'?'Turkish':'Türkçe'):n.l==='en'?(lang==='en'?'English':'İngilizce'):(n.ll||(lang==='en'?'Other':'Diğer'));
+    const lbl=n.l==='tr'?(lang==='en'?'Turkish':'Türkçe'):n.l==='en'?(lang==='en'?'English':'EN'):(n.ll||(lang==='en'?'Other':'Diğer'));
     const imgH=n.i?`<img src="${n.i}" alt="" style="width:90px;height:60px;object-fit:cover;border-radius:3px;flex-shrink:0;">`
       :'<div style="width:90px;height:60px;background:var(--bg3);border-radius:3px;flex-shrink:0;"></div>';
     return `<a class="all-news-item" href="${n.u}" target="_blank" rel="noopener">
