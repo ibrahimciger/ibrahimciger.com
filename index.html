@@ -189,20 +189,20 @@ nav {
 /* NAME — Playfair Display for elegance */
 .hero-name {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(56px, 7vw, 108px);
+  font-size: clamp(32px, 4vw, 62px);
   font-weight: 900;
   line-height: 1.0;
   letter-spacing: .03em;
   color: #faf6ee;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .hero-name-last {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(56px, 7vw, 108px);
+  font-size: clamp(32px, 4vw, 62px);
   font-weight: 900; font-style:italic;
   line-height: 1.0; letter-spacing:.03em;
-  color: var(--gold2); display:block; margin-bottom:28px;
+  color: var(--gold2); display:block; margin-bottom:22px;
 }
 
 .hero-principles {
@@ -397,6 +397,12 @@ nav {
   display:grid; grid-template-columns:220px 1fr;
   margin:0 80px 80px; border:1px solid var(--border2);
   background:var(--card); transition:background .3s;
+}
+.pl-body.embed-mode {
+  grid-template-columns:1fr;
+}
+.pl-body.embed-mode .pl-left {
+  display:none;
 }
 .pl-left {
   border-right:1px solid var(--border2); padding:32px 24px;
@@ -2102,7 +2108,10 @@ function switchPl(idx){
   const nameLinkEl=document.getElementById('pl-name-link');
   if(linkEl)linkEl.href=lnk;
   if(nameLinkEl)nameLinkEl.href=lnk;
-  // Episodes — always re-render (no caching to fix tab-switching bug)
+  // Hide left panel for embed playlists (they have their own cover inside)
+  const plBody=document.querySelector('.pl-body');
+  if(plBody) plBody.classList.toggle('embed-mode', pl.type!=='rss');
+  // Episodes — always re-render
   const eps=document.getElementById('pl-eps');
   eps.innerHTML='<div class="loading">Yükleniyor...</div>';
 
