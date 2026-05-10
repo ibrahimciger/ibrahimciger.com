@@ -679,6 +679,8 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   .pod-main{max-height:none;}
   .pod-sh{padding:20px 16px 14px;}
   .pod-emb,.share-blk{padding-left:16px;padding-right:16px;}
+  .analiz-card{grid-template-columns:1fr!important;}
+  [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
   .ep-list{grid-template-columns:1fr;padding:12px;}
   .iph{padding:40px 20px 28px;}
   .lf-bar{padding:0 20px;}
@@ -876,9 +878,9 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 }
 .all-news-close:hover { color:var(--ink); }
 .all-news-item {
-  display:flex; align-items:flex-start; gap:16px;
-  padding:18px 36px; border-bottom:1px solid var(--border2);
-  text-decoration:none; transition:background .2s;
+  display:flex; align-items:center; gap:16px;
+  padding:20px 36px; border-bottom:1px solid var(--border2);
+  text-decoration:none; transition:background .2s; min-height:80px;
 }
 .all-news-item:hover { background:var(--bg2); }
 .all-news-num { font-family:'Space Mono',monospace; font-size:9px; color:var(--muted); min-width:24px; padding-top:3px; }
@@ -902,12 +904,12 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
     <span class="logo-line"></span>
   </a>
   <ul class="nav-links">
-    <li><a href="#" onclick="showHome()" id="nl-home" class="on" data-tr="Anasayfa" data-en="Home">Anasayfa</a></li>
-    <li><a href="#" onclick="navTo('haberlerim')" id="nl-haberlerim" data-tr="Haberlerim" data-en="My Reports">Haberlerim</a></li>
+    <li><a href="#" onclick="showHome()" id="nl-home" class="on" data-tr="Anasayfa" data-en="Home">Home</a></li>
+    <li><a href="#" onclick="navTo('haberlerim')" id="nl-haberlerim" data-tr="Haberlerim" data-en="News">News</a></li>
     <li><a href="#" onclick="navTo('perspektif')" id="nl-perspektif" data-tr="Perspektif" data-en="Perspective">Perspektif</a></li>
     <li><a href="#" onclick="navTo('vodcast')" id="nl-vodcast">Vodcast</a></li>
     <li><a href="#" onclick="navTo('podcast')" id="nl-podcast">Podcast</a></li>
-    <li><a href="#" onclick="navTo('hakkimda')" id="nl-hakkimda" data-tr="Hakkımda" data-en="About">Hakkımda</a></li>
+    <li><a href="#" onclick="navTo('hakkimda')" id="nl-hakkimda" data-tr="Hakkımda" data-en="About">About</a></li>
   </ul>
   <div class="nav-right">
     <div class="nav-dt" id="nav-dt"></div>
@@ -946,11 +948,11 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
       </div>
       <a class="hero-scroll" href="#sec-haberler">
         <span class="hero-scroll-bar"></span>
-        <span data-tr="Keşfet" data-en="Explore">Keşfet</span>
+        <span data-tr="Keşfet" data-en="Explore">Explore</span>
       </a>
     </div>
     <div class="hero-ticker-wrap">
-      <div class="ticker-label" data-tr="Son Haberler" data-en="Latest">Son Haberler</div>
+      <div class="ticker-label" data-tr="Son Haberler" data-en="Latest News">Latest News</div>
       <div class="ticker-outer"><div class="ticker-track" id="hticker"></div></div>
     </div>
   </section>
@@ -958,8 +960,8 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   <!-- HABERLER -->
   <section id="sec-haberler" class="section">
     <div class="sec-head">
-      <div class="sec-eye" data-tr="Haberler" data-en="News">Haberler</div>
-      <h2 class="sec-title" data-tr="Haberlerim" data-en="News">Haberlerim</h2>
+      <div class="sec-eye" data-tr="Haberler" data-en="News">News</div>
+      <h2 class="sec-title" data-tr="Haberlerim" data-en="News">News</h2>
     </div>
     <div class="news-tabs">
       <button class="ntab on" onclick="filterHomeNews(this,'tr')">Türkçe</button>
@@ -971,8 +973,8 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   <!-- MuckRack news ticker -->
   <div class="muck-section">
     <div class="muck-header">
-      <div class="muck-eye">Haberler</div>
-      <a href="#" onclick="showAllNews();return false;" class="muck-link" data-tr="Tüm haberler ↗" data-en="All news ↗">Tüm haberler ↗</a>
+      <div class="muck-eye" data-tr="Haberler" data-en="News">News</div>
+      <a href="#" onclick="showAllNews();return false;" class="muck-link" data-tr="Tüm haberler ↗" data-en="All news ↗">All news ↗</a>
     </div>
     <div class="muck-wrap">
       <div class="muck-track" id="muck-track">
@@ -1392,7 +1394,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
       </div>
     </div>
     <footer>
-      <div class="f-sig">Yeşil ve tatlı Dünya'dan hoş sadâlar</div>
+      <div class="f-sig" data-tr="Yeşil ve tatlı Dünya'dan hoş sadâlar" data-en="Pleasant echoes from the verdant and captivating Earth">Pleasant echoes from the verdant and captivating Earth</div>
       <div class="f-dt" id="ft0"></div>
     </footer>
   </section>
@@ -1401,8 +1403,8 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 <!-- ══════ HABERLERİM (inner) ══════ -->
 <div id="page-haberlerim" class="ip">
   <div class="iph">
-    <div class="iph-eye" data-tr="Muhabir Arşivi" data-en="Reporter Archive">Muhabir Arşivi</div>
-    <h1 class="iph-title" data-tr="Haberlerim" data-en="My Reports">Haberlerim</h1>
+    <div class="iph-eye" data-tr="Muhabir Arşivi" data-en="Correspondent Archive">Correspondent Archive</div>
+    <h1 class="iph-title" data-tr="Haberlerim" data-en="News">News</h1>
   </div>
   <div class="lf-bar">
     <button class="lf-tab on" onclick="filterInner(this,'tr')">Türkçe</button>
@@ -1410,7 +1412,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
     <button class="lf-tab" onclick="filterInner(this,'other')" data-tr="Diğer" data-en="Other">Diğer</button>
   </div>
   <div class="nwall" id="nwall"></div>
-  <footer><div class="f-sig">Yeşil ve tatlı Dünya'dan hoş sadâlar</div><div class="f-dt" id="ft2"></div></footer>
+  <footer><div class="f-sig" data-tr="Yeşil ve tatlı Dünya'dan hoş sadâlar" data-en="Pleasant echoes from the verdant and captivating Earth">Pleasant echoes from the verdant and captivating Earth</div><div class="f-dt" id="ft2"></div></footer>
 </div>
 
 <!-- ══════ PERSPEKTİF ══════ -->
@@ -1418,19 +1420,19 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   <div class="void-page">
     <div class="void-word">Perspektif</div>
     <div class="void-line"></div>
-    <div class="void-sub" data-tr="Yakında..." data-en="Coming Soon...">Yakında...</div>
+    <div class="void-sub" data-tr="Yakında..." data-en="Coming soon...">Yakında...</div>
   </div>
 </div>
 
 <!-- ══════ PODCAST (inner) ══════ -->
 <div id="page-podcast" class="ip">
   <div class="iph">
-    <div class="iph-eye" data-tr="Ses Arşivi" data-en="Audio Archive">Ses Arşivi</div>
+    <div class="iph-eye" data-tr="Ses Arşivi" data-en="Audio Archive">Audio Archive</div>
     <h1 class="iph-title">Podcast</h1>
   </div>
   <div class="pod-layout">
     <div class="pod-sb">
-      <div class="pod-sb-lbl">Programlar</div>
+      <div class="pod-sb-lbl" data-tr="Kanallar" data-en="Channels">Channels</div>
       <div class="pod-ni on" onclick="switchPod(this,'portre')">Portre</div>
       <div class="pod-ni" onclick="switchPod(this,'analiz')">Analiz ve Görüşler</div>
       <div class="pod-ni" onclick="switchPod(this,'birbakista')">Bir Bakışta</div>
@@ -1445,13 +1447,13 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
       <div class="pod-sec" id="ps-analiz">
         <div class="pod-sh"><span class="pod-st">Analiz ve Görüşler</span><span class="pod-ct" id="ct-analiz"></span></div>
         <!-- Cover + playlist embed side by side -->
-        <div style="display:grid;grid-template-columns:180px 1fr;gap:0;border-bottom:1px solid var(--border2);">
-          <div style="padding:28px 20px;display:flex;flex-direction:column;align-items:center;gap:12px;border-right:1px solid var(--border2);background:var(--bg2);">
-            <img src="analiz_ve_gorusler.jpg" style="width:120px;height:120px;border-radius:6px;object-fit:cover;filter:none!important" alt="">
-            <div style="font-family:'Playfair Display',serif;font-size:14px;font-style:italic;color:var(--ink);text-align:center;line-height:1.2;transition:color .3s">Analiz ve<br>Görüşler</div>
+        <div style="display:flex;gap:20px;padding:20px;border-bottom:1px solid var(--border2);background:var(--bg2);align-items:flex-start;">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px;min-width:140px;">
+            <img src="analiz_ve_gorusler.jpg" style="width:100px;height:100px;border-radius:6px;object-fit:cover" alt="">
+            <div style="font-family:'Playfair Display',serif;font-size:13px;font-style:italic;color:var(--ink);text-align:center;line-height:1.2;transition:color .3s">Analiz ve Görüşler</div>
             <a href="https://analiz.transistor.fm/" target="_blank" rel="noopener" style="font-family:'Josefin Sans',sans-serif;font-weight:200;font-size:8px;letter-spacing:.14em;color:var(--gold);text-decoration:none;text-transform:uppercase">transistor.fm ↗</a>
           </div>
-          <div style="padding:16px;">
+          <div style="flex:1;">
             <iframe width="100%" height="390" frameborder="no" scrolling="no" seamless
               src="https://share.transistor.fm/e/anadolu-ajansi/playlist"
               style="display:block;border-radius:6px"></iframe>
@@ -1482,7 +1484,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 <!-- ══════ VODCAST ══════ -->
 <div id="page-vodcast" class="ip">
   <div class="iph">
-    <div class="iph-eye">Ses ve Görüntü Arşivi</div>
+    <div class="iph-eye" data-tr="Ses ve Görüntü Arşivi" data-en="Audio & Video Archive">Audio & Video Archive</div>
     <h1 class="iph-title">Vodcast</h1>
   </div>
   <div class="vod-body">
@@ -1496,6 +1498,24 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
           <div class="vid-card" onclick="window.open('https://youtu.be/EwX7lrKThiQ','_blank')" onmouseenter="previewVid(this,'EwX7lrKThiQ')" onmouseleave="stopPreview(this,'EwX7lrKThiQ')">
             <div class="vid-thumb" id="vt-EwX7lrKThiQ">
               <img src="https://img.youtube.com/vi/EwX7lrKThiQ/maxresdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/jNJ1Ver2k1w','_blank')" onmouseenter="previewVid(this,'jNJ1Ver2k1w')" onmouseleave="stopPreview(this,'jNJ1Ver2k1w')">
+            <div class="vid-thumb" id="vt-jNJ1Ver2k1w">
+              <img src="https://img.youtube.com/vi/jNJ1Ver2k1w/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/wh9kkc71iMc','_blank')" onmouseenter="previewVid(this,'wh9kkc71iMc')" onmouseleave="stopPreview(this,'wh9kkc71iMc')">
+            <div class="vid-thumb" id="vt-wh9kkc71iMc">
+              <img src="https://img.youtube.com/vi/wh9kkc71iMc/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/-52zObcHmQc','_blank')" onmouseenter="previewVid(this,'-52zObcHmQc')" onmouseleave="stopPreview(this,'-52zObcHmQc')">
+            <div class="vid-thumb" id="vt-_52zObcHmQc">
+              <img src="https://img.youtube.com/vi/-52zObcHmQc/hqdefault.jpg" alt="" loading="lazy">
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
           </div>
@@ -1715,7 +1735,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
         </div>
       </div>
   </div>
-  <footer><div class="f-sig">Yeşil ve tatlı Dünya'dan hoş sadâlar</div><div class="f-dt" id="ft-vod"></div></footer>
+  <footer><div class="f-sig" data-tr="Yeşil ve tatlı Dünya'dan hoş sadâlar" data-en="Pleasant echoes from the verdant and captivating Earth">Pleasant echoes from the verdant and captivating Earth</div><div class="f-dt" id="ft-vod"></div></footer>
 </div>
 
 <!-- ══════ HAKKIMDA ══════ -->
@@ -1723,7 +1743,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   <div class="void-page">
     <div class="void-word" data-tr="Hakkımda" data-en="About Me">Hakkımda</div>
     <div class="void-line"></div>
-    <div class="void-sub" data-tr="Yakında..." data-en="Coming Soon...">Yakında...</div>
+    <div class="void-sub" data-tr="Yakında..." data-en="Coming soon...">Yakında...</div>
   </div>
 </div>
 
@@ -1821,7 +1841,7 @@ const PLAYLISTS = [
 ];
 
 /* ══ STATE ══ */
-let lang='tr', plIdx=0, plLoaded={}, vidOff=0, pvTimers={};
+let lang='en', plIdx=0, plLoaded={}, vidOff=0, pvTimers={};
 let podInited=false;
 let currentAudio=null; // the ep row currently playing
 let isPlaying=false;
@@ -1845,7 +1865,7 @@ function toggleTheme(){
 /* ══ LANG ══ */
 function toggleLang(){
   lang=lang==='tr'?'en':'tr';
-  document.querySelector('.lang-btn').textContent=lang==='tr'?'EN':'TR';
+  document.querySelector('.lang-btn').textContent=lang==='en'?'TR':'EN';
   document.querySelectorAll('[data-tr]').forEach(el=>el.textContent=el.getAttribute('data-'+lang));
   // Update tooltips
   document.querySelectorAll('[data-tip-tr]').forEach(el=>{
@@ -1880,25 +1900,31 @@ function buildTicker(){
   const t=document.getElementById('hticker');
   const outer=document.querySelector('.ticker-outer');
   const lm={tr:'Türkçe',en:'English',other:''};
-
-  // Build cards x3 for seamless vertical loop
-  [0,1,2].forEach(()=>CAR.forEach(item=>{
-    const lbl=item.l==='other'?(item.ll||''):lm[item.l];
+  // Order: current lang first, then others
+  const ordered = lang==='en'
+    ? [...ND.filter(n=>n.l==='en'), ...ND.filter(n=>n.l!=='en')]
+    : [...ND.filter(n=>n.l==='tr'), ...ND.filter(n=>n.l!=='tr')];
+  const carItems = ordered.slice(0,8);
+  // Clear old cards
+  t.innerHTML='';
+  // Build cards x3 for seamless loop
+  [0,1,2].forEach(()=>carItems.forEach(item=>{
+    const lbl=item.l==='other'?(item.ll||''):lm[item.l]||item.l;
     const card=document.createElement('a');
     card.className='t-card';card.href=item.u;card.target='_blank';card.rel='noopener';
     card.innerHTML=`<div class="t-lang">${lbl}</div><div class="t-title">${item.t}</div><div class="t-src">${item.s}</div>`;
     t.appendChild(card);
   }));
-
+  // Remove old animation
+  document.querySelectorAll('style[data-ticker]').forEach(s=>s.remove());
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
     const cards=Array.from(t.children);
     const cardH=cards[0]?cards[0].offsetHeight||110:110;
-    // Show 2 cards: set outer height = 2 * cardH
     if(outer) outer.style.height=(cardH*2)+'px';
-    // One full set height
-    const oneSetH=cardH*CAR.length;
-    const dur=Math.round(oneSetH/16); // ~16px/s upward scroll — slow
+    const oneSetH=cardH*carItems.length;
+    const dur=Math.round(oneSetH/16);
     const st=document.createElement('style');
+    st.setAttribute('data-ticker','1');
     st.textContent=`
       @keyframes vtick{from{transform:translateY(0)}to{transform:translateY(-${oneSetH}px)}}
       #hticker{animation:vtick ${dur}s linear infinite;}
@@ -1924,9 +1950,12 @@ function newsHTML(n, feat){
 }
 function buildHomeNews(f){
   const g=document.getElementById('home-news-grid');
-  g.innerHTML=ND.filter(n=>n.l===f).map((n,i)=>newsHTML(n,i===0)).join('');
+  // Default filter: if called without arg, use current lang
+  const filter=f||(lang==='en'?'en':'tr');
+  g.innerHTML=ND.filter(n=>n.l===filter).map((n,i)=>newsHTML(n,i===0)).join('');
 }
 function filterHomeNews(btn,f){document.querySelectorAll('.ntab').forEach(b=>b.classList.remove('on'));btn.classList.add('on');buildHomeNews(f);}
+function getDefaultNewsLang(){return lang==='en'?'en':'tr';}
 function buildInnerNews(f){
   const g=document.getElementById('nwall');
   g.innerHTML=ND.filter(n=>n.l===f).map(n=>newsHTML(n,false)).join('');
@@ -2157,8 +2186,10 @@ function showAllNews(){
   const list=document.getElementById('all-news-list');
   overlay.classList.add('open');
   document.body.style.overflow='hidden';
-  const order=['en','fr','tr','ru','ar','other'];
-  const langLabel={en:'English',fr:'Français',tr:'Türkçe',ru:'Русский',ar:'عربي',other:'Diğer'};
+  // Order: current lang first
+  const order = lang==='en'
+    ? ['en','fr','tr','ru','ar','other']
+    : ['tr','en','fr','ru','ar','other'];
   const sorted=[];
   order.forEach(l=>{
     ND.filter(n=>n.l===l).forEach(n=>{if(!sorted.includes(n))sorted.push(n);});
@@ -2166,8 +2197,11 @@ function showAllNews(){
   ND.forEach(n=>{if(!sorted.includes(n))sorted.push(n);});
   list.innerHTML=sorted.map((n,i)=>{
     const lbl=n.l==='tr'?'Türkçe':n.l==='en'?'English':(n.ll||n.l.toUpperCase());
+    const imgH=n.i?`<img src="${n.i}" alt="" style="width:90px;height:60px;object-fit:cover;border-radius:3px;flex-shrink:0;">`
+      :'<div style="width:90px;height:60px;background:var(--bg3);border-radius:3px;flex-shrink:0;"></div>';
     return `<a class="all-news-item" href="${n.u}" target="_blank" rel="noopener">
       <span class="all-news-num">${String(i+1).padStart(2,'0')}</span>
+      ${imgH}
       <div class="all-news-body">
         <div class="all-news-lang">${lbl}</div>
         <div class="all-news-t">${n.t}</div>
@@ -2215,8 +2249,17 @@ function stopPreview(el,id){
 
 /* ══ INIT ══ */
 document.addEventListener('DOMContentLoaded',()=>{
+  // Set initial language state
+  document.querySelectorAll('[data-tr]').forEach(el=>el.textContent=el.getAttribute('data-en')||el.textContent);
+  document.querySelectorAll('[data-tip-tr]').forEach(el=>{
+    const tip=el.querySelector('.p-tip');
+    if(tip)tip.textContent=el.getAttribute('data-tip-en')||tip.textContent;
+  });
   buildTicker();
-  buildHomeNews('tr');
+  buildHomeNews('en');
+  // Set EN tab active
+  const tabs=document.querySelectorAll('.ntab');
+  if(tabs.length>1){tabs.forEach(t=>t.classList.remove('on')); tabs[1].classList.add('on');}
   buildPlaylists();
   showHome();
 });
@@ -2239,7 +2282,7 @@ function buildAnalizSection(container, coverImg){
     const doc=new DOMParser().parseFromString(txt,'application/xml');
     const allItems=Array.from(doc.querySelectorAll('item')).slice(0,200);
     const listWrap=document.createElement('div');
-    listWrap.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:20px;';
+    listWrap.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:20px;width:100%;box-sizing:border-box;';
     allItems.forEach((it,i)=>{
       const title=it.querySelector('title')?.textContent||'Bölüm '+(i+1);
       const audioUrl=it.querySelector('enclosure')?.getAttribute('url')||'';
@@ -2257,7 +2300,7 @@ function buildAnalizSection(container, coverImg){
         <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-top:1px solid var(--border2);background:var(--bg2);">
           <button onclick="event.stopPropagation();playAnalizEp(this)" data-url="${audioUrl}" data-title="${title.replace(/"/g,'&quot;').replace(/'/g,'&#39;')}"
             style="display:flex;align-items:center;gap:6px;background:var(--gold);border:none;border-radius:3px;padding:6px 12px;cursor:pointer;font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#fff;">
-            <svg viewBox="0 0 24 24" style="width:10px;height:10px;fill:#fff"><path d="M8 5v14l11-7z"/></svg> Dinle
+            <svg viewBox="0 0 24 24" style="width:10px;height:10px;fill:#fff"><path d="M8 5v14l11-7z"/></svg> <span class="btn-play-label" data-tr="Dinle" data-en="Play">${lang==='en'?'Play':'Dinle'}</span>
           </button>
           <div style="display:flex;gap:8px;">
             <a href="https://open.spotify.com/search/${encodeURIComponent(title)}" target="_blank" style="font-size:16px;text-decoration:none;">🎵</a>
@@ -2266,6 +2309,12 @@ function buildAnalizSection(container, coverImg){
         </div>`;
       ep.addEventListener('mouseenter',()=>ep.style.borderColor='var(--gold)');
       ep.addEventListener('mouseleave',()=>ep.style.borderColor='var(--border2)');
+      // Whole card click = play
+      ep.addEventListener('click',(e)=>{
+        if(e.target.tagName==='A'||e.target.tagName==='BUTTON')return;
+        const btn=ep.querySelector('button[data-url]');
+        if(btn) playAnalizEp(btn);
+      });
       listWrap.appendChild(ep);
     });
     container.appendChild(listWrap);
