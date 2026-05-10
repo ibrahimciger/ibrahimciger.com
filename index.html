@@ -722,12 +722,15 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 }
 .vod-grid {
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-  gap:2px;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  padding:0;
 }
 /* Override vid-card width for vodcast grid */
-.vod-grid .vid-card { width:100%; }
+.vod-grid .vid-card { width:100%; border-radius:4px; overflow:hidden; }
 .vod-grid .vid-thumb { aspect-ratio:16/9; }
+.vod-grid .vid-title { font-size:13px; padding:10px 14px; line-height:1.4; }
+.vod-grid .vid-info { padding:10px 14px 14px; }
 @media(max-width:768px){
   .vod-body{padding:0 0 48px;}
   .vod-sec-head{padding:32px 20px 16px;}
@@ -903,7 +906,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   <ul class="nav-links">
     <li><a href="#" onclick="showHome()" id="nl-home" class="on" data-tr="Anasayfa" data-en="Home">Home</a></li>
     <li><a href="#" onclick="navTo('haberlerim')" id="nl-haberlerim" data-tr="Haberlerim" data-en="News">News</a></li>
-    <li><a href="#" onclick="navTo('perspektif')" id="nl-perspektif" data-tr="Perspektif" data-en="Perspective">Perspektif</a></li>
+    <li><a href="#" onclick="navTo('perspektif')" id="nl-perspektif" data-tr="Perspektif" data-en="Perspective">Perspective</a></li>
     <li><a href="#" onclick="navTo('vodcast')" id="nl-vodcast" data-tr="Vodcast" data-en="Vodcast">Vodcast</a></li>
     <li><a href="#" onclick="navTo('podcast')" id="nl-podcast" data-tr="Podcast" data-en="Podcast">Podcast</a></li>
     <li><a href="#" onclick="navTo('hakkimda')" id="nl-hakkimda" data-tr="Hakkımda" data-en="About">About</a></li>
@@ -971,7 +974,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   <div class="muck-section">
     <div class="muck-header">
       <div class="muck-eye" data-tr="Haberler" data-en="News">News</div>
-      <a href="#" onclick="showAllNews();return false;" class="muck-link" data-tr="Tüm haberler ↗" data-en="All news ↗">All news ↗</a>
+      <a href="#" onclick="showAllNews();return false;" class="muck-link" data-tr="Öne Çıkanlar ↗" data-en="Featured News ↗">Featured News ↗</a>
     </div>
     <div class="muck-wrap">
       <div class="muck-track" id="muck-track">
@@ -1019,7 +1022,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Seçmenler, Gazze meselesine tepkilerini sandıkta göstermek istiyor</div>
+              <div class="vid-title">Seçmenler Gazze meselesine tepkilerini sandıkta göstermek istiyor</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1029,7 +1032,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Hatay'ın Yeniden Canlandırılması Projesi</div>
+              <div class="vid-title">Hatay'ın Yeniden Canlandırılması Projesi Lansmanı</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1039,7 +1042,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">İsrail donanmasından Sumud filosuna saldırı</div>
+              <div class="vid-title">Sumud Flotillasına İsrail Saldırısı</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1049,7 +1052,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Gazze haberleri</div>
+              <div class="vid-title">Gazze'de Son Gelişmeler</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1059,7 +1062,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Orta Doğu haberleri</div>
+              <div class="vid-title">Orta Doğu'da Son Durum</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1069,7 +1072,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Son Haberler</div>
+              <div class="vid-title">Haberler - Anadolu Ajansı</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1079,7 +1082,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Mahreç Dünya — Bölüm 1</div>
+              <div class="vid-title">Mahreç Dünya: İsrail modeli işgal</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1089,7 +1092,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Mahreç Dünya — Bölüm 2</div>
+              <div class="vid-title">Mahreç Dünya: Küresel Bakış</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1099,7 +1102,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Mahreç Dünya — Bölüm 3</div>
+              <div class="vid-title">Mahreç Dünya: Bölgesel Politika</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1109,7 +1112,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Mahreç Dünya — Bölüm 4</div>
+              <div class="vid-title">Mahreç Dünya: Uluslararası İlişkiler</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1119,7 +1122,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Mahreç Dünya — Bölüm 5</div>
+              <div class="vid-title">Mahreç Dünya: Kriz Analizi</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1129,7 +1132,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Mahreç Dünya — Bölüm 6</div>
+              <div class="vid-title">Mahreç Dünya: Gündem</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1139,7 +1142,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Bir Bakışta — Bölüm 1</div>
+              <div class="vid-title">Bir Bakışta: Günün Özeti</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1149,7 +1152,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Bir Bakışta — Bölüm 2</div>
+              <div class="vid-title">Bir Bakışta: Öne Çıkanlar</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1159,7 +1162,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Bir Bakışta — Bölüm 3</div>
+              <div class="vid-title">Bir Bakışta: Haberler</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1169,7 +1172,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Bir Bakışta — Bölüm 4</div>
+              <div class="vid-title">Bir Bakışta: Seçmeler</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1179,7 +1182,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Bir Bakışta — Bölüm 5</div>
+              <div class="vid-title">Bir Bakışta: Analiz</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1189,7 +1192,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Bir Bakışta — Bölüm 6</div>
+              <div class="vid-title">Bir Bakışta: Dünya</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1199,7 +1202,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Bir Bakışta — Bölüm 7</div>
+              <div class="vid-title">Bir Bakışta: Politika</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1209,7 +1212,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Bir Bakışta — Bölüm 8</div>
+              <div class="vid-title">Bir Bakışta: Gündem</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1219,7 +1222,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Bir Bakışta — Bölüm 9</div>
+              <div class="vid-title">Bir Bakışta: Haberler 2</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1229,7 +1232,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Bir Bakışta — Bölüm 10</div>
+              <div class="vid-title">Bir Bakışta: Seçme Haberler</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1239,7 +1242,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Bir Bakışta — Bölüm 11</div>
+              <div class="vid-title">Bir Bakışta: Günlük Bülten</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1249,7 +1252,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Bir Bakışta — Bölüm 12</div>
+              <div class="vid-title">Bir Bakışta: Haftalık Özet</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1259,7 +1262,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Bir Bakışta — Bölüm 13</div>
+              <div class="vid-title">Bir Bakışta: Son Dakika</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1269,7 +1272,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Portre — Bölüm 1</div>
+              <div class="vid-title">Portre: Fuat Sezgin</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1279,7 +1282,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Portre — Bölüm 2</div>
+              <div class="vid-title">Portre: Röportaj</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1289,7 +1292,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Portre — Bölüm 3</div>
+              <div class="vid-title">Portre: Özel Söyleşi</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1299,7 +1302,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Portre — Bölüm 4</div>
+              <div class="vid-title">Portre: Derinlemesine Analiz</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1309,7 +1312,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Portre — Bölüm 5</div>
+              <div class="vid-title">Portre: Hayat Hikayeleri</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1319,7 +1322,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Portre — Bölüm 6</div>
+              <div class="vid-title">Portre: Tanıklık</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1329,7 +1332,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Portre — Bölüm 7</div>
+              <div class="vid-title">Portre: İz Bırakanlar</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1339,7 +1342,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Portre — Bölüm 8</div>
+              <div class="vid-title">Portre: Söyleşi</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1349,7 +1352,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Portre — Bölüm 9</div>
+              <div class="vid-title">Portre: Özel Bölüm</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1359,7 +1362,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Portre — Bölüm 10</div>
+              <div class="vid-title">Portre: Kapsamlı Röportaj</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1369,7 +1372,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Portre — Bölüm 11</div>
+              <div class="vid-title">Portre: Sohbet</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1379,7 +1382,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Portre — Bölüm 12</div>
+              <div class="vid-title">Portre: Son Bölüm</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1439,6 +1442,9 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
     <div class="pod-main">
       <div class="pod-sec on" id="ps-portre">
         <div class="pod-sh"><span class="pod-st">Portre</span><span class="pod-ct">12 bölüm</span></div>
+        <div class="pod-emb" style="background:var(--bg2);padding:16px;">
+          <iframe width="100%" height="390" frameborder="no" scrolling="no" seamless src="https://share.transistor.fm/e/aa-portre/playlist" style="display:block;border-radius:6px"></iframe>
+        </div>
         <div id="ep-portre"><div class="loading">Yükleniyor...</div></div>
       </div>
       <div class="pod-sec" id="ps-analiz">
@@ -1461,11 +1467,16 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
       </div>
       <div class="pod-sec" id="ps-birbakista">
         <div class="pod-sh"><span class="pod-st">Bir Bakışta</span><span class="pod-ct">19 bölüm</span></div>
+        <div class="pod-emb" style="background:var(--bg2);padding:16px;">
+          <iframe width="100%" height="390" frameborder="no" scrolling="no" seamless src="https://share.transistor.fm/e/bir-bakista/playlist" style="display:block;border-radius:6px"></iframe>
+        </div>
         <div id="ep-birbakista"><div class="loading">Yükleniyor...</div></div>
       </div>
       <div class="pod-sec" id="ps-mahrec">
         <div class="pod-sh"><span class="pod-st">Mahreç Dünya</span></div>
-        <div class="pod-emb"><iframe width="100%" height="180" frameborder="no" scrolling="no" seamless src="https://share.transistor.fm/e/b0079bd3" loading="lazy"></iframe></div>
+        <div class="pod-emb" style="background:var(--bg2);padding:16px;">
+          <iframe width="100%" height="390" frameborder="no" scrolling="no" seamless src="https://share.transistor.fm/e/mahrec-dunya/playlist" style="display:block;border-radius:6px"></iframe>
+        </div>
         <div id="ep-mahrec"><div class="loading">Yükleniyor...</div></div>
       </div>
       <div class="pod-sec" id="ps-atalks">
@@ -1776,9 +1787,9 @@ const ND = [
   {l:'en',t:'Biden\'s human rights record under scrutiny for support of Israeli genocide in Gaza',u:'https://www.aa.com.tr/en/americas/bidens-human-rights-record-under-scrutiny-for-support-of-israeli-genocide-in-gaza/3459188',s:'Anadolu Agency',i:'bidens_human_rights.jpg'},
   {l:'en',t:'Council on American Islamic Relations sues US government over genocide in Gaza',u:'https://www.aa.com.tr/en/americas/council-on-american-islamic-relations-sues-us-government-over-genocide-in-gaza/3486926',s:'Anadolu Agency',i:'awad.jpg'},
   {l:'en',t:'All available resources mobilized after Israeli attack disrupts Gaza-bound aid flotilla',u:'https://www.aa.com.tr/en/middle-east/all-available-resources-mobilized-after-israeli-attack-disrupts-gaza-bound-aid-flotilla-organizer-says/3923348',s:'Anadolu Agency',i:'all_available_resources.jpg'},
-  {l:'other',ll:'عربي',t:'أيباك تغدق العطاء على أعضاء الكونغرس',u:'https://www.aa.com.tr/ar/',s:'الأناضول',i:'netanyahu_AIPAC.jpg'},
-  {l:'other',ll:'Français',t:'Le conseil des relations américano-islamique poursuit les États-Unis pour complicité dans le génocide à Gaza',u:'https://www.aa.com.tr/fr/',s:'Agence Anadolu',i:'awad.jpg'},
-  {l:'other',ll:'Русский',t:'Поддержка Израиля негативно отразилась на репутации Байдена',u:'https://www.aa.com.tr/ru/',s:'Анадолу',i:'bidens_human_rights.jpg'},
+  {l:'other',ll:'عربي',t:'أيباك تغدق العطاء على أعضاء الكونغرس تقريراً',u:'https://www.aa.com.tr/ar/%D8%A5%D8%B3%D8%B1%D8%A7%D8%A6%D9%8A%D9%84/%D9%84%D8%AF%D8%B9%D9%85%D9%87%D9%85-%D9%86%D8%AA%D9%86%D9%8A%D8%A7%D9%87%D9%88-%D8%A3%D9%8A%D8%A8%D8%A7%D9%83-%D8%AA%D8%BA%D8%AF%D9%82-%D8%A7%D9%84%D8%B9%D8%B7%D8%A7%D8%A1-%D8%B9%D9%84%D9%89-%D8%A3%D8%B9%D8%B6%D8%A7%D8%A1-%D8%A7%D9%84%D9%83%D9%88%D9%86%D8%BA%D8%B1%D8%B3-%D8%AA%D9%82%D8%B1%D9%8A%D8%B1/3333547',s:'الأناضول',i:'netanyahu_AIPAC.jpg'},
+  {l:'other',ll:'Français',t:'Le conseil des relations américano-islamique poursuit les États-Unis pour complicité dans le génocide à Gaza',u:'https://www.aa.com.tr/fr/monde/le-conseil-des-relations-am%C3%A9ricano-islamiques-poursuit-les-%C3%A9tats-unis-pour-complicit%C3%A9-dans-le-g%C3%A9nocide-%C3%A0-gaza/3487047',s:'Agence Anadolu',i:'awad.jpg'},
+  {l:'other',ll:'Русский',t:'Поддержка Израиля негативно отразилась на репутации Байдена',u:'https://www.aa.com.tr/ru/%D0%BC%D0%B8%D1%80/%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%B0-%D0%B8%D0%B7%D1%80%D0%B0%D0%B8%D0%BB%D1%8F-%D0%BD%D0%B5%D0%B3%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%BE-%D0%BE%D1%82%D1%80%D0%B0%D0%B7%D0%B8%D0%BB%D0%B0%D1%81%D1%8C-%D0%BD%D0%B0-%D1%80%D0%B5%D0%BF%D1%83%D1%82%D0%B0%D1%86%D0%B8%D0%B8-%D0%B1%D0%B0%D0%B9%D0%B4%D0%B5%D0%BD%D0%B0/3459175',s:'Анадолу',i:'bidens_human_rights.jpg'},
 ];
 
 const CAR = [ND[0],ND[1],ND[2],ND[7],ND[13],ND[14],ND[15]];
@@ -2114,13 +2125,35 @@ function switchPl(idx){
       }).catch(()=>{eps.innerHTML='<div class="loading">Yüklenemedi</div>';});
     }
   } else {
-    // Embed-based: show Transistor iframes (title + player built in)
+    // Embed-based: playlist embed first, then 2-col grid of individual episodes
+    const playlistUrl = {
+      'Bir Bakışta': 'https://share.transistor.fm/e/bir-bakista/playlist',
+      'Portre': 'https://share.transistor.fm/e/aa-portre/playlist',
+      'Mahreç Dünya': 'https://share.transistor.fm/e/mahrec-dunya/playlist',
+      'Anadolu Talks': ''
+    }[pl.label] || '';
+    
     setTimeout(()=>{
-      eps.innerHTML=pl.embeds.map(url=>`
-        <div class="pl-embed-item">
-          <iframe width="100%" height="180" frameborder="no" scrolling="no" seamless
-            src="${url}" loading="lazy" style="display:block;border-radius:4px"></iframe>
-        </div>`).join('');
+      let html = '';
+      // Playlist embed at top if available
+      if(playlistUrl){
+        html += `<div style="display:flex;gap:16px;padding:16px;background:var(--bg2);border-bottom:1px solid var(--border2);align-items:flex-start;">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:8px;min-width:120px;">
+            <img src="${pl.cover}" style="width:88px;height:88px;border-radius:6px;object-fit:cover;" alt="">
+            <div style="font-family:'Playfair Display',serif;font-size:12px;font-style:italic;color:var(--ink);text-align:center;line-height:1.2;">${pl.label}</div>
+          </div>
+          <div style="flex:1;">
+            <iframe width="100%" height="390" frameborder="no" scrolling="no" seamless src="${playlistUrl}" style="display:block;border-radius:6px"></iframe>
+          </div>
+        </div>`;
+      }
+      // Episode grid: 2 columns
+      html += `<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:16px;">`;
+      pl.embeds.forEach(url=>{
+        html += `<div><iframe width="100%" height="180" frameborder="no" scrolling="no" seamless src="${url}" loading="lazy" style="display:block;border-radius:4px"></iframe></div>`;
+      });
+      html += '</div>';
+      eps.innerHTML = html;
     },50);
   }
 }
@@ -2425,8 +2458,8 @@ document.addEventListener('DOMContentLoaded',()=>initDragScroll('vid-track'));
 <div class="all-news-overlay" id="all-news-overlay" onclick="closeAllNews(event)">
   <div class="all-news-modal">
     <div class="all-news-modal-head">
-      <div class="all-news-modal-title" data-tr="Tüm Haberler" data-en="All News">Tüm Haberler</div>
-      <button class="all-news-close" onclick="closeAllNews()">✕ Kapat</button>
+      <div class="all-news-modal-title" data-tr="Öne Çıkanlar" data-en="Featured News">Featured News</div>
+      <button class="all-news-close" onclick="closeAllNews()" data-tr="✕ Kapat" data-en="✕ Close">✕ Close</button>
     </div>
     <div id="all-news-list"></div>
   </div>
