@@ -2355,21 +2355,8 @@ setTimeout(()=>{
 })();
 })();
 
-/* Hero name animation */
+/* Hero glow only */
 (function(){
-  const names=document.querySelectorAll('.hero-name,.hero-name-last');
-  names.forEach((el,ni)=>{
-    const txt=el.textContent;
-    el.innerHTML='';
-    txt.split('').forEach((ch,ci)=>{
-      const sp=document.createElement('span');
-      sp.className='hero-name-char'+(ni%2===0?'':' from-right');
-      sp.textContent=ch===' '?' ':ch;
-      sp.style.animationDelay=(ci*0.04+ni*0.25)+'s';
-      el.appendChild(sp);
-    });
-  });
-  // Glow on hero-ph
   const ph=document.querySelector('.hero-ph');
   if(ph&&!ph.querySelector('.hero-glow-ring')){
     const ring=document.createElement('div');
@@ -3076,20 +3063,6 @@ function initDragScroll(trackId){
     track.style.transform=`translateX(-${currentOff}px)`;
     vidOff=currentOff;
   },{passive:false});
-}
-
-// Also update vidScroll to keep sync
-const _vidScroll=vidScroll;
-function vidScroll(dir){
-  const track=document.getElementById('vid-track');
-  if(!track)return;
-  const card=track.querySelector('.vid-card');
-  const w=(card?card.offsetWidth:500)+2;
-  const maxOff=(track.children.length-1)*w;
-  vidOff=Math.max(0,Math.min(vidOff+dir*w,maxOff));
-  track.style.transition='transform .4s cubic-bezier(.4,0,.2,1)';
-  track.style.transform=`translateX(-${vidOff}px)`;
-  setTimeout(()=>track.style.transition='',450);
 }
 
 // Init drag
