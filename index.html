@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Halil İbrahim Ciğer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+SC:wght@400;500&family=Josefin+Sans:wght@100;200;300;400&family=Space+Mono:wght@400;700&family=Cinzel+Decorative:wght@400" rel="stylesheet">
 <style>
 /* ════ THEME TOKENS ════ */
@@ -1758,7 +1759,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .ab-wrap{font-family:var(--font-sans,system-ui,sans-serif);background:var(--bg);color:var(--ink);transition:background .3s,color .3s}
 .ab-vsep{width:1px;background:var(--border2);flex-shrink:0}
 .ab-bord{border-bottom:.5px solid var(--border2)}
-.ab-top{display:flex;border-bottom:.5px solid var(--border2)}
+.ab-top{display:flex;border-bottom:.5px solid var(--border2);max-height:260px}
 .ab-name-col{padding:1.8rem 1.5rem 1.5rem 2rem;flex:0 0 180px}
 .ab-hic{font-family:'Playfair Display',serif;font-size:32px;font-weight:500;color:#b8892a;letter-spacing:.04em;line-height:1}
 .ab-hic-roles{display:flex;flex-direction:column;gap:3px;margin-top:.6rem}
@@ -1767,10 +1768,10 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .ab-cl{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink2);text-decoration:none;transition:color .2s}
 .ab-cl:hover{color:#b8892a}
 .ab-cl i{color:#b8892a;font-size:14px;width:15px}
-.ab-stats-col{flex:0 0 110px;padding:1.4rem .8rem;display:flex;flex-direction:column;justify-content:center;gap:1.1rem;background:var(--bg2);transition:background .3s}
+.ab-stats-col{flex:0 0 110px;padding:1.2rem .8rem;display:flex;flex-direction:column;justify-content:center;gap:1rem;background:var(--bg2);transition:background .3s}
 .ab-sn{font-size:20px;font-weight:500;color:#b8892a;line-height:1}
 .ab-sl{font-size:10px;color:var(--muted);margin-top:2px;line-height:1.3}
-.ab-map-col{flex:1;position:relative;overflow:hidden;min-height:210px}
+.ab-map-col{flex:1;position:relative;overflow:hidden;min-height:0;height:260px}
 .ab-map-badge{position:absolute;top:8px;left:12px;font-size:9px;letter-spacing:.12em;color:var(--muted);z-index:3;background:var(--bg);padding:2px 6px;border-radius:3px;border:.5px solid var(--border2);transition:background .3s}
 .ab-ctip{position:absolute;background:var(--bg);border:.5px solid var(--border2);padding:4px 10px;border-radius:4px;font-size:12px;font-weight:500;pointer-events:none;opacity:0;transition:opacity .12s;z-index:10;white-space:nowrap;color:var(--ink)}
 .ab-pillars{display:grid;grid-template-columns:repeat(6,1fr);border-bottom:.5px solid var(--border2)}
@@ -1815,16 +1816,17 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .ab-vn.ab-on::before,.ab-vn:hover::before{border-color:#b8892a}
 .ab-vn.ab-on::before{background:#b8892a}
 .ab-vn-yr{font-size:9px;color:#b8892a;letter-spacing:.06em;margin-bottom:1px}
-.ab-vn-t{font-size:13px;font-weight:500;color:var(--ink);line-height:1.2}
-.ab-vn-o{font-size:11px;color:var(--ink2)}
+.ab-vn-t{font-size:14px;font-weight:600;color:var(--ink);line-height:1.2;font-family:"Georgia","Times New Roman",serif}
+.ab-vn-o{font-size:12px;color:var(--ink2);font-style:italic}
 .ab-detail-col{flex:1;padding:1.4rem 1.5rem}
 .ab-dc{display:none;animation:ab-fi .35s ease}
 .ab-dc.ab-on{display:block}
-@keyframes ab-fi{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ab-fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.ab-dc{transition:opacity .4s ease;}
 .ab-dc-yr{font-size:10px;color:#b8892a;letter-spacing:.1em;margin-bottom:5px}
-.ab-dc-title{font-size:20px;font-weight:500;line-height:1.1;margin-bottom:4px;color:var(--ink)}
-.ab-dc-org{font-size:13px;color:var(--ink2);margin-bottom:.8rem}
-.ab-dc-body{font-size:13px;color:var(--ink2);line-height:1.75}
+.ab-dc-title{font-size:22px;font-weight:600;line-height:1.1;margin-bottom:4px;color:var(--ink);font-family:"Georgia","Times New Roman",serif}
+.ab-dc-org{font-size:13px;color:var(--ink2);margin-bottom:.8rem;font-style:italic;font-family:"Georgia","Times New Roman",serif}
+.ab-dc-body{font-size:14.5px;color:var(--ink2);line-height:1.8;font-family:"Georgia","Times New Roman",serif;letter-spacing:.01em}
 .ab-dc-body a{color:#b8892a;text-decoration:none}
 .ab-dc-body a:hover{text-decoration:underline;color:#3d7033}
 .ab-tag{display:inline-block;margin:4px 3px 0 0;padding:3px 9px;border-radius:12px;font-size:11px;border:.5px solid var(--border2);color:var(--ink2)}
@@ -1981,10 +1983,10 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   <div class="ab-bsep"></div>
   <div class="ab-bc">
     <div class="ab-bl">Affiliations</div>
-    <div class="ab-aff-link"><a href="https://sinanwren.org/" target="_blank">Sinan &amp; Wren Foundation</a> · Co-founder (2013–16)</div>
-    <div class="ab-aff-link"><a href="https://uvdvuslat.com/" target="_blank">International Vuslat Platform</a> · Board of Members (2013–)</div>
-    <div class="ab-aff-link"><a href="https://campusministry.georgetown.edu/faith-traditions/muslim/" target="_blank">Georgetown MSA</a> (2017–19)</div>
-    <div class="ab-aff-plain">Int'l Student Association · Founder (2006–10)</div>
+    <div class="ab-aff-link"><a href="https://sinanwren.org/" target="_blank">Sinan &amp; Wren Foundation</a> · Guiding Light (2013–16)</div>
+    <div class="ab-aff-link"><a href="https://uvdvuslat.com/" target="_blank">International Vuslat Platform</a> · Board of Members (2013 – pres.)</div>
+    <div class="ab-aff-link"><a href="https://campusministry.georgetown.edu/faith-traditions/muslim/" target="_blank">Georgetown MSA</a> · Volunteer (2017–19)</div>
+    <div class="ab-aff-link"><a href="https://udef.org.tr/" target="_blank">Int'l Student Association</a> · Spearheading (2006–10)</div>
   </div>
   <div class="ab-bsep"></div>
   <div class="ab-bc">
@@ -2015,7 +2017,7 @@ window.abSel=abSel;
 
 let cIdx=0,cTimer=null,cycling=true;
 const co=[0,1,2,3,4,5,6];
-function runC(){if(!cycling)return;abSel(co[cIdx]);cIdx=(cIdx+1)%co.length;cTimer=setTimeout(runC,4500);}
+function runC(){if(!cycling)return;abSel(co[cIdx]);cIdx=(cIdx+1)%co.length;cTimer=setTimeout(runC,5500);}
 function abStopCycle(){cycling=false;clearTimeout(cTimer);}
 window.abStopCycle=abStopCycle;
 setTimeout(runC,1500);
@@ -2050,6 +2052,8 @@ setTimeout(()=>{
 
 // 3D Donut
 (function(){
+  function startDonut(){
+  abDonutRunning=true;
   const c=document.getElementById('ab-donut');if(!c)return;
   const ctx=c.getContext('2d');
   const cx=80,cy=50,rx=50,ry=14,depth=15,ir=0.58;
@@ -2078,7 +2082,10 @@ setTimeout(()=>{
     a=rot;segs.forEach(s=>{const e=a+s.pct*Math.PI*2;ring(a,e,s.col,true);a=e;});
     a=rot;segs.forEach(s=>{const e=a+s.pct*Math.PI*2;ring(a,e,s.col,false);a=e;});
     rot+=0.006;requestAnimationFrame(frame);
-  })();
+  })();}
+  setTimeout(startDonut,200);
+  window.addEventListener('ab-init',()=>{ if(!abDonutRunning){startDonut();} });
+  let abDonutRunning=false;
 })();
 
 // World Map
@@ -2138,6 +2145,7 @@ setTimeout(()=>{
   canvas.addEventListener('mouseleave',()=>{hov=null;tip.style.opacity='0';});
   resize();
   new ResizeObserver(()=>{cancelAnimationFrame(raf2);resize();draw();}).observe(canvas.parentElement);
+  window.addEventListener('ab-init',()=>{cancelAnimationFrame(raf2);resize();draw();});
   draw();
 })();
 })();
@@ -2288,6 +2296,7 @@ function navTo(page){
   window.scrollTo(0,0);
   if(page==='haberlerim')buildInnerNews('tr');
   if(page==='podcast'&&!podInited){podInited=true;initPod();}
+  if(page==='hakkimda'){setTimeout(()=>{window.dispatchEvent(new Event('ab-init'));},100);}
   return false;
 }
 function toggleMob(){document.getElementById('mob-m').classList.toggle('open');}
