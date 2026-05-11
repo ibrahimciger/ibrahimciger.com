@@ -1754,11 +1754,394 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 
 <!-- ══════ HAKKIMDA ══════ -->
 <div id="page-hakkimda" class="ip">
-  <div class="void-page">
-    <div class="void-word" data-tr="Hakkımda" data-en="About Me">Hakkımda</div>
-    <div class="void-line"></div>
-    <div class="void-sub" data-tr="Yakında..." data-en="Coming soon...">Yakında...</div>
+<style>
+.ab-wrap{font-family:var(--font-sans,system-ui,sans-serif);background:var(--bg);color:var(--ink);transition:background .3s,color .3s}
+.ab-vsep{width:1px;background:var(--border2);flex-shrink:0}
+.ab-bord{border-bottom:.5px solid var(--border2)}
+.ab-top{display:flex;border-bottom:.5px solid var(--border2)}
+.ab-name-col{padding:1.8rem 1.5rem 1.5rem 2rem;flex:0 0 180px}
+.ab-hic{font-family:'Playfair Display',serif;font-size:32px;font-weight:500;color:#b8892a;letter-spacing:.04em;line-height:1}
+.ab-hic-roles{display:flex;flex-direction:column;gap:3px;margin-top:.6rem}
+.ab-hic-role{font-size:11px;color:var(--ink2);letter-spacing:.06em}
+.ab-contacts{margin-top:1rem;display:flex;flex-direction:column;gap:7px}
+.ab-cl{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink2);text-decoration:none;transition:color .2s}
+.ab-cl:hover{color:#b8892a}
+.ab-cl i{color:#b8892a;font-size:14px;width:15px}
+.ab-stats-col{flex:0 0 110px;padding:1.4rem .8rem;display:flex;flex-direction:column;justify-content:center;gap:1.1rem;background:var(--bg2);transition:background .3s}
+.ab-sn{font-size:20px;font-weight:500;color:#b8892a;line-height:1}
+.ab-sl{font-size:10px;color:var(--muted);margin-top:2px;line-height:1.3}
+.ab-map-col{flex:1;position:relative;overflow:hidden;min-height:210px}
+.ab-map-badge{position:absolute;top:8px;left:12px;font-size:9px;letter-spacing:.12em;color:var(--muted);z-index:3;background:var(--bg);padding:2px 6px;border-radius:3px;border:.5px solid var(--border2);transition:background .3s}
+.ab-ctip{position:absolute;background:var(--bg);border:.5px solid var(--border2);padding:4px 10px;border-radius:4px;font-size:12px;font-weight:500;pointer-events:none;opacity:0;transition:opacity .12s;z-index:10;white-space:nowrap;color:var(--ink)}
+.ab-pillars{display:grid;grid-template-columns:repeat(6,1fr);border-bottom:.5px solid var(--border2)}
+.ab-pill{padding:1rem .4rem;text-align:center;border-right:.5px solid var(--border2);cursor:default;transition:background .2s}
+.ab-pill:last-child{border-right:none}
+.ab-pill:hover{background:var(--bg2)}
+.ab-pc{width:42px;height:42px;border-radius:50%;border:2px solid #b8892a;display:flex;align-items:center;justify-content:center;margin:0 auto .5rem;transition:all .2s}
+.ab-pill:hover .ab-pc{background:#b8892a}
+.ab-pill:hover .ab-pc i{color:#fff}
+.ab-pc i{color:#b8892a;font-size:19px;transition:color .2s}
+.ab-pt{font-size:12px;font-weight:500;color:var(--ink);line-height:1.2}
+.ab-ps{font-size:10px;color:var(--muted);margin-top:2px}
+.ab-mid{display:flex;border-bottom:.5px solid var(--border2)}
+.ab-donut-wrap{flex:0 0 185px;padding:1.1rem 1rem 1.1rem 2rem;display:flex;flex-direction:column;justify-content:center;gap:.4rem}
+.ab-dl{font-size:9px;letter-spacing:.14em;color:var(--muted);margin-bottom:.3rem}
+.ab-leg{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink2)}
+.ab-ld{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.ab-tl-wrap{flex:1;padding:1.4rem 2rem 1.2rem 1.2rem}
+.ab-tl-head{font-size:9px;letter-spacing:.14em;color:var(--muted);margin-bottom:1.8rem}
+.ab-htl{position:relative;padding-top:2.2rem;margin-bottom:.5rem}
+.ab-htl-base{position:absolute;top:0;left:0;right:0;height:2px;background:var(--border2);border-radius:1px}
+.ab-htl-fill{position:absolute;top:0;left:0;height:2px;background:#b8892a;width:0;border-radius:1px;transition:width .4s ease}
+.ab-hnodes{display:flex;position:relative}
+.ab-hn{flex:1;display:flex;flex-direction:column;align-items:center;cursor:pointer;padding:.3rem .1rem;opacity:0;transform:translateY(8px);transition:opacity .35s,transform .35s;position:relative;user-select:none}
+.ab-hn.ab-vis{opacity:1;transform:translateY(0)}
+.ab-hn-pulse{position:absolute;top:-2.5rem;left:50%;transform:translateX(-50%);width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(184,137,42,.55);animation:ab-pulse-ring 2.2s ease-out infinite;opacity:0}
+.ab-hn.ab-vis .ab-hn-pulse{opacity:1}
+@keyframes ab-pulse-ring{0%{transform:translateX(-50%) scale(.4);opacity:.8}100%{transform:translateX(-50%) scale(1.6);opacity:0}}
+.ab-hn-dot{position:absolute;top:-2.1rem;left:50%;transform:translateX(-50%);width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--border2);z-index:3;transition:all .25s}
+.ab-hn.ab-on .ab-hn-dot{background:#b8892a;border-color:#b8892a;width:15px;height:15px;top:-2.2rem}
+.ab-hn:hover .ab-hn-dot{border-color:#b8892a}
+.ab-hn-yr{font-size:9px;color:#b8892a;font-weight:600;margin-bottom:2px;margin-top:.2rem}
+.ab-hn-t{font-size:11px;font-weight:500;text-align:center;color:var(--ink);line-height:1.2}
+.ab-hn-o{font-size:9px;color:var(--muted);text-align:center;margin-top:1px}
+.ab-body-row{display:flex;border-bottom:.5px solid var(--border2)}
+.ab-vtl-col{flex:0 0 200px;padding:1rem 1rem 1.5rem 2rem;border-right:.5px solid var(--border2)}
+.ab-exp-lbl{font-size:9px;letter-spacing:.14em;color:var(--muted);margin-bottom:.7rem}
+.ab-vtl{position:relative;padding-left:1rem}
+.ab-vtl::before{content:'';position:absolute;left:3px;top:5px;bottom:5px;width:1px;background:linear-gradient(to bottom,#b8892a 50%,var(--border2))}
+.ab-vn{position:relative;margin-bottom:.85rem;padding-left:.65rem;cursor:pointer}
+.ab-vn::before{content:'';position:absolute;left:-.95rem;top:5px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:1.5px solid var(--border2);transition:all .3s}
+.ab-vn.ab-on::before,.ab-vn:hover::before{border-color:#b8892a}
+.ab-vn.ab-on::before{background:#b8892a}
+.ab-vn-yr{font-size:9px;color:#b8892a;letter-spacing:.06em;margin-bottom:1px}
+.ab-vn-t{font-size:13px;font-weight:500;color:var(--ink);line-height:1.2}
+.ab-vn-o{font-size:11px;color:var(--ink2)}
+.ab-detail-col{flex:1;padding:1.4rem 1.5rem}
+.ab-dc{display:none;animation:ab-fi .35s ease}
+.ab-dc.ab-on{display:block}
+@keyframes ab-fi{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.ab-dc-yr{font-size:10px;color:#b8892a;letter-spacing:.1em;margin-bottom:5px}
+.ab-dc-title{font-size:20px;font-weight:500;line-height:1.1;margin-bottom:4px;color:var(--ink)}
+.ab-dc-org{font-size:13px;color:var(--ink2);margin-bottom:.8rem}
+.ab-dc-body{font-size:13px;color:var(--ink2);line-height:1.75}
+.ab-dc-body a{color:#b8892a;text-decoration:none}
+.ab-dc-body a:hover{text-decoration:underline;color:#3d7033}
+.ab-tag{display:inline-block;margin:4px 3px 0 0;padding:3px 9px;border-radius:12px;font-size:11px;border:.5px solid var(--border2);color:var(--ink2)}
+.ab-awards{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:.5px solid var(--border2)}
+.ab-aw{padding:1rem 1.5rem;border-right:.5px solid var(--border2);display:flex;align-items:center;gap:.8rem}
+.ab-aw:last-child{border-right:none}
+.ab-aw-ring{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px;border:2px solid;flex-shrink:0}
+.ab-gr{border-color:#b8892a;color:#b8892a}.ab-br{border-color:#a0522d;color:#a0522d}
+.ab-at{font-size:13px;font-weight:500;line-height:1.3;color:var(--ink)}
+.ab-ay{font-size:11px;color:#b8892a;font-weight:500;margin-top:3px}
+.ab-bot{display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr}
+.ab-bc{padding:1.1rem 1.5rem}
+.ab-bc:first-child{padding-left:2rem}
+.ab-bc:last-child{padding-right:2rem}
+.ab-bsep{background:var(--border2)}
+.ab-bl{font-size:9px;letter-spacing:.15em;color:var(--muted);margin-bottom:.8rem}
+.ab-aff-link{display:block;font-size:12px;color:var(--ink2);line-height:2}
+.ab-aff-link a{color:#b8892a;text-decoration:none}
+.ab-aff-link a:hover{color:#3d7033;text-decoration:underline}
+.ab-aff-plain{font-size:12px;color:var(--ink2);line-height:2}
+.ab-int-list{display:flex;flex-direction:column;gap:6px}
+.ab-int-chip{display:flex;align-items:center;gap:10px;padding:7px 12px;border-radius:20px;border:.5px solid var(--border2);font-size:13px;color:var(--ink);background:var(--bg2);transition:background .3s}
+.ab-int-chip i{color:#b8892a;font-size:15px;flex-shrink:0}
+.ab-lang-graphic{display:flex;flex-direction:column;gap:14px}
+.ab-lang-row{display:flex;align-items:center;gap:12px}
+.ab-lang-name{font-size:12px;font-weight:500;color:var(--ink)}
+.ab-lang-level{font-size:10px;color:var(--muted)}
+@media(max-width:768px){
+  .ab-top{flex-wrap:wrap}
+  .ab-name-col{flex:0 0 100%;border-bottom:.5px solid var(--border2)}
+  .ab-stats-col{flex:0 0 120px}
+  .ab-map-col{min-height:160px}
+  .ab-pillars{grid-template-columns:repeat(3,1fr)}
+  .ab-pill:nth-child(3){border-right:none}
+  .ab-mid{flex-direction:column}
+  .ab-donut-wrap{flex:0 0 auto;flex-direction:row;align-items:center;gap:1rem;padding:1rem 1.2rem}
+  .ab-body-row{flex-direction:column}
+  .ab-vtl-col{flex:0 0 auto;border-right:none;border-bottom:.5px solid var(--border2);padding:1rem 1.2rem}
+  .ab-awards{grid-template-columns:1fr}
+  .ab-aw{border-right:none;border-bottom:.5px solid var(--border2)}
+  .ab-bot{grid-template-columns:1fr}
+  .ab-bsep{width:100%;height:1px}
+  .ab-bc,.ab-bc:first-child,.ab-bc:last-child{padding:1rem 1.2rem}
+  .ab-hnodes{overflow-x:auto}
+  .ab-hn{min-width:70px}
+}
+</style>
+
+<div class="ab-wrap">
+
+<div class="ab-top">
+  <div class="ab-name-col">
+    <div class="ab-hic">HIC</div>
+    <div class="ab-hic-roles">
+      <span class="ab-hic-role">Journalist</span>
+      <span class="ab-hic-role">Digital Media</span>
+      <span class="ab-hic-role">Communications</span>
+    </div>
+    <div class="ab-contacts">
+      <a class="ab-cl" href="https://ibrahimciger.github.io/ibrahimciger.com/#" target="_blank"><i class="ti ti-world"></i>Website</a>
+      <div class="ab-cl"><i class="ti ti-mail"></i>hc685@georgetown.edu</div>
+      <div class="ab-cl"><i class="ti ti-map-pin"></i>Istanbul, Turkey</div>
+    </div>
   </div>
+  <div class="ab-vsep"></div>
+  <div class="ab-stats-col">
+    <div><div class="ab-sn">10 yrs</div><div class="ab-sl">at Anadolu Agency</div></div>
+    <div><div class="ab-sn">+25K</div><div class="ab-sl">hadiths</div></div>
+    <div><div class="ab-sn">3</div><div class="ab-sl">awards</div></div>
+  </div>
+  <div class="ab-vsep"></div>
+  <div class="ab-map-col">
+    <div class="ab-map-badge">Worldwide experience — hover a country</div>
+    <div class="ab-ctip" id="ab-ctip"></div>
+    <canvas id="ab-wmap"></canvas>
+  </div>
+</div>
+
+<div class="ab-pillars">
+  <div class="ab-pill"><div class="ab-pc"><i class="ti ti-news"></i></div><div class="ab-pt">Journalism</div><div class="ab-ps">10 yrs · AA</div></div>
+  <div class="ab-pill"><div class="ab-pc"><i class="ti ti-broadcast"></i></div><div class="ab-pt">Digital Media</div><div class="ab-ps">Vodcast &amp; Podcast News</div></div>
+  <div class="ab-pill"><div class="ab-pc"><i class="ti ti-world"></i></div><div class="ab-pt">International</div><div class="ab-ps">US · ME · EU</div></div>
+  <div class="ab-pill"><div class="ab-pc"><i class="ti ti-briefcase"></i></div><div class="ab-pt">Leadership</div><div class="ab-ps">Chief of Staff</div></div>
+  <div class="ab-pill"><div class="ab-pc"><i class="ti ti-book"></i></div><div class="ab-pt">Quran</div><div class="ab-ps">Hafidh · age 13</div></div>
+  <div class="ab-pill"><div class="ab-pc"><i class="ti ti-script"></i></div><div class="ab-pt">Hadith</div><div class="ab-ps">25,000+</div></div>
+</div>
+
+<div class="ab-mid">
+  <div class="ab-donut-wrap">
+    <div class="ab-dl">Focus split</div>
+    <canvas id="ab-donut" width="160" height="110"></canvas>
+    <div class="ab-leg"><div class="ab-ld" style="background:#b8892a"></div>Communications 50%</div>
+    <div class="ab-leg"><div class="ab-ld" style="background:#5DCAA5"></div>Journalism 25%</div>
+    <div class="ab-leg"><div class="ab-ld" style="background:#AFA9EC"></div>NGOs 25%</div>
+  </div>
+  <div class="ab-vsep"></div>
+  <div class="ab-tl-wrap">
+    <div class="ab-tl-head">Chronological timeline — click any point</div>
+    <div class="ab-htl">
+      <div class="ab-htl-base"></div>
+      <div class="ab-htl-fill" id="ab-htlf"></div>
+      <div class="ab-hnodes" id="ab-hnodes">
+        <div class="ab-hn" onclick="abSel(6)"><div class="ab-hn-pulse"></div><div class="ab-hn-dot"></div><div class="ab-hn-yr">2006</div><div class="ab-hn-t">BA Econ</div><div class="ab-hn-o">Uludağ</div></div>
+        <div class="ab-hn" onclick="abSel(5)"><div class="ab-hn-pulse"></div><div class="ab-hn-dot"></div><div class="ab-hn-yr">2012</div><div class="ab-hn-t">MA Finance</div><div class="ab-hn-o">Istanbul</div></div>
+        <div class="ab-hn" onclick="abSel(3)"><div class="ab-hn-pulse"></div><div class="ab-hn-dot"></div><div class="ab-hn-yr">2013</div><div class="ab-hn-t">Co-founder</div><div class="ab-hn-o">S&amp;W</div></div>
+        <div class="ab-hn" onclick="abSel(2)"><div class="ab-hn-pulse"></div><div class="ab-hn-dot"></div><div class="ab-hn-yr">2015</div><div class="ab-hn-t">Parliament</div><div class="ab-hn-o">Advisor</div></div>
+        <div class="ab-hn ab-on" onclick="abSel(0)"><div class="ab-hn-pulse"></div><div class="ab-hn-dot"></div><div class="ab-hn-yr">2016</div><div class="ab-hn-t">Journalist</div><div class="ab-hn-o">AA</div></div>
+        <div class="ab-hn" onclick="abSel(4)"><div class="ab-hn-pulse"></div><div class="ab-hn-dot"></div><div class="ab-hn-yr">2016</div><div class="ab-hn-t">Georgetown</div><div class="ab-hn-o">DC</div></div>
+        <div class="ab-hn" onclick="abSel(1)"><div class="ab-hn-pulse"></div><div class="ab-hn-dot"></div><div class="ab-hn-yr">2018</div><div class="ab-hn-t">Chief of Staff</div><div class="ab-hn-o">Ministry</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ab-body-row">
+  <div class="ab-vtl-col">
+    <div class="ab-exp-lbl">Experience</div>
+    <div class="ab-vtl">
+      <div class="ab-vn ab-on" onclick="abSel(0);abStopCycle()"><div class="ab-vn-yr">2016 – present</div><div class="ab-vn-t">Journalist</div><div class="ab-vn-o">Anadolu Agency</div></div>
+      <div class="ab-vn" onclick="abSel(1);abStopCycle()"><div class="ab-vn-yr">2018 – 2020</div><div class="ab-vn-t">Chief of Staff</div><div class="ab-vn-o">Min. of Family</div></div>
+      <div class="ab-vn" onclick="abSel(2);abStopCycle()"><div class="ab-vn-yr">2015</div><div class="ab-vn-t">Parliamentary Advisor</div><div class="ab-vn-o">Turkish Assembly</div></div>
+      <div class="ab-vn" onclick="abSel(3);abStopCycle()"><div class="ab-vn-yr">2013 – 2016</div><div class="ab-vn-t">Co-founder</div><div class="ab-vn-o">Sinan &amp; Wren</div></div>
+      <div class="ab-vn" onclick="abSel(4);abStopCycle()"><div class="ab-vn-yr">2016 – 2018</div><div class="ab-vn-t">Georgetown</div><div class="ab-vn-o">Washington DC</div></div>
+      <div class="ab-vn" onclick="abSel(5);abStopCycle()"><div class="ab-vn-yr">2012 – 2015</div><div class="ab-vn-t">MA · Islamic Finance</div><div class="ab-vn-o">Istanbul Uni</div></div>
+      <div class="ab-vn" onclick="abSel(6);abStopCycle()"><div class="ab-vn-yr">2006 – 2010</div><div class="ab-vn-t">BA · Economics</div><div class="ab-vn-o">Uludağ Uni</div></div>
+    </div>
+  </div>
+  <div class="ab-detail-col">
+    <div id="ab-dc0" class="ab-dc ab-on"><div class="ab-dc-yr">2016 – present · 10 years</div><div class="ab-dc-title">Journalist</div><div class="ab-dc-org">Anadolu Agency</div><div class="ab-dc-body">Reporting on US politics, Middle East affairs, war zones, heritages and human rights. The lead architect behind <a href="https://www.aa.com.tr/tr/podcast" target="_blank">AA Podcast</a> concept and the project lead who operationalized <a href="https://www.aa.com.tr/tr/podcast/aa-portre" target="_blank">AA Portre</a> — pioneering digital audio journalism at a major news agency. Produced award-winning documentaries and landmark podcast interviews reaching global audiences.</div><div style="margin-top:.6rem"><span class="ab-tag">AA Podcast founder</span><span class="ab-tag">US Elections</span><span class="ab-tag">Hatay Documentary</span><span class="ab-tag">Anadolu Talks</span></div></div>
+    <div id="ab-dc1" class="ab-dc"><div class="ab-dc-yr">2018 – 2020 · 2 years</div><div class="ab-dc-title">Chief of Staff</div><div class="ab-dc-org">Ministry of Family, Turkey</div><div class="ab-dc-body">Led strategic communications and institutional coordination at ministerial level. Managed inter-agency relations, policy communications, and executive operations for one of Turkey's leading social ministries.</div><div style="margin-top:.6rem"><span class="ab-tag">Policy</span><span class="ab-tag">Strategic Comms</span><span class="ab-tag">Executive Leadership</span></div></div>
+    <div id="ab-dc2" class="ab-dc"><div class="ab-dc-yr">2015 · 1 year</div><div class="ab-dc-title">Parliamentary Advisor</div><div class="ab-dc-org">Turkish Grand National Assembly</div><div class="ab-dc-body">Advisory support on legislative and communications matters. Deep insight into policy design and political communication at national level.</div><div style="margin-top:.6rem"><span class="ab-tag">Legislative</span><span class="ab-tag">Political Comms</span></div></div>
+    <div id="ab-dc3" class="ab-dc"><div class="ab-dc-yr">2013 – 2016 · 3 years</div><div class="ab-dc-title">Co-founder</div><div class="ab-dc-org">Sinan &amp; Wren Foundation</div><div class="ab-dc-body">Co-founded and led an international civil society foundation. Managed cross-cultural dialogue programs, strategic partnerships, and operational direction.</div><div style="margin-top:.6rem"><span class="ab-tag">NGO</span><span class="ab-tag">Civil Society</span><span class="ab-tag">Co-founder</span></div></div>
+    <div id="ab-dc4" class="ab-dc"><div class="ab-dc-yr">2016 – 2018</div><div class="ab-dc-title">Georgetown University</div><div class="ab-dc-org">Academic Language Program · Washington DC</div><div class="ab-dc-body">Organised Georgetown Cryptocurrency &amp; Fiqh Symposium with Prof. James J. Angel and Joe Bradford. Georgetown Muslim Students Association 2017–2019.</div><div style="margin-top:.6rem"><span class="ab-tag">Georgetown</span><span class="ab-tag">Crypto &amp; Fiqh</span><span class="ab-tag">Organiser</span></div></div>
+    <div id="ab-dc5" class="ab-dc"><div class="ab-dc-yr">2012 – 2015</div><div class="ab-dc-title">MA · Islamic Law &amp; Finance</div><div class="ab-dc-org">Istanbul University</div><div class="ab-dc-body">Thesis: <a href="https://katalog.isam.org.tr/?dil=0&p=1&q=Halil+%C4%B0brahim+Ci%C4%9Fer&alan=qYazarlar_txt" target="_blank">"An Investigation on the Economical Life of the Holy Prophet"</a> — specialised in Islamic jurisprudence, Fiqh, and modern finance structures.</div><div style="margin-top:.6rem"><span class="ab-tag">Islamic Finance</span><span class="ab-tag">Fiqh</span><span class="ab-tag">Research</span></div></div>
+    <div id="ab-dc6" class="ab-dc"><div class="ab-dc-yr">2006 – 2010</div><div class="ab-dc-title">BA · Economics</div><div class="ab-dc-org">Uludağ University, Bursa</div><div class="ab-dc-body">Thesis: "Economic Analysis of Participation Banks." Founded and managed International Student Association (2006–2010).</div><div style="margin-top:.6rem"><span class="ab-tag">Economics</span><span class="ab-tag">Participation Banking</span><span class="ab-tag">Leadership</span></div></div>
+  </div>
+</div>
+
+<div class="ab-awards">
+  <div class="ab-aw"><div class="ab-aw-ring ab-gr"><i class="ti ti-trophy"></i></div><div><div class="ab-at">Best Podcaster of the Year</div><div class="ab-ay">2023</div></div></div>
+  <div class="ab-aw"><div class="ab-aw-ring ab-gr"><i class="ti ti-video"></i></div><div><div class="ab-at">Best Documentary News Award</div><div class="ab-ay">2024</div></div></div>
+  <div class="ab-aw"><div class="ab-aw-ring ab-br"><i class="ti ti-medal"></i></div><div><div class="ab-at">Wrestling Championship Medal</div></div></div>
+</div>
+
+<div class="ab-bot">
+  <div class="ab-bc">
+    <div class="ab-bl">Languages</div>
+    <div class="ab-lang-graphic">
+      <div class="ab-lang-row"><canvas class="ab-lang-arc" data-pct="100" width="44" height="44"></canvas><div><div class="ab-lang-name">Turkish</div><div class="ab-lang-level">Native</div></div></div>
+      <div class="ab-lang-row"><canvas class="ab-lang-arc" data-pct="85" width="44" height="44"></canvas><div><div class="ab-lang-name">English</div><div class="ab-lang-level">Proficiency</div></div></div>
+      <div class="ab-lang-row"><canvas class="ab-lang-arc" data-pct="55" width="44" height="44"></canvas><div><div class="ab-lang-name">Arabic</div><div class="ab-lang-level">Intermediate</div></div></div>
+    </div>
+  </div>
+  <div class="ab-bsep"></div>
+  <div class="ab-bc">
+    <div class="ab-bl">Affiliations</div>
+    <div class="ab-aff-link"><a href="https://sinanwren.org/" target="_blank">Sinan &amp; Wren Foundation</a> · Co-founder (2013–16)</div>
+    <div class="ab-aff-link"><a href="https://uvdvuslat.com/" target="_blank">International Vuslat Platform</a> · Board of Members (2013–)</div>
+    <div class="ab-aff-link"><a href="https://campusministry.georgetown.edu/faith-traditions/muslim/" target="_blank">Georgetown MSA</a> (2017–19)</div>
+    <div class="ab-aff-plain">Int'l Student Association · Founder (2006–10)</div>
+  </div>
+  <div class="ab-bsep"></div>
+  <div class="ab-bc">
+    <div class="ab-bl">Interests</div>
+    <div class="ab-int-list">
+      <div class="ab-int-chip"><i class="ti ti-antenna"></i>Communications</div>
+      <div class="ab-int-chip"><i class="ti ti-broadcast"></i>Digital Media</div>
+      <div class="ab-int-chip"><i class="ti ti-world"></i>International News</div>
+      <div class="ab-int-chip"><i class="ti ti-book"></i>Hadiths</div>
+      <div class="ab-int-chip"><i class="ti ti-building-bank"></i>Prophetic Economics</div>
+      <div class="ab-int-chip"><i class="ti ti-users"></i>NGOs</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+(function(){
+const hnMap=[4,6,3,2,5,1,0];
+function abSel(n){
+  document.querySelectorAll('.ab-vn').forEach((v,i)=>v.classList.toggle('ab-on',i===n));
+  document.querySelectorAll('.ab-dc').forEach(d=>d.classList.remove('ab-on'));
+  const dc=document.getElementById('ab-dc'+n);if(dc)dc.classList.add('ab-on');
+  document.querySelectorAll('.ab-hn').forEach((h,i)=>h.classList.toggle('ab-on',hnMap[i]===n));
+}
+window.abSel=abSel;
+
+let cIdx=0,cTimer=null,cycling=true;
+const co=[0,1,2,3,4,5,6];
+function runC(){if(!cycling)return;abSel(co[cIdx]);cIdx=(cIdx+1)%co.length;cTimer=setTimeout(runC,4500);}
+function abStopCycle(){cycling=false;clearTimeout(cTimer);}
+window.abStopCycle=abStopCycle;
+setTimeout(runC,1500);
+
+// Timeline animation
+setTimeout(()=>{
+  const nodes=document.querySelectorAll('.ab-hn');
+  const fill=document.getElementById('ab-htlf');
+  nodes.forEach((n,i)=>setTimeout(()=>{
+    n.classList.add('ab-vis');
+    fill.style.width=(((i+1)/nodes.length)*100)+'%';
+    const p=n.querySelector('.ab-hn-pulse');
+    if(p)p.style.animationDelay=(i*0.28)+'s';
+  },i*250));
+},300);
+
+// Lang arcs
+setTimeout(()=>{
+  document.querySelectorAll('.ab-lang-arc').forEach(c=>{
+    const pct=+c.dataset.pct/100;
+    const ctx=c.getContext('2d');
+    const cx=22,cy=22,r=18,lw=5;
+    ctx.beginPath();ctx.arc(cx,cy,r,-Math.PI/2,Math.PI*1.5);
+    ctx.strokeStyle='rgba(0,0,0,0.1)';ctx.lineWidth=lw;ctx.lineCap='round';ctx.stroke();
+    ctx.beginPath();ctx.arc(cx,cy,r,-Math.PI/2,-Math.PI/2+Math.PI*2*pct);
+    ctx.strokeStyle='#b8892a';ctx.lineWidth=lw;ctx.lineCap='round';ctx.stroke();
+    ctx.font='bold 10px system-ui,sans-serif';
+    ctx.fillStyle='#b8892a';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(Math.round(pct*100)+'%',cx,cy);
+  });
+},300);
+
+// 3D Donut
+(function(){
+  const c=document.getElementById('ab-donut');if(!c)return;
+  const ctx=c.getContext('2d');
+  const cx=80,cy=50,rx=50,ry=14,depth=15,ir=0.58;
+  const segs=[{pct:.5,col:'#b8892a'},{pct:.25,col:'#5DCAA5'},{pct:.25,col:'#AFA9EC'}];
+  let rot=0;
+  function ring(a1,a2,col,bot){
+    const dy=bot?depth:0;
+    ctx.beginPath();ctx.ellipse(cx,cy+dy,rx,ry,0,a1,a2);
+    ctx.lineTo(cx+Math.cos(a2)*rx*ir,cy+dy+Math.sin(a2)*ry*ir);
+    ctx.ellipse(cx,cy+dy,rx*ir,ry*ir,0,a2,a1,true);ctx.closePath();
+    ctx.fillStyle=col+(bot?'cc':'ff');ctx.fill();
+    ctx.strokeStyle='rgba(0,0,0,0.05)';ctx.lineWidth=.5;ctx.stroke();
+  }
+  function side(a1,a2,col){
+    const x1=cx+Math.cos(a1)*rx,y1=cy+Math.sin(a1)*ry;
+    const x2=cx+Math.cos(a2)*rx,y2=cy+Math.sin(a2)*ry;
+    ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x1,y1+depth);
+    ctx.lineTo(x2,y2+depth);ctx.lineTo(x2,y2);ctx.closePath();
+    ctx.fillStyle=col+'88';ctx.fill();
+    ctx.strokeStyle='rgba(0,0,0,0.04)';ctx.stroke();
+  }
+  (function frame(){
+    ctx.clearRect(0,0,160,110);
+    let a=rot;
+    segs.forEach(s=>{const e=a+s.pct*Math.PI*2;if(a<Math.PI)side(a,e,s.col);a=e;});
+    a=rot;segs.forEach(s=>{const e=a+s.pct*Math.PI*2;ring(a,e,s.col,true);a=e;});
+    a=rot;segs.forEach(s=>{const e=a+s.pct*Math.PI*2;ring(a,e,s.col,false);a=e;});
+    rot+=0.006;requestAnimationFrame(frame);
+  })();
+})();
+
+// World Map
+(function(){
+  const canvas=document.getElementById('ab-wmap');if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  const tip=document.getElementById('ab-ctip');
+  const LON_MIN=-125,LON_MAX=65,LAT_MIN=18,LAT_MAX=72;
+  const C=[
+    {n:'USA',lo:-100,la:38},{n:'Canada',lo:-96,la:56},
+    {n:'Germany',lo:10,la:51},{n:'Holland',lo:5.3,la:52.3},
+    {n:'Spain',lo:-3.7,la:40.4},{n:'Italy',lo:12.5,la:41.9},
+    {n:'Greece',lo:21.8,la:39.1},{n:'France',lo:2.3,la:46.2},
+    {n:'Belgium',lo:4.5,la:50.8},{n:'Bulgaria',lo:25.5,la:42.7},
+    {n:'Slovakia',lo:19.7,la:48.7},{n:'Austria',lo:14.5,la:47.5},
+    {n:'Serbia',lo:21,la:44.8},{n:'Romania',lo:25,la:45.9},
+    {n:'Luxembourg',lo:6.1,la:49.8},{n:'Switzerland',lo:8.2,la:46.8},
+    {n:'Syria',lo:38,la:35},{n:'Saudi Arabia',lo:45,la:24},
+    {n:'Turkey',lo:35,la:39,home:true},
+  ];
+  let hov=null,pulse=0,raf2;
+  function proj(lo,la){const W=canvas.width,H=canvas.height;return{x:(lo-LON_MIN)/(LON_MAX-LON_MIN)*W,y:(LAT_MAX-la)/(LAT_MAX-LAT_MIN)*H};}
+  function inB(lo,la){return lo>=LON_MIN&&lo<=LON_MAX&&la>=LAT_MIN&&la<=LAT_MAX;}
+  function draw(){
+    const W=canvas.width,H=canvas.height;
+    ctx.clearRect(0,0,W,H);
+    ctx.strokeStyle='rgba(184,137,42,0.06)';ctx.lineWidth=.5;
+    for(let lo=LON_MIN;lo<=LON_MAX;lo+=15){const x=(lo-LON_MIN)/(LON_MAX-LON_MIN)*W;ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+    for(let la=LAT_MIN;la<=LAT_MAX;la+=10){const y=(LAT_MAX-la)/(LAT_MAX-LAT_MIN)*H;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+    if(hov&&!hov.home){
+      const home=C.find(c=>c.home),hp=proj(home.lo,home.la),cp=proj(hov.lo,hov.la);
+      ctx.beginPath();ctx.moveTo(hp.x,hp.y);ctx.lineTo(cp.x,cp.y);
+      ctx.strokeStyle='rgba(184,137,42,0.4)';ctx.lineWidth=1.2;ctx.setLineDash([3,5]);ctx.stroke();ctx.setLineDash([]);
+    }
+    pulse+=0.035;
+    C.forEach(c=>{
+      if(!inB(c.lo,c.la))return;
+      const{x,y}=proj(c.lo,c.la);
+      const isH=hov&&hov.n===c.n;
+      const p=Math.sin(pulse+(c.lo*0.15+c.la*0.12))*0.5+0.5;
+      if(c.home||isH){ctx.beginPath();ctx.arc(x,y,c.home?16:14,0,Math.PI*2);ctx.fillStyle=c.home?'rgba(184,137,42,0.1)':'rgba(93,202,165,0.15)';ctx.fill();}
+      ctx.beginPath();ctx.arc(x,y,c.home?7:isH?7:3.5+p*1.2,0,Math.PI*2);
+      ctx.fillStyle=c.home?'#b8892a':isH?'#5DCAA5':'rgba(184,137,42,0.7)';ctx.fill();
+      if(c.home){ctx.font='600 11px system-ui,sans-serif';ctx.fillStyle='#b8892a';ctx.fillText('Istanbul',x+9,y-4);}
+    });
+    raf2=requestAnimationFrame(draw);
+  }
+  function resize(){const p=canvas.parentElement;canvas.width=Math.max(p.clientWidth,100);canvas.height=Math.max(p.clientHeight,180);}
+  canvas.addEventListener('mousemove',e=>{
+    const r=canvas.getBoundingClientRect();const mx=e.clientX-r.left,my=e.clientY-r.top;
+    let best=null,bd=999;
+    C.forEach(c=>{if(!inB(c.lo,c.la))return;const{x,y}=proj(c.lo,c.la);const d=Math.hypot(mx-x,my-y);if(d<bd){bd=d;best=c;}});
+    hov=bd<24?best:null;
+    if(hov&&bd<24){tip.textContent=hov.n;tip.style.left=(mx+12)+'px';tip.style.top=(my-28)+'px';tip.style.opacity='1';}
+    else tip.style.opacity='0';
+  });
+  canvas.addEventListener('mouseleave',()=>{hov=null;tip.style.opacity='0';});
+  resize();
+  new ResizeObserver(()=>{cancelAnimationFrame(raf2);resize();draw();}).observe(canvas.parentElement);
+  draw();
+})();
+})();
+</script>
 </div>
 
 <!-- AUDIO BAR -->
