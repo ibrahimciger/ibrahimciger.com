@@ -2354,25 +2354,6 @@ setTimeout(()=>{
   draw();
 })();
 })();
-
-/* Hero glow only */
-(function(){
-  const ph=document.querySelector('.hero-ph');
-  if(ph&&!ph.querySelector('.hero-glow-ring')){
-    const ring=document.createElement('div');
-    ring.className='hero-glow-ring';
-    ph.style.position='relative';
-    ph.appendChild(ring);
-  }
-})();
-
-/* Back to top scroll listener */
-window.addEventListener('scroll',()=>{
-  const btn=document.getElementById('back-top');
-  if(!btn)return;
-  btn.classList.toggle('show',window.scrollY>300);
-});
-
 </script>
 </div>
 
@@ -2570,7 +2551,11 @@ function newsHTML(n, feat){
   const imgH=n.i
     ?`<div class="nb-img"><img src="${n.i}" alt="" loading="lazy"></div>`
     :`<div class="nb-noimg"><span class="nb-noimg-lbl">${n.s}</span></div>`;
-  return `<a class="${cls}" href="${n.u}" target="_blank" rel="noopener">
+  const safeU=(n.u||'').replace(/\/g,'\\').replace(/'/g,"\'");
+  const safeT=(n.t||'').replace(/\/g,'\\').replace(/'/g,"\'");
+  const safeS=(n.s||'').replace(/\/g,'\\').replace(/'/g,"\'");
+  const safeI=(n.i||'').replace(/\/g,'\\').replace(/'/g,"\'");
+  return `<a class="${cls}" href="#" onclick="openNewsModal('${safeU}','${safeT}','${safeS}','${safeI}');return false;">
     ${imgH}
     <div class="nb-body">
       <div class="nb-lang">${lbl}</div>
@@ -3061,6 +3046,20 @@ function initDragScroll(trackId){
   },{passive:false});
 }
 
+// Also update vidScroll to keep sync
+const _vidScroll=vidScroll;
+function vidScroll(dir){
+  const track=document.getElementById('vid-track');
+  if(!track)return;
+  const card=track.querySelector('.vid-card');
+  const w=(card?card.offsetWidth:500)+2;
+  const maxOff=(track.children.length-1)*w;
+  vidOff=Math.max(0,Math.min(vidOff+dir*w,maxOff));
+  track.style.transition='transform .4s cubic-bezier(.4,0,.2,1)';
+  track.style.transform=`translateX(-${vidOff}px)`;
+  setTimeout(()=>track.style.transition='',450);
+}
+
 // Init drag
 document.addEventListener('DOMContentLoaded',()=>initDragScroll('vid-track'));
 
@@ -3082,30 +3081,3 @@ function closeNpModal(){
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeNpModal();});
 </script>
-<!-- Back to top -->
-<button class="back-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});showHome();" title="Back to top">
-  <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
-</button>
-
-<!-- Newspaper Modal -->
-<div class="np-overlay" id="np-overlay" onclick="if(event.target===this)closeNpModal()">
-  <div class="np-modal">
-    <div class="np-head">
-      <div style="flex:1">
-        <div class="np-masthead" id="np-src"></div>
-        <div class="np-title" id="np-title"></div>
-      </div>
-      <button class="np-close" onclick="closeNpModal()">✕ Close</button>
-    </div>
-    <div class="np-src-bar" id="np-date"></div>
-    <img class="np-cover" id="np-img" alt="">
-    <div class="np-body">
-      <p id="np-desc"></p>
-      <a class="np-ext-link" id="np-link" href="#" target="_blank" rel="noopener">Read full story ↗</a>
-    </div>
-  </div>
-</div>
-
-<!-- Hero glow is inline in hero-ph -->
-</body>
-</html>
