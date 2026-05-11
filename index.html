@@ -2354,6 +2354,38 @@ setTimeout(()=>{
   draw();
 })();
 })();
+
+/* Hero name animation */
+(function(){
+  const names=document.querySelectorAll('.hero-name,.hero-name-last');
+  names.forEach((el,ni)=>{
+    const txt=el.textContent;
+    el.innerHTML='';
+    txt.split('').forEach((ch,ci)=>{
+      const sp=document.createElement('span');
+      sp.className='hero-name-char'+(ni%2===0?'':' from-right');
+      sp.textContent=ch===' '?' ':ch;
+      sp.style.animationDelay=(ci*0.04+ni*0.25)+'s';
+      el.appendChild(sp);
+    });
+  });
+  // Glow on hero-ph
+  const ph=document.querySelector('.hero-ph');
+  if(ph&&!ph.querySelector('.hero-glow-ring')){
+    const ring=document.createElement('div');
+    ring.className='hero-glow-ring';
+    ph.style.position='relative';
+    ph.appendChild(ring);
+  }
+})();
+
+/* Back to top scroll listener */
+window.addEventListener('scroll',()=>{
+  const btn=document.getElementById('back-top');
+  if(!btn)return;
+  btn.classList.toggle('show',window.scrollY>300);
+});
+
 </script>
 </div>
 
@@ -3081,3 +3113,30 @@ function closeNpModal(){
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeNpModal();});
 </script>
+<!-- Back to top -->
+<button class="back-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});showHome();" title="Back to top">
+  <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+</button>
+
+<!-- Newspaper Modal -->
+<div class="np-overlay" id="np-overlay" onclick="if(event.target===this)closeNpModal()">
+  <div class="np-modal">
+    <div class="np-head">
+      <div style="flex:1">
+        <div class="np-masthead" id="np-src"></div>
+        <div class="np-title" id="np-title"></div>
+      </div>
+      <button class="np-close" onclick="closeNpModal()">✕ Close</button>
+    </div>
+    <div class="np-src-bar" id="np-date"></div>
+    <img class="np-cover" id="np-img" alt="">
+    <div class="np-body">
+      <p id="np-desc"></p>
+      <a class="np-ext-link" id="np-link" href="#" target="_blank" rel="noopener">Read full story ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- Hero glow is inline in hero-ph -->
+</body>
+</html>
