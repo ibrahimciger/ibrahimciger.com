@@ -2570,11 +2570,7 @@ function newsHTML(n, feat){
   const imgH=n.i
     ?`<div class="nb-img"><img src="${n.i}" alt="" loading="lazy"></div>`
     :`<div class="nb-noimg"><span class="nb-noimg-lbl">${n.s}</span></div>`;
-  const safeU=(n.u||'').replace(/\/g,'\\').replace(/'/g,"\'");
-  const safeT=(n.t||'').replace(/\/g,'\\').replace(/'/g,"\'");
-  const safeS=(n.s||'').replace(/\/g,'\\').replace(/'/g,"\'");
-  const safeI=(n.i||'').replace(/\/g,'\\').replace(/'/g,"\'");
-  return `<a class="${cls}" href="#" onclick="openNewsModal('${safeU}','${safeT}','${safeS}','${safeI}');return false;">
+  return `<a class="${cls}" href="${n.u}" target="_blank" rel="noopener">
     ${imgH}
     <div class="nb-body">
       <div class="nb-lang">${lbl}</div>
