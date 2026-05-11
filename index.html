@@ -179,7 +179,7 @@ nav {
   margin-right: auto;
   padding-right: 120px;
 }
-.hero-tag {
+.hero-tag {text-transform:none;
   font-family:'Josefin Sans',sans-serif; font-weight:100;
   font-size:10px; letter-spacing:.28em; text-transform:uppercase;
   color:rgba(240,232,214,0.65);
@@ -580,8 +580,8 @@ nav {
 .share-blk { padding:8px 40px; border-bottom:1px solid var(--border2); }
 .ep-list {
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
   padding:20px;
 }
 .ep-item { display:flex; align-items:center; gap:0; border-bottom:1px solid var(--border2); cursor:default; transition:background .2s; }
@@ -900,6 +900,105 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   .all-news-item{padding:14px 20px;}
   .all-news-modal-head{padding:20px 20px 16px;}
 }
+
+/* ── Back to top ── */
+.back-top{
+  position:fixed;bottom:28px;right:28px;z-index:999;
+  width:44px;height:44px;border-radius:50%;
+  background:#b8892a;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(184,137,42,0.35);
+  opacity:0;pointer-events:none;
+  transition:opacity .4s ease,transform .4s ease;
+  transform:translateY(12px);
+}
+.back-top.show{opacity:1;pointer-events:auto;transform:translateY(0);}
+.back-top:hover{background:#d4a840;transform:translateY(-2px);}
+.back-top svg{width:18px;height:18px;fill:#fff;}
+
+/* ── Hero intro animation ── */
+.hero-name-wrap{overflow:hidden}
+.hero-name-char{display:inline-block;opacity:0;transform:translateX(-30px);animation:hero-char-in .7s ease forwards}
+.hero-name-char.from-right{transform:translateX(30px)}
+@keyframes hero-char-in{to{opacity:1;transform:translateX(0)}}
+
+/* Silhouette glow ring */
+.hero-glow-ring{
+  position:absolute;top:0;left:0;right:0;bottom:0;
+  pointer-events:none;z-index:1;
+  border-radius:50%;
+  box-shadow:0 0 0 0 rgba(255,255,255,0);
+  animation:hero-glow-pulse 2s ease 1.2s forwards;
+}
+@keyframes hero-glow-pulse{
+  0%{box-shadow:0 0 0 0 rgba(255,255,255,0.7)}
+  50%{box-shadow:0 0 60px 30px rgba(255,255,255,0.35)}
+  100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}
+}
+
+/* ── Audio wave on ep cards ── */
+.ep-wave{display:flex;align-items:center;gap:2px;height:16px;margin-top:6px}
+.ep-wave span{display:block;width:3px;border-radius:2px;background:#b8892a;opacity:.7;animation:ep-bar 1s ease infinite}
+.ep-wave span:nth-child(1){animation-delay:0s}
+.ep-wave span:nth-child(2){animation-delay:.1s}
+.ep-wave span:nth-child(3){animation-delay:.2s}
+.ep-wave span:nth-child(4){animation-delay:.3s}
+.ep-wave span:nth-child(5){animation-delay:.4s}
+@keyframes ep-bar{0%,100%{height:4px}50%{height:14px}}
+
+/* ── Newspaper Modal ── */
+.np-overlay{
+  position:fixed;inset:0;z-index:5000;
+  background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);
+  display:none;align-items:center;justify-content:center;
+  padding:24px;
+}
+.np-overlay.open{display:flex;}
+.np-modal{
+  background:#faf8f3;color:#1a1a1a;
+  width:100%;max-width:780px;max-height:88vh;
+  border-radius:4px;overflow:hidden;
+  display:flex;flex-direction:column;
+  animation:np-in .4s cubic-bezier(.22,1,.36,1);
+  box-shadow:0 24px 80px rgba(0,0,0,0.3);
+}
+@keyframes np-in{from{opacity:0;transform:translateY(40px) rotate(-0.5deg)}to{opacity:1;transform:none}}
+.np-head{
+  padding:20px 28px 14px;
+  border-bottom:2px solid #1a1a1a;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:16px;
+}
+.np-masthead{
+  font-family:'Playfair Display',serif;font-size:11px;letter-spacing:.28em;
+  color:#888;text-transform:uppercase;margin-bottom:8px;
+}
+.np-title{
+  font-family:'Playfair Display',serif;font-size:22px;font-weight:700;
+  line-height:1.25;color:#1a1a1a;flex:1;
+}
+.np-close{
+  font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:#888;background:none;border:none;cursor:pointer;
+  padding:4px 8px;flex-shrink:0;transition:color .2s;
+}
+.np-close:hover{color:#1a1a1a}
+.np-src-bar{
+  padding:8px 28px;border-bottom:1px solid #ddd;
+  font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:.12em;
+  color:#888;text-transform:uppercase;display:flex;align-items:center;gap:12px;
+}
+.np-cover{width:100%;max-height:260px;object-fit:cover;display:none}
+.np-body{padding:24px 28px;overflow-y:auto;flex:1}
+.np-body p{font-family:'Cormorant Garamond',serif;font-size:17px;line-height:1.75;color:#333;margin-bottom:16px}
+.np-body p:first-child::first-letter{font-size:3.2em;float:left;line-height:.75;margin-right:6px;color:#1a1a1a;font-family:'Playfair Display',serif;font-weight:700}
+.np-ext-link{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:8px;padding:8px 16px;border:1px solid #b8892a;border-radius:3px;
+  font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:#b8892a;text-decoration:none;transition:all .2s;
+}
+.np-ext-link:hover{background:#b8892a;color:#fff}
+@media(max-width:768px){.np-modal{max-height:92vh}.np-title{font-size:17px}.np-body{padding:16px 18px}}
 </style>
 </head>
 <body>
@@ -1506,8 +1605,8 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
     
       <div class="vod-section">
         <div class="vod-sec-head">
-          <div class="vod-sec-eye">Haberler</div>
-          <h3 class="vod-sec-title">Haberler</h3>
+          <div class="vod-sec-eye" data-tr="Araştırma Haberleri &amp; Özel Röportajlar" data-en="Investigative Reports &amp; Exclusive Interviews">Investigative Reports &amp; Exclusive Interviews</div>
+          <h3 class="vod-sec-title" data-tr="Araştırma Haberleri &amp; Özel Röportajlar" data-en="Investigative Reports &amp; Exclusive Interviews">Investigative Reports &amp; Exclusive Interviews</h3>
         </div>
         <div class="vod-grid">
           <div class="vid-card" onclick="window.open('https://youtu.be/EwX7lrKThiQ','_blank')" onmouseenter="previewVid(this,'EwX7lrKThiQ')" onmouseleave="stopPreview(this,'EwX7lrKThiQ')">
@@ -1768,11 +1867,18 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .ab-cl{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink2);text-decoration:none;transition:color .2s}
 .ab-cl:hover{color:#b8892a}
 .ab-cl i{color:#b8892a;font-size:14px;width:15px}
-.ab-stats-col{flex:0 0 110px;padding:1.2rem .8rem;display:flex;flex-direction:column;justify-content:center;gap:1rem;background:var(--bg2);transition:background .3s}
+
+.ab-stats-col{flex:0 0 110px;overflow:hidden;display:flex;align-items:center;background:var(--bg2);transition:background .3s;position:relative}
+.ab-stats-ticker{display:flex;flex-direction:column;gap:0;animation:ab-stats-slide 8s linear infinite;padding:0}
+@keyframes ab-stats-slide{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+.ab-stat-item{padding:.7rem .8rem;text-align:center;flex-shrink:0}
+.ab-stat-div{height:1px;background:var(--border2);margin:0 .8rem;flex-shrink:0}
+.ab-sn{font-size:20px;font-weight:500;color:#b8892a;line-height:1}
+.ab-sl{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.3}
 .ab-sn{font-size:24px;font-weight:500;color:#b8892a;line-height:1}
 .ab-sl{font-size:13px;color:var(--muted);margin-top:2px;line-height:1.3}
 .ab-map-col{flex:1;position:relative;overflow:hidden;min-height:0;height:260px}
-.ab-map-badge{position:absolute;top:8px;left:12px;font-size:9px;letter-spacing:.12em;color:var(--muted);z-index:3;background:var(--bg);padding:2px 6px;border-radius:3px;border:.5px solid var(--border2);transition:background .3s}
+.ab-map-badge{position:absolute;top:8px;left:12px;font-size:10px;letter-spacing:.1em;color:#b8892a;z-index:3;background:var(--bg);padding:3px 10px;border-radius:4px;border:1.5px solid #b8892a;transition:background .3s;font-weight:600}
 .ab-ctip{position:absolute;background:var(--bg);border:.5px solid var(--border2);padding:4px 10px;border-radius:4px;font-size:12px;font-weight:500;pointer-events:none;opacity:0;transition:opacity .12s;z-index:10;white-space:nowrap;color:var(--ink)}
 .ab-pillars{display:grid;grid-template-columns:repeat(6,1fr);border-bottom:.5px solid var(--border2)}
 .ab-pill{padding:1rem .4rem;text-align:center;border-right:.5px solid var(--border2);cursor:default;transition:background .2s}
@@ -1815,16 +1921,16 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .ab-vn::before{content:'';position:absolute;left:-.95rem;top:5px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:1.5px solid var(--border2);transition:all .3s}
 .ab-vn.ab-on::before,.ab-vn:hover::before{border-color:#b8892a}
 .ab-vn.ab-on::before{background:#b8892a}
-.ab-vn-yr{font-size:13px;color:#b8892a;letter-spacing:.06em;margin-bottom:1px;font-weight:600}
-.ab-vn-t{font-size:19px;font-weight:600;color:var(--ink);line-height:1.25;font-family:'EB Garamond',Georgia,serif}
-.ab-vn-o{font-size:16px;color:var(--ink2);font-style:italic;font-family:'EB Garamond',Georgia,serif}
+.ab-vn-yr{font-size:11px;color:#b8892a;letter-spacing:.06em;margin-bottom:1px;font-weight:600}
+.ab-vn-t{font-size:16px;font-weight:600;color:var(--ink);line-height:1.25;font-family:'EB Garamond',Georgia,serif}
+.ab-vn-o{font-size:14px;color:var(--ink2);font-style:italic;font-family:'EB Garamond',Georgia,serif}
 .ab-detail-col{flex:1;padding:1.4rem 1.5rem;position:relative;min-height:220px}
 .ab-dc{position:absolute;opacity:0;pointer-events:none;transition:opacity .9s ease,transform .9s ease;transform:translateY(8px)}
 .ab-dc.ab-on{opacity:1;pointer-events:auto;transform:translateY(0);position:relative}
-.ab-dc-yr{font-size:14px;color:#b8892a;letter-spacing:.1em;margin-bottom:6px;font-weight:600}
-.ab-dc-title{font-size:30px;font-weight:600;line-height:1.1;margin-bottom:6px;color:var(--ink);font-family:'EB Garamond',Georgia,serif}
-.ab-dc-org{font-size:18px;color:var(--ink2);margin-bottom:.9rem;font-style:italic;font-family:'EB Garamond',Georgia,serif}
-.ab-dc-body{font-size:20px;color:var(--ink2);line-height:1.88;font-family:'EB Garamond',Georgia,serif;letter-spacing:.015em;font-weight:400}
+.ab-dc-yr{font-size:12px;color:#b8892a;letter-spacing:.1em;margin-bottom:6px;font-weight:600}
+.ab-dc-title{font-size:26px;font-weight:600;line-height:1.1;margin-bottom:6px;color:var(--ink);font-family:'EB Garamond',Georgia,serif}
+.ab-dc-org{font-size:15px;color:var(--ink2);margin-bottom:.9rem;font-style:italic;font-family:'EB Garamond',Georgia,serif}
+.ab-dc-body{font-size:17px;color:var(--ink2);line-height:1.88;font-family:'EB Garamond',Georgia,serif;letter-spacing:.015em;font-weight:400}
 .ab-dc-body a{color:#b8892a;text-decoration:none}
 .ab-dc-body a:hover{text-decoration:underline;color:#3d7033}
 .ab-tag{display:inline-block;margin:4px 3px 0 0;padding:3px 9px;border-radius:12px;font-size:11px;border:.5px solid var(--border2);color:var(--ink2)}
@@ -1841,10 +1947,10 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .ab-bc:last-child{padding-right:2rem}
 .ab-bsep{background:var(--border2)}
 .ab-bl{font-size:12px;letter-spacing:.15em;color:var(--muted);margin-bottom:.8rem}
-.ab-aff-link{display:block;font-size:15px;color:var(--ink2);line-height:2}
+.ab-aff-link{display:block;font-size:17px;color:var(--ink2);line-height:2}
 .ab-aff-link a{color:#b8892a;text-decoration:none}
 .ab-aff-link a:hover{color:#3d7033;text-decoration:underline}
-.ab-aff-plain{font-size:15px;color:var(--ink2);line-height:2}
+.ab-aff-plain{font-size:17px;color:var(--ink2);line-height:2}
 .ab-int-list{display:flex;flex-direction:column;gap:6px}
 .ab-int-chip{display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:20px;border:.5px solid var(--border2);font-size:16px;color:var(--ink);background:var(--bg2);transition:background .3s}
 .ab-int-chip i{color:#b8892a;font-size:15px;flex-shrink:0}
@@ -1873,8 +1979,8 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   }
   .ab-donut-wrap canvas{width:140px!important;height:96px!important}
   .ab-tl-wrap{padding:1rem 1.2rem}
-  .ab-hnodes{overflow-x:auto;padding-bottom:.5rem}
-  .ab-hn{min-width:65px}
+  .ab-hnodes{overflow-x:auto;padding-bottom:.5rem;gap:8px}
+  .ab-hn{min-width:90px;padding:.4rem .5rem}
 
   /* BODY: mobile - hide vertical TL, show detail full width */
   .ab-body-row{flex-direction:column}
@@ -1884,7 +1990,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   /* M5: BOTTOM reorder - Contact+Languages side by side, then Affiliations, then Awards */
   .ab-bot{
     display:grid;
-    grid-template-columns:1fr 1px 1fr;
+    grid-template-columns:2fr 1px 3fr;
     grid-template-rows:auto auto auto;
   }
   .ab-bc:first-child{
@@ -1925,9 +2031,19 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 <div class="ab-top">
 
   <div class="ab-stats-col">
-    <div><div class="ab-sn">10 yrs</div><div class="ab-sl">at Anadolu Agency</div></div>
-    <div><div class="ab-sn">+25K</div><div class="ab-sl">hadiths</div></div>
-    <div><div class="ab-sn">3</div><div class="ab-sl">awards</div></div>
+    <div class="ab-stats-ticker">
+      <div class="ab-stat-item"><div class="ab-sn">10 yrs</div><div class="ab-sl">at Anadolu Agency</div></div>
+      <div class="ab-stat-div"></div>
+      <div class="ab-stat-item"><div class="ab-sn">+25K</div><div class="ab-sl">hadiths</div></div>
+      <div class="ab-stat-div"></div>
+      <div class="ab-stat-item"><div class="ab-sn">3</div><div class="ab-sl">awards</div></div>
+      <div class="ab-stat-div"></div>
+      <div class="ab-stat-item"><div class="ab-sn">10 yrs</div><div class="ab-sl">at Anadolu Agency</div></div>
+      <div class="ab-stat-div"></div>
+      <div class="ab-stat-item"><div class="ab-sn">+25K</div><div class="ab-sl">hadiths</div></div>
+      <div class="ab-stat-div"></div>
+      <div class="ab-stat-item"><div class="ab-sn">3</div><div class="ab-sl">awards</div></div>
+    </div>
   </div>
   <div class="ab-vsep"></div>
   <div class="ab-map-col">
@@ -2076,7 +2192,12 @@ setTimeout(()=>{
 setTimeout(()=>{
   document.querySelectorAll('.ab-lang-arc').forEach(c=>{
     const pct=+c.dataset.pct/100;
+    const dpr=window.devicePixelRatio||1;
+    const size=44;
+    c.width=size*dpr; c.height=size*dpr;
+    c.style.width=size+'px'; c.style.height=size+'px';
     const ctx=c.getContext('2d');
+    ctx.scale(dpr,dpr);
     const cx=22,cy=22,r=18,lw=5;
     ctx.beginPath();ctx.arc(cx,cy,r,-Math.PI/2,Math.PI*1.5);
     ctx.strokeStyle='rgba(0,0,0,0.1)';ctx.lineWidth=lw;ctx.lineCap='round';ctx.stroke();
@@ -2214,6 +2335,19 @@ setTimeout(()=>{
     else tip.style.opacity='0';
   });
   canvas.addEventListener('mouseleave',()=>{hov=null;tip.style.opacity='0';});
+  canvas.addEventListener('touchstart',(e)=>{e.preventDefault();},{ passive:false });
+  canvas.addEventListener('touchmove',(e)=>{
+    e.preventDefault();
+    const t=e.touches[0];
+    const r=canvas.getBoundingClientRect();
+    const mx=t.clientX-r.left,my=t.clientY-r.top;
+    let best=null,bd=999;
+    C.forEach(co=>{if(!inB(co.lo,co.la))return;const{x,y}=proj(co.lo,co.la);const d=Math.hypot(mx-x,my-y);if(d<bd){bd=d;best=co;}});
+    hov=bd<30?best:null;
+    if(hov){tip.textContent=hov.n;tip.style.left=(mx+12)+'px';tip.style.top=Math.max(4,my-28)+'px';tip.style.opacity='1';}
+    else tip.style.opacity='0';
+  },{ passive:false });
+  canvas.addEventListener('touchend',()=>{setTimeout(()=>{hov=null;tip.style.opacity='0';},1200);});
   resize();
   new ResizeObserver(()=>{cancelAnimationFrame(raf2);resize();draw();}).observe(canvas.parentElement);
   window.addEventListener('ab-init',()=>{cancelAnimationFrame(raf2);resize();draw();});
@@ -2417,7 +2551,11 @@ function newsHTML(n, feat){
   const imgH=n.i
     ?`<div class="nb-img"><img src="${n.i}" alt="" loading="lazy"></div>`
     :`<div class="nb-noimg"><span class="nb-noimg-lbl">${n.s}</span></div>`;
-  return `<a class="${cls}" href="${n.u}" target="_blank" rel="noopener">
+  const safeU=(n.u||'').replace(/\/g,'\\').replace(/'/g,"\'");
+  const safeT=(n.t||'').replace(/\/g,'\\').replace(/'/g,"\'");
+  const safeS=(n.s||'').replace(/\/g,'\\').replace(/'/g,"\'");
+  const safeI=(n.i||'').replace(/\/g,'\\').replace(/'/g,"\'");
+  return `<a class="${cls}" href="#" onclick="openNewsModal('${safeU}','${safeT}','${safeS}','${safeI}');return false;">
     ${imgH}
     <div class="nb-body">
       <div class="nb-lang">${lbl}</div>
@@ -2620,7 +2758,7 @@ function switchPl(idx){
         </div>`;
       }
       // Episode grid: 2 columns
-      html += `<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:16px;">`;
+      const isMob=window.innerWidth<768;const cols=isMob?1:2;html += `<div style="display:grid;grid-template-columns:repeat(${cols},1fr);gap:8px;padding:16px;">`;
       pl.embeds.forEach(url=>{
         html += `<div><iframe width="100%" height="180" frameborder="no" scrolling="no" seamless src="${url}" loading="lazy" style="display:block;border-radius:4px"></iframe></div>`;
       });
@@ -2924,17 +3062,22 @@ function vidScroll(dir){
 
 // Init drag
 document.addEventListener('DOMContentLoaded',()=>initDragScroll('vid-track'));
-</script>
 
-<!-- All News Modal -->
-<div class="all-news-overlay" id="all-news-overlay" onclick="closeAllNews(event)">
-  <div class="all-news-modal">
-    <div class="all-news-modal-head">
-      <div class="all-news-modal-title" data-tr="Öne Çıkanlar" data-en="Featured News">Featured News</div>
-      <button class="all-news-close" onclick="closeAllNews()" data-tr="✕ Kapat" data-en="✕ Close">✕ Close</button>
-    </div>
-    <div id="all-news-list"></div>
-  </div>
-</div>
-</body>
-</html>
+/* ── Newspaper Modal ── */
+function openNewsModal(url,title,src,img){
+  const ov=document.getElementById('np-overlay');if(!ov)return;
+  document.getElementById('np-title').textContent=title||'';
+  document.getElementById('np-src').textContent=src||'Anadolu Agency';
+  document.getElementById('np-date').textContent=src||'';
+  document.getElementById('np-link').href=url||'#';
+  const imgEl=document.getElementById('np-img');
+  if(img){imgEl.src=img;imgEl.style.display='block';}else{imgEl.src='';imgEl.style.display='none';}
+  document.getElementById('np-desc').textContent=lang==='en'?'Read the full story at the source.':'Haberin tamamını kaynakta okuyun.';
+  ov.classList.add('open');document.body.style.overflow='hidden';
+}
+function closeNpModal(){
+  const ov=document.getElementById('np-overlay');if(ov)ov.classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeNpModal();});
+</script>
