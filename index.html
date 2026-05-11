@@ -2121,7 +2121,7 @@ setTimeout(()=>{
       const srcW=(LON_MAX-LON_MIN)/360*fullW;
       const srcY=(90-LAT_MAX)/180*fullH;
       const srcH=(LAT_MAX-LAT_MIN)/180*fullH;
-      ctx.globalAlpha=0.55;
+      ctx.globalAlpha=0.85;
       ctx.drawImage(mapImg,srcX,srcY,srcW,srcH,0,0,W,H);
       ctx.globalAlpha=1.0;
     } else {
