@@ -1072,6 +1072,87 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .hero-photo{
   animation:hero-glow-rotate 2.8s ease-out 0.3s forwards;
 }
+
+/* ── Thesis Reader Modal ── */
+.thesis-overlay{
+  position:fixed;inset:0;z-index:6000;
+  background:rgba(0,0,0,0.82);backdrop-filter:blur(8px);
+  display:none;align-items:center;justify-content:center;padding:20px;
+}
+.thesis-overlay.open{display:flex;}
+.thesis-modal{
+  background:#f5f0e8;color:#1a1308;
+  width:100%;max-width:820px;max-height:90vh;
+  border-radius:2px;overflow:hidden;display:flex;flex-direction:column;
+  animation:thesis-roll .6s cubic-bezier(.22,1,.36,1);
+  box-shadow:0 30px 80px rgba(0,0,0,0.5),inset 0 0 0 1px rgba(0,0,0,0.08);
+}
+@keyframes thesis-roll{
+  from{opacity:0;transform:translateY(60px) rotate(-0.8deg) scale(.95)}
+  to{opacity:1;transform:none}
+}
+.thesis-head{
+  background:#2c1810;padding:16px 28px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  flex-shrink:0;
+}
+.thesis-head-title{
+  font-family:'EB Garamond',Georgia,serif;font-size:13px;
+  color:rgba(245,240,232,0.85);letter-spacing:.06em;
+}
+.thesis-close{
+  font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(245,240,232,0.6);
+  background:none;border:none;cursor:pointer;padding:4px 8px;
+  transition:color .2s;flex-shrink:0;
+}
+.thesis-close:hover{color:#d4a840;}
+.thesis-banner{
+  background:#f0e8d5;border-bottom:2px solid #2c1810;border-top:2px solid #2c1810;
+  padding:20px 40px 16px;flex-shrink:0;text-align:center;
+}
+.thesis-uni{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.24em;color:#8b6914;text-transform:uppercase;margin-bottom:6px;}
+.thesis-main-title{font-family:'EB Garamond',Georgia,serif;font-size:22px;font-weight:700;color:#1a1308;line-height:1.3;margin-bottom:4px;}
+.thesis-sub{font-family:'EB Garamond',Georgia,serif;font-size:14px;color:#5c3d1e;font-style:italic;}
+.thesis-body{overflow-y:auto;flex:1;padding:0;}
+.thesis-body::-webkit-scrollbar{width:4px;}
+.thesis-body::-webkit-scrollbar-thumb{background:#8b6914;border-radius:2px;}
+.thesis-chapter{padding:28px 40px 20px;border-bottom:1px solid rgba(44,24,16,0.12);}
+.thesis-chapter-title{
+  font-family:'EB Garamond',Georgia,serif;font-size:15px;font-weight:700;
+  color:#2c1810;letter-spacing:.04em;text-transform:uppercase;
+  margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(44,24,16,0.15);
+}
+.thesis-chapter p{
+  font-family:'EB Garamond',Georgia,serif;font-size:16px;line-height:1.85;
+  color:#2a1f14;margin-bottom:12px;text-align:justify;
+}
+.thesis-chapter p:first-child::first-letter{
+  font-size:3.2em;float:left;line-height:.75;margin-right:6px;
+  color:#2c1810;font-weight:700;margin-top:4px;
+}
+.thesis-chapter h4{
+  font-family:'EB Garamond',Georgia,serif;font-size:14px;font-weight:700;
+  color:#5c3d1e;margin:16px 0 8px;
+}
+.thesis-footer-bar{
+  background:#f0e8d5;border-top:2px solid #2c1810;padding:10px 28px;
+  display:flex;align-items:center;justify-content:space-between;flex-shrink:0;
+}
+.thesis-footer-text{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.15em;color:#8b6914;text-transform:uppercase;}
+.thesis-link{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:6px 14px;border:1px solid #8b6914;border-radius:2px;
+  font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+  color:#8b6914;text-decoration:none;transition:all .2s;
+}
+.thesis-link:hover{background:#8b6914;color:#f5f0e8;}
+@media(max-width:600px){
+  .thesis-modal{max-height:95vh;}
+  .thesis-chapter{padding:18px 18px 14px;}
+  .thesis-banner{padding:14px 18px;}
+  .thesis-main-title{font-size:16px;}
+}
 </style>
 </head>
 <body>
@@ -2101,7 +2182,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .ab-pt{font-size:16px;font-weight:500;color:var(--ink);line-height:1.2}
 .ab-ps{font-size:13px;color:var(--muted);margin-top:2px}
 .ab-mid{display:flex;border-bottom:.5px solid var(--border2)}
-.ab-donut-wrap{flex:0 0 250px;padding:1rem 1rem 1rem 2rem;display:flex;flex-direction:column;justify-content:flex-start;gap:.4rem}
+.ab-donut-wrap{flex:0 0 185px;padding:1.1rem 1rem 1.1rem 2rem;display:flex;flex-direction:column;justify-content:center;gap:.5rem}
 .ab-dl{font-size:13px;letter-spacing:.14em;color:var(--muted);margin-bottom:.3rem}
 .ab-leg{display:flex;align-items:center;gap:7px;font-size:15px;color:var(--ink2)}
 .ab-ld{width:9px;height:9px;border-radius:50%;flex-shrink:0}
@@ -2270,9 +2351,11 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 
 <div class="ab-mid">
   <div class="ab-donut-wrap">
-    <div class="ab-dl">Core Pillars</div>
-    <canvas id="ab-donut" width="216" height="220" style="height:220px"></canvas>
-<div style="font-size:11px;color:var(--muted);margin-top:.3rem;font-style:italic;">hover to explore</div>
+    <div class="ab-dl">Focus split</div>
+    <canvas id="ab-donut" width="216" height="148"></canvas>
+<div class="ab-leg"><div class="ab-ld" style="background:#b8892a"></div>Communications 50%</div>
+    <div class="ab-leg"><div class="ab-ld" style="background:#5DCAA5"></div>Journalism 25%</div>
+    <div class="ab-leg"><div class="ab-ld" style="background:#AFA9EC"></div>NGOs 25%</div>
   </div>
   <div class="ab-vsep"></div>
   <div class="ab-tl-wrap">
@@ -2312,7 +2395,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
     <div id="ab-dc2" class="ab-dc"><div class="ab-dc-yr">2015 · 1 year</div><div class="ab-dc-title">Parliamentary Advisor</div><div class="ab-dc-org">Turkish Grand National Assembly</div><div class="ab-dc-body">Advisory support on legislative and communications matters within the Turkish Grand National Assembly. Developed expertise in parliamentary procedure, policy design, and political communication at national level — experience that continues to inform his analytical journalism and strategic communications work.</div><div style="margin-top:.6rem"><span class="ab-tag">Legislative</span><span class="ab-tag">Political Comms</span></div></div>
     <div id="ab-dc3" class="ab-dc"><div class="ab-dc-yr">2013 – 2016 · 3 years</div><div class="ab-dc-title">Co-founder</div><div class="ab-dc-org">Sinan &amp; Wren Foundation</div><div class="ab-dc-body">Co-founded and led an international civil society foundation dedicated to dialogue and cultural exchange. Managed cross-cultural programs, strategic partnerships, and full operational direction — cultivating a network of civic leaders and institutions across Europe and the Middle East over three formative years.</div><div style="margin-top:.6rem"><span class="ab-tag">NGO</span><span class="ab-tag">Civil Society</span><span class="ab-tag">Co-founder</span></div></div>
     <div id="ab-dc4" class="ab-dc"><div class="ab-dc-yr">2016 – 2018</div><div class="ab-dc-title">Georgetown University</div><div class="ab-dc-org">Academic Language Program · Washington DC</div><div class="ab-dc-body">Completed advanced academic language training at Georgetown University in Washington DC. Organised the landmark Georgetown Cryptocurrency &amp; Fiqh Symposium, convening Prof. James J. Angel (Harvard Business School) and Islamic finance scholar Joe Bradford. Active member of Georgetown Muslim Students Association 2017–2019, contributing to interfaith dialogue and community building on campus.</div><div style="margin-top:.6rem"><span class="ab-tag">Georgetown</span><span class="ab-tag">Crypto &amp; Fiqh</span><span class="ab-tag">Organiser</span></div></div>
-    <div id="ab-dc5" class="ab-dc"><div class="ab-dc-yr">2012 – 2015</div><div class="ab-dc-title">MA · Islamic Law &amp; Finance</div><div class="ab-dc-org">Istanbul University</div><div class="ab-dc-body">Thesis: "An Investigation on the Economical Life of the Holy Prophet" — a scholarly examination of prophetic economic principles and their resonance in contemporary Islamic finance. Specialised in the intersection of Islamic jurisprudence, Fiqh, and modern financial structures, laying the intellectual foundation for ongoing research in prophetic economics.</div><div style="margin-top:.6rem"><span class="ab-tag">Islamic Finance</span><span class="ab-tag">Fiqh</span><span class="ab-tag">Research</span></div></div>
+    <div id="ab-dc5" class="ab-dc"><div class="ab-dc-yr">2012 – 2015</div><div class="ab-dc-title">MA · Islamic Law &amp; Finance</div><div class="ab-dc-org">Istanbul University</div><div class="ab-dc-body">Thesis: <a href="#" onclick="thesisOpen();return false;" style="color:#b8892a;text-decoration:underline;text-underline-offset:3px;cursor:pointer;" title="Read the thesis">"An Investigation on the Economical Life of the Holy Prophet"</a> — a scholarly examination of prophetic economic principles and their resonance in contemporary Islamic finance. Specialised in the intersection of Islamic jurisprudence, Fiqh, and modern financial structures, laying the intellectual foundation for ongoing research in prophetic economics.</div><div style="margin-top:.6rem"><span class="ab-tag">Islamic Finance</span><span class="ab-tag">Fiqh</span><span class="ab-tag">Research</span></div></div>
     <div id="ab-dc6" class="ab-dc"><div class="ab-dc-yr">2006 – 2010</div><div class="ab-dc-title">BA · Economics</div><div class="ab-dc-org">Uludağ University, Bursa</div><div class="ab-dc-body">Thesis: "Economic Analysis of Participation Banks" — an empirical study of interest-free banking models and their operational viability within the Turkish financial system. Simultaneously founded and managed the International Student Association (2006–2010), fostering cross-cultural engagement and leadership among an international student body.</div><div style="margin-top:.6rem"><span class="ab-tag">Economics</span><span class="ab-tag">Participation Banking</span><span class="ab-tag">Leadership</span></div></div>
   </div>
 </div>
@@ -2454,90 +2537,41 @@ setTimeout(()=>{
 
 // 3D Donut
 (function(){
+  let abDonutRunning=false;
   function startDonut(){
-  abDonutRunning=true;
-  const cv=document.getElementById('ab-donut');if(!cv)return;
-  const ctx=cv.getContext('2d');
-  const W=216,H=220;
-  cv.width=W;cv.height=H;cv.style.height=H+'px';
-  const cx=W/2,cy=90,R=72,ir=0.52;
-  const segs=[
-    {pct:.5,col:'#b8892a',label:'Communications',pctTxt:'50%'},
-    {pct:.25,col:'#5DCAA5',label:'Journalism',pctTxt:'25%'},
-    {pct:.25,col:'#AFA9EC',label:'NGOs',pctTxt:'25%'}
-  ];
-  let rot=0;
-
-  function frame(){
-    ctx.clearRect(0,0,W,H);
-    let a=rot;
-    // Draw donut segments (flat circle style, cleaner)
-    segs.forEach(s=>{
-      const e=a+s.pct*Math.PI*2;
-      // Outer arc
-      ctx.beginPath();
-      ctx.moveTo(cx+Math.cos(a)*ir*R,cy+Math.sin(a)*ir*R);
-      ctx.arc(cx,cy,R,a,e);
-      ctx.arc(cx,cy,ir*R,e,a,true);
-      ctx.closePath();
-      ctx.fillStyle=s.col;
-      ctx.fill();
-      ctx.strokeStyle='var(--bg,#fff)';
-      ctx.lineWidth=2;
-      ctx.stroke();
-
-      // Label: midpoint of arc, positioned outside donut
-      const mid=a+s.pct*Math.PI;
-      const labelR=R+36;
-      const lx=cx+Math.cos(mid)*labelR;
-      const ly=cy+Math.sin(mid)*labelR;
-
-      // Leader line
-      const innerPt={x:cx+Math.cos(mid)*(R+4),y:cy+Math.sin(mid)*(R+4)};
-      const outerPt={x:cx+Math.cos(mid)*(R+20),y:cy+Math.sin(mid)*(R+20)};
-      ctx.beginPath();
-      ctx.moveTo(innerPt.x,innerPt.y);
-      ctx.lineTo(outerPt.x,outerPt.y);
-      ctx.strokeStyle=s.col;ctx.lineWidth=1.5;ctx.setLineDash([2,2]);ctx.stroke();
-      ctx.setLineDash([]);
-
-      // Dot
-      ctx.beginPath();ctx.arc(outerPt.x,outerPt.y,3,0,Math.PI*2);
-      ctx.fillStyle=s.col;ctx.fill();
-
-      // Text: always upright (not rotated)
-      ctx.save();
-      ctx.textAlign=lx<cx?'right':'left';
-      ctx.textBaseline='middle';
-      // Label line 1
-      ctx.font='bold 12px EB Garamond,Georgia,serif';
-      ctx.fillStyle=s.col;
-      ctx.fillText(s.pctTxt,lx+(lx<cx?-6:6),ly-7);
-      // Label line 2
-      ctx.font='11px EB Garamond,Georgia,serif';
-      ctx.fillStyle='var(--ink2,#555)';
-      ctx.fillText(s.label,lx+(lx<cx?-6:6),ly+7);
-      ctx.restore();
-
-      a=e;
-    });
-
-    // Center label
-    ctx.textAlign='center';
-    ctx.textBaseline='middle';
-    ctx.font='bold 13px EB Garamond,Georgia,serif';
-    ctx.fillStyle='var(--ink,#111)';
-    ctx.fillText('Core',cx,cy-8);
-    ctx.fillText('Pillars',cx,cy+8);
-
-    rot+=0.008;
-    requestAnimationFrame(frame);
-  }
-  frame();
+    abDonutRunning=true;
+    const cv=document.getElementById('ab-donut');if(!cv)return;
+    const ctx=cv.getContext('2d');
+    const cx=80,cy=50,rx=50,ry=14,depth=15,ir=0.58;
+    const segs=[{pct:.5,col:'#b8892a'},{pct:.25,col:'#5DCAA5'},{pct:.25,col:'#AFA9EC'}];
+    let rot=0;
+    function ring(a1,a2,col,bot){
+      const dy=bot?depth:0;
+      ctx.beginPath();ctx.ellipse(cx,cy+dy,rx,ry,0,a1,a2);
+      ctx.lineTo(cx+Math.cos(a2)*rx*ir,cy+dy+Math.sin(a2)*ry*ir);
+      ctx.ellipse(cx,cy+dy,rx*ir,ry*ir,0,a2,a1,true);ctx.closePath();
+      ctx.fillStyle=col+(bot?'cc':'ff');ctx.fill();
+      ctx.strokeStyle='rgba(0,0,0,0.05)';ctx.lineWidth=.5;ctx.stroke();
+    }
+    function side(a1,a2,col){
+      const x1=cx+Math.cos(a1)*rx,y1=cy+Math.sin(a1)*ry;
+      const x2=cx+Math.cos(a2)*rx,y2=cy+Math.sin(a2)*ry;
+      ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x1,y1+depth);
+      ctx.lineTo(x2,y2+depth);ctx.lineTo(x2,y2);ctx.closePath();
+      ctx.fillStyle=col+'88';ctx.fill();
+      ctx.strokeStyle='rgba(0,0,0,0.04)';ctx.stroke();
+    }
+    (function frame(){
+      ctx.clearRect(0,0,160,110);
+      let a=rot;
+      segs.forEach(s=>{const e=a+s.pct*Math.PI*2;if(a<Math.PI)side(a,e,s.col);a=e;});
+      a=rot;segs.forEach(s=>{const e=a+s.pct*Math.PI*2;ring(a,e,s.col,true);a=e;});
+      a=rot;segs.forEach(s=>{const e=a+s.pct*Math.PI*2;ring(a,e,s.col,false);a=e;});
+      rot+=0.012;requestAnimationFrame(frame);
+    })();
   }
   setTimeout(startDonut,200);
   window.addEventListener('ab-init',()=>{ if(!abDonutRunning){startDonut();} });
-  let abDonutRunning=false;
 })();
 
 // World Map
@@ -3485,6 +3519,17 @@ window.addEventListener('scroll',()=>{
     el.innerHTML=html;
   });
 })();
+
+/* ── Thesis Reader ── */
+function thesisOpen(){
+  document.getElementById('thesis-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function thesisClose(){
+  document.getElementById('thesis-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')thesisClose();});
 </script>
 
 <!-- Newspaper modal -->
@@ -3512,6 +3557,91 @@ window.addEventListener('scroll',()=>{
       <button class="all-news-close" onclick="closeAllNews()">✕ Close</button>
     </div>
     <div id="all-news-list"></div>
+  </div>
+</div>
+
+<!-- Thesis Reader Modal -->
+<div class="thesis-overlay" id="thesis-overlay" onclick="if(event.target===this)thesisClose()">
+  <div class="thesis-modal">
+    <div class="thesis-head">
+      <div class="thesis-head-title">Master's Thesis · Istanbul University · 2015</div>
+      <button class="thesis-close" onclick="thesisClose()">✕ Close</button>
+    </div>
+    <div class="thesis-banner">
+      <div class="thesis-uni">T.C. Istanbul University · Institute of Social Sciences · Department of Basic Islamic Sciences</div>
+      <div class="thesis-main-title">An Investigation into the Economic Life of the Prophet</div>
+      <div class="thesis-sub">Halil Ibrahim Ciger &nbsp;·&nbsp; Advisor: Prof. Dr. Hamdi Donduren &nbsp;·&nbsp; January 2015</div>
+    </div>
+    <div class="thesis-body">
+
+      <div class="thesis-chapter">
+        <div class="thesis-chapter-title">Abstract</div>
+        <p>In this study, the following information is provided: the meaning of the Prophet's choices and dispositions for believers, their way of living the Sunnah, and whether or not every detail of the Prophet's way of life can be implemented by Muslims. Additionally, the links between both Islamic sources are established and trade relations are explained. A set of principles with examples for commercial life are drawn from the Quran and Sunnah.</p>
+        <p>It is expressed that the Quran and the Sunnah are inseparable parts of each other. Because the Sunnah is an adjunct of the Quran, it is impossible to distinguish the Sunnah from the Quran. The belief that respect for the Prophet stems from respect for Allah is prevalent in the Muslim community.</p>
+        <p>In another dimension of this study, application examples of the Prophet's commercial life and his economic life are described. The commercial teachings of the Prophet for believers, the kinds of trade relations he had, and the important factors of commercial life are described. Then the Prophet's commercial operations, and his interventions in both prohibitions and permits in trade—regarding financial, agricultural, and other highlights—have been discussed.</p>
+        <p><strong>Keywords:</strong> Economics, Islamic Economics, Commerce, Market, Interest</p>
+      </div>
+
+      <div class="thesis-chapter">
+        <div class="thesis-chapter-title">Preface</div>
+        <p>Every aspect of the Prophet's life is adorned with the finest examples for humanity. The Prophet's twenty-three-year period of prophethood provided divine messages that transcend all ages—not only for his own time—in the realms of trade and economics. Allah (SWT) has commanded believers to take the Prophet as their measure, as he presented a model of life based on the Quran.</p>
+        <p>In this study, the economic and commercial relations in the life of the Prophet will be examined with the awareness that 'the Creator knows best,' using the Quran as the standard. Important matters that a Muslim who enters the commercial life should pay attention to will be addressed. The study has been carried out primarily taking into account the Prophet's words, actions, and periodic commercial relations.</p>
+      </div>
+
+      <div class="thesis-chapter">
+        <div class="thesis-chapter-title">Chapter 1 · The Prophet's Dispositions as Evidence</div>
+        <p>Dispositions refer to everything that originates from the Prophet (peace be upon him) in the form of speech, action, or tacit approval (taqrir). The fact that the Prophet's words, actions, and tacit approvals constitute evidence describes the role that these play in shaping the lives of Muslims.</p>
+        <h4>Model Acts (Imtisali)</h4>
+        <p>These are acts in which the Prophet and his community are equally responsible. Acts such as prayer, fasting, giving zakat, performing the pilgrimage, and sacrificing animals are examples where the Prophet's responsibility is the same as that of every believer.</p>
+        <h4>Natural Acts (Jibilli)</h4>
+        <p>In these acts, following the Prophet's behavior is not considered obligatory. These are acts that the Prophet performed unintentionally, under compulsion, out of necessity, or naturally. Following the Prophet in such acts is permissible.</p>
+        <h4>The Foundation of the Prophet's Sunnah in the Quran</h4>
+        <p>The first Islamic scholars to express opinions on the authority of the Prophet's words divided revelation into two parts: 'wahy matluw' (recited revelation — the Holy Quran) and 'wahy ghayru matluw' (non-recited revelation — the Sunnah). Imam al-Shafi'i stated: 'Allah has bestowed a great favor upon His servants by teaching them the Book and Wisdom,' interpreting 'Wisdom' as the Sunnah.</p>
+      </div>
+
+      <div class="thesis-chapter">
+        <div class="thesis-chapter-title">Chapter 2 · Principal Commercial Principles in the Quran and Sunnah</div>
+        <p>Societies attain prosperity as long as they contain the principles of justice, fairness, and righteousness. The Prophet's statement 'One who delivers goods to the market gains sustenance' emphasizes the socioeconomic importance of individuals contributing to meeting society's needs.</p>
+        <h4>Islamic Contract Conditions</h4>
+        <p>In Islamic commercial relations, mutual consent is essential for a valid transaction. For a legitimate contract, there must be mutual offer and acceptance by the parties. The Prophet established the foundation of contract law in Islamic economics in a three-word hadith: 'Muslims are bound by their conditions among themselves, provided that these conditions do not make lawful what is forbidden or forbidden what is lawful.'</p>
+        <h4>Acquiring Wealth in Islam</h4>
+        <p>While Islam encourages the acquisition of wealth, it also advises believers to pay attention to certain standards while earning. The Muslim's duty is to earn for the benefit of society while maintaining lawful and clean means. The Prophet linked the acceptance of one's prayer to having lawful and clean sustenance.</p>
+        <h4>Being Truthful</h4>
+        <p>Truthfulness is the foundation of commercial life. The Prophet was a personality who never compromised on truthfulness—neither before his prophethood nor after. He gathered merchants and addressed them: 'The devil and sin are constantly present in trade. Purify your trade with charity.'</p>
+      </div>
+
+      <div class="thesis-chapter">
+        <div class="thesis-chapter-title">Chapter 3 · The Prophet's Practices in Commercial Life</div>
+        <h4>Trade Before Prophethood</h4>
+        <p>The Prophet began his working life at about the age of eight by herding sheep, then at age twelve traveled with trade caravans to Busra alongside his uncle Abu Talib. Until the age of twenty-five, he worked primarily in the textile trade, earning a reputation for honest dealings during commercial visits to Busra, Bahrain, Abyssinia, and Yemen.</p>
+        <h4>The Prophet's Market Practices</h4>
+        <p>When the Prophet first arrived in Medina, he visited all the markets in the city. He established a market for Muslims, declaring: 'This is your market. Do not establish fixed places here. No taxes will be collected from you here.' By declaring 'Do not establish fixed places,' the Prophet enabled the creation of a mobile market, a concept aligned with modern economic thought on perfect competition.</p>
+        <h4>The Prophet's Marketplace Refinement</h4>
+        <p>The Prophet had transformed crowded marketplaces into cheerful, entertaining environments. He would sometimes come to shopping centers and joke with his companions. In a memorable episode, he embraced his companion Zahir from behind in the marketplace and called out: 'I have a slave for sale!' — then raised his voice to declare: 'You are certainly not ugly. You are of great worth before Allah, O Zahir!'</p>
+      </div>
+
+      <div class="thesis-chapter">
+        <div class="thesis-chapter-title">Chapter 4 · The Prophet's Prohibitions in Economic Life</div>
+        <h4>Prohibition of Interest (Riba)</h4>
+        <p>Islam has strictly forbidden interest. In his Farewell Sermon, the Prophet declared: 'The usurious practices of the Age of Ignorance have been abolished... Your principal amounts belong to you. You shall neither wrong nor be wronged.' The Quran states: 'Allah has permitted trade and has forbidden interest' (2:275).</p>
+        <h4>Market Prohibitions</h4>
+        <p>The Prophet prohibited praising goods in a manner that would harm others without any intention of buying, mixing oaths into trade ('An oath increases interest in goods, but actually reduces earnings'), and intercepting goods carriers on the road before they entered the market.</p>
+        <h4>Prohibition of Hoarding (Ihtikar)</h4>
+        <p>Ihtikar means withholding goods from the market and waiting for prices to rise to obtain excessive profit. The Prophet prohibited this: 'One who delivers goods to the market gains sustenance, but one who hoards goods is cursed.'</p>
+      </div>
+
+      <div class="thesis-chapter">
+        <div class="thesis-chapter-title">Conclusion and Evaluation</div>
+        <p>In the foundations of the Prophet's economic and commercial life, these same measures were applied. Just as modern people shape their lifestyle by referencing contemporary phenomena, it is natural and necessary for Muslims to take the Prophet as a model in order to establish an Islamic style by returning to their roots.</p>
+        <p>Today, the principles of commercial life have become quite flexible and softened. There must be merchants, economists, and businesspeople who take the Prophet's teachings as their model—who are faithful to their contracts, who make their payments on time, who give their debtors flexibility, who deliver their goods on time, and who conduct their work solidly and honestly.</p>
+        <p>The believer is reminded that in the Prophet's era, wealth was not condemned—on the contrary, acquiring wealth and learning a trade were needs of society; that those who earned by the work of their own hands were praised; and that no commercial or economic relationship should distract one from remembering Allah, performing the prayer, or giving zakat.</p>
+      </div>
+
+    </div>
+    <div class="thesis-footer-bar">
+      <div class="thesis-footer-text">Master's Thesis · Istanbul University 2015</div>
+      <a class="thesis-link" href="https://katalog.isam.org.tr/?dil=0&p=1&q=Halil+%C4%B0brahim+Ci%C4%9Fer&alan=qYazarlar_txt" target="_blank" rel="noopener">ISAM Catalog ↗</a>
+    </div>
   </div>
 </div>
 </body>
