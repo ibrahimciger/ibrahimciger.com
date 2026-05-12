@@ -755,12 +755,13 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   display:none; position:fixed;
   background:var(--bg); border:.5px solid var(--border);
   color:var(--ink); font-size:12px; white-space:nowrap;
-  padding:5px 12px; border-radius:3px; pointer-events:none;
+  padding:5px 12px; border-radius:4px; pointer-events:none;
   font-family:'Josefin Sans',sans-serif; font-weight:400;
   letter-spacing:.08em; z-index:9999;
-  box-shadow:0 2px 12px rgba(0,0,0,0.15);
+  box-shadow:0 4px 16px rgba(0,0,0,0.18);
+  max-width:280px; white-space:normal; line-height:1.4;
 }
-.p-w:hover .p-tip { opacity:1; }
+.p-w:hover .p-tip { display:block; }
 
 /* ── Analiz ve Görüşler special design ── */
 .analiz-wrap { padding:0; }
@@ -894,12 +895,14 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 
 
 
-/* ── Stats bar over map ── */
+/* ── Stats bar above map ── */
 .ab-stats-bar{
-  position:absolute;top:0;left:0;right:0;z-index:4;
-  background:rgba(0,0,0,0.38);backdrop-filter:blur(2px);
-  overflow:hidden;height:52px;display:flex;align-items:center;
+  position:relative;z-index:2;
+  background:var(--bg2);border-bottom:.5px solid var(--border2);
+  overflow:hidden;height:54px;display:flex;align-items:center;
 }
+.ab-stats-bar .ab-sn{color:#b8892a !important;}
+.ab-stats-bar .ab-sl{color:var(--ink2) !important;}
 .ab-stats-track{
   display:flex;align-items:center;gap:0;
   animation:ab-stats-scroll 18s linear infinite;
@@ -1160,29 +1163,6 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   </section>
 
   <!-- PODCAST -->
-  <section id="sec-podcast" class="section-alt">
-    <div class="pod-head sec-head">
-      <div class="sec-eye">Podcast</div>
-      <h2 class="sec-title">Podcast</h2>
-    </div>
-    <div class="pl-tabs" id="pl-tabs"></div>
-    <div class="pl-body">
-      <div class="pl-left">
-        <a id="pl-link" href="#" target="_blank" rel="noopener" style="display:block;text-decoration:none">
-          <img class="pl-cover-img" id="pl-img" src="" alt="" onerror="this.style.opacity='.3'">
-        </a>
-        <div>
-          <a id="pl-name-link" href="#" target="_blank" rel="noopener" style="text-decoration:none">
-            <div class="pl-prog-name" id="pl-name" style="cursor:pointer"></div>
-          </a>
-          <div class="pl-prog-ct" id="pl-ct"></div>
-        </div>
-      </div>
-      <div class="pl-eps" id="pl-eps"></div>
-    </div>
-  </section>
-
-  <!-- VIDEO -->
   <section id="sec-video" class="section">
     <div class="sec-head">
       <div class="sec-eye">Vodcast</div>
@@ -1647,6 +1627,29 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
       <div class="f-dt" id="ft0"></div>
     </footer>
   </section>
+
+  <!-- VIDEO -->
+  <section id="sec-podcast" class="section-alt">
+    <div class="pod-head sec-head">
+      <div class="sec-eye">Podcast</div>
+      <h2 class="sec-title">Podcast</h2>
+    </div>
+    <div class="pl-tabs" id="pl-tabs"></div>
+    <div class="pl-body">
+      <div class="pl-left">
+        <a id="pl-link" href="#" target="_blank" rel="noopener" style="display:block;text-decoration:none">
+          <img class="pl-cover-img" id="pl-img" src="" alt="" onerror="this.style.opacity='.3'">
+        </a>
+        <div>
+          <a id="pl-name-link" href="#" target="_blank" rel="noopener" style="text-decoration:none">
+            <div class="pl-prog-name" id="pl-name" style="cursor:pointer"></div>
+          </a>
+          <div class="pl-prog-ct" id="pl-ct"></div>
+        </div>
+      </div>
+      <div class="pl-eps" id="pl-eps"></div>
+    </div>
+  </section>
 </div>
 
 <!-- ══════ HABERLERİM (inner) ══════ -->
@@ -1716,16 +1719,10 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
       </div>
       <div class="pod-sec" id="ps-birbakista">
         <div class="pod-sh"><span class="pod-st">Bir Bakışta</span><span class="pod-ct">19 bölüm</span></div>
-        <div class="pod-emb" style="background:var(--bg2);padding:16px;">
-          <iframe width="100%" height="390" frameborder="no" scrolling="no" seamless src="https://share.transistor.fm/e/bir-bakista/playlist" style="display:block;border-radius:6px"></iframe>
-        </div>
         <div id="ep-birbakista"><div class="loading">Yükleniyor...</div></div>
       </div>
       <div class="pod-sec" id="ps-mahrec">
         <div class="pod-sh"><span class="pod-st">Mahreç Dünya</span></div>
-        <div class="pod-emb" style="background:var(--bg2);padding:16px;">
-          <iframe width="100%" height="390" frameborder="no" scrolling="no" seamless src="https://share.transistor.fm/e/mahrec-dunya/playlist" style="display:block;border-radius:6px"></iframe>
-        </div>
         <div id="ep-mahrec"><div class="loading">Yükleniyor...</div></div>
       </div>
       <div class="pod-sec" id="ps-atalks">
@@ -2075,7 +2072,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .ab-wrap{font-family:'EB Garamond',Georgia,serif;background:var(--bg);color:var(--ink);transition:background .3s,color .3s}
 .ab-vsep{width:1px;background:var(--border2);flex-shrink:0}
 .ab-bord{border-bottom:.5px solid var(--border2)}
-.ab-top{display:flex;border-bottom:.5px solid var(--border2)}
+.ab-top{display:flex;flex-direction:column;border-bottom:.5px solid var(--border2)}
 .ab-name-col{padding:1.8rem 1.5rem 1.5rem 2rem;flex:0 0 180px}
 .ab-hic{font-size:36px;font-family:'EB Garamond',Georgia,serif;font-size:32px;font-weight:500;color:#b8892a;letter-spacing:.04em;line-height:1}
 .ab-hic-roles{display:flex;flex-direction:column;gap:3px;margin-top:.6rem}
@@ -2088,7 +2085,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 
 .ab-sn{font-size:24px;font-weight:500;color:#b8892a;line-height:1}
 .ab-sl{font-size:13px;color:var(--muted);margin-top:2px;line-height:1.3}
-.ab-map-col{flex:1;position:relative;overflow:hidden;height:260px}
+.ab-map-col{width:100%;position:relative;overflow:hidden;height:240px}
 .ab-map-badge{position:absolute;top:8px;left:12px;font-size:10px;letter-spacing:.1em;color:#b8892a;z-index:3;background:var(--bg);padding:3px 10px;border-radius:4px;border:1.5px solid #b8892a;transition:background .3s;font-weight:700}
 .ab-ctip{position:absolute;background:var(--bg);border:.5px solid var(--border2);padding:4px 10px;border-radius:4px;font-size:12px;font-weight:500;pointer-events:none;opacity:0;transition:opacity .12s;z-index:10;white-space:nowrap;color:var(--ink)}
 .ab-pillars{display:grid;grid-template-columns:repeat(6,1fr);border-bottom:.5px solid var(--border2)}
@@ -2148,7 +2145,8 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .ab-awards{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:.5px solid var(--border2)}
 .ab-aw{padding:1rem 1.5rem;border-right:.5px solid var(--border2);display:flex;align-items:center;gap:.8rem}
 .ab-aw:last-child{border-right:none}
-.ab-aw-ring{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px;border:2px solid;flex-shrink:0}
+.ab-aw-ring{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px;border:2px solid;flex-shrink:0;transition:transform .3s ease,box-shadow .3s ease;cursor:default;}
+.ab-aw:hover .ab-aw-ring{transform:rotate(12deg) scale(1.18);box-shadow:0 6px 20px rgba(184,137,42,0.3);}
 .ab-gr{border-color:#b8892a;color:#b8892a}.ab-br{border-color:#a0522d;color:#a0522d}
 .ab-at{font-size:17px;font-weight:500;line-height:1.3;color:var(--ink)}
 .ab-ay{font-size:14px;color:#b8892a;font-weight:500;margin-top:3px}
@@ -2335,9 +2333,48 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
     </div>
     <div class="ab-bl" style="margin-top:.4rem">Languages</div>
     <div class="ab-lang-graphic">
-      <div class="ab-lang-row"><canvas class="ab-lang-arc" data-pct="100" width="44" height="44"></canvas><div><div class="ab-lang-name">Turkish</div><div class="ab-lang-level">Native</div></div></div>
-      <div class="ab-lang-row"><canvas class="ab-lang-arc" data-pct="85" width="44" height="44"></canvas><div><div class="ab-lang-name">English</div><div class="ab-lang-level">Proficiency</div></div></div>
-      <div class="ab-lang-row"><canvas class="ab-lang-arc" data-pct="55" width="44" height="44"></canvas><div><div class="ab-lang-name">Arabic</div><div class="ab-lang-level">Intermediate</div></div></div>
+      <div class="ab-lang-row"><svg width="48" height="48" viewBox="0 0 48 48" style="flex-shrink:0;filter:drop-shadow(0 2px 4px rgba(184,137,42,0.25))">
+        <defs>
+          <linearGradient id="lg100" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#d4a840"/>
+            <stop offset="100%" stop-color="#b8892a"/>
+          </linearGradient>
+        </defs>
+        <circle cx="24" cy="24" r="18" fill="none" stroke="var(--border2)" stroke-width="5"/>
+        <circle cx="24" cy="24" r="18" fill="none" stroke="url(#lg100)" stroke-width="5"
+          stroke-linecap="round" stroke-dasharray="113.1 0.0"
+          transform="rotate(-90 24 24)"/>
+        <text x="24" y="24" text-anchor="middle" dominant-baseline="central"
+          font-size="10" font-weight="700" fill="#b8892a" font-family="system-ui,sans-serif">100%</text>
+      </svg><div><div class="ab-lang-name">Turkish</div><div class="ab-lang-level">Native</div></div></div>
+      <div class="ab-lang-row"><svg width="48" height="48" viewBox="0 0 48 48" style="flex-shrink:0;filter:drop-shadow(0 2px 4px rgba(184,137,42,0.25))">
+        <defs>
+          <linearGradient id="lg85" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#d4a840"/>
+            <stop offset="100%" stop-color="#b8892a"/>
+          </linearGradient>
+        </defs>
+        <circle cx="24" cy="24" r="18" fill="none" stroke="var(--border2)" stroke-width="5"/>
+        <circle cx="24" cy="24" r="18" fill="none" stroke="url(#lg85)" stroke-width="5"
+          stroke-linecap="round" stroke-dasharray="96.1 17.0"
+          transform="rotate(-90 24 24)"/>
+        <text x="24" y="24" text-anchor="middle" dominant-baseline="central"
+          font-size="10" font-weight="700" fill="#b8892a" font-family="system-ui,sans-serif">85%</text>
+      </svg><div><div class="ab-lang-name">English</div><div class="ab-lang-level">Proficiency</div></div></div>
+      <div class="ab-lang-row"><svg width="48" height="48" viewBox="0 0 48 48" style="flex-shrink:0;filter:drop-shadow(0 2px 4px rgba(184,137,42,0.25))">
+        <defs>
+          <linearGradient id="lg55" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#d4a840"/>
+            <stop offset="100%" stop-color="#b8892a"/>
+          </linearGradient>
+        </defs>
+        <circle cx="24" cy="24" r="18" fill="none" stroke="var(--border2)" stroke-width="5"/>
+        <circle cx="24" cy="24" r="18" fill="none" stroke="url(#lg55)" stroke-width="5"
+          stroke-linecap="round" stroke-dasharray="62.2 50.9"
+          transform="rotate(-90 24 24)"/>
+        <text x="24" y="24" text-anchor="middle" dominant-baseline="central"
+          font-size="10" font-weight="700" fill="#b8892a" font-family="system-ui,sans-serif">55%</text>
+      </svg><div><div class="ab-lang-name">Arabic</div><div class="ab-lang-level">Intermediate</div></div></div>
     </div>
   </div>
   <div class="ab-bsep"></div>
@@ -2529,10 +2566,19 @@ setTimeout(()=>{
       const isH=hov&&hov.n===c.n;
       const p=Math.sin(pulse+(c.lo*0.15+c.la*0.12))*0.5+0.5;
       if(c.home||isH){ctx.beginPath();ctx.arc(x,y,c.home?16:14,0,Math.PI*2);ctx.fillStyle=c.home?'rgba(184,137,42,0.1)':'rgba(93,202,165,0.15)';ctx.fill();}
-      ctx.beginPath();ctx.arc(x,y,c.home?8:isH?8:4.5+p*1.5,0,Math.PI*2);
+      // Main dot
+      const dotR=c.home?8:isH?8:5+Math.sin(pulse*2+(c.lo+c.la)*0.1)*1.5;
+      ctx.beginPath();ctx.arc(x,y,dotR,0,Math.PI*2);
       ctx.fillStyle=c.home?'#e6a020':isH?'#00d4a0':'#ff6b35';ctx.fill();
-      // White center for vivid look
-      if(!c.home){ctx.beginPath();ctx.arc(x,y,c.home?3:isH?3:1.8,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,0.7)';ctx.fill();}
+      // Pulse ring for non-home dots
+      if(!c.home){
+        const ringR=dotR+4+Math.sin(pulse*1.5+(c.lo+c.la)*0.15)*3;
+        ctx.beginPath();ctx.arc(x,y,ringR,0,Math.PI*2);
+        ctx.strokeStyle=isH?'rgba(0,212,160,0.4)':'rgba(255,107,53,0.3)';
+        ctx.lineWidth=1.5;ctx.stroke();
+        ctx.beginPath();ctx.arc(x,y,1.8,0,Math.PI*2);
+        ctx.fillStyle='rgba(255,255,255,0.8)';ctx.fill();
+      }
       if(c.home){ctx.font='600 11px system-ui,sans-serif';ctx.fillStyle='#b8892a';ctx.fillText('Istanbul',x+9,y-4);}
     });
     // Continent labels at 60% opacity
@@ -3015,10 +3061,13 @@ function switchPl(idx){
       }
       // Episode grid: 2 columns
       const isBBKorMHR=(pl.label==='Bir Bakışta'||pl.label==='Mahreç Dünya');
-      if(!isBBKorMHR&&playlistUrl){
+      // Only show playlist for Anadolu Talks (not Portre/BBK/Mahrec - handled separately)
+      const isAT=(pl.label==='Anadolu Talks');
+      if(isAT&&playlistUrl){
         html+=`<div class="pod-ep-playlist"><iframe width="100%" height="390" frameborder="no" scrolling="no" seamless src="${playlistUrl}" style="display:block;border-radius:6px"></iframe></div>`;
       }
-      html += `<div style="display:grid;grid-template-columns:${isBBKorMHR?'repeat(4,1fr)':`repeat(2,1fr)`};gap:8px;padding:16px;">`;
+      // 3-col grid for all embed types on home (4-col for BBK/Mahrec removed)
+      html += `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:16px;">`;
       pl.embeds.forEach(url=>{
         html += `<div><iframe width="100%" height="180" frameborder="no" scrolling="no" seamless src="${url}" loading="lazy" style="display:block;border-radius:4px"></iframe></div>`;
       });
@@ -3071,6 +3120,7 @@ function buildEpGrid(elId, ids, playlistUrl, showPlaylist){
   // 2. 3-col episode grid
   const grid=document.createElement('div');
   grid.className='pod-ep-grid';
+  grid.style.gridTemplateColumns='repeat(3,1fr)';
   ids.forEach((id,i)=>{
     const card=makeEpCard(id, i+1, '', '');
     grid.appendChild(card);
@@ -3412,5 +3462,16 @@ window.addEventListener('scroll',()=>{
 <button class="back-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});showHome();" aria-label="Back to top">
   <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
 </button>
+
+<!-- All News / Featured News overlay -->
+<div class="all-news-overlay" id="all-news-overlay" onclick="closeAllNews(event)">
+  <div class="all-news-modal">
+    <div class="all-news-modal-head">
+      <div class="all-news-modal-title" data-tr="Öne Çıkanlar" data-en="Featured News">Featured News</div>
+      <button class="all-news-close" onclick="closeAllNews()">✕ Close</button>
+    </div>
+    <div id="all-news-list"></div>
+  </div>
+</div>
 </body>
 </html>
