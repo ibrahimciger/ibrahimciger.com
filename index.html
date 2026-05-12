@@ -925,6 +925,60 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   letter-spacing:.06em;text-transform:uppercase;
   font-family:'Josefin Sans',sans-serif;font-weight:300;
 }
+
+/* ── Pod episode card audio wave ── */
+.pod-ep-wave{
+  display:inline-flex;align-items:flex-end;gap:2px;height:14px;margin-left:6px;vertical-align:middle;
+}
+.pod-ep-wave span{
+  display:block;width:2.5px;border-radius:2px;background:#b8892a;
+  animation:pod-bar 1.1s ease infinite;
+}
+.pod-ep-wave span:nth-child(1){animation-delay:0s;height:4px}
+.pod-ep-wave span:nth-child(2){animation-delay:.15s;height:8px}
+.pod-ep-wave span:nth-child(3){animation-delay:.3s;height:12px}
+.pod-ep-wave span:nth-child(4){animation-delay:.15s;height:8px}
+.pod-ep-wave span:nth-child(5){animation-delay:0s;height:4px}
+@keyframes pod-bar{
+  0%,100%{transform:scaleY(.4)}
+  50%{transform:scaleY(1)}
+}
+.pod-ep-card{
+  border:1px solid var(--border2);border-radius:6px;overflow:hidden;
+  background:var(--card);display:flex;flex-direction:column;
+  transition:border-color .2s,background .2s;cursor:pointer;
+}
+.pod-ep-card:hover{border-color:var(--gold);}
+.pod-ep-card-body{padding:12px 14px;flex:1;}
+.pod-ep-num{font-family:'Space Mono',monospace;font-size:8px;color:var(--muted);margin-bottom:5px;}
+.pod-ep-title{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:500;
+  color:var(--ink);line-height:1.4;display:-webkit-box;-webkit-line-clamp:3;
+  -webkit-box-orient:vertical;overflow:hidden;}
+.pod-ep-date{font-family:'Space Mono',monospace;font-size:8px;color:var(--muted);margin-top:5px;}
+.pod-ep-foot{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 12px;border-top:1px solid var(--border2);background:var(--bg2);
+}
+.pod-ep-btn{
+  display:flex;align-items:center;gap:5px;
+  background:var(--gold);border:none;border-radius:3px;
+  padding:5px 10px;cursor:pointer;
+  font-family:'Josefin Sans',sans-serif;font-size:9px;
+  letter-spacing:.12em;text-transform:uppercase;color:#fff;
+}
+.pod-ep-btn svg{width:9px;height:9px;fill:#fff;flex-shrink:0}
+.pod-ep-links{display:flex;gap:6px;}
+.pod-ep-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:12px;padding:16px;width:100%;box-sizing:border-box;
+}
+.pod-ep-playlist{
+  padding:16px;background:var(--bg2);
+  border-bottom:.5px solid var(--border2);
+}
+@media(max-width:768px){
+  .pod-ep-grid{grid-template-columns:1fr;padding:10px;}
+}
 </style>
 </head>
 <body>
@@ -2722,7 +2776,7 @@ function switchPl(idx){
         </div>`;
       }
       // Episode grid: 2 columns
-      html += `<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:16px;">`;
+      html += `<div class="pod-ep-grid">`;
       pl.embeds.forEach(url=>{
         html += `<div><iframe width="100%" height="180" frameborder="no" scrolling="no" seamless src="${url}" loading="lazy" style="display:block;border-radius:4px"></iframe></div>`;
       });
@@ -2737,6 +2791,49 @@ function switchPod(el,id){
   document.querySelectorAll('.pod-ni').forEach(n=>n.classList.remove('on'));
   document.querySelectorAll('.pod-sec').forEach(s=>s.classList.remove('on'));
   el.classList.add('on'); document.getElementById('ps-'+id).classList.add('on');
+}
+
+
+/* ── Pod Episode Card (3-col grid with wave) ── */
+function makeEpCard(id, num, progName, cover){
+  const card=document.createElement('div');
+  card.className='pod-ep-card';
+  // We use the Transistor embed as card face
+  card.innerHTML=`
+    <div class="pod-ep-body" style="padding:0;position:relative;">
+      <iframe width="100%" height="180" frameborder="no" scrolling="no" seamless
+        src="https://share.transistor.fm/e/${id}" loading="lazy"
+        style="display:block;border-radius:5px 5px 0 0"></iframe>
+      <div class="pod-ep-wave" style="position:absolute;bottom:8px;right:10px;pointer-events:none;">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>`;
+  return card;
+}
+
+/* ── Pod Playlist + 3-col grid ── */
+function buildEpGrid(elId, ids, playlistUrl, showPlaylist){
+  const el=document.getElementById(elId);
+  if(!el)return;
+  el.innerHTML='';
+
+  // 1. Playlist embed (only if showPlaylist !== false)
+  if(playlistUrl && showPlaylist !== false){
+    const plWrap=document.createElement('div');
+    plWrap.className='pod-ep-playlist';
+    plWrap.innerHTML=`<iframe width="100%" height="390" frameborder="no" scrolling="no" seamless
+      src="${playlistUrl}" style="display:block;border-radius:6px"></iframe>`;
+    el.appendChild(plWrap);
+  }
+
+  // 2. 3-col episode grid
+  const grid=document.createElement('div');
+  grid.className='pod-ep-grid';
+  ids.forEach((id,i)=>{
+    const card=makeEpCard(id, i+1, '', '');
+    grid.appendChild(card);
+  });
+  el.appendChild(grid);
 }
 
 function buildSharesInner(elId,ids,progName,cover){
@@ -2774,14 +2871,15 @@ async function loadRSS(url,elId,progName,cover,limit){
 }
 
 function initPod(){
-  const PORT_COVER='portre.jpg';
-  const BBK_COVER='bir_bakista.webp';
-  const MHR_COVER='mahrec.jpg';
-  const ANALIZ_COVER='analiz_ve_gorusler.jpg';
-  buildSharesInner('ep-portre',PORTRE_IDS,'Portre',PORT_COVER);
-  loadRSS('https://feeds.transistor.fm/anadolu-ajansi','ep-analiz','Analiz ve Görüşler',ANALIZ_COVER,200);
-  buildSharesInner('ep-birbakista',BBK_IDS,'Bir Bakışta',BBK_COVER);
-  buildSharesInner('ep-mahrec',MHR_IDS,'Mahreç Dünya',MHR_COVER);
+  // Portre: 3-col embed grid (playlist already in HTML)
+  buildEpGrid('ep-portre', PORTRE_IDS, null, false);
+  // Bir Bakışta: 3-col embed grid (playlist already in HTML)
+  buildEpGrid('ep-birbakista', BBK_IDS, null, false);
+  // Mahreç Dünya: 3-col embed grid (playlist already in HTML)
+  buildEpGrid('ep-mahrec', MHR_IDS, null, false);
+  // Analiz: 3-col analiz cards (from buildAnalizSection, playlist already in HTML)
+  const analizEl=document.getElementById('ep-analiz');
+  if(analizEl) buildAnalizSection(analizEl,'analiz_ve_gorusler.jpg');
 }
 
 /* ══ ALL NEWS MODAL ══ */
