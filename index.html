@@ -895,17 +895,18 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 
 
 
-/* ── Stats bar above map ── */
+/* ── Stats bar: dark prominent band below map ── */
 .ab-stats-bar{
   position:relative;z-index:2;
-  background:var(--bg2);border-bottom:.5px solid var(--border2);
-  overflow:hidden;height:54px;display:flex;align-items:center;
+  background:#1a1710;
+  overflow:hidden;height:68px;display:flex;align-items:center;
+  border-bottom:.5px solid rgba(184,137,42,0.3);
 }
-.ab-stats-bar .ab-sn{color:#b8892a !important;}
-.ab-stats-bar .ab-sl{color:var(--ink2) !important;}
+.ab-stats-bar .ab-sn{color:#d4a840 !important;font-size:22px !important;}
+.ab-stats-bar .ab-sl{color:rgba(255,255,255,0.75) !important;font-size:12px !important;letter-spacing:.12em !important;text-transform:uppercase;}
 .ab-stats-track{
   display:flex;align-items:center;gap:0;
-  animation:ab-stats-scroll 18s linear infinite;
+  animation:ab-stats-scroll 28s linear infinite;
   white-space:nowrap;
 }
 @keyframes ab-stats-scroll{
@@ -2089,7 +2090,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .ab-map-col{width:100%;position:relative;overflow:hidden;height:240px}
 .ab-map-badge{position:absolute;top:8px;left:12px;font-size:10px;letter-spacing:.1em;color:#b8892a;z-index:3;background:var(--bg);padding:3px 10px;border-radius:4px;border:1.5px solid #b8892a;transition:background .3s;font-weight:700}
 .ab-ctip{position:absolute;background:var(--bg);border:.5px solid var(--border2);padding:4px 10px;border-radius:4px;font-size:12px;font-weight:500;pointer-events:none;opacity:0;transition:opacity .12s;z-index:10;white-space:nowrap;color:var(--ink)}
-.ab-pillars{display:grid;grid-template-columns:repeat(6,1fr);border-bottom:.5px solid var(--border2)}
+.ab-pillars{display:grid;grid-template-columns:repeat(6,1fr);border-bottom:.5px solid var(--border2);max-width:calc(100% - 2rem);margin:0 1rem;}
 .ab-pill{padding:1rem .4rem;text-align:center;border-right:.5px solid var(--border2);cursor:default;transition:background .2s}
 .ab-pill:last-child{border-right:none}
 .ab-pill:hover{background:var(--bg2)}
@@ -2100,7 +2101,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .ab-pt{font-size:16px;font-weight:500;color:var(--ink);line-height:1.2}
 .ab-ps{font-size:13px;color:var(--muted);margin-top:2px}
 .ab-mid{display:flex;border-bottom:.5px solid var(--border2)}
-.ab-donut-wrap{flex:0 0 250px;padding:1.1rem 1rem 1.1rem 2rem;display:flex;flex-direction:column;justify-content:center;gap:.4rem}
+.ab-donut-wrap{flex:0 0 250px;padding:1rem 1rem 1rem 2rem;display:flex;flex-direction:column;justify-content:flex-start;gap:.4rem}
 .ab-dl{font-size:13px;letter-spacing:.14em;color:var(--muted);margin-bottom:.3rem}
 .ab-leg{display:flex;align-items:center;gap:7px;font-size:15px;color:var(--ink2)}
 .ab-ld{width:9px;height:9px;border-radius:50%;flex-shrink:0}
@@ -2239,22 +2240,22 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 <div class="ab-wrap">
 
 <div class="ab-top">
-
   <div class="ab-map-col">
-    <!-- Stats bar scrolling over map -->
-    <div class="ab-stats-bar">
-      <div class="ab-stats-track">
-        <div class="ab-stat-item"><span class="ab-sn">10 yrs</span><span class="ab-stat-vsep"></span><span class="ab-sl">at Anadolu Agency</span></div>
-        <div class="ab-stat-item"><span class="ab-sn">+25K</span><span class="ab-stat-vsep"></span><span class="ab-sl">hadiths</span></div>
-        <div class="ab-stat-item"><span class="ab-sn">3</span><span class="ab-stat-vsep"></span><span class="ab-sl">awards</span></div>
-        <div class="ab-stat-item"><span class="ab-sn">10 yrs</span><span class="ab-stat-vsep"></span><span class="ab-sl">at Anadolu Agency</span></div>
-        <div class="ab-stat-item"><span class="ab-sn">+25K</span><span class="ab-stat-vsep"></span><span class="ab-sl">hadiths</span></div>
-        <div class="ab-stat-item"><span class="ab-sn">3</span><span class="ab-stat-vsep"></span><span class="ab-sl">awards</span></div>
-      </div>
-    </div>
     <div class="ab-map-badge">Worldwide experience — hover a country</div>
     <div class="ab-ctip" id="ab-ctip"></div>
     <canvas id="ab-wmap"></canvas>
+  </div>
+</div>
+
+<!-- Stats ticker: below map, prominent dark band -->
+<div class="ab-stats-bar">
+  <div class="ab-stats-track">
+    <div class="ab-stat-item"><span class="ab-sn">10 yrs</span><span class="ab-stat-vsep"></span><span class="ab-sl">at Anadolu Agency</span></div>
+    <div class="ab-stat-item"><span class="ab-sn">+25K</span><span class="ab-stat-vsep"></span><span class="ab-sl">hadiths</span></div>
+    <div class="ab-stat-item"><span class="ab-sn">3</span><span class="ab-stat-vsep"></span><span class="ab-sl">awards</span></div>
+    <div class="ab-stat-item"><span class="ab-sn">10 yrs</span><span class="ab-stat-vsep"></span><span class="ab-sl">at Anadolu Agency</span></div>
+    <div class="ab-stat-item"><span class="ab-sn">+25K</span><span class="ab-stat-vsep"></span><span class="ab-sl">hadiths</span></div>
+    <div class="ab-stat-item"><span class="ab-sn">3</span><span class="ab-stat-vsep"></span><span class="ab-sl">awards</span></div>
   </div>
 </div>
 
@@ -2269,11 +2270,9 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 
 <div class="ab-mid">
   <div class="ab-donut-wrap">
-    <div class="ab-dl">Focus split</div>
-    <canvas id="ab-donut" width="216" height="148"></canvas>
-    <div class="ab-leg"><div class="ab-ld" style="background:#b8892a"></div>Communications 50%</div>
-    <div class="ab-leg"><div class="ab-ld" style="background:#5DCAA5"></div>Journalism 25%</div>
-    <div class="ab-leg"><div class="ab-ld" style="background:#AFA9EC"></div>NGOs 25%</div>
+    <div class="ab-dl">Core Pillars</div>
+    <canvas id="ab-donut" width="216" height="220" style="height:220px"></canvas>
+<div style="font-size:11px;color:var(--muted);margin-top:.3rem;font-style:italic;">hover to explore</div>
   </div>
   <div class="ab-vsep"></div>
   <div class="ab-tl-wrap">
@@ -2457,35 +2456,85 @@ setTimeout(()=>{
 (function(){
   function startDonut(){
   abDonutRunning=true;
-  const c=document.getElementById('ab-donut');if(!c)return;
-  const ctx=c.getContext('2d');
-  const cx=108,cy=68,rx=68,ry=19,depth=20,ir=0.58;
-  const segs=[{pct:.5,col:'#b8892a'},{pct:.25,col:'#5DCAA5'},{pct:.25,col:'#AFA9EC'}];
+  const cv=document.getElementById('ab-donut');if(!cv)return;
+  const ctx=cv.getContext('2d');
+  const W=216,H=220;
+  cv.width=W;cv.height=H;cv.style.height=H+'px';
+  const cx=W/2,cy=90,R=72,ir=0.52;
+  const segs=[
+    {pct:.5,col:'#b8892a',label:'Communications',pctTxt:'50%'},
+    {pct:.25,col:'#5DCAA5',label:'Journalism',pctTxt:'25%'},
+    {pct:.25,col:'#AFA9EC',label:'NGOs',pctTxt:'25%'}
+  ];
   let rot=0;
-  function ring(a1,a2,col,bot){
-    const dy=bot?depth:0;
-    ctx.beginPath();ctx.ellipse(cx,cy+dy,rx,ry,0,a1,a2);
-    ctx.lineTo(cx+Math.cos(a2)*rx*ir,cy+dy+Math.sin(a2)*ry*ir);
-    ctx.ellipse(cx,cy+dy,rx*ir,ry*ir,0,a2,a1,true);ctx.closePath();
-    ctx.fillStyle=col+(bot?'cc':'ff');ctx.fill();
-    ctx.strokeStyle='rgba(0,0,0,0.05)';ctx.lineWidth=.5;ctx.stroke();
-  }
-  function side(a1,a2,col){
-    const x1=cx+Math.cos(a1)*rx,y1=cy+Math.sin(a1)*ry;
-    const x2=cx+Math.cos(a2)*rx,y2=cy+Math.sin(a2)*ry;
-    ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x1,y1+depth);
-    ctx.lineTo(x2,y2+depth);ctx.lineTo(x2,y2);ctx.closePath();
-    ctx.fillStyle=col+'88';ctx.fill();
-    ctx.strokeStyle='rgba(0,0,0,0.04)';ctx.stroke();
-  }
-  (function frame(){
-    ctx.clearRect(0,0,216,148);
+
+  function frame(){
+    ctx.clearRect(0,0,W,H);
     let a=rot;
-    segs.forEach(s=>{const e=a+s.pct*Math.PI*2;if(a<Math.PI)side(a,e,s.col);a=e;});
-    a=rot;segs.forEach(s=>{const e=a+s.pct*Math.PI*2;ring(a,e,s.col,true);a=e;});
-    a=rot;segs.forEach(s=>{const e=a+s.pct*Math.PI*2;ring(a,e,s.col,false);a=e;});
-    rot+=0.018;requestAnimationFrame(frame);
-  })();}
+    // Draw donut segments (flat circle style, cleaner)
+    segs.forEach(s=>{
+      const e=a+s.pct*Math.PI*2;
+      // Outer arc
+      ctx.beginPath();
+      ctx.moveTo(cx+Math.cos(a)*ir*R,cy+Math.sin(a)*ir*R);
+      ctx.arc(cx,cy,R,a,e);
+      ctx.arc(cx,cy,ir*R,e,a,true);
+      ctx.closePath();
+      ctx.fillStyle=s.col;
+      ctx.fill();
+      ctx.strokeStyle='var(--bg,#fff)';
+      ctx.lineWidth=2;
+      ctx.stroke();
+
+      // Label: midpoint of arc, positioned outside donut
+      const mid=a+s.pct*Math.PI;
+      const labelR=R+36;
+      const lx=cx+Math.cos(mid)*labelR;
+      const ly=cy+Math.sin(mid)*labelR;
+
+      // Leader line
+      const innerPt={x:cx+Math.cos(mid)*(R+4),y:cy+Math.sin(mid)*(R+4)};
+      const outerPt={x:cx+Math.cos(mid)*(R+20),y:cy+Math.sin(mid)*(R+20)};
+      ctx.beginPath();
+      ctx.moveTo(innerPt.x,innerPt.y);
+      ctx.lineTo(outerPt.x,outerPt.y);
+      ctx.strokeStyle=s.col;ctx.lineWidth=1.5;ctx.setLineDash([2,2]);ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Dot
+      ctx.beginPath();ctx.arc(outerPt.x,outerPt.y,3,0,Math.PI*2);
+      ctx.fillStyle=s.col;ctx.fill();
+
+      // Text: always upright (not rotated)
+      ctx.save();
+      ctx.textAlign=lx<cx?'right':'left';
+      ctx.textBaseline='middle';
+      // Label line 1
+      ctx.font='bold 12px EB Garamond,Georgia,serif';
+      ctx.fillStyle=s.col;
+      ctx.fillText(s.pctTxt,lx+(lx<cx?-6:6),ly-7);
+      // Label line 2
+      ctx.font='11px EB Garamond,Georgia,serif';
+      ctx.fillStyle='var(--ink2,#555)';
+      ctx.fillText(s.label,lx+(lx<cx?-6:6),ly+7);
+      ctx.restore();
+
+      a=e;
+    });
+
+    // Center label
+    ctx.textAlign='center';
+    ctx.textBaseline='middle';
+    ctx.font='bold 13px EB Garamond,Georgia,serif';
+    ctx.fillStyle='var(--ink,#111)';
+    ctx.fillText('Core',cx,cy-8);
+    ctx.fillText('Pillars',cx,cy+8);
+
+    rot+=0.008;
+    requestAnimationFrame(frame);
+  }
+  frame();
+  }
   setTimeout(startDonut,200);
   window.addEventListener('ab-init',()=>{ if(!abDonutRunning){startDonut();} });
   let abDonutRunning=false;
@@ -2496,7 +2545,7 @@ setTimeout(()=>{
   const canvas=document.getElementById('ab-wmap');if(!canvas)return;
   const ctx=canvas.getContext('2d');
   const tip=document.getElementById('ab-ctip');
-  const LON_MIN=-125,LON_MAX=65,LAT_MIN=18,LAT_MAX=72;
+  const LON_MIN=-125,LON_MAX=75,LAT_MIN=15,LAT_MAX=72;
   const C=[
     {n:'USA',lo:-110,la:37},
     {n:'Canada',lo:-105,la:58},
