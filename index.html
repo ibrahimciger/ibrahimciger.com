@@ -999,6 +999,75 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .np-link{display:inline-flex;align-items:center;gap:6px;margin-top:4px;padding:7px 14px;border:1px solid #b8892a;border-radius:3px;font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#b8892a;text-decoration:none;transition:all .2s;}
 .np-link:hover{background:#b8892a;color:#fff;}
 @media(max-width:600px){.np-modal{max-height:94vh}.np-title{font-size:16px}.np-body{padding:14px 16px}}
+
+@media(max-width:768px){
+  .hero-photo{background-position:center 20px !important;}
+}
+
+/* ── Mobile podcast overrides ── */
+@media(max-width:768px){
+  /* All pod-ep-grid: 1 column on mobile */
+  .pod-ep-grid{grid-template-columns:1fr !important;padding:8px !important;}
+  
+  /* Hide playlist embeds for Portre, BBK, Mahrec on mobile */
+  #ps-portre .pod-ep-playlist,
+  #ps-birbakista .pod-ep-playlist,
+  #ps-mahrec .pod-ep-playlist,
+  #ep-portre .pod-ep-playlist,
+  #ep-birbakista .pod-ep-playlist,
+  #ep-mahrec .pod-ep-playlist{display:none !important;}
+  
+  /* Keep Analiz playlist, 1-col grid */
+  #ps-analiz .pod-ep-playlist,
+  #ep-analiz .pod-ep-playlist{display:block !important;}
+  
+  /* switchPl embed mode: hide playlist for BBK/Mahrec */
+  .pl-eps .pod-ep-playlist{display:none !important;}
+}
+
+/* ── Back to top button ── */
+.back-top{
+  position:fixed;bottom:24px;right:20px;z-index:9999;
+  width:46px;height:46px;border-radius:50%;
+  background:#b8892a;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(184,137,42,0.4);
+  opacity:0;pointer-events:none;
+  transition:opacity .35s ease,transform .35s ease;
+  transform:translateY(16px);
+}
+.back-top.show{opacity:1;pointer-events:auto;transform:translateY(0);}
+.back-top:hover,.back-top:active{background:#d4a840;transform:translateY(-2px);}
+.back-top svg{width:20px;height:20px;fill:#fff;}
+
+/* ── Hero name animation (8) ── */
+@keyframes hero-letter-in-left{
+  from{opacity:0;transform:translateX(-40px);}
+  to{opacity:1;transform:translateX(0);}
+}
+@keyframes hero-letter-in-right{
+  from{opacity:0;transform:translateX(40px);}
+  to{opacity:1;transform:translateX(0);}
+}
+.hero-name .hl,.hero-name-last .hl{
+  display:inline-block;
+  opacity:0;
+  animation:hero-letter-in-left .6s ease forwards;
+}
+.hero-name:nth-child(2) .hl{
+  animation-name:hero-letter-in-right;
+}
+/* Silhouette glow: rotating border on hero-photo */
+@keyframes hero-glow-rotate{
+  0%{box-shadow:inset 0 0 0 0 rgba(255,255,255,0),0 0 0 2px rgba(255,255,255,0);}
+  10%{box-shadow:inset 0 0 30px 0 rgba(255,255,255,0.08),0 0 0 3px rgba(255,255,255,0.5);}
+  40%{box-shadow:inset 0 0 60px 0 rgba(255,255,255,0.12),0 0 0 4px rgba(255,255,255,0.6);}
+  80%{box-shadow:inset 0 0 20px 0 rgba(255,255,255,0.04),0 0 0 2px rgba(255,255,255,0.2);}
+  100%{box-shadow:inset 0 0 0 0 rgba(255,255,255,0),0 0 0 0 rgba(255,255,255,0);}
+}
+.hero-photo{
+  animation:hero-glow-rotate 2.8s ease-out 0.3s forwards;
+}
 </style>
 </head>
 <body>
@@ -3304,6 +3373,27 @@ function npClose(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')npClose();});
+
+/* Back to top scroll */
+window.addEventListener('scroll',()=>{
+  const btn=document.getElementById('back-top');
+  if(btn)btn.classList.toggle('show',window.scrollY>400);
+});
+
+/* Hero name letter animation */
+(function(){
+  document.querySelectorAll('.hero-name,.hero-name-last').forEach((el,ni)=>{
+    const txt=el.textContent;
+    let html='';
+    txt.split('').forEach((ch,ci)=>{
+      const delay=(ni*0.18+ci*0.045).toFixed(3);
+      const dir=ni===1?'hero-letter-in-right':'hero-letter-in-left';
+      if(ch===' '){html+=' ';}
+      else{html+=`<span class="hl" style="animation-name:${dir};animation-delay:${delay}s">${ch}</span>`;}
+    });
+    el.innerHTML=html;
+  });
+})();
 </script>
 
 <!-- Newspaper modal -->
@@ -3318,5 +3408,9 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')npClose();});
     <div class="np-body"><p id="np-desc"></p><a class="np-link" id="np-link" href="#" target="_blank" rel="noopener">Read full story ↗</a></div>
   </div>
 </div>
+
+<button class="back-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});showHome();" aria-label="Back to top">
+  <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+</button>
 </body>
 </html>
