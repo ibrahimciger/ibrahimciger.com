@@ -2369,7 +2369,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
     <div id="ab-dc3" class="ab-dc"><div class="ab-dc-yr">2013 – 2016 · 3 years</div><div class="ab-dc-title">Co-founder</div><div class="ab-dc-org">Sinan &amp; Wren Foundation</div><div class="ab-dc-body">Co-founded and led an international civil society foundation dedicated to dialogue and cultural exchange. Managed cross-cultural programs, strategic partnerships, and full operational direction — cultivating a network of civic leaders and institutions across Europe and the Middle East over three formative years.</div><div style="margin-top:.6rem"><span class="ab-tag">NGO</span><span class="ab-tag">Civil Society</span><span class="ab-tag">Co-founder</span></div></div>
     <div id="ab-dc4" class="ab-dc"><div class="ab-dc-yr">2016 – 2018</div><div class="ab-dc-title">Georgetown University</div><div class="ab-dc-org">Academic Language Program · Washington DC</div><div class="ab-dc-body">Completed advanced academic language training at Georgetown University in Washington DC. Organised the landmark Georgetown Cryptocurrency &amp; Fiqh Symposium, convening Prof. James J. Angel (Harvard Business School) and Islamic finance scholar Joe Bradford. Active member of Georgetown Muslim Students Association 2017–2019, contributing to interfaith dialogue and community building on campus.</div><div style="margin-top:.6rem"><span class="ab-tag">Georgetown</span><span class="ab-tag">Crypto &amp; Fiqh</span><span class="ab-tag">Organiser</span></div></div>
     <div id="ab-dc5" class="ab-dc"><div class="ab-dc-yr">2012 – 2015</div><div class="ab-dc-title">MA · Islamic Law &amp; Finance</div><div class="ab-dc-org">Istanbul University</div><div class="ab-dc-body">Thesis: <a href="#" onclick="thesisOpen();return false;" style="color:#b8892a;text-decoration:underline;text-underline-offset:3px;cursor:pointer;" title="Read the thesis">"An Investigation on the Economical Life of the Holy Prophet"</a> — a scholarly examination of prophetic economic principles and their resonance in contemporary Islamic finance. Specialised in the intersection of Islamic jurisprudence, Fiqh, and modern financial structures, laying the intellectual foundation for ongoing research in prophetic economics.</div><div style="margin-top:.6rem"><span class="ab-tag">Islamic Finance</span><span class="ab-tag">Fiqh</span><span class="ab-tag">Research</span></div></div>
-    <div id="ab-dc6" class="ab-dc"><div class="ab-dc-yr">2006 – 2010</div><div class="ab-dc-title">BA · Economics</div><div class="ab-dc-org">Uludağ University, Bursa</div><div class="ab-dc-body">Thesis: "Economic Analysis of Participation Banks" — an empirical study of interest-free banking models and their operational viability within the Turkish financial system. Simultaneously founded and managed the International Student Association (2006–2010), fostering cross-cultural engagement and leadership among an international student body.</div><div style="margin-top:.6rem"><span class="ab-tag">Economics</span><span class="ab-tag">Participation Banking</span><span class="ab-tag">Leadership</span></div></div>
+    <div id="ab-dc6" class="ab-dc"><div class="ab-dc-yr">2006 – 2010</div><div class="ab-dc-title">BA · Economics</div><div class="ab-dc-org">Uludağ University, Bursa</div><div class="ab-dc-body">Thesis: <a href="#" onclick="thesis2Open();return false;" style="color:#b8892a;text-decoration:underline;text-underline-offset:3px;cursor:pointer;" title="Read the thesis">"Economic Analysis of Participation Banks"</a> — an empirical study of interest-free banking models and their operational viability within the Turkish financial system. Simultaneously founded and managed the International Student Association (2006–2010), fostering cross-cultural engagement and leadership among an international student body.</div><div style="margin-top:.6rem"><span class="ab-tag">Economics</span><span class="ab-tag">Participation Banking</span><span class="ab-tag">Leadership</span></div></div>
   </div>
 </div>
 
@@ -3502,7 +3502,17 @@ function thesisClose(){
   document.getElementById('thesis-overlay').classList.remove('open');
   document.body.style.overflow='';
 }
-document.addEventListener('keydown',e=>{if(e.key==='Escape')thesisClose();});
+function thesis2Open(){
+  document.getElementById('thesis2-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function thesis2Close(){
+  document.getElementById('thesis2-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){thesisClose();thesis2Close();}
+});
 </script>
 
 <!-- Newspaper modal -->
@@ -3614,6 +3624,75 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')thesisClose();});
     <div class="thesis-footer-bar">
       <div class="thesis-footer-text">Master's Thesis · Istanbul University 2015</div>
       <a class="thesis-link" href="https://katalog.isam.org.tr/?dil=0&p=1&q=Halil+%C4%B0brahim+Ci%C4%9Fer&alan=qYazarlar_txt" target="_blank" rel="noopener">ISAM Catalog ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- Thesis 2: Economic Analysis of Participation Banks -->
+<div class="thesis-overlay" id="thesis2-overlay" onclick="if(event.target===this)thesis2Close()">
+  <div class="thesis-modal">
+    <div class="thesis-head">
+      <div class="thesis-head-title">Undergraduate Thesis · Uludağ University · 2009</div>
+      <button class="thesis-close" onclick="thesis2Close()">✕ Close</button>
+    </div>
+    <div class="thesis-banner">
+      <div class="thesis-uni">T.C. Uludağ University · Faculty of Economics and Administrative Sciences · Department of Economics</div>
+      <div class="thesis-main-title">An Economic Analysis of Participation Banks</div>
+      <div class="thesis-sub">Halil Ibrahim Ciger &nbsp;·&nbsp; Advisor: Dr. Ozan Başkol &nbsp;·&nbsp; Bursa, 2009</div>
+    </div>
+    <div class="thesis-body">
+
+      <div class="thesis-chapter">
+        <div class="thesis-chapter-title">Introduction</div>
+        <p>Participation Banks, as part of an unchanging value system within a developing and changing world, came to life theoretically in the 1960s, and by the 1980s their first practical implementations were realized. Originating in the East, this idea gradually spread westward and has since become a global sector.</p>
+        <p>Interest-Free Banking is the product of efforts to integrate the principles set forth by Islamic religion into the financial mobility of the modern world. Having made its mark in the banking sector for approximately twenty years, the Interest-Free Banking Model has continued to grow rapidly compared to conventional banks.</p>
+        <p>This study examines the fundamental principles of Participation Banking, its conceptual analysis, intellectual foundations, functional dimensions, and its position at the national and global level — covering many issues ranging from an in-depth explanation of the concept to the roles of interest-free banking in countries around the world.</p>
+      </div>
+
+      <div class="thesis-chapter">
+        <div class="thesis-chapter-title">Chapter 1 · Fundamental Dynamics and Concept of Participation Banking</div>
+        <h4>The Interest-Free Banking Model</h4>
+        <p>The interest-free banking model excludes interest from its operations. Known by various names — private finance institution, Islamic banking, participation banking — it is recognized as the institution through which the conservative-religious segment invests its capital without recourse to interest. The foundations of modern interest-free banking first began to emerge in the 1960s, with the first experiment between 1963 and 1966 in Mit Ghamr, Egypt — a unique model based on the philosophy of joint surety, resembling a mixture of venture capital and a monetary trust.</p>
+        <h4>What Is Interest?</h4>
+        <p>Interest is used synonymously with the Arabic concept of 'riba,' meaning growth or multiplication — the unearned increment added beyond the principal. Ancient philosophers Plato and Aristotle evaluated interest negatively. Interest has been disapproved in all three Abrahamic faiths. Islam categorically prohibits riba: 'Allah has permitted trade and forbidden riba' (Quran 2:275). Notably, during the 2008–09 global financial crisis, the Vatican's newspaper L'Osservatore Romano recommended Islamic Banking as a solution.</p>
+        <h4>Interest vs. Profit Share</h4>
+        <p>Participation banks open profit-and-loss participation accounts representing a partnership relationship — not a debtor-creditor relationship. If the bank earns profit, it distributes it to depositors (typically 80% to depositors, 20% to the bank). With interest, the return at maturity is predetermined. With profit share, the return depends on the profitability of funded projects.</p>
+        <h4>The Concept of Participation Banking in Turkey</h4>
+        <p>In Turkey, participation banks were first established on 15 December 1984 by Decree Law, with the aim of channeling idle capital of those who wished to avoid interest-bearing transactions into the productive economy. They began as 'Special Finance Institutions' (Özel Finans Kurumu). Under Banking Law No. 5411, they were renamed 'Participation Banks' from 2006, resolving ambiguities in international markets and acquiring full bank status.</p>
+      </div>
+
+      <div class="thesis-chapter">
+        <div class="thesis-chapter-title">Chapter 2 · Operations of Participation Banks</div>
+        <h4>Mudarabah — Profit/Loss Sharing</h4>
+        <p>Mudarabah is a commercial arrangement between two parties: one provides capital (rabb ul-mal) and the other contributes labor and management expertise (mudarib). It addresses the problem of idle capital by bringing it into productive use. Classified into Absolute (Unrestricted) Mudarabah — where funds may be deployed freely — and Restricted Mudarabah — where the capital owner imposes conditions on type of business or sector.</p>
+        <h4>Musharakah — Labor-Capital Partnership</h4>
+        <p>Musharakah is a property or credit-goodwill partnership where both parties contribute capital and share the resulting profit. Unlike conventional lending, both parties bear risk proportionally to their contribution.</p>
+        <h4>Murabahah — Production/Financing Support</h4>
+        <p>Murabahah is the practice of purchasing a commercial good outright and selling it to a customer on deferred terms at cost plus a declared markup. The credit cost remains fixed throughout the repayment period and is not affected by economic fluctuations. Turkey has secured financing exceeding USD 1 billion through international murabahah.</p>
+        <h4>Ijarah — Financial Leasing</h4>
+        <p>Financial leasing involves purchasing an asset for the purpose of leasing it to a customer. At the end of the lease term, ownership may transfer to the lessee (hire-purchase). This is analogous to a mortgage, where the home's price is paid through installments resembling rent.</p>
+        <h4>Other Instruments: Salam, Istisna, Ju'alah</h4>
+        <p>Salam is a sale where the price is paid upfront but delivery is deferred — used in agricultural financing. Istisna is a contract for the manufacture and supply of a future asset, where both price and delivery are deferred to completion. Ju'alah is the service-equivalent of istisna: the fee is determined upfront, but payment occurs after service delivery.</p>
+      </div>
+
+      <div class="thesis-chapter">
+        <div class="thesis-chapter-title">Chapter 3 · Development in Turkey and the World</div>
+        <h4>Turkey</h4>
+        <p>There are four Participation Banks active in Turkey under BRSA supervision. Albaraka Turk (1984) was the first, followed by Kuwait Turk (1989) and Bank Asya (1996). By 2007, participation banks held 3.32% of total banking assets (TL 17.4 billion), deployed TL 14.7 billion in funds, and operated 422 branches with 9,215 staff. Growth averaged 35–40% annually between 2002 and 2007.</p>
+        <h4>Global Presence</h4>
+        <p>The total volume reached by participation banking worldwide is 500 billion dollars. Key milestones: 1963, Egypt (Mit Ghamr); 1974, Islamic Development Bank (Saudi Arabia); 1975, Turkey joins IDB; 1983, Iran enacts comprehensive interest-free banking law; 1983, Malaysia establishes Bank Islam. By 2000, the sector expanded to Europe and America, with presence in the UK, Germany, and the Netherlands. Russia supports participation banking given approximately 20 million Muslim citizens.</p>
+      </div>
+
+      <div class="thesis-chapter">
+        <div class="thesis-chapter-title">Conclusion</div>
+        <p>Participation Banking, debated theoretically in the 1960s and put into practice in the 1980s, has managed to carve out a space for itself within a capitalist world. Without compromising its core philosophy, participation banking has incorporated musharakah, mudarabah, murabahah, salam contracts, istisna agreements, and ju'alah — while also offering full retail, corporate, and investment banking services.</p>
+        <p>Key contributions include: converting idle funds into productive savings; introducing new financing techniques; reducing the informal economy; absorbing economic crises with less systemic damage than interest-based banking; facilitating foreign currency inflows from Middle Eastern countries; and injecting dynamism into trade and commerce.</p>
+      </div>
+
+    </div>
+    <div class="thesis-footer-bar">
+      <div class="thesis-footer-text">Undergraduate Thesis · Uludağ University 2009</div>
+      <a class="thesis-link" href="https://katalog.isam.org.tr/?dil=0&p=1&q=Halil+%C4%B0brahim+Ci%C4%9Fer&alan=qYazarlar_txt" target="_blank" rel="noopener">View Academic Record ↗</a>
     </div>
   </div>
 </div>
