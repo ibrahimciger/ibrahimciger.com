@@ -552,7 +552,7 @@ nav {
 
 /* ════ INNER PAGES ════ */
 .ip { display:none; min-height:100vh; padding-top:62px; background:var(--bg); animation:pgIn .4s ease both; transition:background .3s; }
-.ip.on { display:block; }
+.ip.on { display:block !important; }
 @keyframes pgIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
 
 .iph { padding:64px 80px 40px; border-bottom:1px solid var(--border2); position:relative; }
@@ -2540,7 +2540,7 @@ setTimeout(()=>{
   (function(){
     const img=new Image();
     img.crossOrigin='anonymous';
-    img.src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/WorldMap-A_non-Frame.png/1280px-WorldMap-A_non-Frame.png';
+    img.src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Blank_map_of_the_world_1.png/1280px-Blank_map_of_the_world_1.png';
     img.onload=()=>{mapImg=img;};
     
   })();
@@ -2814,7 +2814,7 @@ function showHome(){
 function navTo(page){
   // Hide home
   const homeEl=document.getElementById('page-home');
-  if(homeEl)homeEl.style.display='none';
+  if(homeEl){homeEl.style.display='none';homeEl.style.setProperty('display','none','important');}
   // Hide all ip pages
   ['haberlerim','perspektif','vodcast','podcast','hakkimda'].forEach(p=>{
     const el=document.getElementById('page-'+p);
@@ -2823,7 +2823,7 @@ function navTo(page){
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('on'));
   // Show target page - use BOTH class and inline style for reliability
   const target=document.getElementById('page-'+page);
-  if(target){target.classList.add('on');target.style.display='block';}
+  if(target){target.classList.add('on');target.style.setProperty('display','block','important');}
   const nl=document.getElementById('nl-'+page);if(nl)nl.classList.add('on');
   window.scrollTo(0,0);
   if(page==='haberlerim')buildInnerNews(lang==='en'?'en':'tr');
