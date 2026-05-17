@@ -2715,7 +2715,7 @@ function navTo(page){
   setTimeout(()=>window.scrollTo(0,0),10);
   if(page==='haberlerim')buildInnerNews(lang==='en'?'en':'tr');
   if(page==='podcast'&&!podInited){podInited=true;initPod();}
-  if(page==='hayatim'){setTimeout(()=>{window.dispatchEvent(new Event('ab-init'));},100);}
+  if(page==='hakkimda'){setTimeout(()=>{window.dispatchEvent(new Event('ab-init'));},100);}
   return false;
 }
 function toggleMob(){document.getElementById('mob-m').classList.toggle('open');}
