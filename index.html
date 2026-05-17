@@ -552,8 +552,20 @@ nav {
 
 #page-home { display:block; }
 /* ════ INNER PAGES ════ */
-.ip { display:none; min-height:100vh; padding-top:62px; background:var(--bg); transition:background .3s; }
-.ip.on { display:block; }
+/* ══ PAGE ROUTING ══ */
+.page-wrap {
+  position: relative;
+  min-height: 100vh;
+}
+.ip {
+  display: none;
+  min-height: 100vh;
+  padding-top: 62px;
+  background: var(--bg);
+  transition: background .3s;
+}
+.ip.on { display: block; }
+#page-home[style*="none"] { display: none !important; }
 #page-home { min-height:100vh; padding-top:62px; background:var(--bg); transition:background .3s; }
 #page-home[style*="display: none"], #page-home[style*="display:none"] { min-height:0 !important; padding:0 !important; }
 .ip.on { display:block; }
@@ -2680,33 +2692,44 @@ function toggleLang(){
 
 /* ══ ROUTING ══ */
 function showHome(){
-  const h=document.getElementById('page-home');
-  if(h)h.style.display='block';
-  document.querySelectorAll('.ip').forEach(el=>el.classList.remove('on'));
-  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('on'));
-  const nl=document.getElementById('nl-home');if(nl)nl.classList.add('on');
-  window.scrollTo(0,0);
+  // 1. Tüm .ip sayfalarını gizle
+  document.querySelectorAll('.ip').forEach(function(el){
+    el.style.display='';
+    el.classList.remove('on');
+  });
+  // 2. Home'u göster
+  document.getElementById('page-home').style.display='block';
+  // 3. Nav
+  document.querySelectorAll('.nav-links a').forEach(function(a){a.classList.remove('on');});
+  var nl=document.getElementById('nl-home');
+  if(nl) nl.classList.add('on');
+  // 4. Scroll
+  document.documentElement.scrollTop=0;
+  document.body.scrollTop=0;
   return false;
 }
 function navTo(page){
-  const h=document.getElementById('page-home');
-  if(h)h.style.display='none';
-  // Inline style temizle + class kaldır
+  // 1. Home'u gizle
+  document.getElementById('page-home').style.display='none';
+  // 2. Tüm .ip sayfalarından inline style ve class temizle
   document.querySelectorAll('.ip').forEach(el=>{
     el.style.display='';
     el.classList.remove('on');
   });
-  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('on'));
-  const t=document.getElementById('page-'+page);
-  if(t){
-    t.style.display='';  // inline style sıfırla
-    t.classList.add('on');
-  }
-  const nl=document.getElementById('nl-'+page);if(nl)nl.classList.add('on');
-  setTimeout(()=>window.scrollTo(0,0),10);
-  if(page==='haberlerim')buildInnerNews(lang==='en'?'en':'tr');
+  // 3. Hedef sayfayı göster
+  var t=document.getElementById('page-'+page);
+  if(t){ t.classList.add('on'); }
+  // 4. Nav
+  document.querySelectorAll('.nav-links a').forEach(function(a){a.classList.remove('on');});
+  var nl=document.getElementById('nl-'+page);
+  if(nl) nl.classList.add('on');
+  // 5. Scroll
+  document.documentElement.scrollTop=0;
+  document.body.scrollTop=0;
+  // 6. İçerik
+  if(page==='haberlerim') buildInnerNews(lang==='en'?'en':'tr');
   if(page==='podcast'&&!podInited){podInited=true;initPod();}
-  if(page==='hakkimda'){setTimeout(()=>{window.dispatchEvent(new Event('ab-init'));},100);}
+  if(page==='hakkimda'){setTimeout(function(){window.dispatchEvent(new Event('ab-init'));},100);}
   return false;
 }
 function toggleMob(){document.getElementById('mob-m').classList.toggle('open');}
