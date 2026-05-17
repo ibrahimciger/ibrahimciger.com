@@ -552,15 +552,8 @@ nav {
 
 #page-home { display:block; }
 /* ════ INNER PAGES ════ */
-.ip {
-  display: none;
-  min-height: 100vh;
-  padding-top: 62px;
-  background: var(--bg);
-  transition: background .3s;
-  width: 100%;
-}
-.ip.on { display: block; }
+.ip { display:none; min-height:100vh; padding-top:62px; background:var(--bg); transition:background .3s; }
+.ip.on { display:block; }
 .ip.on { display:block; }
 .ip.on { display:block !important; }
 @keyframes pgIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
@@ -1187,7 +1180,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 
 
 <!-- ══════ HABERLERİM (inner) ══════ -->
-<div id="page-home">
+<div id="page-home" class="ip on">
 
   <!-- HERO -->
   <section id="hero">
@@ -2683,25 +2676,18 @@ function toggleLang(){
 
 /* ══ ROUTING ══ */
 function showHome(){
-  const h=document.getElementById('page-home');
-  if(h)h.style.display='block';
-  ['haberlerim','perspektif','vodcast','podcast','hayatim'].forEach(p=>{
-    const el=document.getElementById('page-'+p);
-    if(el)el.classList.remove('on');
-  });
+  document.querySelectorAll('.ip').forEach(el=>el.classList.remove('on'));
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('on'));
-  document.getElementById('nl-home').classList.add('on');
+  const h=document.getElementById('page-home');
+  if(h)h.classList.add('on');
+  const nl=document.getElementById('nl-home');if(nl)nl.classList.add('on');
   window.scrollTo(0,0);
   return false;
 }
 function navTo(page){
-  // Home gizle
-  const h=document.getElementById('page-home');
-  if(h)h.style.display='none';
-  // Tüm ip sayfaları gizle (inline style değil, sınıf kaldır)
-  ['haberlerim','perspektif','vodcast','podcast','hayatim'].forEach(p=>{
-    const el=document.getElementById('page-'+p);
-    if(el)el.classList.remove('on');
+  // TÜM sayfaları gizle (hem home hem ip)
+  document.querySelectorAll('.ip').forEach(el=>{
+    el.classList.remove('on');
   });
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('on'));
   // Hedef sayfayı göster
