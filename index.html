@@ -2814,16 +2814,14 @@ function showHome(){
   return false;
 }
 function navTo(page){
-  // Home'u gizle - inline style KULLANMA, CSS yönetir
   document.getElementById('page-home').style.display='none';
-  // ip sayfalarından inline style'ı temizle, sonra class kaldır
   ['haberlerim','perspektif','vodcast','podcast','hakkimda'].forEach(p=>{
     const el=document.getElementById('page-'+p);
     if(el){el.style.display='';el.classList.remove('on');}
   });
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('on'));
   const target=document.getElementById('page-'+page);
-  if(target){target.style.display='';target.classList.add('on');}
+  if(target)target.classList.add('on');
   const nl=document.getElementById('nl-'+page);if(nl)nl.classList.add('on');
   window.scrollTo(0,0);
   if(page==='haberlerim')buildInnerNews(lang==='en'?'en':'tr');
