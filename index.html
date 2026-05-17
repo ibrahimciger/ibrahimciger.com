@@ -2811,9 +2811,11 @@ function showHome(){
   return false;
 }
 function navTo(page){
+  console.log('[navTo] called with:', page);
   // Hide home page
   const homeEl=document.getElementById('page-home');
   if(homeEl)homeEl.style.cssText='display:none!important';
+  else console.error('[navTo] page-home not found!');
   // Hide ALL ip pages first
   document.querySelectorAll('.ip').forEach(el=>{
     el.style.cssText='display:none!important';
@@ -2823,8 +2825,12 @@ function navTo(page){
   // Show the target page
   const target=document.getElementById('page-'+page);
   if(target){
-    target.style.cssText='';
+    console.log('[navTo] target found, showing...');
+    target.style.cssText='display:block!important;min-height:100vh;padding-top:62px;';
     target.classList.add('on');
+    console.log('[navTo] target display now:', target.style.display, 'computed:', window.getComputedStyle(target).display);
+  } else {
+    console.error('[navTo] TARGET NOT FOUND: page-'+page);
   }
   const nl=document.getElementById('nl-'+page);if(nl)nl.classList.add('on');
   window.scrollTo(0,0);
