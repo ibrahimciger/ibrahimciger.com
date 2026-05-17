@@ -2797,29 +2797,35 @@ function toggleLang(){
 
 /* ══ ROUTING ══ */
 function showHome(){
+  // Show home
   const homeEl=document.getElementById('page-home');
-  if(homeEl)homeEl.style.display='block';
-  ['haberlerim','perspektif','vodcast','podcast','hakkimda'].forEach(p=>{
-    const el=document.getElementById('page-'+p);
-    if(el){el.classList.remove('on');el.style.display='';}
+  if(homeEl)homeEl.style.cssText='';
+  // Hide all ip pages
+  document.querySelectorAll('.ip').forEach(el=>{
+    el.style.cssText='display:none!important';
+    el.classList.remove('on');
   });
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('on'));
-  document.getElementById('nl-home').classList.add('on');
-  window.scrollTo(0,0); return false;
+  const nlHome=document.getElementById('nl-home');if(nlHome)nlHome.classList.add('on');
+  window.scrollTo(0,0);
+  return false;
 }
 function navTo(page){
-  // Hide home
+  // Hide home page
   const homeEl=document.getElementById('page-home');
-  if(homeEl){homeEl.style.display='none';homeEl.style.setProperty('display','none','important');}
-  // Hide all ip pages
-  ['haberlerim','perspektif','vodcast','podcast','hakkimda'].forEach(p=>{
-    const el=document.getElementById('page-'+p);
-    if(el){el.classList.remove('on');el.style.display='';}
+  if(homeEl)homeEl.style.cssText='display:none!important';
+  // Hide ALL ip pages first
+  document.querySelectorAll('.ip').forEach(el=>{
+    el.style.cssText='display:none!important';
+    el.classList.remove('on');
   });
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('on'));
-  // Show target page - use BOTH class and inline style for reliability
+  // Show the target page
   const target=document.getElementById('page-'+page);
-  if(target){target.classList.add('on');target.style.setProperty('display','block','important');}
+  if(target){
+    target.style.cssText='';
+    target.classList.add('on');
+  }
   const nl=document.getElementById('nl-'+page);if(nl)nl.classList.add('on');
   window.scrollTo(0,0);
   if(page==='haberlerim')buildInnerNews(lang==='en'?'en':'tr');
