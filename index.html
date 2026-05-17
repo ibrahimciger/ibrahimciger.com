@@ -2809,42 +2809,49 @@ function toggleLang(){
 
 /* ══ ROUTING ══ */
 function showHome(){
-  window.scrollTo({top:0,behavior:'instant'});
-  const homeEl=document.getElementById('page-home');
-  if(homeEl)homeEl.style.display='block';
+  // Tüm ip sayfalarını gizle
   document.querySelectorAll('.ip').forEach(el=>{
     el.style.display='none';
     el.classList.remove('on');
   });
+  // Home'u göster
+  const homeEl=document.getElementById('page-home');
+  if(homeEl){
+    homeEl.style.display='block';
+    // Home'un konumuna scroll et
+    setTimeout(()=>{
+      homeEl.scrollIntoView({block:'start'});
+      window.scrollTo(0, homeEl.offsetTop);
+    },10);
+  }
   document.querySelectorAll('.nav-links a, .mob-nav a').forEach(a=>a.classList.remove('on'));
-  const nlHome=document.getElementById('nl-home');
-  if(nlHome)nlHome.classList.add('on');
+  const nlHome=document.getElementById('nl-home');if(nlHome)nlHome.classList.add('on');
   return false;
 }
 function navTo(page){
-  // 1. Ana sayfayı gizle
+  // 1. Home gizle
   const homeEl=document.getElementById('page-home');
   if(homeEl)homeEl.style.display='none';
-  // 2. Tüm ip sayfalarını gizle
+  // 2. Tüm ip sayfaları gizle
   document.querySelectorAll('.ip').forEach(el=>{
     el.style.display='none';
     el.classList.remove('on');
   });
   // 3. Nav sıfırla
   document.querySelectorAll('.nav-links a, .mob-nav a').forEach(a=>a.classList.remove('on'));
-  // 4. Hedef sayfayı göster
+  // 4. Hedef sayfayı göster ve scroll et
   const target=document.getElementById('page-'+page);
   if(target){
     target.style.display='block';
     target.classList.add('on');
+    // Sayfanın başına scroll et
+    setTimeout(()=>{
+      target.scrollIntoView({block:'start'});
+      window.scrollBy(0,-62); // nav yüksekliği kadar geri gel
+    },10);
   }
-  const nl=document.getElementById('nl-'+page);
-  if(nl)nl.classList.add('on');
-  // 5. Scroll - tüm yöntemleri dene
-  try{document.documentElement.scrollTop=0;}catch(e){}
-  try{document.body.scrollTop=0;}catch(e){}
-  try{window.scrollTo(0,0);}catch(e){}
-  // 6. İçerik yükle
+  const nl=document.getElementById('nl-'+page);if(nl)nl.classList.add('on');
+  // 5. İçerik yükle
   if(page==='haberlerim')buildInnerNews(lang==='en'?'en':'tr');
   if(page==='podcast'&&!podInited){podInited=true;initPod();}
   if(page==='hakkimda'){setTimeout(()=>{window.dispatchEvent(new Event('ab-init'));},100);}
