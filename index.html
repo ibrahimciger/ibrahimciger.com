@@ -551,7 +551,18 @@ nav {
 .vid-arr:hover { border-color:var(--gold); color:var(--gold); }
 
 /* ════ INNER PAGES ════ */
-.ip { display:none; min-height:100vh; padding-top:62px; background:var(--bg); animation:pgIn .4s ease both; transition:background .3s; position:relative; z-index:1; }
+.ip { 
+  display:none; 
+  position:fixed; 
+  top:0; left:0; right:0; bottom:0;
+  overflow-y:auto;
+  padding-top:62px; 
+  background:var(--bg); 
+  animation:pgIn .4s ease both; 
+  transition:background .3s;
+  z-index:10;
+}
+.ip.on { display:block; }
 .ip.on { display:block !important; }
 @keyframes pgIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
 
@@ -2797,43 +2808,28 @@ function toggleLang(){
 
 /* ══ ROUTING ══ */
 function showHome(){
-  // Show home
   const homeEl=document.getElementById('page-home');
-  if(homeEl)homeEl.style.cssText='';
-  // Hide all ip pages
-  document.querySelectorAll('.ip').forEach(el=>{
-    el.style.cssText='display:none!important';
-    el.classList.remove('on');
-  });
+  if(homeEl)homeEl.style.display='';
+  document.querySelectorAll('.ip').forEach(el=>el.classList.remove('on'));
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('on'));
   const nlHome=document.getElementById('nl-home');if(nlHome)nlHome.classList.add('on');
   window.scrollTo(0,0);
   return false;
 }
 function navTo(page){
-  console.log('[navTo] called with:', page);
-  // Hide home page
+  // Hide home
   const homeEl=document.getElementById('page-home');
-  if(homeEl)homeEl.style.cssText='display:none!important';
-  else console.error('[navTo] page-home not found!');
-  // Hide ALL ip pages first
-  document.querySelectorAll('.ip').forEach(el=>{
-    el.style.cssText='display:none!important';
-    el.classList.remove('on');
-  });
+  if(homeEl)homeEl.style.display='none';
+  // Hide all ip pages
+  document.querySelectorAll('.ip').forEach(el=>el.classList.remove('on'));
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('on'));
-  // Show the target page
+  // Show target
   const target=document.getElementById('page-'+page);
   if(target){
-    console.log('[navTo] target found, showing...');
-    target.style.cssText='display:block!important;min-height:100vh;padding-top:62px;';
     target.classList.add('on');
-    console.log('[navTo] target display now:', target.style.display, 'computed:', window.getComputedStyle(target).display);
-  } else {
-    console.error('[navTo] TARGET NOT FOUND: page-'+page);
+    target.scrollTop=0;
   }
   const nl=document.getElementById('nl-'+page);if(nl)nl.classList.add('on');
-  window.scrollTo(0,0);
   if(page==='haberlerim')buildInnerNews(lang==='en'?'en':'tr');
   if(page==='podcast'&&!podInited){podInited=true;initPod();}
   if(page==='hakkimda'){setTimeout(()=>{window.dispatchEvent(new Event('ab-init'));},100);}
