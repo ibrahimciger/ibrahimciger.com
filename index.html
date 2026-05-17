@@ -550,8 +550,17 @@ nav {
 }
 .vid-arr:hover { border-color:var(--gold); color:var(--gold); }
 
+#page-home { display:block; }
 /* ════ INNER PAGES ════ */
-.ip { display:none; min-height:100vh; padding-top:62px; background:var(--bg); animation:pgIn .4s ease both; transition:background .3s; }
+.ip { 
+  display:none; 
+  width:100%; 
+  min-height:100vh; 
+  padding-top:62px; 
+  background:var(--bg); 
+  animation:pgIn .4s ease both; 
+  transition:background .3s;
+}
 .ip.on { display:block; }
 .ip.on { display:block !important; }
 @keyframes pgIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
@@ -1175,514 +1184,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 </div>
 
 <!-- ══════ HOME ══════ -->
-<div id="page-home">
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-photo"></div>
-    <div class="hero-content">
-      <div class="hero-tag" data-tr="Gazeteci" data-en="Journalist">Journalist</div>
-      <span class="hero-name">HALİL</span>
-      <span class="hero-name">İBRAHİM</span>
-      <span class="hero-name-last">Ciğer</span>
-      <div class="hero-principles">
-        <span class="p-w" data-tip-tr="Hayra yorma" data-tip-en="To maintain a positive outlook">Tefe'ul<span class="p-tip" id="tip-tefeul">Hayra yorma</span></span>
-        <span class="p-sep"></span>
-        <span class="p-w" data-tip-tr="Olmadan farketme" data-tip-en="Preemptive action">Tedebbür<span class="p-tip" id="tip-tedebbur">Olmadan farketme</span></span>
-        <span class="p-sep"></span>
-        <span class="p-w" data-tip-tr="Sakince kavrama" data-tip-en="Level-headedness">Teenni<span class="p-tip" id="tip-teenni">Sakince kavrama</span></span>
-      </div>
-      <a class="hero-scroll" href="#sec-haberler">
-        <span class="hero-scroll-bar"></span>
-        <span data-tr="Keşfet" data-en="Explore">Explore</span>
-      </a>
-    </div>
-    <div class="hero-ticker-wrap">
-      <div class="ticker-label" data-tr="Son Haberler" data-en="Latest News">Latest News</div>
-      <div class="ticker-outer"><div class="ticker-track" id="hticker"></div></div>
-    </div>
-  </section>
-
-  <!-- HABERLER -->
-  <section id="sec-haberler" class="section">
-    <div class="sec-head">
-      <div class="sec-eye" data-tr="Haberler" data-en="News">News</div>
-      <h2 class="sec-title" data-tr="Haberlerim" data-en="News">News</h2>
-    </div>
-    <div class="news-tabs">
-      <button class="ntab on" onclick="filterHomeNews(this,'en')" data-tr="Türkçe" data-en="English">English</button>
-      <button class="ntab" onclick="filterHomeNews(this,'tr')" data-tr="İngilizce" data-en="Turkish">Turkish</button>
-      <button class="ntab" onclick="filterHomeNews(this,'other')" data-tr="Diğer" data-en="Other">Other</button>
-    </div>
-    <div class="news-grid" id="home-news-grid"></div>
-
-  <!-- MuckRack news ticker -->
-  <div class="muck-section">
-    <div class="muck-header">
-      <div class="muck-eye" data-tr="Haberler" data-en="News">News</div>
-      <a href="#" onclick="showAllNews();return false;" class="muck-link" data-tr="Öne Çıkanlar ↗" data-en="Featured News ↗">Featured News ↗</a>
-    </div>
-    <div class="muck-wrap">
-      <div class="muck-track" id="muck-track">
-        <a class="muck-item" href="https://www.aa.com.tr/tr/ayrimcilikhatti/ayrimcilik/secmenler-gazze-meselesine-tepkilerini-sandikta-gostermek-istiyor/1821638" target="_blank" rel="noopener">Seçmenler, Gazze meselesine tepkilerini sandıkta göstermek istiyor</a><a class="muck-item" href="https://www.aa.com.tr/tr/gundem/hatayin-yeniden-canlandirilmasi-projesi-ile-hatay-master-planinin-lansmani-yapildi/3206450" target="_blank" rel="noopener">Hatay'ın Yeniden Canlandırılması Projesi ile Hatay Master Planının lansmanı yapıldı</a><a class="muck-item" href="https://www.aa.com.tr/tr/dunya/amerikan-islam-iliskileri-konseyi-gazze-deki-soykirim-nedeniyle-abd-yonetimine-dava-acti/3486493" target="_blank" rel="noopener">Amerikan İslam İlişkileri Konseyi, Gazze'deki soykırım nedeniyle ABD yönetimine dava açtı</a><a class="muck-item" href="https://www.aa.com.tr/tr/ayrimcilikhatti/ayrimcilik/georgia-eyalet-temsilcisi-romman-abd-secimlerinde-ilklerin-yasandigini-soyledi/1821707" target="_blank" rel="noopener">Georgia eyalet temsilcisi Romman, ABD seçimlerinde ilklerin yaşandığını söyledi</a><a class="muck-item" href="https://www.aa.com.tr/tr/israil-filistin-catismasi/israil-in-buldozerle-ezerek-oldurdugu-rachel-corrie-nin-anne-ve-babasi-anadolu-talk-zone-a-konustu/3042205" target="_blank" rel="noopener">İsrail'in buldozerle ezerek öldürdüğü Rachel Corrie'nin anne ve babası konuştu</a><a class="muck-item" href="https://www.aa.com.tr/tr/abd-baskanlik-secimleri-2024/abdde-israil-lobisi-aipac-netanyahuyu-alkislayan-senatorlere-milyonlarca-dolar-bagisladi/3331246" target="_blank" rel="noopener">ABD'de İsrail lobisi AIPAC, Netanyahu'yu alkışlayan senatörlere milyonlarca dolar bağışladı</a><a class="muck-item" href="https://www.aa.com.tr/tr/live-blog/israil-donanmasindan-uluslararasi-sularda-kuresel-sumud-filosuna-saldiri/1798" target="_blank" rel="noopener">İsrail donanmasından uluslararası sularda küresel Sumud filosuna saldırı</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/parents-of-rachel-corrie-who-was-crushed-to-death-by-israeli-bulldozers-spoke-to-anadolu-s-english-podcast-show/3042256" target="_blank" rel="noopener">Parents of Rachel Corrie spoke to AA English podcast</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/gaza-war-to-influence-2024-us-presidential-election/3329626" target="_blank" rel="noopener">Gaza War to influence 2024 US Presidential Election</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/bidens-human-rights-record-under-scrutiny-for-support-of-israeli-genocide-in-gaza/3459188" target="_blank" rel="noopener">Biden's human rights record under scrutiny for support of Israeli genocide in Gaza</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/council-on-american-islamic-relations-sues-us-government-over-genocide-in-gaza/3486926" target="_blank" rel="noopener">Council on American Islamic Relations sues US government over genocide in Gaza</a><a class="muck-item" href="https://www.aa.com.tr/en/middle-east/all-available-resources-mobilized-after-israeli-attack-disrupts-gaza-bound-aid-flotilla-organizer-says/3923348" target="_blank" rel="noopener">All available resources mobilized after Israeli attack disrupts Gaza-bound aid flotilla</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/many-firsts-in-us-politics-1st-muslim-woman-lawmaker-in-southern-state-of-georgia/3332737" target="_blank" rel="noopener">Many firsts in US politics: 1st Muslim woman lawmaker in southern state of Georgia</a><a class="muck-item" href="https://www.aa.com.tr/tr/ayrimcilikhatti/ayrimcilik/secmenler-gazze-meselesine-tepkilerini-sandikta-gostermek-istiyor/1821638" target="_blank" rel="noopener">Seçmenler, Gazze meselesine tepkilerini sandıkta göstermek istiyor</a><a class="muck-item" href="https://www.aa.com.tr/tr/gundem/hatayin-yeniden-canlandirilmasi-projesi-ile-hatay-master-planinin-lansmani-yapildi/3206450" target="_blank" rel="noopener">Hatay'ın Yeniden Canlandırılması Projesi ile Hatay Master Planının lansmanı yapıldı</a><a class="muck-item" href="https://www.aa.com.tr/tr/dunya/amerikan-islam-iliskileri-konseyi-gazze-deki-soykirim-nedeniyle-abd-yonetimine-dava-acti/3486493" target="_blank" rel="noopener">Amerikan İslam İlişkileri Konseyi, Gazze'deki soykırım nedeniyle ABD yönetimine dava açtı</a><a class="muck-item" href="https://www.aa.com.tr/tr/ayrimcilikhatti/ayrimcilik/georgia-eyalet-temsilcisi-romman-abd-secimlerinde-ilklerin-yasandigini-soyledi/1821707" target="_blank" rel="noopener">Georgia eyalet temsilcisi Romman, ABD seçimlerinde ilklerin yaşandığını söyledi</a><a class="muck-item" href="https://www.aa.com.tr/tr/israil-filistin-catismasi/israil-in-buldozerle-ezerek-oldurdugu-rachel-corrie-nin-anne-ve-babasi-anadolu-talk-zone-a-konustu/3042205" target="_blank" rel="noopener">İsrail'in buldozerle ezerek öldürdüğü Rachel Corrie'nin anne ve babası konuştu</a><a class="muck-item" href="https://www.aa.com.tr/tr/abd-baskanlik-secimleri-2024/abdde-israil-lobisi-aipac-netanyahuyu-alkislayan-senatorlere-milyonlarca-dolar-bagisladi/3331246" target="_blank" rel="noopener">ABD'de İsrail lobisi AIPAC, Netanyahu'yu alkışlayan senatörlere milyonlarca dolar bağışladı</a><a class="muck-item" href="https://www.aa.com.tr/tr/live-blog/israil-donanmasindan-uluslararasi-sularda-kuresel-sumud-filosuna-saldiri/1798" target="_blank" rel="noopener">İsrail donanmasından uluslararası sularda küresel Sumud filosuna saldırı</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/parents-of-rachel-corrie-who-was-crushed-to-death-by-israeli-bulldozers-spoke-to-anadolu-s-english-podcast-show/3042256" target="_blank" rel="noopener">Parents of Rachel Corrie spoke to AA English podcast</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/gaza-war-to-influence-2024-us-presidential-election/3329626" target="_blank" rel="noopener">Gaza War to influence 2024 US Presidential Election</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/bidens-human-rights-record-under-scrutiny-for-support-of-israeli-genocide-in-gaza/3459188" target="_blank" rel="noopener">Biden's human rights record under scrutiny for support of Israeli genocide in Gaza</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/council-on-american-islamic-relations-sues-us-government-over-genocide-in-gaza/3486926" target="_blank" rel="noopener">Council on American Islamic Relations sues US government over genocide in Gaza</a><a class="muck-item" href="https://www.aa.com.tr/en/middle-east/all-available-resources-mobilized-after-israeli-attack-disrupts-gaza-bound-aid-flotilla-organizer-says/3923348" target="_blank" rel="noopener">All available resources mobilized after Israeli attack disrupts Gaza-bound aid flotilla</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/many-firsts-in-us-politics-1st-muslim-woman-lawmaker-in-southern-state-of-georgia/3332737" target="_blank" rel="noopener">Many firsts in US politics: 1st Muslim woman lawmaker in southern state of Georgia</a>
-      </div>
-    </div>
-  </div>
-  </section>
-
-  <!-- PODCAST -->
-  <section id="sec-video" class="section">
-    <div class="sec-head">
-      <div class="sec-eye">Vodcast</div>
-      <h2 class="sec-title">Vodcast</h2>
-    </div>
-    <div class="vid-body">
-      <div class="vid-track-wrap">
-        <div class="vid-track" id="vid-track">
-          <div class="vid-card" onclick="window.open('https://youtu.be/H9Yxw84F0PI','_blank')" onmouseenter="previewVid(this,'H9Yxw84F0PI')" onmouseleave="stopPreview(this,'H9Yxw84F0PI')">
-            <div class="vid-thumb" id="vt-H9Yxw84F0PI">
-              <img src="https://img.youtube.com/vi/H9Yxw84F0PI/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Gaza War's Impact on US Election</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/4VIA5wig-pM','_blank')" onmouseenter="previewVid(this,'4VIA5wig-pM')" onmouseleave="stopPreview(this,'4VIA5wig-pM')">
-            <div class="vid-thumb" id="vt-4VIA5wig_pM">
-              <img src="https://img.youtube.com/vi/4VIA5wig-pM/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Hatay'ın Yeniden Canlandırılması Projesi Lansmanı</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/jNJ1Ver2k1w','_blank')" onmouseenter="previewVid(this,'jNJ1Ver2k1w')" onmouseleave="stopPreview(this,'jNJ1Ver2k1w')">
-            <div class="vid-thumb" id="vt-jNJ1Ver2k1w">
-              <img src="https://img.youtube.com/vi/jNJ1Ver2k1w/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Bitcoin'i Gelecekte Ne Bekliyor?</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/-52zObcHmQc','_blank')" onmouseenter="previewVid(this,'-52zObcHmQc')" onmouseleave="stopPreview(this,'-52zObcHmQc')">
-            <div class="vid-thumb" id="vt-_52zObcHmQc">
-              <img src="https://img.youtube.com/vi/-52zObcHmQc/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">What does future hold for Bitcoin?</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/wh9kkc71iMc','_blank')" onmouseenter="previewVid(this,'wh9kkc71iMc')" onmouseleave="stopPreview(this,'wh9kkc71iMc')">
-            <div class="vid-thumb" id="vt-wh9kkc71iMc">
-              <img src="https://img.youtube.com/vi/wh9kkc71iMc/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">ABD'de seçim günü: Amerikalı Gençler ne diyor?</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/EwX7lrKThiQ','_blank')" onmouseenter="previewVid(this,'EwX7lrKThiQ')" onmouseleave="stopPreview(this,'EwX7lrKThiQ')">
-            <div class="vid-thumb" id="vt-EwX7lrKThiQ">
-              <img src="https://img.youtube.com/vi/EwX7lrKThiQ/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Rachel Corrie'nin anne ve babası Anadolu Talk Zone'a konuştu</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/VD4OXLcfWvk','_blank')" onmouseenter="previewVid(this,'VD4OXLcfWvk')" onmouseleave="stopPreview(this,'VD4OXLcfWvk')">
-            <div class="vid-thumb" id="vt-VD4OXLcfWvk">
-              <img src="https://img.youtube.com/vi/VD4OXLcfWvk/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">İsrail'in Lübnan'daki planı ne?</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/W-nfmxg-5xc','_blank')" onmouseenter="previewVid(this,'W-nfmxg-5xc')" onmouseleave="stopPreview(this,'W-nfmxg-5xc')">
-            <div class="vid-thumb" id="vt-W_nfmxg_5xc">
-              <img src="https://img.youtube.com/vi/W-nfmxg-5xc/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Macaristan ve Bulgaristan'ın gündemi seçimler</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/Xk7CX0U5dXo','_blank')" onmouseenter="previewVid(this,'Xk7CX0U5dXo')" onmouseleave="stopPreview(this,'Xk7CX0U5dXo')">
-            <div class="vid-thumb" id="vt-Xk7CX0U5dXo">
-              <img src="https://img.youtube.com/vi/Xk7CX0U5dXo/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Mescid-i Aksa 41 gün sonra yeniden açıldı</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/IoOl8Bl4ELw','_blank')" onmouseenter="previewVid(this,'IoOl8Bl4ELw')" onmouseleave="stopPreview(this,'IoOl8Bl4ELw')">
-            <div class="vid-thumb" id="vt-IoOl8Bl4ELw">
-              <img src="https://img.youtube.com/vi/IoOl8Bl4ELw/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">İsrail modeli işgal Lübnan'da mı uygulanıyor?</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/fdMmeoZQ_ts','_blank')" onmouseenter="previewVid(this,'fdMmeoZQ_ts')" onmouseleave="stopPreview(this,'fdMmeoZQ_ts')">
-            <div class="vid-thumb" id="vt-fdMmeoZQ_ts">
-              <img src="https://img.youtube.com/vi/fdMmeoZQ_ts/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">ABD-Rusya-Ukrayna görüşmelerinde son durum ne?</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/qyjRzQrn0Hg','_blank')" onmouseenter="previewVid(this,'qyjRzQrn0Hg')" onmouseleave="stopPreview(this,'qyjRzQrn0Hg')">
-            <div class="vid-thumb" id="vt-qyjRzQrn0Hg">
-              <img src="https://img.youtube.com/vi/qyjRzQrn0Hg/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Sudan'da neler oldu?</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/Lu7cR2fAIjw','_blank')" onmouseenter="previewVid(this,'Lu7cR2fAIjw')" onmouseleave="stopPreview(this,'Lu7cR2fAIjw')">
-            <div class="vid-thumb" id="vt-Lu7cR2fAIjw">
-              <img src="https://img.youtube.com/vi/Lu7cR2fAIjw/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Sumud filosunda son durum ne?</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/ofwHeNByhCE','_blank')" onmouseenter="previewVid(this,'ofwHeNByhCE')" onmouseleave="stopPreview(this,'ofwHeNByhCE')">
-            <div class="vid-thumb" id="vt-ofwHeNByhCE">
-              <img src="https://img.youtube.com/vi/ofwHeNByhCE/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Savaşın akıbeti ne olacak?</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/FrRadMTIf64','_blank')" onmouseenter="previewVid(this,'FrRadMTIf64')" onmouseleave="stopPreview(this,'FrRadMTIf64')">
-            <div class="vid-thumb" id="vt-FrRadMTIf64">
-              <img src="https://img.youtube.com/vi/FrRadMTIf64/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Kerkük'te yeni dönem</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/f1Y7fSdb-v8','_blank')" onmouseenter="previewVid(this,'f1Y7fSdb-v8')" onmouseleave="stopPreview(this,'f1Y7fSdb-v8')">
-            <div class="vid-thumb" id="vt-f1Y7fSdb_v8">
-              <img src="https://img.youtube.com/vi/f1Y7fSdb-v8/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">İdam, İsrail'in yeni soykırım aracı mı?</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/1AnAQXVYh60','_blank')" onmouseenter="previewVid(this,'1AnAQXVYh60')" onmouseleave="stopPreview(this,'1AnAQXVYh60')">
-            <div class="vid-thumb" id="vt-1AnAQXVYh60">
-              <img src="https://img.youtube.com/vi/1AnAQXVYh60/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Lafarge'ın Daeş'i finanse ettiği artık tescillendi</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/6uNYfSqtZ2U','_blank')" onmouseenter="previewVid(this,'6uNYfSqtZ2U')" onmouseleave="stopPreview(this,'6uNYfSqtZ2U')">
-            <div class="vid-thumb" id="vt-6uNYfSqtZ2U">
-              <img src="https://img.youtube.com/vi/6uNYfSqtZ2U/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">İsrail Filistinli esirleri idam cezasıyla yok etmek mi istiyor?</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/0wJwTkQhojw','_blank')" onmouseenter="previewVid(this,'0wJwTkQhojw')" onmouseleave="stopPreview(this,'0wJwTkQhojw')">
-            <div class="vid-thumb" id="vt-0wJwTkQhojw">
-              <img src="https://img.youtube.com/vi/0wJwTkQhojw/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Büyükelçi'nin 'Vadedilmiş Topraklar' çıkışı ne anlama geliyor?</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/o-hloRqxfKk','_blank')" onmouseenter="previewVid(this,'o-hloRqxfKk')" onmouseleave="stopPreview(this,'o-hloRqxfKk')">
-            <div class="vid-thumb" id="vt-o_hloRqxfKk">
-              <img src="https://img.youtube.com/vi/o-hloRqxfKk/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Milli Muharip uçağımız KAAN ne aşamada? Epstein dosyalarının içeriğinde ne var?</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/LCMei0pLEWk','_blank')" onmouseenter="previewVid(this,'LCMei0pLEWk')" onmouseleave="stopPreview(this,'LCMei0pLEWk')">
-            <div class="vid-thumb" id="vt-LCMei0pLEWk">
-              <img src="https://img.youtube.com/vi/LCMei0pLEWk/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Çin ordusunun generallerine neden soruşturma başlatıldı?</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/AxESQi3xOW8','_blank')" onmouseenter="previewVid(this,'AxESQi3xOW8')" onmouseleave="stopPreview(this,'AxESQi3xOW8')">
-            <div class="vid-thumb" id="vt-AxESQi3xOW8">
-              <img src="https://img.youtube.com/vi/AxESQi3xOW8/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Avrupa sokakları terör örgütünün protestolarına sahne oldu</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/8k7BVjW9X-4','_blank')" onmouseenter="previewVid(this,'8k7BVjW9X-4')" onmouseleave="stopPreview(this,'8k7BVjW9X-4')">
-            <div class="vid-thumb" id="vt-8k7BVjW9X_4">
-              <img src="https://img.youtube.com/vi/8k7BVjW9X-4/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Gazze'de Barış Kurulu nasıl teşekkül edecek?</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/I2IeBiPcojw','_blank')" onmouseenter="previewVid(this,'I2IeBiPcojw')" onmouseleave="stopPreview(this,'I2IeBiPcojw')">
-            <div class="vid-thumb" id="vt-I2IeBiPcojw">
-              <img src="https://img.youtube.com/vi/I2IeBiPcojw/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">İran'daki protestolar ne boyutta?</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/wL2piThpUOo','_blank')" onmouseenter="previewVid(this,'wL2piThpUOo')" onmouseleave="stopPreview(this,'wL2piThpUOo')">
-            <div class="vid-thumb" id="vt-wL2piThpUOo">
-              <img src="https://img.youtube.com/vi/wL2piThpUOo/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">İran'daki protestolar ne boyutta?</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/8Qk88LFh2vE','_blank')" onmouseenter="previewVid(this,'8Qk88LFh2vE')" onmouseleave="stopPreview(this,'8Qk88LFh2vE')">
-            <div class="vid-thumb" id="vt-8Qk88LFh2vE">
-              <img src="https://img.youtube.com/vi/8Qk88LFh2vE/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">KGB ajanlığından Rusya'nın liderliğine uzanan hikaye: Vladimir Vladimiroviç Putin</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/kURYH7P8LjY','_blank')" onmouseenter="previewVid(this,'kURYH7P8LjY')" onmouseleave="stopPreview(this,'kURYH7P8LjY')">
-            <div class="vid-thumb" id="vt-kURYH7P8LjY">
-              <img src="https://img.youtube.com/vi/kURYH7P8LjY/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Türk Edebiyatının simge ismi: Ahmet Hamdi Tanpınar</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/4RxxQKkw5zI','_blank')" onmouseenter="previewVid(this,'4RxxQKkw5zI')" onmouseleave="stopPreview(this,'4RxxQKkw5zI')">
-            <div class="vid-thumb" id="vt-4RxxQKkw5zI">
-              <img src="https://img.youtube.com/vi/4RxxQKkw5zI/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Milli Şair: Mehmet Akif Ersoy</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/E9TErHzBqk4','_blank')" onmouseenter="previewVid(this,'E9TErHzBqk4')" onmouseleave="stopPreview(this,'E9TErHzBqk4')">
-            <div class="vid-thumb" id="vt-E9TErHzBqk4">
-              <img src="https://img.youtube.com/vi/E9TErHzBqk4/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Yahudi Devleti'nin mimarı: Theodor Herzl</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/85Lw-xj0Oao','_blank')" onmouseenter="previewVid(this,'85Lw-xj0Oao')" onmouseleave="stopPreview(this,'85Lw-xj0Oao')">
-            <div class="vid-thumb" id="vt-85Lw_xj0Oao">
-              <img src="https://img.youtube.com/vi/85Lw-xj0Oao/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Arjantin'in efsanesi yıldız futbolcu: Lionel Messi</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/7UVqfaPRpWs','_blank')" onmouseenter="previewVid(this,'7UVqfaPRpWs')" onmouseleave="stopPreview(this,'7UVqfaPRpWs')">
-            <div class="vid-thumb" id="vt-7UVqfaPRpWs">
-              <img src="https://img.youtube.com/vi/7UVqfaPRpWs/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Başörtüsü mücadelesinin sembol ismi: Şule Yüksel Şenler</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/td_TPXD7CPQ','_blank')" onmouseenter="previewVid(this,'td_TPXD7CPQ')" onmouseleave="stopPreview(this,'td_TPXD7CPQ')">
-            <div class="vid-thumb" id="vt-td_TPXD7CPQ">
-              <img src="https://img.youtube.com/vi/td_TPXD7CPQ/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">İtalya'nın ilk kadın Başbakanı: Giorgia Meloni</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/nbdcfaQ9ssQ','_blank')" onmouseenter="previewVid(this,'nbdcfaQ9ssQ')" onmouseleave="stopPreview(this,'nbdcfaQ9ssQ')">
-            <div class="vid-thumb" id="vt-nbdcfaQ9ssQ">
-              <img src="https://img.youtube.com/vi/nbdcfaQ9ssQ/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Türk Filozof ve Bilim İnsanı: Şaban Teoman Duralı</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/N_xmvIiPQDY','_blank')" onmouseenter="previewVid(this,'N_xmvIiPQDY')" onmouseleave="stopPreview(this,'N_xmvIiPQDY')">
-            <div class="vid-thumb" id="vt-N_xmvIiPQDY">
-              <img src="https://img.youtube.com/vi/N_xmvIiPQDY/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">ABD'li girişimci Elon Musk: Elon Reeve Musk</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/5FMUgnx4BdI','_blank')" onmouseenter="previewVid(this,'5FMUgnx4BdI')" onmouseleave="stopPreview(this,'5FMUgnx4BdI')">
-            <div class="vid-thumb" id="vt-5FMUgnx4BdI">
-              <img src="https://img.youtube.com/vi/5FMUgnx4BdI/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Hayatını dünyayı güzelleştirmeye adayan Mimar ve Düşünce adamı: Turgut Cansever</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/q8nKNiOuSfU','_blank')" onmouseenter="previewVid(this,'q8nKNiOuSfU')" onmouseleave="stopPreview(this,'q8nKNiOuSfU')">
-            <div class="vid-thumb" id="vt-q8nKNiOuSfU">
-              <img src="https://img.youtube.com/vi/q8nKNiOuSfU/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Türk Savunma sanayisinin bağımsızlığına adanmış bir ömür: Özdemir Bayraktar</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/tRGdi6D06ww','_blank')" onmouseenter="previewVid(this,'tRGdi6D06ww')" onmouseleave="stopPreview(this,'tRGdi6D06ww')">
-            <div class="vid-thumb" id="vt-tRGdi6D06ww">
-              <img src="https://img.youtube.com/vi/tRGdi6D06ww/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-            </div>
-            <div class="vid-info">
-              <div class="vid-title">Aşık geleneğinin son temsilcilerinden: Aşık Veysel</div>
-              <div class="vid-sub">YouTube</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="vid-arrows">
-        <button class="vid-arr" onclick="vidScroll(-1)">&#8592;</button>
-        <button class="vid-arr" onclick="vidScroll(1)">&#8594;</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- PODCAST -->
-  <section id="sec-podcast" class="section-alt">
-    <div class="pod-head sec-head">
-      <div class="sec-eye">Podcast</div>
-      <h2 class="sec-title">Podcast</h2>
-    </div>
-    <div class="pl-tabs" id="pl-tabs"></div>
-    <div class="pl-body">
-      <div class="pl-left">
-        <a id="pl-link" href="#" target="_blank" rel="noopener" style="display:block;text-decoration:none">
-          <img class="pl-cover-img" id="pl-img" src="" alt="" onerror="this.style.opacity='.3'">
-        </a>
-        <div>
-          <a id="pl-name-link" href="#" target="_blank" rel="noopener" style="text-decoration:none">
-            <div class="pl-prog-name" id="pl-name" style="cursor:pointer"></div>
-          </a>
-          <div class="pl-prog-ct" id="pl-ct"></div>
-        </div>
-      </div>
-      <div class="pl-eps" id="pl-eps"></div>
-    </div>
-  
-    <footer>
-      <div class="f-sig" data-tr="Yeşil ve tatlı Dünya'dan hoş sadâlar" data-en="Pleasant echoes from the verdant and captivating Earth">Pleasant echoes from the verdant and captivating Earth</div>
-      <div class="f-dt" id="ft0"></div>
-    </footer>
-</section>
-</div>
 
 <!-- ══════ HABERLERİM (inner) ══════ -->
 <div id="page-haberlerim" class="ip">
@@ -2669,6 +2171,515 @@ setTimeout(()=>{
 </script>
 </div>
 
+<div id="page-home">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-photo"></div>
+    <div class="hero-content">
+      <div class="hero-tag" data-tr="Gazeteci" data-en="Journalist">Journalist</div>
+      <span class="hero-name">HALİL</span>
+      <span class="hero-name">İBRAHİM</span>
+      <span class="hero-name-last">Ciğer</span>
+      <div class="hero-principles">
+        <span class="p-w" data-tip-tr="Hayra yorma" data-tip-en="To maintain a positive outlook">Tefe'ul<span class="p-tip" id="tip-tefeul">Hayra yorma</span></span>
+        <span class="p-sep"></span>
+        <span class="p-w" data-tip-tr="Olmadan farketme" data-tip-en="Preemptive action">Tedebbür<span class="p-tip" id="tip-tedebbur">Olmadan farketme</span></span>
+        <span class="p-sep"></span>
+        <span class="p-w" data-tip-tr="Sakince kavrama" data-tip-en="Level-headedness">Teenni<span class="p-tip" id="tip-teenni">Sakince kavrama</span></span>
+      </div>
+      <a class="hero-scroll" href="#sec-haberler">
+        <span class="hero-scroll-bar"></span>
+        <span data-tr="Keşfet" data-en="Explore">Explore</span>
+      </a>
+    </div>
+    <div class="hero-ticker-wrap">
+      <div class="ticker-label" data-tr="Son Haberler" data-en="Latest News">Latest News</div>
+      <div class="ticker-outer"><div class="ticker-track" id="hticker"></div></div>
+    </div>
+  </section>
+
+  <!-- HABERLER -->
+  <section id="sec-haberler" class="section">
+    <div class="sec-head">
+      <div class="sec-eye" data-tr="Haberler" data-en="News">News</div>
+      <h2 class="sec-title" data-tr="Haberlerim" data-en="News">News</h2>
+    </div>
+    <div class="news-tabs">
+      <button class="ntab on" onclick="filterHomeNews(this,'en')" data-tr="Türkçe" data-en="English">English</button>
+      <button class="ntab" onclick="filterHomeNews(this,'tr')" data-tr="İngilizce" data-en="Turkish">Turkish</button>
+      <button class="ntab" onclick="filterHomeNews(this,'other')" data-tr="Diğer" data-en="Other">Other</button>
+    </div>
+    <div class="news-grid" id="home-news-grid"></div>
+
+  <!-- MuckRack news ticker -->
+  <div class="muck-section">
+    <div class="muck-header">
+      <div class="muck-eye" data-tr="Haberler" data-en="News">News</div>
+      <a href="#" onclick="showAllNews();return false;" class="muck-link" data-tr="Öne Çıkanlar ↗" data-en="Featured News ↗">Featured News ↗</a>
+    </div>
+    <div class="muck-wrap">
+      <div class="muck-track" id="muck-track">
+        <a class="muck-item" href="https://www.aa.com.tr/tr/ayrimcilikhatti/ayrimcilik/secmenler-gazze-meselesine-tepkilerini-sandikta-gostermek-istiyor/1821638" target="_blank" rel="noopener">Seçmenler, Gazze meselesine tepkilerini sandıkta göstermek istiyor</a><a class="muck-item" href="https://www.aa.com.tr/tr/gundem/hatayin-yeniden-canlandirilmasi-projesi-ile-hatay-master-planinin-lansmani-yapildi/3206450" target="_blank" rel="noopener">Hatay'ın Yeniden Canlandırılması Projesi ile Hatay Master Planının lansmanı yapıldı</a><a class="muck-item" href="https://www.aa.com.tr/tr/dunya/amerikan-islam-iliskileri-konseyi-gazze-deki-soykirim-nedeniyle-abd-yonetimine-dava-acti/3486493" target="_blank" rel="noopener">Amerikan İslam İlişkileri Konseyi, Gazze'deki soykırım nedeniyle ABD yönetimine dava açtı</a><a class="muck-item" href="https://www.aa.com.tr/tr/ayrimcilikhatti/ayrimcilik/georgia-eyalet-temsilcisi-romman-abd-secimlerinde-ilklerin-yasandigini-soyledi/1821707" target="_blank" rel="noopener">Georgia eyalet temsilcisi Romman, ABD seçimlerinde ilklerin yaşandığını söyledi</a><a class="muck-item" href="https://www.aa.com.tr/tr/israil-filistin-catismasi/israil-in-buldozerle-ezerek-oldurdugu-rachel-corrie-nin-anne-ve-babasi-anadolu-talk-zone-a-konustu/3042205" target="_blank" rel="noopener">İsrail'in buldozerle ezerek öldürdüğü Rachel Corrie'nin anne ve babası konuştu</a><a class="muck-item" href="https://www.aa.com.tr/tr/abd-baskanlik-secimleri-2024/abdde-israil-lobisi-aipac-netanyahuyu-alkislayan-senatorlere-milyonlarca-dolar-bagisladi/3331246" target="_blank" rel="noopener">ABD'de İsrail lobisi AIPAC, Netanyahu'yu alkışlayan senatörlere milyonlarca dolar bağışladı</a><a class="muck-item" href="https://www.aa.com.tr/tr/live-blog/israil-donanmasindan-uluslararasi-sularda-kuresel-sumud-filosuna-saldiri/1798" target="_blank" rel="noopener">İsrail donanmasından uluslararası sularda küresel Sumud filosuna saldırı</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/parents-of-rachel-corrie-who-was-crushed-to-death-by-israeli-bulldozers-spoke-to-anadolu-s-english-podcast-show/3042256" target="_blank" rel="noopener">Parents of Rachel Corrie spoke to AA English podcast</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/gaza-war-to-influence-2024-us-presidential-election/3329626" target="_blank" rel="noopener">Gaza War to influence 2024 US Presidential Election</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/bidens-human-rights-record-under-scrutiny-for-support-of-israeli-genocide-in-gaza/3459188" target="_blank" rel="noopener">Biden's human rights record under scrutiny for support of Israeli genocide in Gaza</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/council-on-american-islamic-relations-sues-us-government-over-genocide-in-gaza/3486926" target="_blank" rel="noopener">Council on American Islamic Relations sues US government over genocide in Gaza</a><a class="muck-item" href="https://www.aa.com.tr/en/middle-east/all-available-resources-mobilized-after-israeli-attack-disrupts-gaza-bound-aid-flotilla-organizer-says/3923348" target="_blank" rel="noopener">All available resources mobilized after Israeli attack disrupts Gaza-bound aid flotilla</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/many-firsts-in-us-politics-1st-muslim-woman-lawmaker-in-southern-state-of-georgia/3332737" target="_blank" rel="noopener">Many firsts in US politics: 1st Muslim woman lawmaker in southern state of Georgia</a><a class="muck-item" href="https://www.aa.com.tr/tr/ayrimcilikhatti/ayrimcilik/secmenler-gazze-meselesine-tepkilerini-sandikta-gostermek-istiyor/1821638" target="_blank" rel="noopener">Seçmenler, Gazze meselesine tepkilerini sandıkta göstermek istiyor</a><a class="muck-item" href="https://www.aa.com.tr/tr/gundem/hatayin-yeniden-canlandirilmasi-projesi-ile-hatay-master-planinin-lansmani-yapildi/3206450" target="_blank" rel="noopener">Hatay'ın Yeniden Canlandırılması Projesi ile Hatay Master Planının lansmanı yapıldı</a><a class="muck-item" href="https://www.aa.com.tr/tr/dunya/amerikan-islam-iliskileri-konseyi-gazze-deki-soykirim-nedeniyle-abd-yonetimine-dava-acti/3486493" target="_blank" rel="noopener">Amerikan İslam İlişkileri Konseyi, Gazze'deki soykırım nedeniyle ABD yönetimine dava açtı</a><a class="muck-item" href="https://www.aa.com.tr/tr/ayrimcilikhatti/ayrimcilik/georgia-eyalet-temsilcisi-romman-abd-secimlerinde-ilklerin-yasandigini-soyledi/1821707" target="_blank" rel="noopener">Georgia eyalet temsilcisi Romman, ABD seçimlerinde ilklerin yaşandığını söyledi</a><a class="muck-item" href="https://www.aa.com.tr/tr/israil-filistin-catismasi/israil-in-buldozerle-ezerek-oldurdugu-rachel-corrie-nin-anne-ve-babasi-anadolu-talk-zone-a-konustu/3042205" target="_blank" rel="noopener">İsrail'in buldozerle ezerek öldürdüğü Rachel Corrie'nin anne ve babası konuştu</a><a class="muck-item" href="https://www.aa.com.tr/tr/abd-baskanlik-secimleri-2024/abdde-israil-lobisi-aipac-netanyahuyu-alkislayan-senatorlere-milyonlarca-dolar-bagisladi/3331246" target="_blank" rel="noopener">ABD'de İsrail lobisi AIPAC, Netanyahu'yu alkışlayan senatörlere milyonlarca dolar bağışladı</a><a class="muck-item" href="https://www.aa.com.tr/tr/live-blog/israil-donanmasindan-uluslararasi-sularda-kuresel-sumud-filosuna-saldiri/1798" target="_blank" rel="noopener">İsrail donanmasından uluslararası sularda küresel Sumud filosuna saldırı</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/parents-of-rachel-corrie-who-was-crushed-to-death-by-israeli-bulldozers-spoke-to-anadolu-s-english-podcast-show/3042256" target="_blank" rel="noopener">Parents of Rachel Corrie spoke to AA English podcast</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/gaza-war-to-influence-2024-us-presidential-election/3329626" target="_blank" rel="noopener">Gaza War to influence 2024 US Presidential Election</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/bidens-human-rights-record-under-scrutiny-for-support-of-israeli-genocide-in-gaza/3459188" target="_blank" rel="noopener">Biden's human rights record under scrutiny for support of Israeli genocide in Gaza</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/council-on-american-islamic-relations-sues-us-government-over-genocide-in-gaza/3486926" target="_blank" rel="noopener">Council on American Islamic Relations sues US government over genocide in Gaza</a><a class="muck-item" href="https://www.aa.com.tr/en/middle-east/all-available-resources-mobilized-after-israeli-attack-disrupts-gaza-bound-aid-flotilla-organizer-says/3923348" target="_blank" rel="noopener">All available resources mobilized after Israeli attack disrupts Gaza-bound aid flotilla</a><a class="muck-item" href="https://www.aa.com.tr/en/americas/many-firsts-in-us-politics-1st-muslim-woman-lawmaker-in-southern-state-of-georgia/3332737" target="_blank" rel="noopener">Many firsts in US politics: 1st Muslim woman lawmaker in southern state of Georgia</a>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <!-- PODCAST -->
+  <section id="sec-video" class="section">
+    <div class="sec-head">
+      <div class="sec-eye">Vodcast</div>
+      <h2 class="sec-title">Vodcast</h2>
+    </div>
+    <div class="vid-body">
+      <div class="vid-track-wrap">
+        <div class="vid-track" id="vid-track">
+          <div class="vid-card" onclick="window.open('https://youtu.be/H9Yxw84F0PI','_blank')" onmouseenter="previewVid(this,'H9Yxw84F0PI')" onmouseleave="stopPreview(this,'H9Yxw84F0PI')">
+            <div class="vid-thumb" id="vt-H9Yxw84F0PI">
+              <img src="https://img.youtube.com/vi/H9Yxw84F0PI/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Gaza War's Impact on US Election</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/4VIA5wig-pM','_blank')" onmouseenter="previewVid(this,'4VIA5wig-pM')" onmouseleave="stopPreview(this,'4VIA5wig-pM')">
+            <div class="vid-thumb" id="vt-4VIA5wig_pM">
+              <img src="https://img.youtube.com/vi/4VIA5wig-pM/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Hatay'ın Yeniden Canlandırılması Projesi Lansmanı</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/jNJ1Ver2k1w','_blank')" onmouseenter="previewVid(this,'jNJ1Ver2k1w')" onmouseleave="stopPreview(this,'jNJ1Ver2k1w')">
+            <div class="vid-thumb" id="vt-jNJ1Ver2k1w">
+              <img src="https://img.youtube.com/vi/jNJ1Ver2k1w/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Bitcoin'i Gelecekte Ne Bekliyor?</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/-52zObcHmQc','_blank')" onmouseenter="previewVid(this,'-52zObcHmQc')" onmouseleave="stopPreview(this,'-52zObcHmQc')">
+            <div class="vid-thumb" id="vt-_52zObcHmQc">
+              <img src="https://img.youtube.com/vi/-52zObcHmQc/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">What does future hold for Bitcoin?</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/wh9kkc71iMc','_blank')" onmouseenter="previewVid(this,'wh9kkc71iMc')" onmouseleave="stopPreview(this,'wh9kkc71iMc')">
+            <div class="vid-thumb" id="vt-wh9kkc71iMc">
+              <img src="https://img.youtube.com/vi/wh9kkc71iMc/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">ABD'de seçim günü: Amerikalı Gençler ne diyor?</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/EwX7lrKThiQ','_blank')" onmouseenter="previewVid(this,'EwX7lrKThiQ')" onmouseleave="stopPreview(this,'EwX7lrKThiQ')">
+            <div class="vid-thumb" id="vt-EwX7lrKThiQ">
+              <img src="https://img.youtube.com/vi/EwX7lrKThiQ/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Rachel Corrie'nin anne ve babası Anadolu Talk Zone'a konuştu</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/VD4OXLcfWvk','_blank')" onmouseenter="previewVid(this,'VD4OXLcfWvk')" onmouseleave="stopPreview(this,'VD4OXLcfWvk')">
+            <div class="vid-thumb" id="vt-VD4OXLcfWvk">
+              <img src="https://img.youtube.com/vi/VD4OXLcfWvk/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">İsrail'in Lübnan'daki planı ne?</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/W-nfmxg-5xc','_blank')" onmouseenter="previewVid(this,'W-nfmxg-5xc')" onmouseleave="stopPreview(this,'W-nfmxg-5xc')">
+            <div class="vid-thumb" id="vt-W_nfmxg_5xc">
+              <img src="https://img.youtube.com/vi/W-nfmxg-5xc/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Macaristan ve Bulgaristan'ın gündemi seçimler</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/Xk7CX0U5dXo','_blank')" onmouseenter="previewVid(this,'Xk7CX0U5dXo')" onmouseleave="stopPreview(this,'Xk7CX0U5dXo')">
+            <div class="vid-thumb" id="vt-Xk7CX0U5dXo">
+              <img src="https://img.youtube.com/vi/Xk7CX0U5dXo/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Mescid-i Aksa 41 gün sonra yeniden açıldı</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/IoOl8Bl4ELw','_blank')" onmouseenter="previewVid(this,'IoOl8Bl4ELw')" onmouseleave="stopPreview(this,'IoOl8Bl4ELw')">
+            <div class="vid-thumb" id="vt-IoOl8Bl4ELw">
+              <img src="https://img.youtube.com/vi/IoOl8Bl4ELw/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">İsrail modeli işgal Lübnan'da mı uygulanıyor?</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/fdMmeoZQ_ts','_blank')" onmouseenter="previewVid(this,'fdMmeoZQ_ts')" onmouseleave="stopPreview(this,'fdMmeoZQ_ts')">
+            <div class="vid-thumb" id="vt-fdMmeoZQ_ts">
+              <img src="https://img.youtube.com/vi/fdMmeoZQ_ts/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">ABD-Rusya-Ukrayna görüşmelerinde son durum ne?</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/qyjRzQrn0Hg','_blank')" onmouseenter="previewVid(this,'qyjRzQrn0Hg')" onmouseleave="stopPreview(this,'qyjRzQrn0Hg')">
+            <div class="vid-thumb" id="vt-qyjRzQrn0Hg">
+              <img src="https://img.youtube.com/vi/qyjRzQrn0Hg/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Sudan'da neler oldu?</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/Lu7cR2fAIjw','_blank')" onmouseenter="previewVid(this,'Lu7cR2fAIjw')" onmouseleave="stopPreview(this,'Lu7cR2fAIjw')">
+            <div class="vid-thumb" id="vt-Lu7cR2fAIjw">
+              <img src="https://img.youtube.com/vi/Lu7cR2fAIjw/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Sumud filosunda son durum ne?</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/ofwHeNByhCE','_blank')" onmouseenter="previewVid(this,'ofwHeNByhCE')" onmouseleave="stopPreview(this,'ofwHeNByhCE')">
+            <div class="vid-thumb" id="vt-ofwHeNByhCE">
+              <img src="https://img.youtube.com/vi/ofwHeNByhCE/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Savaşın akıbeti ne olacak?</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/FrRadMTIf64','_blank')" onmouseenter="previewVid(this,'FrRadMTIf64')" onmouseleave="stopPreview(this,'FrRadMTIf64')">
+            <div class="vid-thumb" id="vt-FrRadMTIf64">
+              <img src="https://img.youtube.com/vi/FrRadMTIf64/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Kerkük'te yeni dönem</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/f1Y7fSdb-v8','_blank')" onmouseenter="previewVid(this,'f1Y7fSdb-v8')" onmouseleave="stopPreview(this,'f1Y7fSdb-v8')">
+            <div class="vid-thumb" id="vt-f1Y7fSdb_v8">
+              <img src="https://img.youtube.com/vi/f1Y7fSdb-v8/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">İdam, İsrail'in yeni soykırım aracı mı?</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/1AnAQXVYh60','_blank')" onmouseenter="previewVid(this,'1AnAQXVYh60')" onmouseleave="stopPreview(this,'1AnAQXVYh60')">
+            <div class="vid-thumb" id="vt-1AnAQXVYh60">
+              <img src="https://img.youtube.com/vi/1AnAQXVYh60/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Lafarge'ın Daeş'i finanse ettiği artık tescillendi</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/6uNYfSqtZ2U','_blank')" onmouseenter="previewVid(this,'6uNYfSqtZ2U')" onmouseleave="stopPreview(this,'6uNYfSqtZ2U')">
+            <div class="vid-thumb" id="vt-6uNYfSqtZ2U">
+              <img src="https://img.youtube.com/vi/6uNYfSqtZ2U/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">İsrail Filistinli esirleri idam cezasıyla yok etmek mi istiyor?</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/0wJwTkQhojw','_blank')" onmouseenter="previewVid(this,'0wJwTkQhojw')" onmouseleave="stopPreview(this,'0wJwTkQhojw')">
+            <div class="vid-thumb" id="vt-0wJwTkQhojw">
+              <img src="https://img.youtube.com/vi/0wJwTkQhojw/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Büyükelçi'nin 'Vadedilmiş Topraklar' çıkışı ne anlama geliyor?</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/o-hloRqxfKk','_blank')" onmouseenter="previewVid(this,'o-hloRqxfKk')" onmouseleave="stopPreview(this,'o-hloRqxfKk')">
+            <div class="vid-thumb" id="vt-o_hloRqxfKk">
+              <img src="https://img.youtube.com/vi/o-hloRqxfKk/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Milli Muharip uçağımız KAAN ne aşamada? Epstein dosyalarının içeriğinde ne var?</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/LCMei0pLEWk','_blank')" onmouseenter="previewVid(this,'LCMei0pLEWk')" onmouseleave="stopPreview(this,'LCMei0pLEWk')">
+            <div class="vid-thumb" id="vt-LCMei0pLEWk">
+              <img src="https://img.youtube.com/vi/LCMei0pLEWk/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Çin ordusunun generallerine neden soruşturma başlatıldı?</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/AxESQi3xOW8','_blank')" onmouseenter="previewVid(this,'AxESQi3xOW8')" onmouseleave="stopPreview(this,'AxESQi3xOW8')">
+            <div class="vid-thumb" id="vt-AxESQi3xOW8">
+              <img src="https://img.youtube.com/vi/AxESQi3xOW8/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Avrupa sokakları terör örgütünün protestolarına sahne oldu</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/8k7BVjW9X-4','_blank')" onmouseenter="previewVid(this,'8k7BVjW9X-4')" onmouseleave="stopPreview(this,'8k7BVjW9X-4')">
+            <div class="vid-thumb" id="vt-8k7BVjW9X_4">
+              <img src="https://img.youtube.com/vi/8k7BVjW9X-4/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Gazze'de Barış Kurulu nasıl teşekkül edecek?</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/I2IeBiPcojw','_blank')" onmouseenter="previewVid(this,'I2IeBiPcojw')" onmouseleave="stopPreview(this,'I2IeBiPcojw')">
+            <div class="vid-thumb" id="vt-I2IeBiPcojw">
+              <img src="https://img.youtube.com/vi/I2IeBiPcojw/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">İran'daki protestolar ne boyutta?</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/wL2piThpUOo','_blank')" onmouseenter="previewVid(this,'wL2piThpUOo')" onmouseleave="stopPreview(this,'wL2piThpUOo')">
+            <div class="vid-thumb" id="vt-wL2piThpUOo">
+              <img src="https://img.youtube.com/vi/wL2piThpUOo/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">İran'daki protestolar ne boyutta?</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/8Qk88LFh2vE','_blank')" onmouseenter="previewVid(this,'8Qk88LFh2vE')" onmouseleave="stopPreview(this,'8Qk88LFh2vE')">
+            <div class="vid-thumb" id="vt-8Qk88LFh2vE">
+              <img src="https://img.youtube.com/vi/8Qk88LFh2vE/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">KGB ajanlığından Rusya'nın liderliğine uzanan hikaye: Vladimir Vladimiroviç Putin</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/kURYH7P8LjY','_blank')" onmouseenter="previewVid(this,'kURYH7P8LjY')" onmouseleave="stopPreview(this,'kURYH7P8LjY')">
+            <div class="vid-thumb" id="vt-kURYH7P8LjY">
+              <img src="https://img.youtube.com/vi/kURYH7P8LjY/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Türk Edebiyatının simge ismi: Ahmet Hamdi Tanpınar</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/4RxxQKkw5zI','_blank')" onmouseenter="previewVid(this,'4RxxQKkw5zI')" onmouseleave="stopPreview(this,'4RxxQKkw5zI')">
+            <div class="vid-thumb" id="vt-4RxxQKkw5zI">
+              <img src="https://img.youtube.com/vi/4RxxQKkw5zI/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Milli Şair: Mehmet Akif Ersoy</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/E9TErHzBqk4','_blank')" onmouseenter="previewVid(this,'E9TErHzBqk4')" onmouseleave="stopPreview(this,'E9TErHzBqk4')">
+            <div class="vid-thumb" id="vt-E9TErHzBqk4">
+              <img src="https://img.youtube.com/vi/E9TErHzBqk4/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Yahudi Devleti'nin mimarı: Theodor Herzl</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/85Lw-xj0Oao','_blank')" onmouseenter="previewVid(this,'85Lw-xj0Oao')" onmouseleave="stopPreview(this,'85Lw-xj0Oao')">
+            <div class="vid-thumb" id="vt-85Lw_xj0Oao">
+              <img src="https://img.youtube.com/vi/85Lw-xj0Oao/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Arjantin'in efsanesi yıldız futbolcu: Lionel Messi</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/7UVqfaPRpWs','_blank')" onmouseenter="previewVid(this,'7UVqfaPRpWs')" onmouseleave="stopPreview(this,'7UVqfaPRpWs')">
+            <div class="vid-thumb" id="vt-7UVqfaPRpWs">
+              <img src="https://img.youtube.com/vi/7UVqfaPRpWs/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Başörtüsü mücadelesinin sembol ismi: Şule Yüksel Şenler</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/td_TPXD7CPQ','_blank')" onmouseenter="previewVid(this,'td_TPXD7CPQ')" onmouseleave="stopPreview(this,'td_TPXD7CPQ')">
+            <div class="vid-thumb" id="vt-td_TPXD7CPQ">
+              <img src="https://img.youtube.com/vi/td_TPXD7CPQ/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">İtalya'nın ilk kadın Başbakanı: Giorgia Meloni</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/nbdcfaQ9ssQ','_blank')" onmouseenter="previewVid(this,'nbdcfaQ9ssQ')" onmouseleave="stopPreview(this,'nbdcfaQ9ssQ')">
+            <div class="vid-thumb" id="vt-nbdcfaQ9ssQ">
+              <img src="https://img.youtube.com/vi/nbdcfaQ9ssQ/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Türk Filozof ve Bilim İnsanı: Şaban Teoman Duralı</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/N_xmvIiPQDY','_blank')" onmouseenter="previewVid(this,'N_xmvIiPQDY')" onmouseleave="stopPreview(this,'N_xmvIiPQDY')">
+            <div class="vid-thumb" id="vt-N_xmvIiPQDY">
+              <img src="https://img.youtube.com/vi/N_xmvIiPQDY/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">ABD'li girişimci Elon Musk: Elon Reeve Musk</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/5FMUgnx4BdI','_blank')" onmouseenter="previewVid(this,'5FMUgnx4BdI')" onmouseleave="stopPreview(this,'5FMUgnx4BdI')">
+            <div class="vid-thumb" id="vt-5FMUgnx4BdI">
+              <img src="https://img.youtube.com/vi/5FMUgnx4BdI/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Hayatını dünyayı güzelleştirmeye adayan Mimar ve Düşünce adamı: Turgut Cansever</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/q8nKNiOuSfU','_blank')" onmouseenter="previewVid(this,'q8nKNiOuSfU')" onmouseleave="stopPreview(this,'q8nKNiOuSfU')">
+            <div class="vid-thumb" id="vt-q8nKNiOuSfU">
+              <img src="https://img.youtube.com/vi/q8nKNiOuSfU/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Türk Savunma sanayisinin bağımsızlığına adanmış bir ömür: Özdemir Bayraktar</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://youtu.be/tRGdi6D06ww','_blank')" onmouseenter="previewVid(this,'tRGdi6D06ww')" onmouseleave="stopPreview(this,'tRGdi6D06ww')">
+            <div class="vid-thumb" id="vt-tRGdi6D06ww">
+              <img src="https://img.youtube.com/vi/tRGdi6D06ww/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+            </div>
+            <div class="vid-info">
+              <div class="vid-title">Aşık geleneğinin son temsilcilerinden: Aşık Veysel</div>
+              <div class="vid-sub">YouTube</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="vid-arrows">
+        <button class="vid-arr" onclick="vidScroll(-1)">&#8592;</button>
+        <button class="vid-arr" onclick="vidScroll(1)">&#8594;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PODCAST -->
+  <section id="sec-podcast" class="section-alt">
+    <div class="pod-head sec-head">
+      <div class="sec-eye">Podcast</div>
+      <h2 class="sec-title">Podcast</h2>
+    </div>
+    <div class="pl-tabs" id="pl-tabs"></div>
+    <div class="pl-body">
+      <div class="pl-left">
+        <a id="pl-link" href="#" target="_blank" rel="noopener" style="display:block;text-decoration:none">
+          <img class="pl-cover-img" id="pl-img" src="" alt="" onerror="this.style.opacity='.3'">
+        </a>
+        <div>
+          <a id="pl-name-link" href="#" target="_blank" rel="noopener" style="text-decoration:none">
+            <div class="pl-prog-name" id="pl-name" style="cursor:pointer"></div>
+          </a>
+          <div class="pl-prog-ct" id="pl-ct"></div>
+        </div>
+      </div>
+      <div class="pl-eps" id="pl-eps"></div>
+    </div>
+  
+    <footer>
+      <div class="f-sig" data-tr="Yeşil ve tatlı Dünya'dan hoş sadâlar" data-en="Pleasant echoes from the verdant and captivating Earth">Pleasant echoes from the verdant and captivating Earth</div>
+      <div class="f-dt" id="ft0"></div>
+    </footer>
+</section>
+</div>
+
 <!-- AUDIO BAR -->
 <div class="abar" id="abar">
   <img class="a-cover" id="a-cover" src="" alt="">
@@ -2811,19 +2822,17 @@ function showHome(){
   return false;
 }
 function navTo(page){
-  // 1. Sayfayı en başa al
-  window.scrollTo({top:0,behavior:'instant'});
-  // 2. Ana sayfayı gizle (DOM'dan kaldır, sırayı bozmaz)
+  // 1. Ana sayfayı gizle
   const homeEl=document.getElementById('page-home');
   if(homeEl)homeEl.style.display='none';
-  // 3. Tüm ip sayfalarını gizle
+  // 2. Tüm ip sayfalarını gizle
   document.querySelectorAll('.ip').forEach(el=>{
     el.style.display='none';
     el.classList.remove('on');
   });
-  // 4. Nav linklerini sıfırla
+  // 3. Nav sıfırla
   document.querySelectorAll('.nav-links a, .mob-nav a').forEach(a=>a.classList.remove('on'));
-  // 5. Hedef sayfayı göster
+  // 4. Hedef sayfayı göster
   const target=document.getElementById('page-'+page);
   if(target){
     target.style.display='block';
@@ -2831,7 +2840,11 @@ function navTo(page){
   }
   const nl=document.getElementById('nl-'+page);
   if(nl)nl.classList.add('on');
-  // 6. İçerikleri yükle
+  // 5. Scroll - tüm yöntemleri dene
+  try{document.documentElement.scrollTop=0;}catch(e){}
+  try{document.body.scrollTop=0;}catch(e){}
+  try{window.scrollTo(0,0);}catch(e){}
+  // 6. İçerik yükle
   if(page==='haberlerim')buildInnerNews(lang==='en'?'en':'tr');
   if(page==='podcast'&&!podInited){podInited=true;initPod();}
   if(page==='hakkimda'){setTimeout(()=>{window.dispatchEvent(new Event('ab-init'));},100);}
