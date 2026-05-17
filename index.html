@@ -2801,20 +2801,32 @@ function toggleLang(){
 
 /* ══ ROUTING ══ */
 function showHome(){
-  document.getElementById('page-home').style.display='block';
-  ['haberlerim','perspektif','vodcast','podcast','hakkimda'].forEach(p=>document.getElementById('page-'+p).classList.remove('on'));
+  const homeEl=document.getElementById('page-home');
+  if(homeEl)homeEl.style.display='block';
+  ['haberlerim','perspektif','vodcast','podcast','hakkimda'].forEach(p=>{
+    const el=document.getElementById('page-'+p);
+    if(el){el.classList.remove('on');el.style.display='';}
+  });
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('on'));
   document.getElementById('nl-home').classList.add('on');
   window.scrollTo(0,0); return false;
 }
 function navTo(page){
-  document.getElementById('page-home').style.display='none';
-  ['haberlerim','perspektif','vodcast','podcast','hakkimda'].forEach(p=>document.getElementById('page-'+p).classList.remove('on'));
+  // Hide home
+  const homeEl=document.getElementById('page-home');
+  if(homeEl)homeEl.style.display='none';
+  // Hide all ip pages
+  ['haberlerim','perspektif','vodcast','podcast','hakkimda'].forEach(p=>{
+    const el=document.getElementById('page-'+p);
+    if(el){el.classList.remove('on');el.style.display='';}
+  });
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('on'));
-  document.getElementById('page-'+page).classList.add('on');
+  // Show target page - use BOTH class and inline style for reliability
+  const target=document.getElementById('page-'+page);
+  if(target){target.classList.add('on');target.style.display='block';}
   const nl=document.getElementById('nl-'+page);if(nl)nl.classList.add('on');
   window.scrollTo(0,0);
-  if(page==='haberlerim')buildInnerNews('tr');
+  if(page==='haberlerim')buildInnerNews(lang==='en'?'en':'tr');
   if(page==='podcast'&&!podInited){podInited=true;initPod();}
   if(page==='hakkimda'){setTimeout(()=>{window.dispatchEvent(new Event('ab-init'));},100);}
   return false;
