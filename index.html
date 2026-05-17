@@ -554,7 +554,11 @@ nav {
 /* ════ INNER PAGES ════ */
 .ip { display:none; min-height:100vh; padding-top:62px; background:var(--bg); transition:background .3s; }
 .ip.on { display:block; }
+#page-home { min-height:100vh; padding-top:62px; background:var(--bg); transition:background .3s; }
+#page-home[style*="display: none"], #page-home[style*="display:none"] { min-height:0 !important; padding:0 !important; }
 .ip.on { display:block; }
+#page-home { min-height:100vh; padding-top:62px; background:var(--bg); transition:background .3s; }
+#page-home[style*="display: none"], #page-home[style*="display:none"] { min-height:0 !important; padding:0 !important; }
 .ip.on { display:block !important; }
 @keyframes pgIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
 
@@ -2699,7 +2703,7 @@ function navTo(page){
     t.classList.add('on');
   }
   const nl=document.getElementById('nl-'+page);if(nl)nl.classList.add('on');
-  window.scrollTo(0,0);
+  setTimeout(()=>window.scrollTo(0,0),10);
   if(page==='haberlerim')buildInnerNews(lang==='en'?'en':'tr');
   if(page==='podcast'&&!podInited){podInited=true;initPod();}
   if(page==='hayatim'){setTimeout(()=>{window.dispatchEvent(new Event('ab-init'));},100);}
