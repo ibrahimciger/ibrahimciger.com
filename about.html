@@ -730,7 +730,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 #hy-wmap { display: block; width: 100%; height: 100%; cursor: crosshair; }
 
 /* PILLARS */
-.hy-pillars { display: grid; grid-template-columns: repeat(6,1fr); border-bottom: .5px solid var(--border2); }
+.hy-pillars { display: grid; grid-template-columns: repeat(7,1fr); border-bottom: .5px solid var(--border2); }
 .hy-pill { padding: 1.1rem .5rem; text-align: center; border-right: .5px solid var(--border2); cursor: default; transition: background .2s; }
 .hy-pill:last-child { border-right: none; }
 .hy-pill:hover { background: var(--bg2); }
@@ -822,6 +822,70 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 /* Thesis link */
 .thesis-link { color: var(--gold); text-decoration: none; border-bottom: 1px dotted var(--gold); cursor: pointer; transition: color .2s; }
 .thesis-link:hover { color: var(--green); }
+
+/* ── Career split bars ── */
+.hy-career-split { flex:0 0 220px; padding:1.4rem 1.5rem; border-right:.5px solid var(--border2); display:flex; flex-direction:column; justify-content:center; }
+.hy-cs-label { font-size:9px; letter-spacing:.18em; text-transform:lowercase; color:var(--muted); margin-bottom:1.2rem; font-family:'Josefin Sans',sans-serif; }
+.hy-cs-bars { display:flex; flex-direction:column; gap:.85rem; }
+.hy-cs-bar-row { display:flex; align-items:center; gap:.6rem; }
+.hy-cs-name { font-size:11px; color:var(--ink2); font-family:'Josefin Sans',sans-serif; width:95px; flex-shrink:0; }
+.hy-cs-track { flex:1; height:5px; background:var(--border2); border-radius:3px; overflow:hidden; }
+.hy-cs-fill { height:100%; border-radius:3px; width:0; transition:width 1.2s cubic-bezier(.4,0,.2,1); }
+.hy-cs-pct { font-size:10px; color:var(--muted); font-family:'Josefin Sans',sans-serif; width:28px; text-align:right; }
+
+/* ── Languages SVG (vector, no blur) ── */
+.hy-lang-svg { width:44px; height:44px; flex-shrink:0; }
+
+/* ── Awards hover ── */
+.hy-aw-ring { transition:all .25s; }
+.hy-aw:hover .hy-aw-ring { transform:scale(1.18) rotate(-8deg); }
+.hy-aw:hover .hy-aw-ring.hy-gold { background:var(--gold); color:#fff; }
+.hy-aw:hover .hy-aw-ring.hy-bronze { background:#a0522d; color:#fff; }
+
+/* ── Pill hover animation ── */
+.hy-pill { transition:background .2s, transform .2s; }
+.hy-pill:hover { transform:translateY(-3px); }
+.hy-pill:hover .hy-pc { transform:scale(1.12); background:var(--gold); }
+.hy-pill:hover .hy-pc i { color:#fff; }
+.hy-pc { transition:all .25s; }
+
+/* ── Page footer ── */
+.hy-page-footer { border-top:.5px solid var(--border2); padding:1.4rem 2rem; text-align:center; background:var(--bg2); transition:background .3s; }
+.hy-footer-contacts { display:flex; justify-content:center; align-items:center; gap:.7rem; flex-wrap:wrap; margin-bottom:.8rem; }
+.hy-fc { display:flex; align-items:center; gap:6px; font-size:12px; color:var(--ink2); text-decoration:none; font-family:'Josefin Sans',sans-serif; transition:color .2s; }
+.hy-fc:hover { color:var(--gold); }
+.hy-fc i { font-size:14px; color:var(--gold); }
+.hy-fc-sep { color:var(--muted); font-size:12px; }
+.hy-footer-quote { font-family:'Playfair Display',serif; font-size:15px; color:var(--muted); font-style:italic; margin-bottom:.4rem; }
+.hy-footer-clock { font-family:'Josefin Sans',sans-serif; font-size:11px; color:var(--muted); letter-spacing:.08em; }
+
+/* ── Thesis modal yeni ── */
+.thesis-masthead { display:flex; justify-content:space-between; align-items:center; padding:.7rem 2rem; background:#1c1a14; border-bottom:3px solid var(--gold,#b8892a); }
+.thesis-pub-name { font-family:'Playfair Display',serif; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:#b8892a; }
+.thesis-pub-date { font-family:'Josefin Sans',sans-serif; font-size:10px; color:rgba(255,255,255,.5); margin-top:2px; letter-spacing:.06em; }
+.thesis-close-btn { background:none; border:1px solid rgba(255,255,255,.2); color:#fff; width:28px; height:28px; border-radius:50%; cursor:pointer; font-size:14px; transition:all .2s; display:flex; align-items:center; justify-content:center; }
+.thesis-close-btn:hover { background:rgba(255,255,255,.1); }
+.thesis-hero { padding:2.5rem 2.5rem 1.5rem; text-align:center; background:#fdf8ef; border-bottom:1px solid #e8e0d0; }
+.thesis-category { font-family:'Josefin Sans',sans-serif; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:#b8892a; margin-bottom:.8rem; }
+.thesis-title { font-family:'Playfair Display',serif; font-size:clamp(22px,3vw,34px); font-weight:700; line-height:1.15; color:#1c1a14; margin:0 0 1rem; }
+.thesis-meta-row { display:flex; justify-content:center; align-items:center; gap:.5rem; flex-wrap:wrap; }
+.thesis-meta-item { font-family:'Josefin Sans',sans-serif; font-size:12px; color:#6b5e4e; }
+.thesis-meta-sep { color:#b8892a; }
+.thesis-divider-line { height:1px; background:linear-gradient(to right,transparent,#b8892a,transparent); margin:.5rem 2rem; }
+.thesis-content-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; padding:1.5rem 2rem; background:#fdf8ef; }
+.thesis-article { padding:0 1.2rem; }
+.thesis-article:first-child { border-right:1px solid #e8e0d0; padding-left:0; }
+.thesis-article:last-child { padding-right:0; }
+.thesis-section-kicker { font-family:'Josefin Sans',sans-serif; font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:#b8892a; margin:1.2rem 0 .4rem; font-weight:700; }
+.thesis-lead { font-size:15px; line-height:1.75; color:#2a2018; font-style:italic; margin-bottom:.8rem; }
+.thesis-article p { font-size:13px; line-height:1.8; color:#3a3628; margin:0 0 .6rem; }
+.thesis-pullquote { border-left:3px solid #b8892a; padding:.6rem 1rem; margin:1.2rem 0 0; font-family:'Playfair Display',serif; font-size:14px; font-style:italic; color:#5a4e3e; background:#f5efe3; }
+.thesis-drop-cap-section p:first-of-type::first-letter { font-size:3.2em; line-height:.8; float:left; margin:.05em .08em 0 0; color:#b8892a; font-family:'Playfair Display',serif; font-weight:700; }
+.thesis-footer { display:flex; justify-content:space-between; align-items:center; padding:.8rem 2rem; background:#1c1a14; }
+.thesis-footer-left { font-family:'Josefin Sans',sans-serif; font-size:10px; color:rgba(255,255,255,.4); letter-spacing:.06em; }
+.thesis-catalog-link { font-family:'Josefin Sans',sans-serif; font-size:11px; color:#b8892a; text-decoration:none; letter-spacing:.06em; transition:color .2s; }
+.thesis-catalog-link:hover { color:#d4a840; text-decoration:underline; }
+@media(max-width:650px){ .thesis-content-grid{grid-template-columns:1fr} .thesis-article:first-child{border-right:none;border-bottom:1px solid #e8e0d0;padding-bottom:1rem} }
 </style>
 
 <div class="hy-wrap">
@@ -859,15 +923,35 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   <div class="hy-pill"><div class="hy-pc"><i class="ti ti-book"></i></div><div class="hy-pt" data-tr="Kur'an" data-en="Quran">Quran</div><div class="hy-ps" data-tr="Hafız · 13 yaşında" data-en="Hafidh · age 13">Hafidh · age 13</div></div>
   <div class="hy-pill"><div class="hy-pc"><i class="ti ti-script"></i></div><div class="hy-pt" data-tr="Hadis" data-en="Hadith">Hadith</div><div class="hy-ps" data-tr="25.000+ ezber" data-en="Memorised 25000+">Memorised 25000+</div></div>
 </div>
+  <div class="hy-pill"><div class="hy-pc"><i class="ti ti-broadcast"></i></div><div class="hy-pt" data-tr="Dijital Medya" data-en="Digital Media">Digital Media</div><div class="hy-ps" data-tr="10 yıl" data-en="10 yrs">10 yrs</div></div>
+  <div class="hy-pill"><div class="hy-pc"><i class="ti ti-megaphone"></i></div><div class="hy-pt" data-tr="İletişim &amp; Etkinlik" data-en="Communication &amp; Events">Communication &amp; Events</div><div class="hy-ps" data-tr="Hedefli medya ilişkileri" data-en="Targeted media relations">Targeted media relations</div></div>
+  <div class="hy-pill"><div class="hy-pc"><i class="ti ti-world"></i></div><div class="hy-pt" data-tr="Uluslararası" data-en="International">International</div><div class="hy-ps">US · ME · EU</div></div>
+  <div class="hy-pill"><div class="hy-pc"><i class="ti ti-briefcase"></i></div><div class="hy-pt" data-tr="Liderlik" data-en="Leadership">Leadership</div><div class="hy-ps" data-tr="Bakan Başdanışmanı" data-en="Chief of Staff">Chief of Staff</div></div>
+  <div class="hy-pill"><div class="hy-pc"><i class="ti ti-book"></i></div><div class="hy-pt" data-tr="Kur'an" data-en="Quran">Quran</div><div class="hy-ps" data-tr="Hafız · 13 yaşında" data-en="Hafidh · age 13">Hafidh · age 13</div></div>
+  <div class="hy-pill"><div class="hy-pc"><i class="ti ti-script"></i></div><div class="hy-pt" data-tr="Hadis" data-en="Hadith">Hadith</div><div class="hy-ps" data-tr="25.000+ ezber" data-en="Memorised 25000+">Memorised 25000+</div></div>
+</div>
 
 <!-- MID: Donut + Timeline -->
 <div class="hy-mid">
-  <div class="hy-donut-wrap">
-    <div class="hy-dl" data-tr="Kariyer dağılımı" data-en="Career split">Career split</div>
-    <canvas id="hy-donut" width="160" height="110"></canvas>
-    <div class="hy-leg"><div class="hy-ld" style="background:#b8892a"></div data-tr="İletişim 50%" data-en="Communication 50%">Communication 50%</div>
-    <div class="hy-leg"><div class="hy-ld" style="background:#5DCAA5"></div data-tr="Gazetecilik 25%" data-en="Journalism 25%">Journalism 25%</div>
-    <div class="hy-leg"><div class="hy-ld" style="background:#AFA9EC"></div data-tr="STK 25%" data-en="NGO 25%">NGO 25%</div>
+  <div class="hy-career-split">
+    <div class="hy-cs-label" data-tr="kariyer dağılımı" data-en="career split">career split</div>
+    <div class="hy-cs-bars">
+      <div class="hy-cs-bar-row">
+        <div class="hy-cs-name" data-tr="İletişim" data-en="Communication">Communication</div>
+        <div class="hy-cs-track"><div class="hy-cs-fill" style="background:#b8892a" data-pct="50"></div></div>
+        <div class="hy-cs-pct">50%</div>
+      </div>
+      <div class="hy-cs-bar-row">
+        <div class="hy-cs-name" data-tr="Gazetecilik" data-en="Journalism">Journalism</div>
+        <div class="hy-cs-track"><div class="hy-cs-fill" style="background:#5DCAA5" data-pct="25"></div></div>
+        <div class="hy-cs-pct">25%</div>
+      </div>
+      <div class="hy-cs-bar-row">
+        <div class="hy-cs-name" data-tr="STK" data-en="NGO">NGO</div>
+        <div class="hy-cs-track"><div class="hy-cs-fill" style="background:#AFA9EC" data-pct="25"></div></div>
+        <div class="hy-cs-pct">25%</div>
+      </div>
+    </div>
   </div>
   <div style="width:1px;background:var(--border2);flex-shrink:0"></div>
   <div class="hy-tl-wrap">
@@ -876,19 +960,18 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
       <div class="hy-htl-base"></div>
       <div class="hy-htl-fill" id="hy-htlf"></div>
       <div class="hy-hnodes" id="hy-hnodes">
-        <div class="hy-hn" onclick="hySel(6)"><div class="hy-hn-pulse"></div><div class="hy-hn-dot"></div><div class="hy-hn-yr">2006</div><div class="hy-hn-t">Lisans</div><div class="hy-hn-o">Uludağ</div></div>
-        <div class="hy-hn" onclick="hySel(5)"><div class="hy-hn-pulse"></div><div class="hy-hn-dot"></div><div class="hy-hn-yr">2012</div><div class="hy-hn-t">Y.Lisans</div><div class="hy-hn-o">İstanbul</div></div>
-        <div class="hy-hn" onclick="hySel(3)"><div class="hy-hn-pulse"></div><div class="hy-hn-dot"></div><div class="hy-hn-yr">2013</div><div class="hy-hn-t">Kurucu</div><div class="hy-hn-o">S&amp;W</div></div>
-        <div class="hy-hn" onclick="hySel(2)"><div class="hy-hn-pulse"></div><div class="hy-hn-dot"></div><div class="hy-hn-yr">2015</div><div class="hy-hn-t">Danışman</div><div class="hy-hn-o">TBMM</div></div>
-        <div class="hy-hn hy-on" onclick="hySel(0)"><div class="hy-hn-pulse"></div><div class="hy-hn-dot"></div><div class="hy-hn-yr">2016</div><div class="hy-hn-t">Gazeteci</div><div class="hy-hn-o">AA</div></div>
-        <div class="hy-hn" onclick="hySel(4)"><div class="hy-hn-pulse"></div><div class="hy-hn-dot"></div><div class="hy-hn-yr">2016</div><div class="hy-hn-t">Georgetown</div><div class="hy-hn-o">Washington</div></div>
-        <div class="hy-hn" onclick="hySel(1)"><div class="hy-hn-pulse"></div><div class="hy-hn-dot"></div><div class="hy-hn-yr">2018</div><div class="hy-hn-t">Başdanışman</div><div class="hy-hn-o">Bakanlık</div></div>
+        <div class="hy-hn" onclick="hySel(6)"><div class="hy-hn-pulse"></div><div class="hy-hn-dot"></div><div class="hy-hn-yr">2006</div><div class="hy-hn-t" data-tr="Lisans" data-en="BA">BA</div><div class="hy-hn-o">Uludağ</div></div>
+        <div class="hy-hn" onclick="hySel(5)"><div class="hy-hn-pulse"></div><div class="hy-hn-dot"></div><div class="hy-hn-yr">2012</div><div class="hy-hn-t" data-tr="Y.Lisans" data-en="MA">MA</div><div class="hy-hn-o">İstanbul</div></div>
+        <div class="hy-hn" onclick="hySel(3)"><div class="hy-hn-pulse"></div><div class="hy-hn-dot"></div><div class="hy-hn-yr">2013</div><div class="hy-hn-t" data-tr="Kurucu" data-en="Founder">Founder</div><div class="hy-hn-o">S&amp;W</div></div>
+        <div class="hy-hn" onclick="hySel(2)"><div class="hy-hn-pulse"></div><div class="hy-hn-dot"></div><div class="hy-hn-yr">2015</div><div class="hy-hn-t" data-tr="Danışman" data-en="Advisor">Advisor</div><div class="hy-hn-o">TBMM</div></div>
+        <div class="hy-hn hy-on" onclick="hySel(0)"><div class="hy-hn-pulse"></div><div class="hy-hn-dot"></div><div class="hy-hn-yr">2016</div><div class="hy-hn-t" data-tr="Gazeteci" data-en="Journalist">Journalist</div><div class="hy-hn-o">AA</div></div>
+        <div class="hy-hn" onclick="hySel(4)"><div class="hy-hn-pulse"></div><div class="hy-hn-dot"></div><div class="hy-hn-yr">2016</div><div class="hy-hn-t">Georgetown</div><div class="hy-hn-o">DC</div></div>
+        <div class="hy-hn" onclick="hySel(1)"><div class="hy-hn-pulse"></div><div class="hy-hn-dot"></div><div class="hy-hn-yr">2018</div><div class="hy-hn-t" data-tr="Başdanışman" data-en="Chief Advisor">Chief Advisor</div><div class="hy-hn-o" data-tr="Bakanlık" data-en="Ministry">Ministry</div></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- BODY: Deneyim + Detay -->
 <div class="hy-body">
   <div class="hy-vtl-col">
     <div class="hy-exp-lbl" data-tr="Deneyim" data-en="Experience">Experience</div>
@@ -904,34 +987,30 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   </div>
   <div class="hy-detail-col">
     <div id="hy-dc0" class="hy-dc hy-on">
-      <div class="hy-dc-yr">2016 – günümüz · 10 yıl</div>
-      <div class="hy-dc-title">Gazeteci</div>
-      <div class="hy-dc-org">Anadolu Ajansı</div>
-      <div class="hy-dc-body">ABD siyaseti, Ortadoğu ve insan hakları alanlarında habercilik yapıyor. <a href="https://www.aa.com.tr/tr/podcast" target="_blank">AA Podcast</a> konseptinin mimarı ve <a href="https://www.aa.com.tr/tr/podcast/aa-portre" target="_blank">AA Portre</a>'yi hayata geçiren proje lideri. Rachel Corrie'nin ailesiyle yapılan röportaj ve ödül kazanan belgeseller dahil uluslararası yankı uyandıran içerikler üretti.</div>
-      <div style="margin-top:.6rem"><span class="hy-tag">AA Podcast Kurucusu</span><span class="hy-tag">ABD Seçimleri</span><span class="hy-tag">Hatay Belgeseli</span><span class="hy-tag">Anadolu Talks</span></div>
-    </div>
-    <div id="hy-dc1" class="hy-dc">
-      <div class="hy-dc-yr">2018 – 2020 · 2 yıl</div>
-      <div class="hy-dc-title">Bakan Başdanışmanı</div>
-      <div class="hy-dc-org">Aile ve Sosyal Hizmetler Bakanlığı, Türkiye</div>
-      <div class="hy-dc-body">Bakanlık düzeyinde stratejik iletişim ve kurumsal koordinasyonun liderliğini üstlendi. Kurumlar arası ilişkileri, politika iletişimini ve yürütme operasyonlarını yönetti.</div>
-      <div style="margin-top:.6rem"><span class="hy-tag">Politika</span><span class="hy-tag">Stratejik İletişim</span><span class="hy-tag">Kurumsal Liderlik</span></div>
-    </div>
-    <div id="hy-dc2" class="hy-dc">
-      <div class="hy-dc-yr">2015 · 1 yıl</div>
-      <div class="hy-dc-title">Parlamento Danışmanı</div>
-      <div class="hy-dc-org">Türkiye Büyük Millet Meclisi</div>
-      <div class="hy-dc-body">TBMM'de yasama ve iletişim konularında danışmanlık desteği sağladı. Ulusal düzeyde politika tasarımı ve siyasi iletişim süreçlerine derin bir bakış açısı geliştirdi.</div>
-      <div style="margin-top:.6rem"><span class="hy-tag">Yasama</span><span class="hy-tag">Siyasi İletişim</span></div>
-    </div>
-    <div id="hy-dc3" class="hy-dc">
-      <div class="hy-dc-yr">2013 – 2016 · 3 yıl</div>
-      <div class="hy-dc-title">Kurucu</div>
-      <div class="hy-dc-org">Sinan &amp; Wren Vakfı</div>
-      <div class="hy-dc-body">Uluslararası bir sivil toplum vakfı kurdu ve yönetti. Kültürlerarası diyalog programlarını, stratejik ortaklıkları ve operasyonel yönelimi üç yıl boyunca yürüttü.</div>
-      <div style="margin-top:.6rem"><span class="hy-tag">STK</span><span class="hy-tag">Sivil Toplum</span><span class="hy-tag">Kurucu</span></div>
-    </div>
-    <div id="hy-dc4" class="hy-dc">
+      <div class="hy-dc-yr" data-tr="2016 – günümüz · 10 yıl" data-en="2016 – present · 10 years">2016 – present · 10 years</div>
+      <div class="hy-dc-title" data-tr="Gazeteci" data-en="Journalist">Journalist</div>
+      <div class="hy-dc-org">Anadolu Agency</div>
+      <div class="hy-dc-body" data-tr="ABD siyaseti, Ortadoğu ve insan hakları alanlarında habercilik. AA Podcast konseptinin mimarı ve AA Portre'yi hayata geçiren proje lideri. Rachel Corrie'nin ailesiyle yapılan röportaj ve ödül kazanan belgeseller dahil uluslararası yankı uyandıran içerikler üretti. Anadolu Ajansı'nın dijital medya stratejisini şekillendirerek podcast ve video içerik üretiminde öncü rol üstlendi. Washington DC'deki görev sürecinde ABD Kongresi ve Beyaz Saray takibini yürüttü." data-en="Reports on US politics, the Middle East and human rights for Anadolu Agency. Architected the AA Podcast concept and led the AA Portre project from inception to broadcast. Produced internationally resonant content including an exclusive interview with Rachel Corrie's family and multiple award-winning documentaries. Shaped AA's digital media strategy, pioneering podcast and video content production. Covered the US Congress and White House during his Washington DC posting.">Reports on US politics, the Middle East and human rights for Anadolu Agency. Architected the AA Podcast concept and led the AA Portre project from inception to broadcast. Produced internationally resonant content including an exclusive interview with Rachel Corrie's family and award-winning documentaries. Shaped AA's digital media strategy, pioneering podcast and video content production.</div>
+      <div style="margin-top:.6rem"><span class="hy-tag">AA Podcast</span><span class="hy-tag">US Politics</span><span class="hy-tag">Hatay Documentary</span><span class="hy-tag">Anadolu Talks</span></div>
+    id="hy-dc1" class="hy-dc">
+      <div class="hy-dc-yr">2018 – 2020 · 2 years</div>
+      <div class="hy-dc-title" data-tr="Bakan Başdanışmanı" data-en="Minister's Chief of Staff">Minister's Chief of Staff</div>
+      <div class="hy-dc-org" data-tr="Aile ve Sosyal Hizmetler Bakanlığı" data-en="Ministry of Family and Social Services">Ministry of Family and Social Services</div>
+      <div class="hy-dc-body" data-tr="Bakanlık düzeyinde stratejik iletişim ve kurumsal koordinasyonun liderliğini üstlendi. Medya ilişkileri, kriz iletişimi ve kurumun kamuoyu algısını yönetti. Hükümet sözcülüğü ve politika iletişimi görevlerini yürüttü." data-en="Led strategic communications and institutional coordination at ministerial level. Managed media relations, crisis communications and the ministry's public perception. Served as government spokesperson and drove policy communications across multiple platforms, ensuring coherent messaging to national and international audiences.">Led strategic communications and institutional coordination at ministerial level. Managed media relations, crisis communications and the ministry's public perception. Served as government spokesperson and drove policy communications across multiple platforms.</div>
+      <div style="margin-top:.6rem"><span class="hy-tag">Strategic Communications</span><span class="hy-tag">Media Relations</span><span class="hy-tag">Policy</span></div>
+    id="hy-dc2" class="hy-dc">
+      <div class="hy-dc-yr">2015 · 1 year</div>
+      <div class="hy-dc-title" data-tr="Parlamento Danışmanı" data-en="Parliamentary Advisor">Parliamentary Advisor</div>
+      <div class="hy-dc-org" data-tr="Türkiye Büyük Millet Meclisi" data-en="Grand National Assembly of Turkey">Grand National Assembly of Turkey</div>
+      <div class="hy-dc-body" data-tr="TBMM'de yasama ve iletişim konularında danışmanlık desteği sağladı. Siyasi iletişim süreçleri ve medya stratejisi üzerine derinlemesine deneyim edindi." data-en="Provided advisory support on legislation and communications at the Grand National Assembly. Developed deep expertise in political communications, media strategy and the interface between public policy and press narrative. Contributed to committee communications and stakeholder engagement.">Provided advisory support on legislation and communications at the Grand National Assembly. Developed deep expertise in political communications, media strategy and the interface between public policy and press narrative.</div>
+      <div style="margin-top:.6rem"><span class="hy-tag">Political Communications</span><span class="hy-tag">Legislation</span></div>
+    id="hy-dc3" class="hy-dc">
+      <div class="hy-dc-yr">2013 – 2016 · 3 years</div>
+      <div class="hy-dc-title" data-tr="Kurucu" data-en="Founder">Founder</div>
+      <div class="hy-dc-org">Sinan &amp; Wren Foundation</div>
+      <div class="hy-dc-body" data-tr="Uluslararası bir sivil toplum vakfı kurdu ve yönetti. Kültürlerarası diyalog programları, stratejik ortaklıklar ve kurumsal iletişimi üç yıl boyunca yürüttü. Vakfın medya varlığını ve dijital iletişim kanallarını oluşturdu." data-en="Founded and led an international civil society foundation. Designed intercultural dialogue programmes, built strategic partnerships and managed all institutional communications. Established the foundation's media presence and digital communications channels, growing its audience across three continents.">Founded and led an international civil society foundation. Designed intercultural dialogue programmes, built strategic partnerships and managed all institutional communications. Established the foundation's media presence and digital communications channels.</div>
+      <div style="margin-top:.6rem"><span class="hy-tag">NGO</span><span class="hy-tag">Intercultural Dialogue</span><span class="hy-tag">Founder</span></div>
+    id="hy-dc4" class="hy-dc">
       <div class="hy-dc-yr">2016 – 2018</div>
       <div class="hy-dc-title">Georgetown Üniversitesi</div>
       <div class="hy-dc-org">Akademik Dil Programı · Washington DC</div>
@@ -966,195 +1045,42 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 <div class="hy-bot">
   <div class="hy-bc">
     <div class="hy-bl" data-tr="Diller" data-en="Languages">Languages</div>
-    <div class="hy-lang-row"><canvas class="hy-lang-arc" data-pct="100" width="44" height="44"></canvas><div><div class="hy-lang-name" data-tr="Türkçe" data-en="Turkish">Turkish</div><div class="hy-lang-level" data-tr="Anadil" data-en="Native">Native</div></div></div>
-    <div class="hy-lang-row"><canvas class="hy-lang-arc" data-pct="85" width="44" height="44"></canvas><div><div class="hy-lang-name" data-tr="İngilizce" data-en="English">English</div><div class="hy-lang-level" data-tr="İleri Düzey" data-en="Advanced">Advanced</div></div></div>
-    <div class="hy-lang-row"><canvas class="hy-lang-arc" data-pct="55" width="44" height="44"></canvas><div><div class="hy-lang-name" data-tr="Arapça" data-en="Arabic">Arabic</div><div class="hy-lang-level" data-tr="Orta Düzey" data-en="Intermediate">Intermediate</div></div></div>
+    <div class="hy-lang-row"><div class="hy-lang-svg" data-pct="100"></div><div><div class="hy-lang-name" data-tr="Türkçe" data-en="Turkish">Turkish</div><div class="hy-lang-level" data-tr="Anadil" data-en="Native">Native</div></div></div>
+    <div class="hy-lang-row"><div class="hy-lang-svg" data-pct="85"></div><div><div class="hy-lang-name" data-tr="İngilizce" data-en="English">English</div><div class="hy-lang-level" data-tr="İleri Düzey" data-en="Advanced">Advanced</div></div></div>
+    <div class="hy-lang-row"><div class="hy-lang-svg" data-pct="55"></div><div><div class="hy-lang-name" data-tr="Arapça" data-en="Arabic">Arabic</div><div class="hy-lang-level" data-tr="Orta Düzey" data-en="Intermediate">Intermediate</div></div></div>
   </div>
   <div class="hy-bsep"></div>
   <div class="hy-bc">
-    <div class="hy-bl" data-tr="Üyelikler &amp; Bağlantılar" data-en="Affiliations">Affiliations</div>
-    <div class="hy-aff"><a href="https://sinanwren.org/" target="_blank">Sinan &amp; Wren Vakfı</a> · Kurucu (2013–16)</div>
-    <div class="hy-aff"><a href="https://uvdvuslat.com/" target="_blank">Uluslararası Vuslat Platformu</a> · Yönetim Kurulu (2013–)</div>
+    <div class="hy-bl" data-tr="Üyelikler" data-en="Affiliations">Affiliations</div>
+    <div class="hy-aff"><a href="https://sinanwren.org/" target="_blank">Sinan &amp; Wren Foundation</a> · <span data-tr="Kurucu (2013–16)" data-en="Founder (2013–16)">Founder (2013–16)</span></div>
+    <div class="hy-aff"><a href="https://uvdvuslat.com/" target="_blank">Uluslararası Vuslat Platformu</a> · <span data-tr="Yönetim Kurulu (2013–)" data-en="Board Member (2013–)">Board Member (2013–)</span></div>
     <div class="hy-aff"><a href="https://campusministry.georgetown.edu/faith-traditions/muslim/" target="_blank">Georgetown MSA</a> (2017–19)</div>
-    <div class="hy-aff" style="text-decoration:none">Uluslararası Öğrenci Derneği · Kurucu (2006–10)</div>
+    <div class="hy-aff"><span data-tr="Uluslararası Öğrenci Derneği · Kurucu (2006–10)" data-en="International Students Assoc. · Founder (2006–10)">International Students Assoc. · Founder (2006–10)</span></div>
   </div>
   <div class="hy-bsep"></div>
   <div class="hy-bc">
     <div class="hy-bl" data-tr="İlgi Alanları" data-en="Interests">Interests</div>
-    <div class="hy-int-chip"><i class="ti ti-antenna"></i>İletişim &amp; Medya</div>
-    <div class="hy-int-chip"><i class="ti ti-world"></i>Uluslararası Haberler</div>
-    <div class="hy-int-chip"><i class="ti ti-book"></i>Hadis İlimleri</div>
-    <div class="hy-int-chip"><i class="ti ti-building-bank"></i>Nebevi İktisat</div>
-    <div class="hy-int-chip"><i class="ti ti-users"></i>Sivil Toplum</div>
+    <div class="hy-int-chip"><i class="ti ti-antenna"></i><span data-tr="İletişim &amp; Medya" data-en="Communications &amp; Media">Communications &amp; Media</span></div>
+    <div class="hy-int-chip"><i class="ti ti-world"></i><span data-tr="Uluslararası Haberler" data-en="International News">International News</span></div>
+    <div class="hy-int-chip"><i class="ti ti-book"></i><span data-tr="Hadis İlimleri" data-en="Hadith Sciences">Hadith Sciences</span></div>
+    <div class="hy-int-chip"><i class="ti ti-building-bank"></i><span data-tr="Nebevi İktisat" data-en="Prophetic Economics">Prophetic Economics</span></div>
+    <div class="hy-int-chip"><i class="ti ti-users"></i><span data-tr="Sivil Toplum" data-en="Civil Society">Civil Society</span></div>
   </div>
 </div>
 
-</div><!-- /hy-wrap -->
-
-<script>
-(function(){
-// ── Seçim ──
-const hnMap=[4,6,3,2,5,1,0];
-function hySel(n){
-  document.querySelectorAll('.hy-vn').forEach((v,i)=>v.classList.toggle('hy-on',i===n));
-  document.querySelectorAll('.hy-dc').forEach(d=>d.classList.remove('hy-on'));
-  const dc=document.getElementById('hy-dc'+n);if(dc)dc.classList.add('hy-on');
-  document.querySelectorAll('.hy-hn').forEach((h,i)=>h.classList.toggle('hy-on',hnMap[i]===n));
-}
-window.hySel=hySel;
-
-// ── Otomatik döngü ──
-let cIdx=0,cTimer=null,cycling=true;
-function runC(){if(!cycling)return;hySel([0,1,2,3,4,5,6][cIdx]);cIdx=(cIdx+1)%7;cTimer=setTimeout(runC,4500);}
-function hyStopCycle(){cycling=false;clearTimeout(cTimer);}
-window.hyStopCycle=hyStopCycle;
-setTimeout(runC,1500);
-
-// ── Timeline animasyonu ──
-setTimeout(()=>{
-  const nodes=document.querySelectorAll('.hy-hn');
-  const fill=document.getElementById('hy-htlf');
-  nodes.forEach((n,i)=>setTimeout(()=>{
-    n.classList.add('hy-vis');
-    fill.style.width=(((i+1)/nodes.length)*100)+'%';
-    const p=n.querySelector('.hy-hn-pulse');
-    if(p)p.style.animationDelay=(i*0.28)+'s';
-  },i*250));
-},300);
-
-// ── Dil çemberleri ──
-setTimeout(()=>{
-  document.querySelectorAll('.hy-lang-arc').forEach(cv=>{
-    const pct=+cv.dataset.pct/100;
-    const ctx=cv.getContext('2d');
-    const cx=22,cy=22,r=18,lw=5;
-    ctx.beginPath();ctx.arc(cx,cy,r,-Math.PI/2,Math.PI*1.5);
-    ctx.strokeStyle='rgba(0,0,0,0.1)';ctx.lineWidth=lw;ctx.lineCap='round';ctx.stroke();
-    ctx.beginPath();ctx.arc(cx,cy,r,-Math.PI/2,-Math.PI/2+Math.PI*2*pct);
-    ctx.strokeStyle='#b8892a';ctx.lineWidth=lw;ctx.lineCap='round';ctx.stroke();
-    ctx.font='bold 10px system-ui';ctx.fillStyle='#b8892a';
-    ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.fillText(Math.round(pct*100)+'%',cx,cy);
-  });
-},300);
-
-// ── 3D Döner Donut ──
-(function(){
-  const cv=document.getElementById('hy-donut');if(!cv)return;
-  const ctx=cv.getContext('2d');
-  const cx=80,cy=50,rx=50,ry=14,depth=15,ir=0.58;
-  const segs=[{pct:.5,col:'#b8892a'},{pct:.25,col:'#5DCAA5'},{pct:.25,col:'#AFA9EC'}];
-  let rot=0;
-  function ring(a1,a2,col,bot){
-    const dy=bot?depth:0;
-    ctx.beginPath();ctx.ellipse(cx,cy+dy,rx,ry,0,a1,a2);
-    ctx.lineTo(cx+Math.cos(a2)*rx*ir,cy+dy+Math.sin(a2)*ry*ir);
-    ctx.ellipse(cx,cy+dy,rx*ir,ry*ir,0,a2,a1,true);ctx.closePath();
-    ctx.fillStyle=col+(bot?'cc':'ff');ctx.fill();
-    ctx.strokeStyle='rgba(0,0,0,0.05)';ctx.lineWidth=.5;ctx.stroke();
-  }
-  function side(a1,a2,col){
-    const x1=cx+Math.cos(a1)*rx,y1=cy+Math.sin(a1)*ry;
-    const x2=cx+Math.cos(a2)*rx,y2=cy+Math.sin(a2)*ry;
-    ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x1,y1+depth);
-    ctx.lineTo(x2,y2+depth);ctx.lineTo(x2,y2);ctx.closePath();
-    ctx.fillStyle=col+'88';ctx.fill();
-    ctx.strokeStyle='rgba(0,0,0,0.04)';ctx.stroke();
-  }
-  (function frame(){
-    ctx.clearRect(0,0,160,110);
-    let a=rot;
-    segs.forEach(s=>{const e=a+s.pct*Math.PI*2;if(a<Math.PI)side(a,e,s.col);a=e;});
-    a=rot;segs.forEach(s=>{const e=a+s.pct*Math.PI*2;ring(a,e,s.col,true);a=e;});
-    a=rot;segs.forEach(s=>{const e=a+s.pct*Math.PI*2;ring(a,e,s.col,false);a=e;});
-    rot+=0.006;requestAnimationFrame(frame);
-  })();
-})();
-
-// ── Dünya haritası ──
-(function(){
-  const canvas=document.getElementById('hy-wmap');if(!canvas)return;
-  const ctx=canvas.getContext('2d');
-  const tip=document.getElementById('hy-ctip');
-  const LON_MIN=-125,LON_MAX=65,LAT_MIN=18,LAT_MAX=72;
-  const C=[
-    {n:'ABD',lo:-100,la:38},{n:'Kanada',lo:-96,la:56},
-    {n:'Almanya',lo:10,la:51},{n:'Hollanda',lo:5.3,la:52.3},
-    {n:'İspanya',lo:-3.7,la:40.4},{n:'İtalya',lo:12.5,la:41.9},
-    {n:'Yunanistan',lo:21.8,la:39.1},{n:'Fransa',lo:2.3,la:46.2},
-    {n:'Belçika',lo:4.5,la:50.8},{n:'Bulgaristan',lo:25.5,la:42.7},
-    {n:'Slovakya',lo:19.7,la:48.7},{n:'Avusturya',lo:14.5,la:47.5},
-    {n:'Sırbistan',lo:21,la:44.8},{n:'Romanya',lo:25,la:45.9},
-    {n:'Lüksemburg',lo:6.1,la:49.8},{n:'İsviçre',lo:8.2,la:46.8},
-    {n:'Suriye',lo:38,la:35},{n:'Suudi Arabistan',lo:45,la:24},
-    {n:'Türkiye',lo:35,la:39,home:true},
-  ];
-  let hov=null,pulse=0,raf2;
-  function proj(lo,la){const W=canvas.width,H=canvas.height;return{x:(lo-LON_MIN)/(LON_MAX-LON_MIN)*W,y:(LAT_MAX-la)/(LAT_MAX-LAT_MIN)*H};}
-  function inB(lo,la){return lo>=LON_MIN&&lo<=LON_MAX&&la>=LAT_MIN&&la<=LAT_MAX;}
-  function draw(){
-    const W=canvas.width,H=canvas.height;
-    ctx.clearRect(0,0,W,H);
-    ctx.strokeStyle='rgba(184,137,42,0.06)';ctx.lineWidth=.5;
-    for(let lo=LON_MIN;lo<=LON_MAX;lo+=15){const x=(lo-LON_MIN)/(LON_MAX-LON_MIN)*W;ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
-    for(let la=LAT_MIN;la<=LAT_MAX;la+=10){const y=(LAT_MAX-la)/(LAT_MAX-LAT_MIN)*H;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
-    if(hov&&!hov.home){
-      const home=C.find(c=>c.home),hp=proj(home.lo,home.la),cp=proj(hov.lo,hov.la);
-      ctx.beginPath();ctx.moveTo(hp.x,hp.y);ctx.lineTo(cp.x,cp.y);
-      ctx.strokeStyle='rgba(184,137,42,0.4)';ctx.lineWidth=1.2;ctx.setLineDash([3,5]);ctx.stroke();ctx.setLineDash([]);
-    }
-    pulse+=0.035;
-    C.forEach(c=>{
-      if(!inB(c.lo,c.la))return;
-      const{x,y}=proj(c.lo,c.la);
-      const isH=hov&&hov.n===c.n;
-      const p=Math.sin(pulse+(c.lo*0.15+c.la*0.12))*0.5+0.5;
-      if(c.home||isH){ctx.beginPath();ctx.arc(x,y,c.home?16:14,0,Math.PI*2);ctx.fillStyle=c.home?'rgba(184,137,42,0.1)':'rgba(93,202,165,0.15)';ctx.fill();}
-      ctx.beginPath();ctx.arc(x,y,c.home?7:isH?7:3.5+p*1.2,0,Math.PI*2);
-      ctx.fillStyle=c.home?'#b8892a':isH?'#5DCAA5':'rgba(184,137,42,0.7)';ctx.fill();
-      if(c.home){ctx.font='600 11px system-ui';ctx.fillStyle='#b8892a';ctx.fillText('İstanbul',x+9,y-4);}
-    });
-    raf2=requestAnimationFrame(draw);
-  }
-  function resize(){const p=canvas.parentElement;canvas.width=Math.max(p.clientWidth,100);canvas.height=Math.max(p.clientHeight,180);}
-  canvas.addEventListener('mousemove',e=>{
-    const r=canvas.getBoundingClientRect();const mx=e.clientX-r.left,my=e.clientY-r.top;
-    let best=null,bd=999;
-    C.forEach(c=>{if(!inB(c.lo,c.la))return;const{x,y}=proj(c.lo,c.la);const d=Math.hypot(mx-x,my-y);if(d<bd){bd=d;best=c;}});
-    hov=bd<24?best:null;
-    if(hov&&bd<24){tip.textContent=hov.n;tip.style.left=(mx+12)+'px';tip.style.top=(my-28)+'px';tip.style.opacity='1';}
-    else tip.style.opacity='0';
-  });
-  canvas.addEventListener('mouseleave',()=>{hov=null;tip.style.opacity='0';});
-  resize();
-  new ResizeObserver(()=>{cancelAnimationFrame(raf2);resize();draw();}).observe(canvas.parentElement);
-  draw();
-})();
-
-// ab-init event (navTo compatibility)
-window.addEventListener('ab-init',()=>{
-  document.querySelectorAll('.hy-lang-arc').forEach(cv=>{
-    const pct=+cv.dataset.pct/100;
-    const ctx=cv.getContext('2d');
-    if(!ctx)return;
-    ctx.clearRect(0,0,44,44);
-    const cx=22,cy=22,r=18,lw=5;
-    ctx.beginPath();ctx.arc(cx,cy,r,-Math.PI/2,Math.PI*1.5);
-    ctx.strokeStyle='rgba(0,0,0,0.1)';ctx.lineWidth=lw;ctx.lineCap='round';ctx.stroke();
-    ctx.beginPath();ctx.arc(cx,cy,r,-Math.PI/2,-Math.PI/2+Math.PI*2*pct);
-    ctx.strokeStyle='#b8892a';ctx.lineWidth=lw;ctx.lineCap='round';ctx.stroke();
-    ctx.font='bold 10px system-ui';ctx.fillStyle='#b8892a';
-    ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.fillText(Math.round(pct*100)+'%',cx,cy);
-  });
-});
-})();
-</script>
+<!-- FOOTER -->
+<div class="hy-page-footer">
+  <div class="hy-footer-contacts">
+    <a class="hy-fc" href="index.html"><i class="ti ti-home"></i>ibrahimciger</a>
+    <span class="hy-fc-sep">·</span>
+    <div class="hy-fc"><i class="ti ti-mail"></i>hc685@georgetown.edu</div>
+    <span class="hy-fc-sep">·</span>
+    <div class="hy-fc"><i class="ti ti-map-pin"></i>İstanbul</div>
+  </div>
+  <div class="hy-footer-quote">Pleasant echoes from the verdant and captivating Earth</div>
+  <div class="hy-footer-clock" id="hy-footer-clock"></div>
 </div>
 
-</div>
-
-</div>
 
 <script>
 let lang='en';
@@ -1199,43 +1125,61 @@ window.addEventListener('load',function(){
 });
 </script>
 
-</div>
 <div class="thesis-overlay" id="thesis-overlay" onclick="if(event.target===this)thesisClose()">
   <div class="thesis-modal">
-    <div class="thesis-header">
-      <div class="thesis-date-bar">Istanbul University &middot; Master's Thesis &middot; 2015</div>
-      <button class="thesis-close" onclick="thesisClose()">&#10005; Close</button>
+    <div class="thesis-masthead">
+      <div class="thesis-masthead-left">
+        <div class="thesis-pub-name">ACADEMIC RECORD</div>
+        <div class="thesis-pub-date" id="thesis-pub-date"></div>
+      </div>
+      <button class="thesis-close-btn" onclick="thesisClose()" aria-label="Close">&#10005;</button>
     </div>
-    <div class="thesis-body">
-      <div class="thesis-headline">An Investigation on the Economical Life<br>of the Holy Prophet</div>
-      <div class="thesis-byline">Halil &#304;brahim Ci&#287;er &nbsp;&middot;&nbsp; MA Islamic Law &amp; Finance &nbsp;&middot;&nbsp; Istanbul University 2015</div>
-      <div class="thesis-rule"></div>
-      <div class="thesis-cols">
-        <div class="thesis-col">
-          <div class="thesis-section-head">Preface</div>
-          <p>This thesis examines the economic dimensions of the Prophet Muhammad's life, drawing on classical Islamic sources alongside contemporary economic analysis.</p>
-          <div class="thesis-section-head">Chapter I &middot; Pre-Prophetic Period</div>
-          <p>Examines trade practices in 6th-century Arabia, the Prophet's early commercial activities, partnership arrangements, and the ethical foundations he established before his prophethood.</p>
+    <div class="thesis-hero">
+      <div class="thesis-category">Master's Thesis · Islamic Law &amp; Finance</div>
+      <h1 class="thesis-title">An Investigation on the<br>Economical Life of<br>the Holy Prophet</h1>
+      <div class="thesis-meta-row">
+        <span class="thesis-meta-item">Halil İbrahim Ciğer</span>
+        <span class="thesis-meta-sep">·</span>
+        <span class="thesis-meta-item">Istanbul University</span>
+        <span class="thesis-meta-sep">·</span>
+        <span class="thesis-meta-item">2015</span>
+      </div>
+    </div>
+    <div class="thesis-divider-line"></div>
+    <div class="thesis-content-grid">
+      <div class="thesis-article">
+        <div class="thesis-drop-cap-section">
+          <div class="thesis-section-kicker">Preface</div>
+          <p class="thesis-lead">This thesis examines the economic dimensions of the Prophet Muhammad's life through a rigorous interdisciplinary lens, drawing on classical Islamic sources and contemporary economic analysis.</p>
+          <p>The study aims to illuminate neglected dimensions of prophetic biography — specifically the economic and commercial activities of the Prophet — using methodologies from both Islamic jurisprudence and modern economic science. The research reveals a coherent and principled economic framework embedded within the prophetic tradition.</p>
         </div>
-        <div class="thesis-col">
-          <div class="thesis-section-head">Chapter II &middot; Medina Period</div>
-          <p>Analyses the construction of the Medina market, prohibition of monopolistic practices, introduction of the mudd and sa' standards, and foundational principles of Islamic economic justice.</p>
-          <div class="thesis-section-head">Chapter III &middot; Fiscal Policy</div>
-          <p>Covers zakat administration, spoils distribution, land tax, and the Prophet's approach to public finance and wealth redistribution.</p>
-        </div>
-        <div class="thesis-col">
-          <div class="thesis-section-head">Chapter IV &middot; Legacy</div>
-          <p>Discusses the enduring influence of prophetic economic principles on Islamic finance, waqf institutions, and contemporary Muslim-majority economies.</p>
-          <div class="thesis-section-head">Conclusion</div>
-          <p>The Prophet's economic model demonstrates a coherent system balancing spiritual imperatives with pragmatic governance.</p>
+        <div class="thesis-section-kicker">Chapter I · Pre-Prophetic Period</div>
+        <p>Examines trade practices in 6th-century Arabia, the Prophet's early commercial activities as a merchant and trade agent for Khadijah, partnership arrangements (mudaraba), and the ethical principles he established before his prophethood — principles that would later form the backbone of Islamic commercial law.</p>
+        <div class="thesis-section-kicker">Chapter II · The Medina Market</div>
+        <p>Analyses the construction of the first Islamic market in Medina, the prohibition of monopolistic and deceptive practices, introduction of standardised weights and measures (the mudd and sa'), and the foundational principles of Islamic economic justice that distinguished the Muslim community's commerce.</p>
+      </div>
+      <div class="thesis-article">
+        <div class="thesis-section-kicker">Chapter III · Fiscal Policy</div>
+        <p>Covers the administration of zakat as a redistributive institution, the rules governing spoils of war (ghanimah) and their equitable distribution, land taxation (kharaj), and the Prophet's sophisticated approach to public finance — a system that balanced communal welfare with individual property rights.</p>
+        <div class="thesis-section-kicker">Chapter IV · Legacy &amp; Modern Relevance</div>
+        <p>Discusses the enduring influence of prophetic economic principles on Islamic finance, waqf (endowment) institutions, profit-sharing structures, and contemporary Muslim-majority economies. The chapter draws a line from 7th-century Medina to modern instruments such as sukuk and participation banking.</p>
+        <div class="thesis-section-kicker">Conclusion</div>
+        <p>The Prophet's economic model constitutes a coherent system that balances spiritual imperatives with pragmatic governance. Its emphasis on transparency, prohibition of exploitation, and communal solidarity offers a framework with continued relevance for Islamic economics and ethical finance today.</p>
+        <div class="thesis-pullquote">
+          "A principled economic model rooted in justice, transparency, and communal solidarity."
         </div>
       </div>
-      <div class="thesis-footer-bar">
-        <div class="thesis-footer-text">Master's Thesis &middot; Istanbul University 2015</div>
-        <a class="thesis-link" href="https://katalog.isam.org.tr/?dil=0&p=1&q=Halil+%C4%B0brahim+Ci%C4%9Fer&alan=qYazarlar_txt" target="_blank" rel="noopener">ISAM Catalog &#8599;</a>
+    </div>
+    <div class="thesis-footer">
+      <div class="thesis-footer-left">
+        <span class="thesis-footer-label">Istanbul University · Department of Basic Islamic Sciences</span>
+      </div>
+      <div class="thesis-footer-right">
+        <a class="thesis-catalog-link" href="https://katalog.isam.org.tr/?dil=0&p=1&q=Halil+%C4%B0brahim+Ci%C4%9Fer&alan=qYazarlar_txt" target="_blank" rel="noopener">ISAM Academic Catalog &#8599;</a>
       </div>
     </div>
   </div>
+</div>
 </div>
 </body>
 </html>
