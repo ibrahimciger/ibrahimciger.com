@@ -566,10 +566,6 @@ nav {
 }
 .ip.on { display: block; }
 
-#pages-wrap {
-  position: relative;
-  overflow-x: hidden;
-}
 #page-home,
 .ip {
   position: absolute;
@@ -577,19 +573,13 @@ nav {
   left: 0;
   width: 100%;
 }
-#page-home {
-  position: relative;
-  z-index: 1;
-}
-.ip.on {
-  position: relative;
-  z-index: 1;
-}
-#page-home[style*="none"] { display: none !important; }
-#page-home { min-height:100vh; padding-top:62px; background:var(--bg); transition:background .3s; }
-#page-home[style*="display: none"], #page-home[style*="display:none"] { min-height:0 !important; padding:0 !important; }
+
 .ip.on { display:block; }
-#page-home { min-height:100vh; padding-top:62px; background:var(--bg); transition:background .3s; }
+#page-home[style*="none"] { display: none !important; }
+
+#page-home[style*="display: none"], #page-home[style*="display:none"] { min-height:0 !important; padding:0 !important; }
+
+
 #page-home[style*="display: none"], #page-home[style*="display:none"] { min-height:0 !important; padding:0 !important; }
 .ip.on { display:block !important; }
 @keyframes pgIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
@@ -931,13 +921,6 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   .all-news-modal-head{padding:20px 20px 16px;}
 }
 
-
-
-
-
-
-
-
   100%{transform:translateX(-50%)}
 }
 
@@ -1202,7 +1185,6 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
     <button class="burger" onclick="toggleMob()"><span></span><span></span><span></span></button>
   </div>
 </nav>
-<div id="pages-wrap">
 
 
 <div class="mob-m" id="mob-m">
@@ -2133,11 +2115,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
     </div>
   </div>
 </div>
-
-<!-- ══════ HAKKIMDA (About) ══════ -->
-
-
-
+</div>
 
 <!-- AUDIO BAR -->
 <div class="abar" id="abar">
@@ -3058,9 +3036,5 @@ document.addEventListener('keydown',e=>{
   </div>
 </div>
 
-<!-- Thesis 2: Economic Analysis of Participation Banks -->
-
-</div>
-</div>
 </body>
 </html>
