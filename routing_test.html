@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { margin:0; font-family:sans-serif; }
+nav { background:#b8892a; padding:10px; }
+nav a { color:white; margin:10px; cursor:pointer; }
+.ip { display:none; min-height:100vh; padding:80px 20px 20px; background:#f5f2eb; }
+.ip.on { display:block; }
+#page-home { min-height:100vh; padding:80px 20px 20px; background:#fff; }
+</style>
+</head>
+<body>
+<nav>
+  <a onclick="showHome()">Home</a>
+  <a onclick="navTo('about')">About</a>
+  <a onclick="navTo('news')">News</a>
+</nav>
+<div id="page-home">
+  <h1>HOME PAGE</h1>
+  <p>This is the home page content. Lots of content here...</p>
+</div>
+<div id="page-about" class="ip">
+  <h1>ABOUT PAGE</h1>
+  <p>If you see this, routing works!</p>
+</div>
+<div id="page-news" class="ip">
+  <h1>NEWS PAGE</h1>
+  <p>News content here.</p>
+</div>
+<script>
+function navTo(page){
+  document.getElementById('page-home').style.display='none';
+  document.querySelectorAll('.ip').forEach(function(el){
+    el.style.display='';
+    el.classList.remove('on');
+  });
+  var t=document.getElementById('page-'+page);
+  if(t){ t.classList.add('on'); }
+  document.documentElement.scrollTop=0;
+  document.body.scrollTop=0;
+  return false;
+}
+function showHome(){
+  document.querySelectorAll('.ip').forEach(function(el){
+    el.style.display='';
+    el.classList.remove('on');
+  });
+  document.getElementById('page-home').style.display='block';
+  document.documentElement.scrollTop=0;
+  document.body.scrollTop=0;
+  return false;
+}
+</script>
+</body>
+</html>
