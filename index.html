@@ -603,7 +603,7 @@ nav {
 .pod-ni { padding:12px 20px; cursor:pointer; font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:10.5px; letter-spacing:.08em; color:var(--ink2); text-transform:uppercase; transition:all .25s; border-left:2px solid transparent; margin-left:-1px; opacity:0.85; line-height:1.4; word-break:keep-all; hyphens:none; }
 .pod-ni:hover{color:var(--ink);opacity:1;} .pod-ni.on{color:var(--gold);border-left-color:var(--gold);background:rgba(184,137,42,.06);opacity:1;}
 .pod-main { overflow-y:auto; max-height:calc(100vh - 62px); background:var(--bg); transition:background .3s; }
-.pod-sec{visibility:hidden;height:0;overflow:hidden;} .pod-sec.on{dvisibility:visible;height:auto;isplay:block;}
+.pod-sec{display:none;} .pod-sec.on{display:block;}
 .pod-sh { padding:28px 40px 18px; border-bottom:1px solid var(--border2); display:flex; align-items:baseline; gap:14px; position:sticky; top:0; background:var(--bg); z-index:10; transition:background .3s; }
 .pod-st { font-family:'Playfair Display',serif; font-size:26px; font-style:italic; font-weight:700; color:var(--ink); transition:color .3s; }
 .pod-ct { font-family:'Space Mono',monospace; font-size:9px; color:var(--muted); }
@@ -1176,7 +1176,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
     <li><a href="#" onclick="navTo('perspektif')" id="nl-perspektif" data-tr="Perspektif" data-en="Perspective">Perspective</a></li>
     <li><a href="#" onclick="navTo('vodcast')" id="nl-vodcast" data-tr="Vodcast" data-en="Vodcast">Vodcast</a></li>
     <li><a href="#" onclick="navTo('podcast')" id="nl-podcast" data-tr="Podcast" data-en="Podcast">Podcast</a></li>
-            <li><a href="about.html" id="nl-hakkimda" data-tr="Hakkımda" data-en="About">About</a></li>
+            <li><a href="about.html" id="nl-hakkimda" data-tr="Tecrübeler" data-en="Experience">Experience</a></li>
   </ul>
   <div class="nav-right">
     <div class="nav-dt" id="nav-dt"></div>
@@ -1193,7 +1193,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   <a href="#" onclick="navTo('perspektif');toggleMob()">Perspektif</a>
   <a href="#" onclick="navTo('vodcast');toggleMob()">Vodcast</a>
   <a href="#" onclick="navTo('podcast');toggleMob()">Podcast</a>
-  <a href="about.html" data-tr="Hakkımda" data-en="About">About</a>
+  <a href="about.html" data-tr="Tecrübeler" data-en="Experience">Experience</a>
 </div>
 
 <!-- ══════ HOME ══════ -->
@@ -1715,9 +1715,9 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
     <h1 class="iph-title" data-tr="Haberlerim" data-en="News">News</h1>
   </div>
   <div class="lf-bar">
-    <button class="lf-tab on" onclick="filterInner(this,'en')" data-tr="Türkçe" data-en="English">English</button>
-    <button class="lf-tab" onclick="filterInner(this,'tr')" data-tr="İngilizce" data-en="Turkish">Turkish</button>
-    <button class="lf-tab" onclick="filterInner(this,'other')" data-tr="Diğer" data-en="Other">Other</button>
+    
+    
+    
   </div>
   <div class="nwall" id="nwall"></div>
   <footer><div class="f-sig" data-tr="Yeşil ve tatlı Dünya'dan hoş sadâlar" data-en="Pleasant echoes from the verdant and captivating Earth">Pleasant echoes from the verdant and captivating Earth</div><div class="f-dt" id="ft2"></div></footer>
@@ -2255,6 +2255,7 @@ function showHome(){
   var nl=document.getElementById('nl-home');if(nl)nl.classList.add('on');
   document.documentElement.scrollTop=0;
   document.body.scrollTop=0;
+    history.replaceState(null,'','#home');
   return false;
 }
 function navTo(page){
@@ -2277,8 +2278,10 @@ function navTo(page){
   document.body.scrollTop=0;
   // 6. İçerik
   if(page==='haberlerim') buildInnerNews();
-  if(page==='podcast'&&!podInited){podInited=true;initPod();}
+  if(page==='podcast'){if(!podInited){podInited=true;initPod();}}
   if(page==='hakkimda'){setTimeout(function(){window.dispatchEvent(new Event('ab-init'));},100);}
+    // Hash güncelle
+  history.replaceState(null,'','#'+page);
   return false;
 }
 function toggleMob(){document.getElementById('mob-m').classList.toggle('open');}
@@ -2345,8 +2348,9 @@ function buildHomeNews(f){
 }
 function filterHomeNews(btn,f){document.querySelectorAll('.ntab').forEach(b=>b.classList.remove('on'));btn.classList.add('on');buildHomeNews(f);}
 function getDefaultNewsLang(){return lang==='en'?'en':'tr';}
-function buildInnerNews(f){
+function buildInnerNews(){
   const g=document.getElementById('nwall');
+  if(!g)return;
   g.innerHTML=ND.map(n=>newsHTML(n,false)).join('');
 }
 function filterInner(btn,f){document.querySelectorAll('.lf-tab').forEach(b=>b.classList.remove('on'));btn.classList.add('on');buildInnerNews(f);}
@@ -2723,7 +2727,12 @@ document.addEventListener('DOMContentLoaded',()=>{
   buildTicker();
   buildHomeNews('en');
   buildPlaylists();
-  showHome();
+  // Hash'e göre doğru sayfayı yükle
+  (function(){
+    var hash=(window.location.hash||'#home').replace('#','');
+    var pages=['haberlerim','perspektif','vodcast','podcast','hayatim','hakkimda'];
+    if(pages.indexOf(hash)>=0){navTo(hash);}else{showHome();}
+  })();
 });
 
 /* ══ ANALIZ VE GÖRÜŞLER SPECIAL PLAYER ══ */
