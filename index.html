@@ -603,7 +603,7 @@ nav {
 .pod-ni { padding:12px 20px; cursor:pointer; font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:10.5px; letter-spacing:.08em; color:var(--ink2); text-transform:uppercase; transition:all .25s; border-left:2px solid transparent; margin-left:-1px; opacity:0.85; line-height:1.4; word-break:keep-all; hyphens:none; }
 .pod-ni:hover{color:var(--ink);opacity:1;} .pod-ni.on{color:var(--gold);border-left-color:var(--gold);background:rgba(184,137,42,.06);opacity:1;}
 .pod-main { overflow-y:auto; max-height:calc(100vh - 62px); background:var(--bg); transition:background .3s; }
-.pod-sec{display:none;} .pod-sec.on{display:block;}
+.pod-sec{visibility:hidden;height:0;overflow:hidden;} .pod-sec.on{dvisibility:visible;height:auto;isplay:block;}
 .pod-sh { padding:28px 40px 18px; border-bottom:1px solid var(--border2); display:flex; align-items:baseline; gap:14px; position:sticky; top:0; background:var(--bg); z-index:10; transition:background .3s; }
 .pod-st { font-family:'Playfair Display',serif; font-size:26px; font-style:italic; font-weight:700; color:var(--ink); transition:color .3s; }
 .pod-ct { font-family:'Space Mono',monospace; font-size:9px; color:var(--muted); }
@@ -748,8 +748,8 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .vod-section { margin-bottom:64px; }
 .vod-sec-head { padding:48px 0 20px; border-bottom:1px solid var(--border2); margin-bottom:28px; }
 .vod-sec-eye {
-  font-family:'Josefin Sans',sans-serif; font-weight:300;
-  font-size:11px; letter-spacing:.1em; text-transform:none;
+  font-family:'Josefin Sans',sans-serif; font-weight:400;
+  font-size:14px; letter-spacing:.1em; text-transform:none;
   color:var(--gold); display:flex; align-items:center; gap:12px; margin-bottom:10px;
 }
 .vod-sec-eye::before { content:''; width:20px; height:1px; background:var(--gold); display:block; }
@@ -2276,7 +2276,7 @@ function navTo(page){
   document.documentElement.scrollTop=0;
   document.body.scrollTop=0;
   // 6. İçerik
-  if(page==='haberlerim') buildInnerNews(lang==='en'?'en':'tr');
+  if(page==='haberlerim') buildInnerNews();
   if(page==='podcast'&&!podInited){podInited=true;initPod();}
   if(page==='hakkimda'){setTimeout(function(){window.dispatchEvent(new Event('ab-init'));},100);}
   return false;
@@ -2347,7 +2347,7 @@ function filterHomeNews(btn,f){document.querySelectorAll('.ntab').forEach(b=>b.c
 function getDefaultNewsLang(){return lang==='en'?'en':'tr';}
 function buildInnerNews(f){
   const g=document.getElementById('nwall');
-  g.innerHTML=ND.filter(n=>n.l===f).map(n=>newsHTML(n,false)).join('');
+  g.innerHTML=ND.map(n=>newsHTML(n,false)).join('');
 }
 function filterInner(btn,f){document.querySelectorAll('.lf-tab').forEach(b=>b.classList.remove('on'));btn.classList.add('on');buildInnerNews(f);}
 
@@ -2455,6 +2455,7 @@ function makeEpRow(title, url, date, num, progName, coverImg){
 }
 
 /* ══ HOME PLAYLIST ══ */
+function renderActivePlaylist(){buildPlaylists();}
 function buildPlaylists(){
   const tabs=document.getElementById('pl-tabs');
   PLAYLISTS.forEach((pl,i)=>{
@@ -2544,7 +2545,9 @@ function switchPl(idx){
 function switchPod(el,id){
   document.querySelectorAll('.pod-ni').forEach(n=>n.classList.remove('on'));
   document.querySelectorAll('.pod-sec').forEach(s=>s.classList.remove('on'));
-  el.classList.add('on'); document.getElementById('ps-'+id).classList.add('on');
+  el.classList.add('on');
+  var sec=document.getElementById('ps-'+id);
+  if(sec)sec.classList.add('on');
 }
 
 
@@ -2764,7 +2767,28 @@ function buildAnalizSection(container, coverImg){
           <div style="display:flex;gap:8px;">
             <a href="https://open.spotify.com/search/${encodeURIComponent(title)}" target="_blank" style="font-size:16px;text-decoration:none;">🎵</a>
             <a href="https://podcasts.apple.com/search?term=${encodeURIComponent(title)}" target="_blank" style="font-size:16px;text-decoration:none;">🎙️</a>
+          
+          <div class="vid-card" onclick="window.open('https://www.youtube.com/results?search_query=Amerikalı+gençler+ne+diyor+Halil+ibrahim+ciger','_blank')" onmouseenter="previewVid(this,'')">
+            <div class="vid-thumb" id="vt-usyouth">
+              <img src="https://img.youtube.com/vi/dR5jui0B18/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info"><div class="vid-title">ABD'de seçim günü: Amerikalı gençler ne diyor?</div></div>
           </div>
+          <div class="vid-card" onclick="window.open('https://www.youtube.com/results?search_query=Hatay+canlandırılması+projesi+lansmanı+anadolu','_blank')" onmouseenter="previewVid(this,'')">
+            <div class="vid-thumb" id="vt-hatayproject">
+              <img src="https://img.youtube.com/vi/3206450/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info"><div class="vid-title">Hatay'ın yeniden canlandırılması projesi lansmanı</div></div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=-dR5jui0B18','_blank')" onmouseenter="previewVid(this,'-dR5jui0B18')">
+            <div class="vid-thumb" id="vt-dR5jui0B18">
+              <img src="https://img.youtube.com/vi/-dR5jui0B18/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info"><div class="vid-title">Gazze ABD seçimlerine nasıl etki edecek?</div></div>
+          </div></div>
         </div>`;
       ep.addEventListener('mouseenter',()=>ep.style.borderColor='var(--gold)');
       ep.addEventListener('mouseleave',()=>ep.style.borderColor='var(--border2)');
