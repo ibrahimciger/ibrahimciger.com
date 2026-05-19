@@ -1,1185 +1,480 @@
 <!DOCTYPE html>
-<html lang="tr" data-theme="light">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Halil İbrahim Ciğer</title>
-  <!-- v213190e7 -->
+<title>Halil Ibrahim Ciger - About</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Josefin+Sans:wght@300;400;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+SC:wght@400;500&family=Josefin+Sans:wght@100;200;300;400&family=Space+Mono:wght@400;700&family=Cinzel+Decorative:wght@400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600" rel="stylesheet">
 <style>
-/* ════ THEME TOKENS ════ */
-:root {
-  --gold:  #b8892a;
-  --gold2: #d4a840;
-  --green: #3d7033;
 
-  /* LIGHT */
-  --bg:      #f5f2eb;
-  --bg2:     #ede9e0;
-  --bg3:     #e4dfd4;
-  --surf:    #dcd7cc;
-  --ink:     #1c1a14;
-  --ink2:    #3a3628;
-  --muted:   rgba(28,26,20,0.48);
-  --muted2:  rgba(28,26,20,0.24);
-  --border:  rgba(184,137,42,0.20);
-  --border2: rgba(28,26,20,0.10);
-  --nav-bg:  rgba(245,242,235,0.94);
-  --nav-ink: #1c1a14;
-  --card:    #f5f2eb;
-  --void-c:  rgba(28,26,20,0.06);
-  --hero-overlay: linear-gradient(to top, rgba(10,9,6,0.88) 0%, rgba(10,9,6,0.55) 35%, rgba(10,9,6,0.15) 65%, transparent 100%), linear-gradient(to right, rgba(10,9,6,0.5) 0%, transparent 55%);
-}
-[data-theme="dark"] {
-  --bg:      #0e0d0a;
-  --bg2:     #141310;
-  --bg3:     #1b1916;
-  --surf:    #232018;
-  --ink:     #f0e8d6;
-  --ink2:    #c8bfa8;
-  --muted:   rgba(240,232,214,0.42);
-  --muted2:  rgba(240,232,214,0.20);
-  --border:  rgba(184,137,42,0.22);
-  --border2: rgba(240,232,214,0.09);
-  --nav-bg:  rgba(14,13,10,0.93);
-  --nav-ink: #f0e8d6;
-  --card:    #1b1916;
-  --void-c:  rgba(240,232,214,0.05);
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#b8892a;--gold2:#d4a840;--green:#3d7033;--bg:#f5f2eb;--bg2:#ede9e0;--bg3:#e4dfd4;--ink:#1c1a14;--ink2:#3a3628;--muted:rgba(28,26,20,.46);--border:rgba(184,137,42,.18);--border2:rgba(28,26,20,.09);--nav-bg:rgba(245,242,235,.95)}
+[data-theme="dark"]{--bg:#1a1814;--bg2:#201e18;--bg3:#252218;--ink:#f0ece0;--ink2:#c8c0a8;--muted:rgba(240,236,224,.44);--border:rgba(184,137,42,.2);--border2:rgba(240,236,224,.09);--nav-bg:rgba(26,24,20,.95)}
+body{font-family:'EB Garamond',Georgia,serif;background:var(--bg);color:var(--ink);overflow:hidden;height:100vh;transition:background .3s,color .3s}
+nav{position:fixed;top:0;left:0;right:0;height:58px;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:.5px solid var(--border2);z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;transition:background .3s}
+.logo{text-decoration:none;display:flex;flex-direction:column;gap:1px}
+.logo-hic{font-family:'Playfair Display',serif;font-size:19px;font-weight:600;color:var(--gold);letter-spacing:.08em}
+.logo-line{width:100%;height:1px;background:var(--gold);opacity:.35}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{font-family:'Josefin Sans',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.on{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:.7rem}
+.nav-dt{font-family:'Josefin Sans',sans-serif;font-size:10px;color:var(--muted);white-space:nowrap;letter-spacing:.04em}
+.theme-toggle{background:none;border:.5px solid var(--border2);border-radius:20px;width:34px;height:18px;cursor:pointer;position:relative;transition:background .3s}
+.theme-toggle::after{content:'';position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:var(--gold);transition:transform .25s}
+[data-theme="dark"] .theme-toggle::after{transform:translateX(16px)}
+.lang-btn{font-family:'Josefin Sans',sans-serif;font-size:11px;letter-spacing:.1em;background:none;border:.5px solid var(--border2);color:var(--ink2);padding:2px 7px;border-radius:3px;cursor:pointer;transition:all .2s}
+.lang-btn:hover{border-color:var(--gold);color:var(--gold)}
+.burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.burger span{display:block;width:20px;height:1.5px;background:var(--ink);transition:all .3s}
+@media(max-width:768px){.nav-links,.nav-dt{display:none}.burger{display:flex}}
+.mob-m{display:none;position:fixed;inset:58px 0 0;background:var(--bg);z-index:190;padding:2rem;flex-direction:column;gap:1.5rem}
+.mob-m.open{display:flex}
+.mob-m a{font-family:'Josefin Sans',sans-serif;font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+.shell{position:fixed;top:58px;left:0;right:0;bottom:0;overflow:hidden}
+.slides{display:flex;height:100%;width:300%;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.slide{width:33.3333%;height:100%;overflow:hidden;background:var(--bg);transition:background .3s;display:flex;flex-direction:column}
+.slide-nav{position:fixed;bottom:1.4rem;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:.9rem;background:var(--bg);border:.5px solid var(--border2);border-radius:28px;padding:.4rem 1rem;box-shadow:0 4px 24px rgba(0,0,0,.08);z-index:150;transition:background .3s}
+.s-dot{width:8px;height:8px;border-radius:50%;background:var(--border2);border:1.5px solid var(--border);cursor:pointer;transition:all .25s}
+.s-dot.on{width:22px;border-radius:4px;background:var(--gold);border-color:var(--gold)}
+.s-arr{background:none;border:none;cursor:pointer;color:var(--muted);font-size:15px;padding:2px 5px;transition:color .2s;line-height:1}
+.s-arr:hover{color:var(--gold)}
+.s-arr:disabled{opacity:.3;cursor:default}
+.s-lbl{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap;min-width:70px;text-align:center}
+.s1-map{flex:0 0 58%;position:relative;overflow:hidden;background:var(--bg2)}
+#ab-wmap{display:block;width:100%;height:100%}
+.map-badge{position:absolute;top:10px;left:14px;font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);background:var(--bg);padding:2px 9px;border-radius:3px;border:.5px solid var(--border2);z-index:3;transition:background .3s}
+.map-tip{position:absolute;background:var(--bg);border:.5px solid var(--border2);padding:3px 9px;border-radius:4px;font-size:11px;font-weight:500;pointer-events:none;opacity:0;transition:opacity .12s;z-index:10;white-space:nowrap;color:var(--ink);font-family:'Josefin Sans',sans-serif}
+.s1-bottom{flex:1;display:flex;overflow:hidden;border-top:.5px solid var(--border2)}
+.s1-pills{flex:1;overflow-y:auto;display:flex;flex-direction:column}
+.pills-head{padding:.5rem 1.3rem .35rem;font-family:'Josefin Sans',sans-serif;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border-bottom:.5px solid var(--border2);flex-shrink:0}
+.pill-row{display:flex;align-items:center;gap:.75rem;padding:.5rem 1.3rem;border-bottom:.5px solid var(--border2);cursor:default;transition:background .18s;flex-shrink:0}
+.pill-row:last-child{border-bottom:none}
+.pill-row:hover{background:var(--bg2)}
+.pill-row:hover .pill-icon{transform:scale(1.2) rotate(-6deg);color:var(--gold2)}
+.pill-icon{font-size:16px;color:var(--gold);transition:transform .22s,color .22s;flex-shrink:0}
+.pill-name{font-family:'Josefin Sans',sans-serif;font-size:11px;font-weight:600;color:var(--ink);line-height:1.15}
+.pill-sub{font-family:'Josefin Sans',sans-serif;font-size:10px;color:var(--muted)}
+.s1-career{width:210px;flex-shrink:0;border-left:.5px solid var(--border2);padding:1.1rem 1.3rem;display:flex;flex-direction:column;gap:.8rem;overflow:hidden}
+.cs-lbl{font-family:'Josefin Sans',sans-serif;font-size:8px;letter-spacing:.18em;text-transform:lowercase;color:var(--muted)}
+.cs-row{display:flex;flex-direction:column;gap:4px}
+.cs-name-row{display:flex;justify-content:space-between;font-family:'Josefin Sans',sans-serif;font-size:10px;color:var(--ink2)}
+.cs-track{height:5px;background:var(--border2);border-radius:3px;overflow:hidden}
+.cs-fill{height:100%;border-radius:3px;width:0;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+.s2-inner{flex:1;overflow-y:auto;padding:1.8rem 2.5rem 4rem;max-width:1100px;width:100%;margin:0 auto}
+.s2-head{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem}
+.htl{position:relative;padding-top:2.2rem;margin-bottom:2.2rem}
+.htl-base{position:absolute;top:0;left:0;right:0;height:2px;background:var(--border2);border-radius:1px}
+.htl-fill{position:absolute;top:0;left:0;height:2px;background:var(--gold);width:0;border-radius:1px;transition:width .4s}
+.htl-nodes{display:flex}
+.htl-n{flex:1;display:flex;flex-direction:column;align-items:center;cursor:pointer;padding:.25rem .05rem;opacity:0;transform:translateY(7px);transition:opacity .35s,transform .35s;position:relative;user-select:none}
+.htl-n.vis{opacity:1;transform:translateY(0)}
+.htl-pulse{position:absolute;top:-2.5rem;left:50%;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;border:1.5px solid rgba(184,137,42,.45);animation:htl-p 2.2s ease-out infinite;opacity:0}
+.htl-n.vis .htl-pulse{opacity:1}
+@keyframes htl-p{0%{transform:translateX(-50%) scale(.4);opacity:.8}100%{transform:translateX(-50%) scale(1.7);opacity:0}}
+.htl-dot{position:absolute;top:-2.1rem;left:50%;transform:translateX(-50%);width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--border2);z-index:3;transition:all .22s}
+.htl-n.sel .htl-dot{background:var(--gold);border-color:var(--gold);width:14px;height:14px;top:-2.25rem}
+.htl-n:hover .htl-dot{border-color:var(--gold)}
+.htl-yr{font-size:9px;color:var(--gold);font-weight:600;margin-top:.15rem;font-family:'Josefin Sans',sans-serif}
+.htl-t{font-size:10px;font-weight:600;text-align:center;color:var(--ink);line-height:1.2;font-family:'Josefin Sans',sans-serif}
+.htl-o{font-size:9px;color:var(--muted);text-align:center;font-family:'Josefin Sans',sans-serif}
+.exp-grid{display:grid;grid-template-columns:190px 1fr;border:.5px solid var(--border2);border-radius:6px;overflow:hidden}
+.exp-list{border-right:.5px solid var(--border2)}
+.exp-item{padding:.75rem 1rem;border-bottom:.5px solid var(--border2);cursor:pointer;transition:background .18s}
+.exp-item:last-child{border-bottom:none}
+.exp-item:hover,.exp-item.on{background:var(--bg2)}
+.exp-item.on .exp-yr{color:var(--gold)}
+.exp-yr{font-size:9px;color:var(--muted);font-family:'Josefin Sans',sans-serif;margin-bottom:2px}
+.exp-t{font-size:11px;font-weight:600;color:var(--ink2);font-family:'Josefin Sans',sans-serif;line-height:1.2}
+.exp-org{font-size:10px;color:var(--muted);font-family:'Josefin Sans',sans-serif}
+.exp-panel{padding:1.2rem 1.5rem;display:none;animation:fd .3s ease}
+.exp-panel.on{display:block}
+@keyframes fd{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.ep-yr{font-size:9px;color:var(--gold);letter-spacing:.1em;margin-bottom:4px;font-family:'Josefin Sans',sans-serif}
+.ep-title{font-family:'Playfair Display',serif;font-size:19px;font-weight:600;color:var(--ink);line-height:1.15;margin-bottom:2px}
+.ep-org{font-size:12px;color:var(--ink2);margin-bottom:.7rem}
+.ep-body{font-size:13px;color:var(--ink2);line-height:1.8}
+.ep-body a{color:var(--gold);text-decoration:none}
+.ep-body a:hover{color:var(--green);text-decoration:underline}
+.ep-tag{display:inline-block;margin:5px 3px 0 0;padding:2px 9px;border-radius:11px;font-size:10px;border:.5px solid var(--border2);color:var(--ink2);font-family:'Josefin Sans',sans-serif}
+.thesis-link{color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);cursor:pointer}
+.thesis-link:hover{color:var(--green)}
+.s3-inner{flex:1;overflow-y:auto;padding:1.8rem 2.5rem 4rem}
+.s3-lbl{font-family:'Josefin Sans',sans-serif;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.7rem;padding-bottom:.4rem;border-bottom:.5px solid var(--border2)}
+.awards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem}
+.aw{border:.5px solid var(--border2);border-radius:8px;padding:1.1rem 1.2rem;display:flex;align-items:center;gap:.9rem;transition:all .25s;cursor:default}
+.aw:hover{background:var(--bg2);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.07)}
+.aw:hover .aw-ring{transform:scale(1.15) rotate(-9deg)}
+.aw:hover .aw-gold{background:var(--gold);color:#fff}
+.aw:hover .aw-bronze{background:#a0522d;color:#fff}
+.aw-ring{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;border:2px solid;flex-shrink:0;transition:all .25s}
+.aw-gold{border-color:var(--gold);color:var(--gold)}
+.aw-bronze{border-color:#a0522d;color:#a0522d}
+.aw-title{font-size:12px;font-weight:600;color:var(--ink);font-family:'Josefin Sans',sans-serif;line-height:1.3}
+.aw-year{font-size:11px;color:var(--gold);margin-top:2px;font-family:'Josefin Sans',sans-serif}
+.s3-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:.5px solid var(--border2);border-radius:6px;overflow:hidden;margin-bottom:2rem}
+.s3-col{padding:1.1rem 1.3rem}
+.s3-col:not(:last-child){border-right:.5px solid var(--border2)}
+.lang-row{display:flex;align-items:center;gap:.9rem;margin-bottom:.9rem}
+.lang-svg{width:44px;height:44px;flex-shrink:0}
+.lang-name{font-size:13px;font-weight:600;color:var(--ink);font-family:'Josefin Sans',sans-serif}
+.lang-level{font-size:10px;color:var(--muted);font-family:'Josefin Sans',sans-serif}
+.aff{font-size:13px;color:var(--ink2);line-height:2.1;display:block}
+.aff a{color:var(--gold);text-decoration:none}
+.aff a:hover{color:var(--green);text-decoration:underline}
+.int-chip{display:flex;align-items:center;gap:9px;padding:6px 13px;border-radius:20px;border:.5px solid var(--border2);font-size:12px;color:var(--ink);background:var(--bg2);margin-bottom:6px;font-family:'Josefin Sans',sans-serif;transition:background .2s}
+.int-chip i{color:var(--gold);font-size:14px;flex-shrink:0}
+.s3-footer{border-top:.5px solid var(--border2);padding:1.2rem 0 0;text-align:center}
+.footer-contacts{display:flex;justify-content:center;align-items:center;gap:.7rem;flex-wrap:wrap;margin-bottom:.6rem}
+.f-link{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink2);text-decoration:none;font-family:'Josefin Sans',sans-serif;transition:color .2s}
+.f-link:hover{color:var(--gold)}
+.f-link i{color:var(--gold);font-size:13px}
+.f-sep{color:var(--muted);font-size:11px}
+.footer-quote{font-family:'Playfair Display',serif;font-size:14px;color:var(--muted);font-style:italic;margin-bottom:.3rem}
+.footer-clock{font-family:'Josefin Sans',sans-serif;font-size:10px;color:var(--muted);letter-spacing:.05em}
+.thesis-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
+.thesis-overlay.open{display:flex}
+.thesis-modal{background:#fdf8ef;width:90vw;max-width:940px;max-height:90vh;overflow-y:auto;border-radius:2px;box-shadow:0 20px 60px rgba(0,0,0,.4);animation:tm-in .35s cubic-bezier(.22,.61,.36,1)}
+@keyframes tm-in{from{transform:translateY(-18px);opacity:.6}to{transform:translateY(0);opacity:1}}
+.tm-head{display:flex;justify-content:space-between;align-items:center;padding:.65rem 2rem;background:#1c1a14;border-bottom:3px solid #b8892a}
+.tm-pub{font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#b8892a}
+.tm-x{background:none;border:1px solid rgba(255,255,255,.2);color:#fff;width:27px;height:27px;border-radius:50%;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.tm-x:hover{background:rgba(255,255,255,.1)}
+.tm-hero{padding:2.2rem 2.5rem 1.4rem;text-align:center;background:#fdf8ef;border-bottom:1px solid #e8e0d0}
+.tm-cat{font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#b8892a;margin-bottom:.7rem}
+.tm-title{font-family:'Playfair Display',serif;font-size:clamp(19px,2.8vw,30px);font-weight:700;line-height:1.15;color:#1c1a14;margin:0 0 .9rem}
+.tm-meta{display:flex;justify-content:center;align-items:center;gap:.45rem;flex-wrap:wrap}
+.tm-meta span{font-family:'Josefin Sans',sans-serif;font-size:11px;color:#6b5e4e}
+.tm-sep{color:#b8892a!important}
+.tm-div{height:1px;background:linear-gradient(to right,transparent,#b8892a,transparent);margin:.45rem 2rem}
+.tm-body{display:grid;grid-template-columns:1fr 1fr;padding:1.4rem 2rem;background:#fdf8ef;gap:0}
+.tm-col{padding:0 1.1rem}
+.tm-col:first-child{border-right:1px solid #e8e0d0;padding-left:0}
+.tm-col:last-child{padding-right:0}
+.tm-kick{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#b8892a;margin:1.1rem 0 .35rem;font-weight:700}
+.tm-lead{font-size:14px;line-height:1.75;color:#2a2018;font-style:italic;margin-bottom:.7rem}
+.tm-col p{font-size:12.5px;line-height:1.8;color:#3a3628;margin:0 0 .55rem}
+.tm-pull{border-left:3px solid #b8892a;padding:.55rem .9rem;margin:1.1rem 0 0;font-family:'Playfair Display',serif;font-size:13px;font-style:italic;color:#5a4e3e;background:#f5efe3}
+.tm-foot{display:flex;justify-content:space-between;align-items:center;padding:.75rem 2rem;background:#1c1a14}
+.tm-fl{font-family:'Josefin Sans',sans-serif;font-size:10px;color:rgba(255,255,255,.38);letter-spacing:.05em}
+.tm-cat-link{font-family:'Josefin Sans',sans-serif;font-size:10px;color:#b8892a;text-decoration:none}
+.tm-cat-link:hover{color:#d4a840;text-decoration:underline}
+@media(max-width:600px){.tm-body{grid-template-columns:1fr}.tm-col:first-child{border-right:none;border-bottom:1px solid #e8e0d0;padding-bottom:1rem}}
 
-*,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
-html { scroll-behavior:smooth }
-body {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  background: var(--bg);
-  color: var(--ink);
-  overflow-x: hidden;
-  transition: background .3s, color .3s;
-}
-
-/* ════ NAV ════ */
-nav {
-  position: fixed; top:0; left:0; right:0; z-index:1000;
-  height: 62px;
-  display: flex; align-items:center; justify-content:space-between;
-  padding: 0 52px;
-  background: var(--nav-bg);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid var(--border2);
-  transition: background .3s, border-color .3s;
-}
-
-/* LOGO */
-.logo {
-  text-decoration: none;
-  display: flex; flex-direction:column; gap:6px;
-  padding-bottom: 2px;
-}
-.logo-hic {
-  font-family: 'Cormorant SC', serif;
-  font-size: 32px; font-weight:600;
-  letter-spacing: .38em;
-  color: var(--gold);
-  line-height: 1;
-  transition: color .3s;
-  text-shadow: 0 1px 12px rgba(184,137,42,.18);
-}
-.logo-hic:hover { color: var(--gold2); }
-.logo-line {
-  height: 1px;
-  background: linear-gradient(to right, var(--gold), transparent);
-  width: 100%;
-}
-.logo-sub { display: none; }
-
-/* NAV LINKS */
-.nav-links {
-  display:flex; gap:0; list-style:none;
-  position:absolute; left:50%; transform:translateX(-50%);
-}
-.nav-links a {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight:400; font-size:13.5px; letter-spacing:.08em; text-transform:none;
-  color: var(--ink2);
-  text-decoration:none; padding:0 18px; height:62px;
-  display:flex; align-items:center; position:relative;
-  transition: color .25s;
-  opacity: 0.85;
-}
-.nav-links a::after {
-  content:''; position:absolute; bottom:0; left:18px; right:18px;
-  height:2px; background:var(--gold);
-  transform:scaleX(0); transform-origin:left;
-  transition:transform .3s cubic-bezier(.4,0,.2,1);
-}
-.nav-links a:hover,.nav-links a.on { color:var(--ink); }
-.nav-links a:hover::after,.nav-links a.on::after { transform:scaleX(1); }
-
-.nav-right { display:flex; align-items:center; gap:14px; }
-.nav-dt {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 11px; font-style: italic;
-  color: var(--muted); letter-spacing: .06em;
-  display: flex; align-items: center; gap: 8px;
-}
-.nav-dt::before {
-  content: '';
-  display: block; width: 18px; height: 1px;
-  background: var(--gold); opacity: .5;
-}
-
-/* Theme toggle */
-.theme-toggle {
-  width:36px; height:20px; border-radius:10px;
-  background:var(--border2); border:1px solid var(--border);
-  cursor:pointer; position:relative; transition:background .3s;
-  flex-shrink:0;
-}
-.theme-toggle::after {
-  content:''; position:absolute;
-  top:3px; left:3px;
-  width:12px; height:12px; border-radius:50%;
-  background:var(--gold); transition:transform .3s;
-}
-[data-theme="dark"] .theme-toggle::after { transform:translateX(16px); }
-
-.lang-btn {
-  font-family:'Josefin Sans',sans-serif; font-weight:200;
-  font-size:10px; letter-spacing:.18em; color:var(--muted);
-  background:transparent; border:1px solid var(--border);
-  padding:5px 11px; cursor:pointer; transition:all .25s;
-}
-.lang-btn:hover { color:var(--gold); border-color:var(--gold); }
-
-.burger {
-  display:none; flex-direction:column; gap:5px;
-  background:none; border:none; cursor:pointer; padding:4px;
-}
-.burger span { display:block; width:20px; height:1px; background:var(--ink); transition:all .3s; }
-
-/* ════ HERO ════ */
-#hero {
-  width:100%; height:100vh;
-  position:relative; overflow:hidden;
-  display:flex; align-items:flex-end;
-}
-
-/* NAME — Playfair Display for elegance */
-
-.p-w {
-  font-family:'Cormorant SC',serif; font-size:14px; font-weight:400;
-  letter-spacing:.14em; color:rgba(240,232,214,0.72);
-}
-.p-sep { width:1px; height:12px; background:rgba(184,137,42,.4); }
-
-@keyframes barPulse { 0%,100%{width:40px;opacity:.5} 50%{width:64px;opacity:1} }
-
-/* Ticker — right side center, vertical scroll, max 2 visible */
-
-/* Vertical clip — shows exactly 2 cards */
-
-/* Fade top & bottom for depth effect */
-
-/* Vertical scrolling track */
-
-/* Individual news card — vertical */
-.t-card {
-  display:flex; flex-direction:column; justify-content:center;
-  padding:22px 40px; text-decoration:none; flex-shrink:0;
-  border-left:2px solid transparent;
-  border-bottom:1px solid rgba(240,232,216,.08);
-  transition:border-color .25s, background .25s;
-  background:rgba(8,7,5,.35);
-  backdrop-filter:blur(10px);
-  min-height:0;
-}
-.t-card:hover { border-left-color:var(--gold); background:rgba(8,7,5,.55); }
-.t-lang {
-  font-family:'Space Mono',monospace; font-size:8px; color:var(--gold2);
-  letter-spacing:.08em; text-transform:none; margin-bottom:8px; opacity:.8;
-}
-.t-title {
-  font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:500;
-  line-height:1.44; color:rgba(240,232,214,.92); margin-bottom:10px;
-  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
-}
-.t-src {
-  font-family:'Josefin Sans',sans-serif; font-weight:100;
-  font-size:8px; letter-spacing:.14em; color:rgba(240,232,214,.38); text-transform:uppercase;
-}
-
-/* ════ SECTIONS (light/dark aware) ════ */
-
-/* Section header */
-
-/* ════ NEWS SECTION ════ */
-.news-tabs {
-  display:flex; padding:0 80px; border-bottom:1px solid var(--border2);
-}
-
-.news-grid {
-  display:grid; grid-template-columns:repeat(3,1fr);
-  gap:1px; background:var(--border2);
-}
-.nbrick {
-  background:var(--card); display:flex; flex-direction:column;
-  text-decoration:none; overflow:hidden; transition:background .25s;
-}
-.nbrick:hover { background:var(--surf); }
-.nbrick.feat { grid-column:span 2; }
-
-/* Fixed height for both — so images and titles align perfectly */
-.nbrick 
-.nbrick 
-
-.nbrick:hover 
-
-.nbrick.feat 
-
-.nbrick.feat 
-.nbrick:not(.feat) 
-
-.nbrick:hover 
-
-/* ════ PODCAST SECTION ════ */
-
-/* Playlist tabs */
-
-/* Playlist body */
-
-/* Override any inherited grayscale for podcast covers */
-
-#pl-name-link:hover 
-#pl-link 
-#pl-link:hover 
-
-/* Embed items in playlist */
-
-/* Episode grid: 3 per row */
-
-/* ── EPISODE CARD (3-col grid) ── */
-
-/* progress bar hidden by default */
-
-/* Shares embed row */
-
-/* ════ VIDEO SECTION ════ */
-
-#page-home { display:block; }
-/* ════ INNER PAGES ════ */
-/* ══ PAGE ROUTING ══ */
-.page-wrap {
-  position: relative;
-  min-height: 100vh;
-}
-.ip {
-  display: none;
-  min-height: 100vh;
-  padding-top: 62px;
-  background: var(--bg);
-  transition: background .3s;
-}
-.ip.on { display: block; }
-
-#pages-wrap {
-  position: relative;
-  overflow-x: hidden;
-}
-#page-home,
-.ip {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-#page-home {
-  position: relative;
-  z-index: 1;
-}
-.ip.on {
-  position: relative;
-  z-index: 1;
-}
-#page-home[style*="none"] { display: none !important; }
-#page-home { min-height:100vh; padding-top:62px; background:var(--bg); transition:background .3s; }
-#page-home[style*="display: none"], #page-home[style*="display:none"] { min-height:0 !important; padding:0 !important; }
-.ip.on { display:block; }
-#page-home { min-height:100vh; padding-top:62px; background:var(--bg); transition:background .3s; }
-#page-home[style*="display: none"], #page-home[style*="display:none"] { min-height:0 !important; padding:0 !important; }
-.ip.on { display:block !important; }
-@keyframes pgIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
-
-.iph { padding:64px 80px 40px; border-bottom:1px solid var(--border2); position:relative; }
-.iph::before { content:''; position:absolute; top:0; left:0; width:52px; height:2px; background:var(--gold); }
-.iph-eye { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.1em; color:var(--gold); opacity:.8; text-transform:none; margin-bottom:12px; display:flex; align-items:center; gap:12px; }
-.iph-eye::before { content:''; width:16px; height:1px; background:var(--gold); display:block; }
-.iph-title { font-family:'Playfair Display',serif; font-size:clamp(38px,4.5vw,64px); font-weight:700; font-style:italic; color:var(--ink); line-height:1; letter-spacing:-.02em; transition:color .3s; }
-
-/* Haberlerim inner */
-.lf-bar { display:flex; padding:0 80px; border-bottom:1px solid var(--border2); }
-.lf-tab { font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:13px; letter-spacing:.06em; text-transform:capitalize; color:var(--ink2); padding:14px 22px; background:transparent; border:none; border-bottom:2px solid transparent; cursor:pointer; transition:all .25s; margin-bottom:-1px; opacity:0.85; }
-.lf-tab:hover{color:var(--ink);opacity:1;} .lf-tab.on{color:var(--gold);border-bottom-color:var(--gold);opacity:1;}
-.nwall { padding:40px 80px; display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1px; background:var(--border2); }
-
-/* Podcast inner */
-
- 
-
- 
-
-/* Void pages (Perspektif & Hakkımda) */
-
-/* ════ AUDIO BAR ════ */
-
-/* ════ FOOTER ════ */
-footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; align-items:center; justify-content:space-between; background:var(--bg); transition:background .3s; }
-.f-sig { font-family:'Cinzel Decorative',serif; font-size:clamp(10px,1.2vw,13px); color:var(--green); opacity:.75; letter-spacing:.03em; }
-.f-dt {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 13px; font-style: italic;
-  color: var(--muted); letter-spacing: .06em;
-  display: flex; align-items: center; gap: 10px;
-}
-.f-dt::before {
-  content: '';
-  display: block; width: 20px; height: 1px;
-  background: var(--gold); opacity: .4;
-}
-
-/* MOBILE MENU */
-.mob-m { position:fixed; top:62px; left:0; right:0; bottom:0; z-index:900; background:var(--bg); display:none; flex-direction:column; padding:36px 36px; border-top:1px solid var(--border); transition:background .3s; }
-.mob-m.open { display:flex; }
-.mob-m a { font-family:'Playfair Display',serif; font-size:32px; font-weight:700; font-style:italic; color:var(--ink); text-decoration:none; padding:12px 0; border-bottom:1px solid var(--border2); opacity:.55; transition:all .25s; }
-.mob-m a:hover { color:var(--gold); opacity:1; }
-
-.loading { font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.15em; color:var(--muted); text-transform:uppercase; text-align:center; padding:40px; animation:pulse 1.5s ease infinite; }
-@keyframes pulse { 0%,100%{opacity:.2} 50%{opacity:.8} }
-
-/* ════ RESPONSIVE ════ */
-@media(max-width:1024px) {
-  nav,footer { padding-left:36px; padding-right:36px; }
-  
-  
-   .nav-dt{display:none;} .burger{display:flex;} .logo-hic{font-size:22px;}
-  #hero{min-height:100vh;}
-  
-  
-  
-  
-  .news-grid{grid-template-columns:1fr;}
-  .nbrick.feat{grid-column:span 1;}
-  .nbrick 
-  .nbrick.feat 
-  
-  .news-tabs{padding:0 20px;}
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
-  
-  .iph{padding:40px 20px 28px;}
-  .lf-bar{padding:0 20px;}
-  .nwall{padding:0;display:block;background:var(--bg);}
-  .nwall .nbrick{border-bottom:1px solid var(--border2);}
-  .nwall .nbrick 
-  
-  
-  
-  
-  
-  footer{padding:20px;flex-direction:column;gap:10px;text-align:center;}
-  .mob-m{padding:32px 24px;}
-  .mob-m a{font-size:28px;padding:10px 0;}
-}
-@media(max-width:480px){
-  
-  
-  
-  .p-w{font-size:12px;}
-  
-  .news-tabs,
-  
-  
-  
-}
-
-/* ════ VODCAST PAGE ════ */
-
-/* Override vid-card width for vodcast grid */
-
-  
-  
-  
-}
-@media(max-width:480px){
-  
-}
-
-/* ── Principle tooltips ── */
-.p-w { position:relative; cursor:default; }
-.p-tip {
-  display:none; position:fixed;
-  background:var(--bg); border:.5px solid var(--border);
-  color:var(--ink); font-size:12px; white-space:nowrap;
-  padding:5px 12px; border-radius:4px; pointer-events:none;
-  font-family:'Josefin Sans',sans-serif; font-weight:400;
-  letter-spacing:.08em; z-index:9999;
-  box-shadow:0 4px 16px rgba(0,0,0,0.18);
-  max-width:280px; white-space:normal; line-height:1.4;
-}
-.p-w:hover .p-tip { display:block; }
-
-/* ── Analiz ve Görüşler special design ── */
-
-/* ── Swipe/drag cursor ── */
-
-/* ── MuckRack news ticker ── */
-.muck-section { background:var(--bg2); border-top:1px solid var(--border2); padding:0; transition:background .3s; }
-.muck-header { display:flex; align-items:center; justify-content:space-between; padding:20px 80px 14px; }
-.muck-eye { font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:11px; letter-spacing:.1em; text-transform:none; color:var(--gold); }
-.muck-link { font-family:'Josefin Sans',sans-serif; font-weight:200; font-size:9.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .25s; }
-.muck-link:hover { color:var(--gold); }
-.muck-wrap { overflow:hidden; border-top:1px solid var(--border2); border-bottom:1px solid var(--border2); position:relative; }
-.muck-wrap::before, .muck-wrap::after { content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none; }
-.muck-wrap::before { left:0; background:linear-gradient(to right,var(--bg2),transparent); }
-.muck-wrap::after { right:0; background:linear-gradient(to left,var(--bg2),transparent); }
-.muck-track { display:flex; flex-direction:row; width:max-content; animation:muckScroll 60s linear infinite; }
-.muck-track:hover { animation-play-state:paused; }
-.muck-item {
-  font-family:'Cormorant Garamond',serif; font-size:15px; font-weight:500;
-  color:var(--ink); text-decoration:none; white-space:nowrap;
-  padding:16px 48px; display:inline-flex; align-items:center;
-  border-right:1px solid var(--border2); transition:color .25s;
-  flex-shrink:0;
-}
-.muck-item:hover { color:var(--gold); }
-@keyframes muckScroll {{ from{{transform:translateX(0)}} to{{transform:translateX(-50%)}} }}
-@media(max-width:768px){{ .muck-header{{padding:16px 20px 12px;}} .muck-item{{font-size:14px;padding:14px 32px;}} }}
-
-/* ── All News Modal ── */
-.all-news-overlay {
-  position:fixed; inset:0; z-index:4000;
-  background:rgba(0,0,0,0.7); backdrop-filter:blur(6px);
-  display:none; align-items:center; justify-content:center; padding:40px;
-}
-.all-news-overlay.open { display:flex; }
-.all-news-modal {
-  background:var(--bg); width:100%; max-width:860px;
-  max-height:85vh; overflow-y:auto; border:1px solid var(--border2);
-  border-radius:4px;
-}
-.all-news-modal::-webkit-scrollbar { width:3px; }
-.all-news-modal::-webkit-scrollbar-thumb { background:var(--border); }
-.all-news-modal-head {
-  padding:28px 36px 20px; border-bottom:1px solid var(--border2);
-  display:flex; align-items:center; justify-content:space-between;
-  position:sticky; top:0; background:var(--bg); z-index:10;
-}
-.all-news-modal-title {
-  font-family:'Playfair Display',serif; font-size:22px; font-style:italic;
-  font-weight:700; color:var(--ink);
-}
-.all-news-close {
-  font-family:'Josefin Sans',sans-serif; font-weight:200; font-size:10px;
-  letter-spacing:.18em; text-transform:uppercase; color:var(--muted);
-  background:none; border:none; cursor:pointer; transition:color .2s;
-}
-.all-news-close:hover { color:var(--ink); }
-.all-news-item {
-  display:flex; align-items:center; gap:16px;
-  padding:20px 36px; border-bottom:1px solid var(--border2);
-  text-decoration:none; transition:background .2s; min-height:80px;
-}
-.all-news-item:hover { background:var(--bg2); }
-.all-news-num { font-family:'Space Mono',monospace; font-size:9px; color:var(--muted); min-width:24px; padding-top:3px; }
-.all-news-body { flex:1; }
-.all-news-lang { font-family:'Space Mono',monospace; font-size:8px; color:var(--gold); letter-spacing:.1em; text-transform:uppercase; margin-bottom:5px; opacity:.8; }
-.all-news-t { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:500; color:var(--ink); line-height:1.42; }
-.all-news-src { font-family:'Josefin Sans',sans-serif; font-weight:200; font-size:8.5px; letter-spacing:.12em; color:var(--muted); text-transform:uppercase; margin-top:6px; }
-@media(max-width:768px){
-  .all-news-overlay{padding:16px;}
-  .all-news-item{padding:14px 20px;}
-  .all-news-modal-head{padding:20px 20px 16px;}
-}
-
-  100%{transform:translateX(-50%)}
-}
-
-.ab-stat-sep{
-  color:rgba(255,255,255,0.3);font-size:18px;font-weight:100;
-  margin:0 8px;
-}
-.ab-stats-bar .ab-sn{
-  font-size:20px;font-weight:600;color:#d4a840;
-  font-family:'Playfair Display',serif;
-}
-.ab-stats-bar .ab-sl{
-  font-size:11px;color:rgba(255,255,255,0.85);
-  letter-spacing:.06em;text-transform:uppercase;
-  font-family:'Josefin Sans',sans-serif;font-weight:300;
-}
-
-/* ── Pod episode card audio wave ── */
-
-@keyframes pod-bar{
-  0%,100%{transform:scaleY(.4)}
-  50%{transform:scaleY(1)}
-}
-
-@media(max-width:768px){
-  
-}
-
-/* ── Newspaper modal ── */
-
-@keyframes np-roll{from{opacity:0;transform:translateY(50px) rotate(-1deg) scale(.96)}to{opacity:1;transform:none}}
-
-@media(max-width:600px){}
-
-@media(max-width:768px){
-  
-}
-
-/* ── Mobile podcast overrides ── */
-@media(max-width:768px){
-  /* All pod-ep-grid: 1 column on mobile */
-  
-  
-  /* Hide playlist embeds for Portre, BBK, Mahrec on mobile */
-  #ps-portre 
-  
-  /* Keep Analiz playlist, 1-col grid */
-  #ps-analiz 
-  
-  /* switchPl embed mode: hide playlist for BBK/Mahrec */
-  
-.back-top.show{opacity:1;pointer-events:auto;transform:translateY(0);}
-.back-top:hover,.back-top:active{background:#d4a840;transform:translateY(-2px);}
-.back-top svg{width:20px;height:20px;fill:#fff;}
-
-/* ── Hero name animation (8) ── */
-@keyframes hero-letter-in-left{
-  from{opacity:0;transform:translateX(-40px);}
-  to{opacity:1;transform:translateX(0);}
-}
-@keyframes hero-letter-in-right{
-  from{opacity:0;transform:translateX(40px);}
-  to{opacity:1;transform:translateX(0);}
-}
-
-/* Silhouette glow: rotating border on hero-photo */
-@keyframes hero-glow-rotate{
-  0%{box-shadow:inset 0 0 0 0 rgba(255,255,255,0),0 0 0 2px rgba(255,255,255,0);}
-  10%{box-shadow:inset 0 0 30px 0 rgba(255,255,255,0.08),0 0 0 3px rgba(255,255,255,0.5);}
-  40%{box-shadow:inset 0 0 60px 0 rgba(255,255,255,0.12),0 0 0 4px rgba(255,255,255,0.6);}
-  80%{box-shadow:inset 0 0 20px 0 rgba(255,255,255,0.04),0 0 0 2px rgba(255,255,255,0.2);}
-  100%{box-shadow:inset 0 0 0 0 rgba(255,255,255,0),0 0 0 0 rgba(255,255,255,0);}
-}
-
-/* ── Thesis Reader Modal ── */
-.thesis-overlay{
-  position:fixed;inset:0;z-index:6000;
-  background:rgba(0,0,0,0.82);backdrop-filter:blur(8px);
-  display:none;align-items:center;justify-content:center;padding:20px;
-}
-.thesis-overlay.open{display:flex;}
-.thesis-modal{
-  background:#f5f0e8;color:#1a1308;
-  width:100%;max-width:820px;max-height:90vh;
-  border-radius:2px;overflow:hidden;display:flex;flex-direction:column;
-  animation:thesis-roll .6s cubic-bezier(.22,1,.36,1);
-  box-shadow:0 30px 80px rgba(0,0,0,0.5),inset 0 0 0 1px rgba(0,0,0,0.08);
-}
-@keyframes thesis-roll{
-  from{opacity:0;transform:translateY(60px) rotate(-0.8deg) scale(.95)}
-  to{opacity:1;transform:none}
-}
-.thesis-head{
-  background:#2c1810;padding:16px 28px;
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-  flex-shrink:0;
-}
-.thesis-head-title{
-  font-family:'EB Garamond',Georgia,serif;font-size:13px;
-  color:rgba(245,240,232,0.85);letter-spacing:.06em;
-}
-.thesis-close{
-  font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.2em;
-  text-transform:uppercase;color:rgba(245,240,232,0.6);
-  background:none;border:none;cursor:pointer;padding:4px 8px;
-  transition:color .2s;flex-shrink:0;
-}
-.thesis-close:hover{color:#d4a840;}
-.thesis-banner{
-  background:#f0e8d5;border-bottom:2px solid #2c1810;border-top:2px solid #2c1810;
-  padding:20px 40px 16px;flex-shrink:0;text-align:center;
-}
-.thesis-uni{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.24em;color:#8b6914;text-transform:uppercase;margin-bottom:6px;}
-.thesis-main-title{font-family:'EB Garamond',Georgia,serif;font-size:22px;font-weight:700;color:#1a1308;line-height:1.3;margin-bottom:4px;}
-.thesis-sub{font-family:'EB Garamond',Georgia,serif;font-size:14px;color:#5c3d1e;font-style:italic;}
-.thesis-body{overflow-y:auto;flex:1;padding:0;}
-.thesis-body::-webkit-scrollbar{width:4px;}
-.thesis-body::-webkit-scrollbar-thumb{background:#8b6914;border-radius:2px;}
-.thesis-chapter{padding:28px 40px 20px;border-bottom:1px solid rgba(44,24,16,0.12);}
-.thesis-chapter-title{
-  font-family:'EB Garamond',Georgia,serif;font-size:15px;font-weight:700;
-  color:#2c1810;letter-spacing:.04em;text-transform:uppercase;
-  margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(44,24,16,0.15);
-}
-.thesis-chapter p{
-  font-family:'EB Garamond',Georgia,serif;font-size:16px;line-height:1.85;
-  color:#2a1f14;margin-bottom:12px;text-align:justify;
-}
-.thesis-chapter p:first-child::first-letter{
-  font-size:3.2em;float:left;line-height:.75;margin-right:6px;
-  color:#2c1810;font-weight:700;margin-top:4px;
-}
-.thesis-chapter h4{
-  font-family:'EB Garamond',Georgia,serif;font-size:14px;font-weight:700;
-  color:#5c3d1e;margin:16px 0 8px;
-}
-.thesis-footer-bar{
-  background:#f0e8d5;border-top:2px solid #2c1810;padding:10px 28px;
-  display:flex;align-items:center;justify-content:space-between;flex-shrink:0;
-}
-.thesis-footer-text{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.15em;color:#8b6914;text-transform:uppercase;}
-.thesis-link{
-  display:inline-flex;align-items:center;gap:5px;
-  padding:6px 14px;border:1px solid #8b6914;border-radius:2px;
-  font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.14em;text-transform:uppercase;
-  color:#8b6914;text-decoration:none;transition:all .2s;
-}
-.thesis-link:hover{background:#8b6914;color:#f5f0e8;}
-@media(max-width:600px){
-  .thesis-modal{max-height:95vh;}
-  .thesis-chapter{padding:18px 18px 14px;}
-  .thesis-banner{padding:14px 18px;}
-  .thesis-main-title{font-size:16px;}
-}
 </style>
 </head>
 <body>
 <nav id="main-nav">
-  <a class="logo" href="#" onclick="showHome()">
-    <span class="logo-hic">HIC</span>
-    <span class="logo-line"></span>
-  </a>
+  <a class="logo" href="index.html"><span class="logo-hic">H I C</span><span class="logo-line"></span></a>
   <ul class="nav-links">
-    <li><a href="#" onclick="showHome()" id="nl-home" class="on" data-tr="Anasayfa" data-en="Home">Home</a></li>
-    <li><a href="#" onclick="navTo('haberlerim')" id="nl-haberlerim" data-tr="Haberlerim" data-en="News">News</a></li>
-    <li><a href="#" onclick="navTo('perspektif')" id="nl-perspektif" data-tr="Perspektif" data-en="Perspective">Perspective</a></li>
-    <li><a href="#" onclick="navTo('vodcast')" id="nl-vodcast" data-tr="Vodcast" data-en="Vodcast">Vodcast</a></li>
-    <li><a href="#" onclick="navTo('podcast')" id="nl-podcast" data-tr="Podcast" data-en="Podcast">Podcast</a></li>
-        <li><a href="#" onclick="navTo('hakkimda')" id="nl-hakkimda" data-tr="Hakkımda" data-en="About">About</a></li>
+    <li><a href="index.html" data-tr="Anasayfa" data-en="Home">Home</a></li>
+    <li><a href="index.html" data-tr="Haberlerim" data-en="News">News</a></li>
+    <li><a href="index.html" data-tr="Perspektif" data-en="Perspective">Perspective</a></li>
+    <li><a href="index.html" data-tr="Vodcast" data-en="Vodcast">Vodcast</a></li>
+    <li><a href="index.html" data-tr="Podcast" data-en="Podcast">Podcast</a></li>
+    <li><a href="about.html" class="on" data-tr="Hakkimda" data-en="About">About</a></li>
   </ul>
   <div class="nav-right">
     <div class="nav-dt" id="nav-dt"></div>
-    <button class="theme-toggle" onclick="toggleTheme()" title="Açık/Koyu mod" aria-label="Tema değiştir"></button>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme"></button>
     <button class="lang-btn" onclick="toggleLang()">EN</button>
     <button class="burger" onclick="toggleMob()"><span></span><span></span><span></span></button>
   </div>
 </nav>
 <div class="mob-m" id="mob-m">
-  <a href="#" onclick="showHome();toggleMob()" data-tr="Anasayfa" data-en="Home">Anasayfa</a>
-  <a href="#" onclick="navTo('haberlerim');toggleMob()" data-tr="Haberlerim" data-en="News">News</a>
-  <a href="#" onclick="navTo('perspektif');toggleMob()">Perspektif</a>
-  <a href="#" onclick="navTo('vodcast');toggleMob()">Vodcast</a>
-  <a href="#" onclick="navTo('podcast');toggleMob()">Podcast</a>
-  <a href="#" onclick="navTo('hakkimda');toggleMob()" data-tr="Hakkımda" data-en="About">Hakkımda</a>
+  <a href="index.html" data-tr="Anasayfa" data-en="Home">Home</a>
+  <a href="about.html" data-tr="Hakkimda" data-en="About">About</a>
 </div>
-
-<div style="min-height:100vh;padding-top:62px;background:var(--bg);transition:background .3s;">
-
-<style>
-/* ══ HAYATIM PAGE ══ */
-.hy-wrap { font-family: 'EB Garamond', Georgia, serif; background: var(--bg); color: var(--ink); padding-bottom: 4rem; transition: background .3s, color .3s; }
-
-/* TOP: İsim + iletişim + harita */
-.hy-top { display: flex; border-bottom: .5px solid var(--border2); min-height: 220px; }
-.hy-name-col { padding: 2rem 1.5rem 1.5rem 2rem; flex: 0 0 220px; border-right: .5px solid var(--border2); }
-.hy-name { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 600; color: var(--gold); line-height: 1.05; letter-spacing: .02em; }
-.hy-title { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-top: .6rem; }
-.hy-contacts { margin-top: 1.2rem; display: flex; flex-direction: column; gap: 8px; }
-.hy-cl { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink2); text-decoration: none; font-family: 'Josefin Sans', sans-serif; transition: color .2s; }
-.hy-cl:hover, .hy-cl i { color: var(--gold); }
-.hy-cl i { font-size: 14px; width: 15px; }
-
-.hy-stats-col { flex: 0 0 130px; border-right: .5px solid var(--border2); padding: 1.5rem 1rem; display: flex; flex-direction: column; justify-content: center; gap: 1.2rem; background: var(--bg2); transition: background .3s; }
-.hy-stat-n { font-size: 26px; font-weight: 600; color: var(--gold); line-height: 1; font-family: 'Playfair Display', serif; }
-.hy-stat-l { font-size: 10px; color: var(--muted); margin-top: 3px; font-family: 'Josefin Sans', sans-serif; letter-spacing: .06em; }
-
-.hy-map-col { flex: 1; position: relative; overflow: hidden; min-height: 220px; }
-.hy-map-badge { position: absolute; top: 10px; left: 14px; font-size: 9px; letter-spacing: .14em; color: var(--muted); z-index: 3; background: var(--bg); padding: 2px 8px; border-radius: 3px; border: .5px solid var(--border2); font-family: 'Josefin Sans', sans-serif; transition: background .3s; }
-.hy-ctip { position: absolute; background: var(--bg); border: .5px solid var(--border2); padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: 500; pointer-events: none; opacity: 0; transition: opacity .12s; z-index: 10; white-space: nowrap; color: var(--ink); font-family: 'Josefin Sans', sans-serif; }
-#hy-wmap { display: block; width: 100%; height: 100%; cursor: crosshair; }
-
-/* PILLARS */
-.hy-pillars { display: grid; grid-template-columns: repeat(7,1fr); border-bottom: .5px solid var(--border2); }
-.hy-pill { padding: 1.1rem .5rem; text-align: center; border-right: .5px solid var(--border2); cursor: default; transition: background .2s; }
-.hy-pill:last-child { border-right: none; }
-.hy-pill:hover { background: var(--bg2); }
-.hy-pc { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; margin: 0 auto .55rem; transition: all .2s; }
-.hy-pill:hover .hy-pc { background: var(--gold); }
-.hy-pill:hover .hy-pc i { color: #fff; }
-.hy-pc i { color: var(--gold); font-size: 19px; transition: color .2s; }
-.hy-pt { font-size: 11px; font-weight: 600; color: var(--ink); line-height: 1.2; font-family: 'Josefin Sans', sans-serif; letter-spacing: .04em; }
-.hy-ps { font-size: 10px; color: var(--muted); margin-top: 2px; font-family: 'Josefin Sans', sans-serif; }
-
-/* MID: Donut + Timeline */
-.hy-mid { display: flex; border-bottom: .5px solid var(--border2); }
-.hy-donut-wrap { flex: 0 0 200px; padding: 1.2rem 1rem 1.2rem 2rem; display: flex; flex-direction: column; justify-content: center; gap: .5rem; border-right: .5px solid var(--border2); }
-.hy-dl { font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem; font-family: 'Josefin Sans', sans-serif; }
-.hy-leg { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink2); }
-.hy-ld { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
-.hy-tl-wrap { flex: 1; padding: 1.4rem 2rem 1.2rem 1.5rem; }
-.hy-tl-head { font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.8rem; font-family: 'Josefin Sans', sans-serif; }
-
-/* Horizontal timeline */
-.hy-htl { position: relative; padding-top: 2.2rem; margin-bottom: .5rem; }
-.hy-htl-base { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--border2); border-radius: 1px; }
-.hy-htl-fill { position: absolute; top: 0; left: 0; height: 2px; background: var(--gold); width: 0; border-radius: 1px; transition: width .4s ease; }
-.hy-hnodes { display: flex; position: relative; }
-.hy-hn { flex: 1; display: flex; flex-direction: column; align-items: center; cursor: pointer; padding: .3rem .1rem; opacity: 0; transform: translateY(8px); transition: opacity .35s, transform .35s; position: relative; user-select: none; }
-.hy-hn.hy-vis { opacity: 1; transform: translateY(0); }
-.hy-hn-pulse { position: absolute; top: -2.5rem; left: 50%; transform: translateX(-50%); width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid rgba(184,137,42,.5); animation: hy-pulse 2.2s ease-out infinite; opacity: 0; }
-.hy-hn.hy-vis .hy-hn-pulse { opacity: 1; }
-@keyframes hy-pulse { 0%{transform:translateX(-50%) scale(.4);opacity:.8} 100%{transform:translateX(-50%) scale(1.6);opacity:0} }
-.hy-hn-dot { position: absolute; top: -2.1rem; left: 50%; transform: translateX(-50%); width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--border2); z-index: 3; transition: all .25s; }
-.hy-hn.hy-on .hy-hn-dot { background: var(--gold); border-color: var(--gold); width: 15px; height: 15px; top: -2.2rem; }
-.hy-hn:hover .hy-hn-dot { border-color: var(--gold); }
-.hy-hn-yr { font-size: 9px; color: var(--gold); font-weight: 600; margin-bottom: 2px; margin-top: .2rem; font-family: 'Josefin Sans', sans-serif; }
-.hy-hn-t { font-size: 11px; font-weight: 600; text-align: center; color: var(--ink); line-height: 1.2; font-family: 'Josefin Sans', sans-serif; }
-.hy-hn-o { font-size: 9px; color: var(--muted); text-align: center; margin-top: 1px; font-family: 'Josefin Sans', sans-serif; }
-
-/* BODY: Vertical TL + Detail */
-.hy-body { display: flex; border-bottom: .5px solid var(--border2); }
-.hy-vtl-col { flex: 0 0 210px; padding: 1.2rem 1rem 1.5rem 2rem; border-right: .5px solid var(--border2); }
-.hy-exp-lbl { font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: .8rem; font-family: 'Josefin Sans', sans-serif; }
-.hy-vtl { position: relative; padding-left: 1rem; }
-.hy-vtl::before { content: ''; position: absolute; left: 3px; top: 5px; bottom: 5px; width: 1px; background: linear-gradient(to bottom, var(--gold) 50%, var(--border2)); }
-.hy-vn { position: relative; margin-bottom: .9rem; padding-left: .65rem; cursor: pointer; }
-.hy-vn::before { content: ''; position: absolute; left: -.95rem; top: 5px; width: 8px; height: 8px; border-radius: 50%; background: var(--bg); border: 1.5px solid var(--border2); transition: all .25s; }
-.hy-vn.hy-on::before, .hy-vn:hover::before { border-color: var(--gold); }
-.hy-vn.hy-on::before { background: var(--gold); }
-.hy-vn-yr { font-size: 9px; color: var(--gold); letter-spacing: .06em; margin-bottom: 1px; font-family: 'Josefin Sans', sans-serif; }
-.hy-vn-t { font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1.2; font-family: 'Josefin Sans', sans-serif; }
-.hy-vn-o { font-size: 11px; color: var(--ink2); }
-
-.hy-detail-col { flex: 1; padding: 1.4rem 1.5rem; }
-.hy-dc { display: none; animation: hy-fi .35s ease; }
-.hy-dc.hy-on { display: block; }
-@keyframes hy-fi { from{opacity:0;transform:translateY(5px)} to{opacity:1;transform:translateY(0)} }
-.hy-dc-yr { font-size: 10px; color: var(--gold); letter-spacing: .12em; margin-bottom: 6px; font-family: 'Josefin Sans', sans-serif; }
-.hy-dc-title { font-size: 22px; font-weight: 600; line-height: 1.1; margin-bottom: 4px; color: var(--ink); font-family: 'Playfair Display', serif; }
-.hy-dc-org { font-size: 13px; color: var(--ink2); margin-bottom: .8rem; }
-.hy-dc-body { font-size: 14px; color: var(--ink2); line-height: 1.8; }
-.hy-dc-body a { color: var(--gold); text-decoration: none; }
-.hy-dc-body a:hover { text-decoration: underline; color: var(--green); }
-.hy-tag { display: inline-block; margin: 4px 3px 0 0; padding: 3px 10px; border-radius: 12px; font-size: 11px; border: .5px solid var(--border2); color: var(--ink2); font-family: 'Josefin Sans', sans-serif; }
-
-/* ÖDÜLLER */
-.hy-awards { display: grid; grid-template-columns: repeat(3,1fr); border-bottom: .5px solid var(--border2); }
-.hy-aw { padding: 1.1rem 1.5rem; border-right: .5px solid var(--border2); display: flex; align-items: center; gap: .9rem; }
-.hy-aw:last-child { border-right: none; }
-.hy-aw-ring { width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; border: 2px solid; flex-shrink: 0; }
-.hy-gold { border-color: var(--gold); color: var(--gold); }
-.hy-bronze { border-color: #a0522d; color: #a0522d; }
-.hy-at { font-size: 13px; font-weight: 600; line-height: 1.3; color: var(--ink); font-family: 'Josefin Sans', sans-serif; }
-.hy-ay { font-size: 11px; color: var(--gold); font-weight: 500; margin-top: 3px; font-family: 'Josefin Sans', sans-serif; }
-
-/* ALT: Diller + Affiliations + İlgi alanları */
-.hy-bot { display: grid; grid-template-columns: 1fr 1px 1fr 1px 1fr; }
-.hy-bc { padding: 1.2rem 1.5rem; }
-.hy-bc:first-child { padding-left: 2rem; }
-.hy-bc:last-child { padding-right: 2rem; }
-.hy-bsep { background: var(--border2); }
-.hy-bl { font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: .9rem; font-family: 'Josefin Sans', sans-serif; }
-.hy-lang-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-.hy-lang-name { font-size: 13px; font-weight: 600; color: var(--ink); font-family: 'Josefin Sans', sans-serif; }
-.hy-lang-level { font-size: 10px; color: var(--muted); font-family: 'Josefin Sans', sans-serif; }
-.hy-aff { display: block; font-size: 13px; color: var(--ink2); line-height: 2; text-decoration: none; }
-.hy-aff a { color: var(--gold); text-decoration: none; }
-.hy-aff a:hover { color: var(--green); text-decoration: underline; }
-.hy-int-chip { display: flex; align-items: center; gap: 10px; padding: 7px 12px; border-radius: 20px; border: .5px solid var(--border2); font-size: 13px; color: var(--ink); background: var(--bg2); margin-bottom: 6px; transition: background .2s; font-family: 'Josefin Sans', sans-serif; }
-.hy-int-chip i { color: var(--gold); font-size: 15px; flex-shrink: 0; }
-
-/* Thesis link */
-.thesis-link { color: var(--gold); text-decoration: none; border-bottom: 1px dotted var(--gold); cursor: pointer; transition: color .2s; }
-.thesis-link:hover { color: var(--green); }
-
-/* ── Career split bars ── */
-.hy-career-split { flex:0 0 220px; padding:1.4rem 1.5rem; border-right:.5px solid var(--border2); display:flex; flex-direction:column; justify-content:center; }
-.hy-cs-label { font-size:9px; letter-spacing:.18em; text-transform:lowercase; color:var(--muted); margin-bottom:1.2rem; font-family:'Josefin Sans',sans-serif; }
-.hy-cs-bars { display:flex; flex-direction:column; gap:.85rem; }
-.hy-cs-bar-row { display:flex; align-items:center; gap:.6rem; }
-.hy-cs-name { font-size:11px; color:var(--ink2); font-family:'Josefin Sans',sans-serif; width:95px; flex-shrink:0; }
-.hy-cs-track { flex:1; height:5px; background:var(--border2); border-radius:3px; overflow:hidden; }
-.hy-cs-fill { height:100%; border-radius:3px; width:0; transition:width 1.2s cubic-bezier(.4,0,.2,1); }
-.hy-cs-pct { font-size:10px; color:var(--muted); font-family:'Josefin Sans',sans-serif; width:28px; text-align:right; }
-
-/* ── Languages SVG (vector, no blur) ── */
-.hy-lang-svg { width:44px; height:44px; flex-shrink:0; }
-
-/* ── Awards hover ── */
-.hy-aw-ring { transition:all .25s; }
-.hy-aw:hover .hy-aw-ring { transform:scale(1.18) rotate(-8deg); }
-.hy-aw:hover .hy-aw-ring.hy-gold { background:var(--gold); color:#fff; }
-.hy-aw:hover .hy-aw-ring.hy-bronze { background:#a0522d; color:#fff; }
-
-/* ── Pill hover animation ── */
-.hy-pill { transition:background .2s, transform .2s; }
-.hy-pill:hover { transform:translateY(-3px); }
-.hy-pill:hover .hy-pc { transform:scale(1.12); background:var(--gold); }
-.hy-pill:hover .hy-pc i { color:#fff; }
-.hy-pc { transition:all .25s; }
-
-/* ── Page footer ── */
-.hy-page-footer { border-top:.5px solid var(--border2); padding:1.4rem 2rem; text-align:center; background:var(--bg2); transition:background .3s; }
-.hy-footer-contacts { display:flex; justify-content:center; align-items:center; gap:.7rem; flex-wrap:wrap; margin-bottom:.8rem; }
-.hy-fc { display:flex; align-items:center; gap:6px; font-size:12px; color:var(--ink2); text-decoration:none; font-family:'Josefin Sans',sans-serif; transition:color .2s; }
-.hy-fc:hover { color:var(--gold); }
-.hy-fc i { font-size:14px; color:var(--gold); }
-.hy-fc-sep { color:var(--muted); font-size:12px; }
-.hy-footer-quote { font-family:'Playfair Display',serif; font-size:15px; color:var(--muted); font-style:italic; margin-bottom:.4rem; }
-.hy-footer-clock { font-family:'Josefin Sans',sans-serif; font-size:11px; color:var(--muted); letter-spacing:.08em; }
-
-/* ── Thesis modal yeni ── */
-.thesis-masthead { display:flex; justify-content:space-between; align-items:center; padding:.7rem 2rem; background:#1c1a14; border-bottom:3px solid var(--gold,#b8892a); }
-.thesis-pub-name { font-family:'Playfair Display',serif; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:#b8892a; }
-.thesis-pub-date { font-family:'Josefin Sans',sans-serif; font-size:10px; color:rgba(255,255,255,.5); margin-top:2px; letter-spacing:.06em; }
-.thesis-close-btn { background:none; border:1px solid rgba(255,255,255,.2); color:#fff; width:28px; height:28px; border-radius:50%; cursor:pointer; font-size:14px; transition:all .2s; display:flex; align-items:center; justify-content:center; }
-.thesis-close-btn:hover { background:rgba(255,255,255,.1); }
-.thesis-hero { padding:2.5rem 2.5rem 1.5rem; text-align:center; background:#fdf8ef; border-bottom:1px solid #e8e0d0; }
-.thesis-category { font-family:'Josefin Sans',sans-serif; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:#b8892a; margin-bottom:.8rem; }
-.thesis-title { font-family:'Playfair Display',serif; font-size:clamp(22px,3vw,34px); font-weight:700; line-height:1.15; color:#1c1a14; margin:0 0 1rem; }
-.thesis-meta-row { display:flex; justify-content:center; align-items:center; gap:.5rem; flex-wrap:wrap; }
-.thesis-meta-item { font-family:'Josefin Sans',sans-serif; font-size:12px; color:#6b5e4e; }
-.thesis-meta-sep { color:#b8892a; }
-.thesis-divider-line { height:1px; background:linear-gradient(to right,transparent,#b8892a,transparent); margin:.5rem 2rem; }
-.thesis-content-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; padding:1.5rem 2rem; background:#fdf8ef; }
-.thesis-article { padding:0 1.2rem; }
-.thesis-article:first-child { border-right:1px solid #e8e0d0; padding-left:0; }
-.thesis-article:last-child { padding-right:0; }
-.thesis-section-kicker { font-family:'Josefin Sans',sans-serif; font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:#b8892a; margin:1.2rem 0 .4rem; font-weight:700; }
-.thesis-lead { font-size:15px; line-height:1.75; color:#2a2018; font-style:italic; margin-bottom:.8rem; }
-.thesis-article p { font-size:13px; line-height:1.8; color:#3a3628; margin:0 0 .6rem; }
-.thesis-pullquote { border-left:3px solid #b8892a; padding:.6rem 1rem; margin:1.2rem 0 0; font-family:'Playfair Display',serif; font-size:14px; font-style:italic; color:#5a4e3e; background:#f5efe3; }
-.thesis-drop-cap-section p:first-of-type::first-letter { font-size:3.2em; line-height:.8; float:left; margin:.05em .08em 0 0; color:#b8892a; font-family:'Playfair Display',serif; font-weight:700; }
-.thesis-footer { display:flex; justify-content:space-between; align-items:center; padding:.8rem 2rem; background:#1c1a14; }
-.thesis-footer-left { font-family:'Josefin Sans',sans-serif; font-size:10px; color:rgba(255,255,255,.4); letter-spacing:.06em; }
-.thesis-catalog-link { font-family:'Josefin Sans',sans-serif; font-size:11px; color:#b8892a; text-decoration:none; letter-spacing:.06em; transition:color .2s; }
-.thesis-catalog-link:hover { color:#d4a840; text-decoration:underline; }
-@media(max-width:650px){ .thesis-content-grid{grid-template-columns:1fr} .thesis-article:first-child{border-right:none;border-bottom:1px solid #e8e0d0;padding-bottom:1rem} }
-</style>
-
-<div class="hy-wrap">
-
-<!-- TOP ROW -->
-<div class="hy-top">
-  <div class="hy-name-col">
-    <div class="hy-name">Halil İbrahim<br>Ciğer</div>
-    <div class="hy-title" data-tr="Gazeteci · Yayıncı · İletişimci" data-en="Journalist · Broadcaster · Communicator">Journalist · Broadcaster · Communicator</div>
-    <div class="hy-contacts">
-      <a class="hy-cl" href="https://ibrahimciger.github.io/hic" target="_blank"><i class="ti ti-world"></i>ibrahimciger.com</a>
-      <div class="hy-cl"><i class="ti ti-mail"></i>hc685@georgetown.edu</div>
-      <div class="hy-cl"><i class="ti ti-map-pin"></i>İstanbul, Türkiye</div>
+<div class="mob-m" id="mob-m"><a href="index.html">Home</a></div>
+<div class="shell"><div class="slides" id="slides">
+<div class="slide" id="s1">
+  <div class="s1-map">
+    <div class="map-badge" data-tr="Dunya deneyimi" data-en="Worldwide experience">Worldwide experience</div>
+    <div class="map-tip" id="map-tip"></div>
+    <canvas id="ab-wmap"></canvas>
+  </div>
+  <div class="s1-bottom">
+    <div class="s1-pills">
+      <div class="pills-head" data-tr="uzmanlik alanlari" data-en="areas of expertise">areas of expertise</div>
+      <div class="pill-row"><i class="ti ti-news pill-icon"></i><div><div class="pill-name" data-tr="Gazetecilik" data-en="Journalism">Journalism</div><div class="pill-sub" data-tr="10 yil AA" data-en="10 yrs AA">10 yrs AA</div></div></div>
+      <div class="pill-row"><i class="ti ti-broadcast pill-icon"></i><div><div class="pill-name" data-tr="Dijital Medya" data-en="Digital Media">Digital Media</div><div class="pill-sub" data-tr="Vodcast Podcast" data-en="Vodcast Podcast">Vodcast Podcast</div></div></div>
+      <div class="pill-row"><i class="ti ti-megaphone pill-icon"></i><div><div class="pill-name" data-tr="Iletisim Etkinlik" data-en="Communication Events">Communication Events</div><div class="pill-sub" data-tr="Hedefli medya iliskileri" data-en="Targeted media relations">Targeted media relations</div></div></div>
+      <div class="pill-row"><i class="ti ti-world pill-icon"></i><div><div class="pill-name" data-tr="Uluslararasi" data-en="International">International</div><div class="pill-sub">US ME EU</div></div></div>
+      <div class="pill-row"><i class="ti ti-briefcase pill-icon"></i><div><div class="pill-name" data-tr="Liderlik" data-en="Leadership">Leadership</div><div class="pill-sub" data-tr="Bakan Basdanismani" data-en="Chief of Staff">Chief of Staff</div></div></div>
+      <div class="pill-row"><i class="ti ti-book pill-icon"></i><div><div class="pill-name" data-tr="Kuran" data-en="Quran">Quran</div><div class="pill-sub" data-tr="Hafiz 13 yasinda" data-en="Hafidh age 13">Hafidh age 13</div></div></div>
+      <div class="pill-row"><i class="ti ti-script pill-icon"></i><div><div class="pill-name" data-tr="Hadis" data-en="Hadith">Hadith</div><div class="pill-sub" data-tr="25000+ ezber" data-en="Memorised 25000+">Memorised 25000+</div></div></div>
     </div>
-  </div>
-  <div class="hy-stats-col">
-    <div><div class="hy-stat-n">10 Yıl</div><div class="hy-stat-l" data-tr="Anadolu Ajansı" data-en="Anadolu Agency">AA</div></div>
-    <div><div class="hy-stat-n">+25K</div><div class="hy-stat-l" data-tr="Hadis hıfzı" data-en="Hadiths memorised">Hadiths memorised</div></div>
-    <div><div class="hy-stat-n">3</div><div class="hy-stat-l" data-tr="Ödül" data-en="Awards">Awards</div></div>
-  </div>
-  <div class="hy-map-col">
-    <div class="hy-map-badge" data-tr="Dünya deneyimi — ülke üzerine gelin" data-en="Worldwide experience — hover a country">Worldwide experience — hover a country</div>
-    <div class="hy-ctip" id="hy-ctip"></div>
-    <canvas id="hy-wmap"></canvas>
-  </div>
-</div>
-
-<!-- PILLARS -->
-<div class="hy-pillars">
-  <div class="hy-pill"><div class="hy-pc"><i class="ti ti-news"></i></div><div class="hy-pt" data-tr="Gazetecilik" data-en="Journalism">Journalism</div><div class="hy-ps" data-tr="10 yıl · AA" data-en="10 yrs · AA">10 yrs · AA</div></div>
-  <div class="hy-pill"><div class="hy-pc"><i class="ti ti-broadcast"></i></div><div class="hy-pt" data-tr="Dijital Medya" data-en="Digital Media">Digital Media</div><div class="hy-ps" data-tr="10 yıl" data-en="10 yrs">10 yrs</div></div>
-  <div class="hy-pill"><div class="hy-pc"><i class="ti ti-megaphone"></i></div><div class="hy-pt" data-tr="İletişim &amp; Etkinlik" data-en="Communication &amp; Events">Communication &amp; Events</div><div class="hy-ps" data-tr="Hedefli medya ilişkileri" data-en="Targeted media relations">Targeted media relations</div></div>
-  <div class="hy-pill"><div class="hy-pc"><i class="ti ti-world"></i></div><div class="hy-pt" data-tr="Uluslararası" data-en="International">International</div><div class="hy-ps">US · ME · EU</div></div>
-  <div class="hy-pill"><div class="hy-pc"><i class="ti ti-briefcase"></i></div><div class="hy-pt" data-tr="Liderlik" data-en="Leadership">Leadership</div><div class="hy-ps" data-tr="Bakan Başdanışmanı" data-en="Chief of Staff">Chief of Staff</div></div>
-  <div class="hy-pill"><div class="hy-pc"><i class="ti ti-book"></i></div><div class="hy-pt" data-tr="Kur'an" data-en="Quran">Quran</div><div class="hy-ps" data-tr="Hafız · 13 yaşında" data-en="Hafidh · age 13">Hafidh · age 13</div></div>
-  <div class="hy-pill"><div class="hy-pc"><i class="ti ti-script"></i></div><div class="hy-pt" data-tr="Hadis" data-en="Hadith">Hadith</div><div class="hy-ps" data-tr="25.000+ ezber" data-en="Memorised 25000+">Memorised 25000+</div></div>
-</div>
-  <div class="hy-pill"><div class="hy-pc"><i class="ti ti-broadcast"></i></div><div class="hy-pt" data-tr="Dijital Medya" data-en="Digital Media">Digital Media</div><div class="hy-ps" data-tr="10 yıl" data-en="10 yrs">10 yrs</div></div>
-  <div class="hy-pill"><div class="hy-pc"><i class="ti ti-megaphone"></i></div><div class="hy-pt" data-tr="İletişim &amp; Etkinlik" data-en="Communication &amp; Events">Communication &amp; Events</div><div class="hy-ps" data-tr="Hedefli medya ilişkileri" data-en="Targeted media relations">Targeted media relations</div></div>
-  <div class="hy-pill"><div class="hy-pc"><i class="ti ti-world"></i></div><div class="hy-pt" data-tr="Uluslararası" data-en="International">International</div><div class="hy-ps">US · ME · EU</div></div>
-  <div class="hy-pill"><div class="hy-pc"><i class="ti ti-briefcase"></i></div><div class="hy-pt" data-tr="Liderlik" data-en="Leadership">Leadership</div><div class="hy-ps" data-tr="Bakan Başdanışmanı" data-en="Chief of Staff">Chief of Staff</div></div>
-  <div class="hy-pill"><div class="hy-pc"><i class="ti ti-book"></i></div><div class="hy-pt" data-tr="Kur'an" data-en="Quran">Quran</div><div class="hy-ps" data-tr="Hafız · 13 yaşında" data-en="Hafidh · age 13">Hafidh · age 13</div></div>
-  <div class="hy-pill"><div class="hy-pc"><i class="ti ti-script"></i></div><div class="hy-pt" data-tr="Hadis" data-en="Hadith">Hadith</div><div class="hy-ps" data-tr="25.000+ ezber" data-en="Memorised 25000+">Memorised 25000+</div></div>
-</div>
-
-<!-- MID: Donut + Timeline -->
-<div class="hy-mid">
-  <div class="hy-career-split">
-    <div class="hy-cs-label" data-tr="kariyer dağılımı" data-en="career split">career split</div>
-    <div class="hy-cs-bars">
-      <div class="hy-cs-bar-row">
-        <div class="hy-cs-name" data-tr="İletişim" data-en="Communication">Communication</div>
-        <div class="hy-cs-track"><div class="hy-cs-fill" style="background:#b8892a" data-pct="50"></div></div>
-        <div class="hy-cs-pct">50%</div>
+    <div class="s1-career">
+      <div class="cs-lbl" data-tr="kariyer dagilimi" data-en="career split">career split</div>
+      <div class="cs-row">
+        <div class="cs-name-row"><span data-tr="Iletisim" data-en="Communication">Communication</span><span>50%</span></div>
+        <div class="cs-track"><div class="cs-fill" style="background:#b8892a" data-pct="50"></div></div>
       </div>
-      <div class="hy-cs-bar-row">
-        <div class="hy-cs-name" data-tr="Gazetecilik" data-en="Journalism">Journalism</div>
-        <div class="hy-cs-track"><div class="hy-cs-fill" style="background:#5DCAA5" data-pct="25"></div></div>
-        <div class="hy-cs-pct">25%</div>
+      <div class="cs-row">
+        <div class="cs-name-row"><span data-tr="Gazetecilik" data-en="Journalism">Journalism</span><span>25%</span></div>
+        <div class="cs-track"><div class="cs-fill" style="background:#5DCAA5" data-pct="25"></div></div>
       </div>
-      <div class="hy-cs-bar-row">
-        <div class="hy-cs-name" data-tr="STK" data-en="NGO">NGO</div>
-        <div class="hy-cs-track"><div class="hy-cs-fill" style="background:#AFA9EC" data-pct="25"></div></div>
-        <div class="hy-cs-pct">25%</div>
-      </div>
-    </div>
-  </div>
-  <div style="width:1px;background:var(--border2);flex-shrink:0"></div>
-  <div class="hy-tl-wrap">
-    <div class="hy-tl-head" data-tr="Kronolojik zaman çizelgesi — tıklayarak keşfet" data-en="Chronological timeline — click any point">Chronological timeline — click any point</div>
-    <div class="hy-htl">
-      <div class="hy-htl-base"></div>
-      <div class="hy-htl-fill" id="hy-htlf"></div>
-      <div class="hy-hnodes" id="hy-hnodes">
-        <div class="hy-hn" onclick="hySel(6)"><div class="hy-hn-pulse"></div><div class="hy-hn-dot"></div><div class="hy-hn-yr">2006</div><div class="hy-hn-t" data-tr="Lisans" data-en="BA">BA</div><div class="hy-hn-o">Uludağ</div></div>
-        <div class="hy-hn" onclick="hySel(5)"><div class="hy-hn-pulse"></div><div class="hy-hn-dot"></div><div class="hy-hn-yr">2012</div><div class="hy-hn-t" data-tr="Y.Lisans" data-en="MA">MA</div><div class="hy-hn-o">İstanbul</div></div>
-        <div class="hy-hn" onclick="hySel(3)"><div class="hy-hn-pulse"></div><div class="hy-hn-dot"></div><div class="hy-hn-yr">2013</div><div class="hy-hn-t" data-tr="Kurucu" data-en="Founder">Founder</div><div class="hy-hn-o">S&amp;W</div></div>
-        <div class="hy-hn" onclick="hySel(2)"><div class="hy-hn-pulse"></div><div class="hy-hn-dot"></div><div class="hy-hn-yr">2015</div><div class="hy-hn-t" data-tr="Danışman" data-en="Advisor">Advisor</div><div class="hy-hn-o">TBMM</div></div>
-        <div class="hy-hn hy-on" onclick="hySel(0)"><div class="hy-hn-pulse"></div><div class="hy-hn-dot"></div><div class="hy-hn-yr">2016</div><div class="hy-hn-t" data-tr="Gazeteci" data-en="Journalist">Journalist</div><div class="hy-hn-o">AA</div></div>
-        <div class="hy-hn" onclick="hySel(4)"><div class="hy-hn-pulse"></div><div class="hy-hn-dot"></div><div class="hy-hn-yr">2016</div><div class="hy-hn-t">Georgetown</div><div class="hy-hn-o">DC</div></div>
-        <div class="hy-hn" onclick="hySel(1)"><div class="hy-hn-pulse"></div><div class="hy-hn-dot"></div><div class="hy-hn-yr">2018</div><div class="hy-hn-t" data-tr="Başdanışman" data-en="Chief Advisor">Chief Advisor</div><div class="hy-hn-o" data-tr="Bakanlık" data-en="Ministry">Ministry</div></div>
+      <div class="cs-row">
+        <div class="cs-name-row"><span data-tr="STK" data-en="NGO">NGO</span><span>25%</span></div>
+        <div class="cs-track"><div class="cs-fill" style="background:#AFA9EC" data-pct="25"></div></div>
       </div>
     </div>
   </div>
 </div>
-
-<div class="hy-body">
-  <div class="hy-vtl-col">
-    <div class="hy-exp-lbl" data-tr="Deneyim" data-en="Experience">Experience</div>
-    <div class="hy-vtl">
-      <div class="hy-vn hy-on" onclick="hySel(0);hyStopCycle()"><div class="hy-vn-yr">2016 – günümüz</div><div class="hy-vn-t">Gazeteci</div><div class="hy-vn-o">Anadolu Ajansı</div></div>
-      <div class="hy-vn" onclick="hySel(1);hyStopCycle()"><div class="hy-vn-yr">2018 – 2020</div><div class="hy-vn-t">Bakan Başdanışmanı</div><div class="hy-vn-o">Aile Bakanlığı</div></div>
-      <div class="hy-vn" onclick="hySel(2);hyStopCycle()"><div class="hy-vn-yr">2015</div><div class="hy-vn-t">Parlamento Danışmanı</div><div class="hy-vn-o">TBMM</div></div>
-      <div class="hy-vn" onclick="hySel(3);hyStopCycle()"><div class="hy-vn-yr">2013 – 2016</div><div class="hy-vn-t">Kurucu</div><div class="hy-vn-o">Sinan &amp; Wren Vakfı</div></div>
-      <div class="hy-vn" onclick="hySel(4);hyStopCycle()"><div class="hy-vn-yr">2016 – 2018</div><div class="hy-vn-t">Georgetown Üniversitesi</div><div class="hy-vn-o">Washington DC</div></div>
-      <div class="hy-vn" onclick="hySel(5);hyStopCycle()"><div class="hy-vn-yr">2012 – 2015</div><div class="hy-vn-t">Yüksek Lisans · İslam Hukuku &amp; Finans</div><div class="hy-vn-o">İstanbul Üniversitesi</div></div>
-      <div class="hy-vn" onclick="hySel(6);hyStopCycle()"><div class="hy-vn-yr">2006 – 2010</div><div class="hy-vn-t">Lisans · İktisat</div><div class="hy-vn-o">Uludağ Üniversitesi</div></div>
+<div class="slide" id="s2">
+  <div class="s2-inner">
+    <div class="s2-head" data-tr="Kronolojik zaman cizelgesi" data-en="Chronological timeline -- click any point">Chronological timeline -- click any point</div>
+    <div class="htl">
+      <div class="htl-base"></div>
+      <div class="htl-fill" id="htl-fill"></div>
+      <div class="htl-nodes" id="htl-nodes">
+        <div class="htl-n" onclick="expSel(6)"><div class="htl-pulse"></div><div class="htl-dot"></div><div class="htl-yr">2006</div><div class="htl-t" data-tr="Lisans" data-en="BA">BA</div><div class="htl-o">Uludag</div></div>
+        <div class="htl-n" onclick="expSel(5)"><div class="htl-pulse"></div><div class="htl-dot"></div><div class="htl-yr">2012</div><div class="htl-t" data-tr="Y.Lisans" data-en="MA">MA</div><div class="htl-o">Istanbul</div></div>
+        <div class="htl-n" onclick="expSel(3)"><div class="htl-pulse"></div><div class="htl-dot"></div><div class="htl-yr">2013</div><div class="htl-t" data-tr="Kurucu" data-en="Founder">Founder</div><div class="htl-o">S&amp;W</div></div>
+        <div class="htl-n" onclick="expSel(2)"><div class="htl-pulse"></div><div class="htl-dot"></div><div class="htl-yr">2015</div><div class="htl-t" data-tr="Danisман" data-en="Advisor">Advisor</div><div class="htl-o">TBMM</div></div>
+        <div class="htl-n sel" onclick="expSel(0)"><div class="htl-pulse"></div><div class="htl-dot"></div><div class="htl-yr">2016</div><div class="htl-t" data-tr="Gazeteci" data-en="Journalist">Journalist</div><div class="htl-o">AA</div></div>
+        <div class="htl-n" onclick="expSel(4)"><div class="htl-pulse"></div><div class="htl-dot"></div><div class="htl-yr">2016</div><div class="htl-t">Georgetown</div><div class="htl-o">DC</div></div>
+        <div class="htl-n" onclick="expSel(1)"><div class="htl-pulse"></div><div class="htl-dot"></div><div class="htl-yr">2018</div><div class="htl-t" data-tr="Basdanisман" data-en="Chief Advisor">Chief Advisor</div><div class="htl-o" data-tr="Bakanlik" data-en="Ministry">Ministry</div></div>
+      </div>
     </div>
-  </div>
-  <div class="hy-detail-col">
-    <div id="hy-dc0" class="hy-dc hy-on">
-      <div class="hy-dc-yr" data-tr="2016 – günümüz · 10 yıl" data-en="2016 – present · 10 years">2016 – present · 10 years</div>
-      <div class="hy-dc-title" data-tr="Gazeteci" data-en="Journalist">Journalist</div>
-      <div class="hy-dc-org">Anadolu Agency</div>
-      <div class="hy-dc-body" data-tr="ABD siyaseti, Ortadoğu ve insan hakları alanlarında habercilik. AA Podcast konseptinin mimarı ve AA Portre'yi hayata geçiren proje lideri. Rachel Corrie'nin ailesiyle yapılan röportaj ve ödül kazanan belgeseller dahil uluslararası yankı uyandıran içerikler üretti. Anadolu Ajansı'nın dijital medya stratejisini şekillendirerek podcast ve video içerik üretiminde öncü rol üstlendi. Washington DC'deki görev sürecinde ABD Kongresi ve Beyaz Saray takibini yürüttü." data-en="Reports on US politics, the Middle East and human rights for Anadolu Agency. Architected the AA Podcast concept and led the AA Portre project from inception to broadcast. Produced internationally resonant content including an exclusive interview with Rachel Corrie's family and multiple award-winning documentaries. Shaped AA's digital media strategy, pioneering podcast and video content production. Covered the US Congress and White House during his Washington DC posting.">Reports on US politics, the Middle East and human rights for Anadolu Agency. Architected the AA Podcast concept and led the AA Portre project from inception to broadcast. Produced internationally resonant content including an exclusive interview with Rachel Corrie's family and award-winning documentaries. Shaped AA's digital media strategy, pioneering podcast and video content production.</div>
-      <div style="margin-top:.6rem"><span class="hy-tag">AA Podcast</span><span class="hy-tag">US Politics</span><span class="hy-tag">Hatay Documentary</span><span class="hy-tag">Anadolu Talks</span></div>
-    id="hy-dc1" class="hy-dc">
-      <div class="hy-dc-yr">2018 – 2020 · 2 years</div>
-      <div class="hy-dc-title" data-tr="Bakan Başdanışmanı" data-en="Minister's Chief of Staff">Minister's Chief of Staff</div>
-      <div class="hy-dc-org" data-tr="Aile ve Sosyal Hizmetler Bakanlığı" data-en="Ministry of Family and Social Services">Ministry of Family and Social Services</div>
-      <div class="hy-dc-body" data-tr="Bakanlık düzeyinde stratejik iletişim ve kurumsal koordinasyonun liderliğini üstlendi. Medya ilişkileri, kriz iletişimi ve kurumun kamuoyu algısını yönetti. Hükümet sözcülüğü ve politika iletişimi görevlerini yürüttü." data-en="Led strategic communications and institutional coordination at ministerial level. Managed media relations, crisis communications and the ministry's public perception. Served as government spokesperson and drove policy communications across multiple platforms, ensuring coherent messaging to national and international audiences.">Led strategic communications and institutional coordination at ministerial level. Managed media relations, crisis communications and the ministry's public perception. Served as government spokesperson and drove policy communications across multiple platforms.</div>
-      <div style="margin-top:.6rem"><span class="hy-tag">Strategic Communications</span><span class="hy-tag">Media Relations</span><span class="hy-tag">Policy</span></div>
-    id="hy-dc2" class="hy-dc">
-      <div class="hy-dc-yr">2015 · 1 year</div>
-      <div class="hy-dc-title" data-tr="Parlamento Danışmanı" data-en="Parliamentary Advisor">Parliamentary Advisor</div>
-      <div class="hy-dc-org" data-tr="Türkiye Büyük Millet Meclisi" data-en="Grand National Assembly of Turkey">Grand National Assembly of Turkey</div>
-      <div class="hy-dc-body" data-tr="TBMM'de yasama ve iletişim konularında danışmanlık desteği sağladı. Siyasi iletişim süreçleri ve medya stratejisi üzerine derinlemesine deneyim edindi." data-en="Provided advisory support on legislation and communications at the Grand National Assembly. Developed deep expertise in political communications, media strategy and the interface between public policy and press narrative. Contributed to committee communications and stakeholder engagement.">Provided advisory support on legislation and communications at the Grand National Assembly. Developed deep expertise in political communications, media strategy and the interface between public policy and press narrative.</div>
-      <div style="margin-top:.6rem"><span class="hy-tag">Political Communications</span><span class="hy-tag">Legislation</span></div>
-    id="hy-dc3" class="hy-dc">
-      <div class="hy-dc-yr">2013 – 2016 · 3 years</div>
-      <div class="hy-dc-title" data-tr="Kurucu" data-en="Founder">Founder</div>
-      <div class="hy-dc-org">Sinan &amp; Wren Foundation</div>
-      <div class="hy-dc-body" data-tr="Uluslararası bir sivil toplum vakfı kurdu ve yönetti. Kültürlerarası diyalog programları, stratejik ortaklıklar ve kurumsal iletişimi üç yıl boyunca yürüttü. Vakfın medya varlığını ve dijital iletişim kanallarını oluşturdu." data-en="Founded and led an international civil society foundation. Designed intercultural dialogue programmes, built strategic partnerships and managed all institutional communications. Established the foundation's media presence and digital communications channels, growing its audience across three continents.">Founded and led an international civil society foundation. Designed intercultural dialogue programmes, built strategic partnerships and managed all institutional communications. Established the foundation's media presence and digital communications channels.</div>
-      <div style="margin-top:.6rem"><span class="hy-tag">NGO</span><span class="hy-tag">Intercultural Dialogue</span><span class="hy-tag">Founder</span></div>
-    id="hy-dc4" class="hy-dc">
-      <div class="hy-dc-yr">2016 – 2018</div>
-      <div class="hy-dc-title">Georgetown Üniversitesi</div>
-      <div class="hy-dc-org">Akademik Dil Programı · Washington DC</div>
-      <div class="hy-dc-body">Prof. James J. Angel ve Joe Bradford ile Georgetown Kripto Para &amp; Fıkıh Sempozyumu'nu düzenledi. Georgetown Müslüman Öğrenciler Derneği üyesi (2017–2019).</div>
-      <div style="margin-top:.6rem"><span class="hy-tag">Georgetown</span><span class="hy-tag">Kripto &amp; Fıkıh</span><span class="hy-tag">Organizatör</span></div>
-    </div>
-    <div id="hy-dc5" class="hy-dc">
-      <div class="hy-dc-yr">2012 – 2015</div>
-      <div class="hy-dc-title">Yüksek Lisans · İslam Hukuku &amp; Finans</div>
-      <div class="hy-dc-org">İstanbul Üniversitesi</div>
-      <div class="hy-dc-body">Thesis: <a href="#" onclick="thesisOpen();return false;" class="thesis-link" data-tr="Tez: Hz. Peygamber'in İktisadi Hayatına Dair Bir Araştırma" data-en="Thesis: An Investigation on the Economical Life of the Holy Prophet">"An Investigation on the Economical Life of the Holy Prophet"</a> — İslam hukuku, fıkıh ve modern finans yapıları kesişiminde ihtisaslaştı.</div>
-      <div style="margin-top:.6rem"><span class="hy-tag">İslam Finansı</span><span class="hy-tag">Fıkıh</span><span class="hy-tag">Araştırma</span></div>
-    </div>
-    <div id="hy-dc6" class="hy-dc">
-      <div class="hy-dc-yr">2006 – 2010</div>
-      <div class="hy-dc-title">Lisans · İktisat</div>
-      <div class="hy-dc-org">Uludağ Üniversitesi, Bursa</div>
-      <div class="hy-dc-body">Thesis: "Economic Analysis of Participation Banks" Uluslararası Öğrenci Derneği'ni kurdu ve yönetti (2006–2010). İslami iktisada duyduğu ilginin temeli burada atıldı.</div>
-      <div style="margin-top:.6rem"><span class="hy-tag">İktisat</span><span class="hy-tag">Katılım Bankacılığı</span><span class="hy-tag">Öğrenci Liderliği</span></div>
+    <div class="exp-grid">
+      <div class="exp-list">
+        <div class="exp-item on" onclick="expSel(0);expStop()"><div class="exp-yr">2016 present</div><div class="exp-t" data-tr="Gazeteci" data-en="Journalist">Journalist</div><div class="exp-org">Anadolu Agency</div></div>
+        <div class="exp-item" onclick="expSel(1);expStop()"><div class="exp-yr">2018 2020</div><div class="exp-t" data-tr="Bakan Basdanismani" data-en="Chief of Staff">Chief of Staff</div><div class="exp-org" data-tr="Aile Bakanligi" data-en="Ministry of Family">Ministry of Family</div></div>
+        <div class="exp-item" onclick="expSel(2);expStop()"><div class="exp-yr">2015</div><div class="exp-t" data-tr="Parlamento Danismani" data-en="Parliamentary Advisor">Parliamentary Advisor</div><div class="exp-org">TBMM</div></div>
+        <div class="exp-item" onclick="expSel(3);expStop()"><div class="exp-yr">2013 2016</div><div class="exp-t" data-tr="Kurucu" data-en="Founder">Founder</div><div class="exp-org">Sinan Wren Foundation</div></div>
+        <div class="exp-item" onclick="expSel(4);expStop()"><div class="exp-yr">2016 2018</div><div class="exp-t">Georgetown University</div><div class="exp-org">Washington DC</div></div>
+        <div class="exp-item" onclick="expSel(5);expStop()"><div class="exp-yr">2012 2015</div><div class="exp-t" data-tr="Yuksek Lisans" data-en="MA Thesis">MA Thesis</div><div class="exp-org" data-tr="Istanbul Universitesi" data-en="Istanbul University">Istanbul University</div></div>
+        <div class="exp-item" onclick="expSel(6);expStop()"><div class="exp-yr">2006 2010</div><div class="exp-t" data-tr="Lisans Tezi" data-en="BA Thesis">BA Thesis</div><div class="exp-org" data-tr="Uludag Universitesi" data-en="Uludag University">Uludag University</div></div>
+      </div>
+      <div class="exp-panel on" id="ep0"><div class="ep-yr">2016 present 10 years</div><div class="ep-title" data-tr="Gazeteci" data-en="Journalist">Journalist</div><div class="ep-org">Anadolu Agency</div><div class="ep-body" data-tr="ABD siyaseti Ortadogu ve insan haklari alanlarinda habercilik. AA Podcast konseptinin mimari. Rachel Corrie ailesiyle exclusive roportaj. Anadolu Ajansi dijital medya stratejisini sekillendirdi. Washington DC'de ABD Kongresi ve Beyaz Saray takibi." data-en="Reports on US politics, the Middle East and human rights for Anadolu Agency. Architected the AA Podcast concept and led AA Portre from inception to broadcast. Produced internationally resonant content including an exclusive interview with Rachel Corrie's family and award-winning documentaries. Shaped AA's digital media strategy, pioneering podcast and video production. Covered the US Congress and White House during his Washington DC posting.">Reports on US politics, the Middle East and human rights for Anadolu Agency. Architected the AA Podcast concept. Exclusive interview with Rachel Corrie's family. Award-winning documentaries. Covered the US Congress and White House in Washington DC.</div><div><span class="ep-tag">AA Podcast</span><span class="ep-tag">US Politics</span><span class="ep-tag">Documentary</span></div></div>
+      <div class="exp-panel" id="ep1"><div class="ep-yr">2018 2020 2 years</div><div class="ep-title" data-tr="Bakan Basdanismani" data-en="Minister's Chief of Staff">Minister's Chief of Staff</div><div class="ep-org" data-tr="Aile ve Sosyal Hizmetler Bakanligi" data-en="Ministry of Family and Social Services">Ministry of Family and Social Services</div><div class="ep-body" data-tr="Stratejik iletisim ve kurumsal koordinasyon liderligi. Medya iliskileri ve kriz iletisimi yonetimi. Hukumet sozcülügü ve politika iletisimi." data-en="Led strategic communications and institutional coordination at ministerial level. Managed media relations, crisis communications and public perception. Served as government spokesperson across multiple platforms.">Led strategic communications at ministerial level. Managed media relations and crisis communications. Served as government spokesperson across multiple platforms.</div><div><span class="ep-tag">Strategic Comms</span><span class="ep-tag">Media Relations</span></div></div>
+      <div class="exp-panel" id="ep2"><div class="ep-yr">2015 1 year</div><div class="ep-title" data-tr="Parlamento Danismani" data-en="Parliamentary Advisor">Parliamentary Advisor</div><div class="ep-org" data-tr="Turkiye Buyuk Millet Meclisi" data-en="Grand National Assembly of Turkey">Grand National Assembly of Turkey</div><div class="ep-body" data-tr="TBMM'de yasama ve iletisim danismanligi. Siyasi iletisim ve medya stratejisi deneyimi." data-en="Provided advisory support on legislation and communications at the Grand National Assembly. Developed expertise in political communications, media strategy and the interface between public policy and press narrative.">Provided advisory support on legislation and communications at the Grand National Assembly. Developed expertise in political communications and media strategy.</div><div><span class="ep-tag">Political Comms</span><span class="ep-tag">Legislation</span></div></div>
+      <div class="exp-panel" id="ep3"><div class="ep-yr">2013 2016 3 years</div><div class="ep-title" data-tr="Kurucu" data-en="Founder">Founder</div><div class="ep-org">Sinan and Wren Foundation</div><div class="ep-body" data-tr="Uluslararasi sivil toplum vakfi kurdu ve yonetti. Kulturlerarasi diyalog programlari ve kurumsal iletisim. Uc kitada kitleye ulasan medya varligi olusturdu." data-en="Founded and led an international civil society foundation. Designed intercultural dialogue programmes, built strategic partnerships and managed all institutional communications. Established the foundation's media presence across three continents.">Founded and led an international civil society foundation. Designed intercultural dialogue programmes and managed institutional communications. Established the foundation's media presence across three continents.</div><div><span class="ep-tag">NGO</span><span class="ep-tag">Founder</span><span class="ep-tag">Dialogue</span></div></div>
+      <div class="exp-panel" id="ep4"><div class="ep-yr">2016 2018</div><div class="ep-title">Georgetown University</div><div class="ep-org">Academic Language Programme Washington DC</div><div class="ep-body" data-tr="Georgetown Kripto Para Fikih Sempozyumu'nu duzenledi. Georgetown Musluman Ogrenciler Dernegi uyesi (2017-2019)." data-en="Co-organised the Georgetown Cryptocurrency and Fiqh Symposium with Prof. James J. Angel and Joe Bradford. Member of Georgetown Muslim Students' Association (2017-2019). Pursued academic engagement alongside his journalism career in Washington DC.">Co-organised the Georgetown Cryptocurrency and Fiqh Symposium. Member of Georgetown Muslim Students' Association (2017-2019). Academic engagement alongside journalism career in Washington DC.</div><div><span class="ep-tag">Georgetown</span><span class="ep-tag">Crypto Fiqh</span></div></div>
+      <div class="exp-panel" id="ep5"><div class="ep-yr">2012 2015</div><div class="ep-title" data-tr="Yuksek Lisans Islam Hukuku Finans" data-en="MA Islamic Law and Finance">MA Islamic Law and Finance</div><div class="ep-org" data-tr="Istanbul Universitesi" data-en="Istanbul University">Istanbul University</div><div class="ep-body">Thesis: <a href="#" onclick="thesisOpen();return false;" class="thesis-link">"An Investigation on the Economical Life of the Holy Prophet"</a><br>Specialised at the intersection of Islamic law, jurisprudence and modern finance.</div><div><span class="ep-tag">Islamic Finance</span><span class="ep-tag">Fiqh</span><span class="ep-tag">Research</span></div></div>
+      <div class="exp-panel" id="ep6"><div class="ep-yr">2006 2010</div><div class="ep-title" data-tr="Lisans Iktisat" data-en="BA Economics">BA Economics</div><div class="ep-org" data-tr="Uludag Universitesi Bursa" data-en="Uludag University Bursa">Uludag University Bursa</div><div class="ep-body" data-tr="Tez: Katilim Bankalarinin Ekonomik Analizi. Uluslararasi Ogrenci Dernegi kurucusu (2006-2010)." data-en='Thesis: "Economic Analysis of Participation Banks." Founded and led the International Students Association (2006-2010). Where his interest in Islamic economics took root.'>Thesis: "Economic Analysis of Participation Banks." Founded and led the International Students Association (2006-2010). Where his interest in Islamic economics took root.</div><div><span class="ep-tag">Economics</span><span class="ep-tag">Participation Banking</span></div></div>
     </div>
   </div>
 </div>
-
-<!-- ÖDÜLLER -->
-<div class="hy-awards">
-  <div class="hy-aw"><div class="hy-aw-ring hy-gold"><i class="ti ti-trophy"></i></div><div><div class="hy-at" data-tr="Yılın En İyi Podcast'çisi" data-en="Best Podcaster of the Year">Best Podcaster of the Year</div><div class="hy-ay">2023</div></div></div>
-  <div class="hy-aw"><div class="hy-aw-ring hy-gold"><i class="ti ti-video"></i></div><div><div class="hy-at" data-tr="En İyi Belgesel Haber Ödülü" data-en="Best Documentary News Award">Best Documentary News Award</div><div class="hy-ay">2024</div></div></div>
-  <div class="hy-aw"><div class="hy-aw-ring hy-bronze"><i class="ti ti-medal"></i></div><div><div class="hy-at" data-tr="Güreş Şampiyonluk Madalyası" data-en="Wrestling Championship Medal">Wrestling Championship Medal</div></div></div>
+<div class="slide" id="s3">
+  <div class="s3-inner">
+    <div class="s3-lbl" data-tr="oduller" data-en="awards">awards</div>
+    <div class="awards">
+      <div class="aw"><div class="aw-ring aw-gold"><i class="ti ti-trophy"></i></div><div><div class="aw-title" data-tr="Yilin En Iyi Podcastcisi" data-en="Best Podcaster of the Year">Best Podcaster of the Year</div><div class="aw-year">2023</div></div></div>
+      <div class="aw"><div class="aw-ring aw-gold"><i class="ti ti-video"></i></div><div><div class="aw-title" data-tr="En Iyi Belgesel Haber Odulu" data-en="Best Documentary News Award">Best Documentary News Award</div><div class="aw-year">2024</div></div></div>
+      <div class="aw"><div class="aw-ring aw-bronze"><i class="ti ti-medal"></i></div><div><div class="aw-title" data-tr="Gures Sampiyonluk Madalyasi" data-en="Wrestling Championship Medal">Wrestling Championship Medal</div></div></div>
+    </div>
+    <div class="s3-cols">
+      <div class="s3-col">
+        <div class="s3-lbl" data-tr="diller" data-en="languages">languages</div>
+        <div class="lang-row"><div class="lang-svg" data-pct="100"></div><div><div class="lang-name" data-tr="Turkce" data-en="Turkish">Turkish</div><div class="lang-level" data-tr="Anadil" data-en="Native">Native</div></div></div>
+        <div class="lang-row"><div class="lang-svg" data-pct="85"></div><div><div class="lang-name" data-tr="Ingilizce" data-en="English">English</div><div class="lang-level" data-tr="Ileri Duzey" data-en="Advanced">Advanced</div></div></div>
+        <div class="lang-row"><div class="lang-svg" data-pct="55"></div><div><div class="lang-name" data-tr="Arapca" data-en="Arabic">Arabic</div><div class="lang-level" data-tr="Orta Duzey" data-en="Intermediate">Intermediate</div></div></div>
+      </div>
+      <div class="s3-col">
+        <div class="s3-lbl" data-tr="uyelikler" data-en="affiliations">affiliations</div>
+        <a class="aff" href="https://sinanwren.org/" target="_blank">Sinan and Wren Foundation</a>
+        <span class="aff" data-tr="Kurucu 2013-16" data-en="Founder 2013-16">Founder 2013-16</span>
+        <a class="aff" href="https://uvdvuslat.com/" target="_blank">Uluslararasi Vuslat Platformu</a>
+        <span class="aff" data-tr="Yonetim Kurulu 2013-" data-en="Board Member 2013-">Board Member 2013-</span>
+        <a class="aff" href="https://campusministry.georgetown.edu/faith-traditions/muslim/" target="_blank">Georgetown MSA 2017-19</a>
+        <span class="aff" data-tr="Uluslararasi Ogrenci Dernegi Kurucu 2006-10" data-en="International Students Assoc Founder 2006-10">International Students Assoc Founder 2006-10</span>
+      </div>
+      <div class="s3-col">
+        <div class="s3-lbl" data-tr="ilgi alanlari" data-en="interests">interests</div>
+        <div class="int-chip"><i class="ti ti-antenna"></i><span data-tr="Iletisim Medya" data-en="Communications Media">Communications Media</span></div>
+        <div class="int-chip"><i class="ti ti-world"></i><span data-tr="Uluslararasi Haberler" data-en="International News">International News</span></div>
+        <div class="int-chip"><i class="ti ti-book"></i><span data-tr="Hadis Ilimleri" data-en="Hadith Sciences">Hadith Sciences</span></div>
+        <div class="int-chip"><i class="ti ti-building-bank"></i><span data-tr="Nebevi Iktisat" data-en="Prophetic Economics">Prophetic Economics</span></div>
+        <div class="int-chip"><i class="ti ti-users"></i><span data-tr="Sivil Toplum" data-en="Civil Society">Civil Society</span></div>
+      </div>
+    </div>
+    <div class="s3-footer">
+      <div class="footer-contacts">
+        <a class="f-link" href="index.html"><i class="ti ti-home"></i>ibrahimciger</a>
+        <span class="f-sep">middot</span>
+        <span class="f-link"><i class="ti ti-mail"></i>hc685@georgetown.edu</span>
+        <span class="f-sep">middot</span>
+        <span class="f-link"><i class="ti ti-map-pin"></i>Istanbul</span>
+      </div>
+      <div class="footer-quote">Pleasant echoes from the verdant and captivating Earth</div>
+      <div class="footer-clock" id="ab-clock"></div>
+    </div>
+  </div>
 </div>
-
-<!-- ALT KISIM -->
-<div class="hy-bot">
-  <div class="hy-bc">
-    <div class="hy-bl" data-tr="Diller" data-en="Languages">Languages</div>
-    <div class="hy-lang-row"><div class="hy-lang-svg" data-pct="100"></div><div><div class="hy-lang-name" data-tr="Türkçe" data-en="Turkish">Turkish</div><div class="hy-lang-level" data-tr="Anadil" data-en="Native">Native</div></div></div>
-    <div class="hy-lang-row"><div class="hy-lang-svg" data-pct="85"></div><div><div class="hy-lang-name" data-tr="İngilizce" data-en="English">English</div><div class="hy-lang-level" data-tr="İleri Düzey" data-en="Advanced">Advanced</div></div></div>
-    <div class="hy-lang-row"><div class="hy-lang-svg" data-pct="55"></div><div><div class="hy-lang-name" data-tr="Arapça" data-en="Arabic">Arabic</div><div class="hy-lang-level" data-tr="Orta Düzey" data-en="Intermediate">Intermediate</div></div></div>
-  </div>
-  <div class="hy-bsep"></div>
-  <div class="hy-bc">
-    <div class="hy-bl" data-tr="Üyelikler" data-en="Affiliations">Affiliations</div>
-    <div class="hy-aff"><a href="https://sinanwren.org/" target="_blank">Sinan &amp; Wren Foundation</a> · <span data-tr="Kurucu (2013–16)" data-en="Founder (2013–16)">Founder (2013–16)</span></div>
-    <div class="hy-aff"><a href="https://uvdvuslat.com/" target="_blank">Uluslararası Vuslat Platformu</a> · <span data-tr="Yönetim Kurulu (2013–)" data-en="Board Member (2013–)">Board Member (2013–)</span></div>
-    <div class="hy-aff"><a href="https://campusministry.georgetown.edu/faith-traditions/muslim/" target="_blank">Georgetown MSA</a> (2017–19)</div>
-    <div class="hy-aff"><span data-tr="Uluslararası Öğrenci Derneği · Kurucu (2006–10)" data-en="International Students Assoc. · Founder (2006–10)">International Students Assoc. · Founder (2006–10)</span></div>
-  </div>
-  <div class="hy-bsep"></div>
-  <div class="hy-bc">
-    <div class="hy-bl" data-tr="İlgi Alanları" data-en="Interests">Interests</div>
-    <div class="hy-int-chip"><i class="ti ti-antenna"></i><span data-tr="İletişim &amp; Medya" data-en="Communications &amp; Media">Communications &amp; Media</span></div>
-    <div class="hy-int-chip"><i class="ti ti-world"></i><span data-tr="Uluslararası Haberler" data-en="International News">International News</span></div>
-    <div class="hy-int-chip"><i class="ti ti-book"></i><span data-tr="Hadis İlimleri" data-en="Hadith Sciences">Hadith Sciences</span></div>
-    <div class="hy-int-chip"><i class="ti ti-building-bank"></i><span data-tr="Nebevi İktisat" data-en="Prophetic Economics">Prophetic Economics</span></div>
-    <div class="hy-int-chip"><i class="ti ti-users"></i><span data-tr="Sivil Toplum" data-en="Civil Society">Civil Society</span></div>
+</div></div>
+<div class="slide-nav"><button class="s-arr" id="s-prev" onclick="go(-1)" disabled>&#8592;</button><div class="s-dot on" onclick="go(0)"></div><div class="s-dot" onclick="go(1)"></div><div class="s-dot" onclick="go(2)"></div><button class="s-arr" id="s-next" onclick="go(1)">&#8594;</button><span class="s-lbl" id="s-lbl">Overview</span></div>
+<div class="thesis-overlay" id="thesis-overlay" onclick="if(event.target===this)thesisClose()">
+  <div class="thesis-modal">
+    <div class="tm-head"><div class="tm-pub">Academic Record Istanbul University 2015</div><button class="tm-x" onclick="thesisClose()">X</button></div>
+    <div class="tm-hero">
+      <div class="tm-cat">Master's Thesis Islamic Law and Finance</div>
+      <h1 class="tm-title">An Investigation on the Economical Life of the Holy Prophet</h1>
+      <div class="tm-meta"><span>Halil Ibrahim Ciger</span><span class="tm-sep">middot</span><span>Istanbul University</span><span class="tm-sep">middot</span><span>2015</span></div>
+    </div>
+    <div class="tm-div"></div>
+    <div class="tm-body">
+      <div class="tm-col">
+        <div class="tm-kick">Preface</div>
+        <p class="tm-lead">This thesis examines the economic dimensions of the Prophet Muhammad's life through a rigorous interdisciplinary lens, drawing on classical Islamic sources and contemporary economic analysis.</p>
+        <p>The study illuminates neglected dimensions of prophetic biography using methodologies from both Islamic jurisprudence and modern economic science.</p>
+        <div class="tm-kick">Chapter I Pre-Prophetic Period</div>
+        <p>Examines trade practices in 6th-century Arabia, the Prophet's early commercial activities as a merchant and trade agent for Khadijah, partnership arrangements (mudaraba), and the ethical principles he established before his prophethood.</p>
+        <div class="tm-kick">Chapter II The Medina Market</div>
+        <p>Analyses the construction of the first Islamic market in Medina, the prohibition of monopolistic and deceptive practices, introduction of standardised weights and measures, and foundational principles of Islamic economic justice.</p>
+      </div>
+      <div class="tm-col">
+        <div class="tm-kick">Chapter III Fiscal Policy</div>
+        <p>Covers the administration of zakat as a redistributive institution, rules governing spoils of war and their equitable distribution, land taxation (kharaj), and the Prophet's approach to public finance.</p>
+        <div class="tm-kick">Chapter IV Legacy and Modern Relevance</div>
+        <p>Discusses the enduring influence of prophetic economic principles on Islamic finance, waqf institutions, profit-sharing structures, and contemporary Muslim-majority economies. Draws a line from 7th-century Medina to modern instruments such as sukuk and participation banking.</p>
+        <div class="tm-kick">Conclusion</div>
+        <p>The Prophet's economic model constitutes a coherent system balancing spiritual imperatives with pragmatic governance, with continued relevance for Islamic economics today.</p>
+        <div class="tm-pull">"A principled economic model rooted in justice, transparency, and communal solidarity."</div>
+      </div>
+    </div>
+    <div class="tm-foot">
+      <div class="tm-fl">Istanbul University Department of Basic Islamic Sciences</div>
+      <a class="tm-cat-link" href="https://katalog.isam.org.tr/?dil=0&p=1&q=Halil+%C4%B0brahim+Ci%C4%9Fer&alan=qYazarlar_txt" target="_blank" rel="noopener">ISAM Academic Catalog</a>
+    </div>
   </div>
 </div>
-
-<!-- FOOTER -->
-<div class="hy-page-footer">
-  <div class="hy-footer-contacts">
-    <a class="hy-fc" href="index.html"><i class="ti ti-home"></i>ibrahimciger</a>
-    <span class="hy-fc-sep">·</span>
-    <div class="hy-fc"><i class="ti ti-mail"></i>hc685@georgetown.edu</div>
-    <span class="hy-fc-sep">·</span>
-    <div class="hy-fc"><i class="ti ti-map-pin"></i>İstanbul</div>
-  </div>
-  <div class="hy-footer-quote">Pleasant echoes from the verdant and captivating Earth</div>
-  <div class="hy-footer-clock" id="hy-footer-clock"></div>
-</div>
-
-
 <script>
-let lang='en';
-function toggleTheme(){
-  const t=document.documentElement;
-  t.dataset.theme=t.dataset.theme==='dark'?'light':'dark';
-}
+var lang='en';
 function toggleLang(){
   lang=lang==='en'?'tr':'en';
   document.querySelectorAll('[data-tr]').forEach(function(el){
-    var val=lang==='en'?el.getAttribute('data-en'):el.getAttribute('data-tr');
-    if(val)el.textContent=val;
+    var v=lang==='en'?el.getAttribute('data-en'):el.getAttribute('data-tr');
+    if(v)el.textContent=v;
   });
   document.querySelector('.lang-btn').textContent=lang==='en'?'EN':'TR';
 }
+function toggleTheme(){var t=document.documentElement;t.dataset.theme=t.dataset.theme==='dark'?'light':'dark';}
 function toggleMob(){document.getElementById('mob-m').classList.toggle('open');}
-function showHome(){window.location.href='index.html';}
-function navTo(page){
-  if(page==='hakkimda')return false;
-  window.location.href='index.html#'+page;
-  return false;
+
+var cur=0;
+var lbls=['Overview','Experience','Profile'];
+function go(delta){
+  var t=delta<=2?delta:cur+delta;
+  t=Math.max(0,Math.min(2,t));
+  cur=t;
+  document.getElementById('slides').style.transform='translateX(-'+(cur*33.3333)+'%)';
+  document.querySelectorAll('.s-dot').forEach(function(d,i){d.classList.toggle('on',i===cur);});
+  document.getElementById('s-prev').disabled=cur===0;
+  document.getElementById('s-next').disabled=cur===2;
+  document.getElementById('s-lbl').textContent=lbls[cur];
+  if(cur===0)setTimeout(animateBars,300);
+  if(cur===1)setTimeout(animateTimeline,200);
+  if(cur===2)setTimeout(animateLangs,200);
 }
-function thesisOpen(){
-  document.getElementById('thesis-overlay').classList.add('open');
-  document.body.style.overflow='hidden';
+
+var hnMap=[4,6,3,2,5,1,0];
+var expTimer=null,expCycling=true,expIdx=0;
+function expSel(n){
+  document.querySelectorAll('.exp-item').forEach(function(el,i){el.classList.toggle('on',i===n);});
+  document.querySelectorAll('.exp-panel').forEach(function(d){d.classList.remove('on');});
+  var ep=document.getElementById('ep'+n);if(ep)ep.classList.add('on');
+  document.querySelectorAll('.htl-n').forEach(function(h,i){h.classList.toggle('sel',hnMap[i]===n);});
 }
-function thesisClose(){
-  document.getElementById('thesis-overlay').classList.remove('open');
-  document.body.style.overflow='';
+function expStop(){expCycling=false;clearTimeout(expTimer);}
+function runExp(){if(!expCycling)return;expSel(expIdx%7);expIdx++;expTimer=setTimeout(runExp,4500);}
+
+function animateTimeline(){
+  var nodes=document.querySelectorAll('.htl-n');
+  var fill=document.getElementById('htl-fill');
+  nodes.forEach(function(n,i){setTimeout(function(){n.classList.add('vis');if(fill)fill.style.width=(((i+1)/nodes.length)*100)+'%';},i*200);});
 }
-document.addEventListener('keydown',function(e){
-  if(e.key==='Escape')thesisClose();
-});
-// Dispatch ab-init on load
-window.addEventListener('load',function(){
-  // Başlangıçta İngilizce göster
-  document.querySelectorAll('[data-tr]').forEach(function(el){
-    var val=el.getAttribute('data-en');
-    if(val)el.textContent=val;
+function animateBars(){document.querySelectorAll('.cs-fill').forEach(function(el){el.style.width=el.dataset.pct+'%';});}
+function animateLangs(){
+  document.querySelectorAll('.lang-svg').forEach(function(el){
+    var pct=parseFloat(el.dataset.pct)/100,r=18,cx=22,cy=22,lw=5,circ=2*Math.PI*r;
+    el.innerHTML='<svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">'+
+      '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="rgba(0,0,0,.1)" stroke-width="'+lw+'"/>'+
+      '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="#b8892a" stroke-width="'+lw+'" stroke-linecap="round"'+
+      ' stroke-dasharray="'+(pct*circ)+' '+circ+'" transform="rotate(-90 '+cx+' '+cy+')" style="transition:stroke-dasharray .9s ease"/>'+
+      '<text x="'+cx+'" y="'+(cy+4)+'" text-anchor="middle" font-size="10" font-weight="bold" fill="#b8892a" font-family="system-ui">'+Math.round(pct*100)+'%</text>'+
+      '</svg>';
   });
-  setTimeout(function(){window.dispatchEvent(new Event('ab-init'));} ,300);
+}
+
+(function(){
+  var cv=document.getElementById('ab-wmap');if(!cv)return;
+  var ctx=cv.getContext('2d'),tip=document.getElementById('map-tip');
+  var LN=-125,LX=65,LT=18,LM=72;
+  var C=[
+    {n:'USA',lo:-100,la:38},{n:'Canada',lo:-96,la:56},{n:'Germany',lo:10,la:51},
+    {n:'Netherlands',lo:5.3,la:52.3},{n:'Spain',lo:-3.7,la:40.4},{n:'Italy',lo:12.5,la:41.9},
+    {n:'Greece',lo:21.8,la:39.1},{n:'France',lo:2.3,la:46.2},{n:'Belgium',lo:4.5,la:50.8},
+    {n:'Bulgaria',lo:25.5,la:42.7},{n:'Slovakia',lo:19.7,la:48.7},{n:'Austria',lo:14.5,la:47.5},
+    {n:'Serbia',lo:21,la:44.8},{n:'Romania',lo:25,la:45.9},{n:'Switzerland',lo:8.2,la:46.8},
+    {n:'Syria',lo:38,la:35},{n:'Saudi Arabia',lo:45,la:24},{n:'Turkey',lo:35,la:39,home:true}
+  ];
+  var hov=null,pl=0;
+  function pr(lo,la){var W=cv.width,H=cv.height;return{x:(lo-LN)/(LX-LN)*W,y:(LM-la)/(LM-LT)*H};}
+  function inB(lo,la){return lo>=LN&&lo<=LX&&la>=LT&&la<=LM;}
+  function draw(){
+    var W=cv.width,H=cv.height,dk=document.documentElement.dataset.theme==='dark';
+    ctx.clearRect(0,0,W,H);
+    var g=ctx.createLinearGradient(0,0,W,H);
+    if(dk){g.addColorStop(0,'#1a2535');g.addColorStop(1,'#162030');}
+    else{g.addColorStop(0,'#c8dce8');g.addColorStop(1,'#a8c4d8');}
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    ctx.fillStyle=dk?'#2a3848':'#cad4ae';
+    ctx.strokeStyle=dk?'rgba(255,255,255,.07)':'rgba(0,0,0,.09)';ctx.lineWidth=.5;
+    function land(pts){ctx.beginPath();pts.forEach(function(p,i){i?ctx.lineTo(p[0]*W,p[1]*H):ctx.moveTo(p[0]*W,p[1]*H);});ctx.closePath();ctx.fill();ctx.stroke();}
+    land([[0,.6],[.02,0],[.28,0],[.3,.1],[.26,.3],[.18,.55],[.08,.7],[0,.7]]);
+    land([[.38,0],[.63,0],[.66,.08],[.68,.2],[.6,.3],[.5,.42],[.44,.42],[.41,.28],[.39,.1]]);
+    land([[.63,0],[1,0],[1,.55],[.88,.65],[.76,.55],[.7,.4],[.68,.2],[.65,.08]]);
+    land([[.39,.42],[.66,.42],[.72,.58],[.62,.7],[.5,.75],[.41,.7],[.38,.56]]);
+    ctx.strokeStyle='rgba(184,137,42,.06)';ctx.lineWidth=.4;
+    for(var lo2=LN;lo2<=LX;lo2+=15){var x2=(lo2-LN)/(LX-LN)*W;ctx.beginPath();ctx.moveTo(x2,0);ctx.lineTo(x2,H);ctx.stroke();}
+    for(var la2=LT;la2<=LM;la2+=10){var y2=(LM-la2)/(LM-LT)*H;ctx.beginPath();ctx.moveTo(0,y2);ctx.lineTo(W,y2);ctx.stroke();}
+    if(hov&&!hov.home){var hm=C.find(function(c){return c.home;});var hp=pr(hm.lo,hm.la),cp=pr(hov.lo,hov.la);ctx.beginPath();ctx.moveTo(hp.x,hp.y);ctx.lineTo(cp.x,cp.y);ctx.strokeStyle='rgba(184,137,42,.4)';ctx.lineWidth=1;ctx.setLineDash([3,5]);ctx.stroke();ctx.setLineDash([]);}
+    pl+=.04;
+    C.forEach(function(c){
+      if(!inB(c.lo,c.la))return;
+      var p=pr(c.lo,c.la),isH=hov&&hov.n===c.n,pv=Math.sin(pl+(c.lo*.15+c.la*.12))*.5+.5;
+      if(c.home||isH){ctx.beginPath();ctx.arc(p.x,p.y,c.home?18:14,0,Math.PI*2);ctx.fillStyle=c.home?'rgba(184,137,42,.12)':'rgba(93,202,165,.18)';ctx.fill();}
+      ctx.beginPath();ctx.arc(p.x,p.y,c.home?7:isH?6:3.5+pv*1.2,0,Math.PI*2);
+      ctx.fillStyle=c.home?'#b8892a':isH?'#5DCAA5':'rgba(184,137,42,.75)';ctx.fill();
+      if(c.home){ctx.font='600 11px system-ui';ctx.fillStyle='#b8892a';ctx.fillText('Istanbul',p.x+9,p.y-4);}
+    });
+    requestAnimationFrame(draw);
+  }
+  function resize(){var p=cv.parentElement;cv.width=p.clientWidth||800;cv.height=p.clientHeight||280;}
+  cv.addEventListener('mousemove',function(e){
+    var r=cv.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top,best=null,bd=999;
+    C.forEach(function(c){if(!inB(c.lo,c.la))return;var p=pr(c.lo,c.la);var d=Math.hypot(mx-p.x,my-p.y);if(d<bd){bd=d;best=c;}});
+    hov=bd<24?best:null;
+    if(tip){if(hov&&bd<24){tip.textContent=hov.n;tip.style.left=(mx+12)+'px';tip.style.top=(my-28)+'px';tip.style.opacity='1';}else tip.style.opacity='0';}
+  });
+  cv.addEventListener('mouseleave',function(){hov=null;if(tip)tip.style.opacity='0';});
+  new ResizeObserver(resize).observe(cv.parentElement);
+  resize();draw();
+})();
+
+function thesisOpen(){document.getElementById('thesis-overlay').classList.add('open');document.body.style.overflow='hidden';}
+function thesisClose(){document.getElementById('thesis-overlay').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')thesisClose();});
+
+(function(){
+  var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function fmt(){var n=new Date(),h=n.getHours(),m=n.getMinutes(),s=n.getSeconds(),ap=h>=12?'PM':'AM';h=h%12||12;return days[n.getDay()]+', '+months[n.getMonth()]+' '+n.getDate()+', '+n.getFullYear()+' -- '+String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')+' '+ap;}
+  var cl=document.getElementById('ab-clock'),nd=document.getElementById('nav-dt');
+  function upd(){var t=fmt();if(cl)cl.textContent=t;if(nd)nd.textContent=t;}
+  upd();setInterval(upd,1000);
+})();
+
+window.addEventListener('load',function(){
+  document.querySelectorAll('[data-tr]').forEach(function(el){var v=el.getAttribute('data-en');if(v)el.textContent=v;});
+  animateBars();
+  setTimeout(runExp,2000);
 });
 </script>
-
-<div class="thesis-overlay" id="thesis-overlay" onclick="if(event.target===this)thesisClose()">
-  <div class="thesis-modal">
-    <div class="thesis-masthead">
-      <div class="thesis-masthead-left">
-        <div class="thesis-pub-name">ACADEMIC RECORD</div>
-        <div class="thesis-pub-date" id="thesis-pub-date"></div>
-      </div>
-      <button class="thesis-close-btn" onclick="thesisClose()" aria-label="Close">&#10005;</button>
-    </div>
-    <div class="thesis-hero">
-      <div class="thesis-category">Master's Thesis · Islamic Law &amp; Finance</div>
-      <h1 class="thesis-title">An Investigation on the<br>Economical Life of<br>the Holy Prophet</h1>
-      <div class="thesis-meta-row">
-        <span class="thesis-meta-item">Halil İbrahim Ciğer</span>
-        <span class="thesis-meta-sep">·</span>
-        <span class="thesis-meta-item">Istanbul University</span>
-        <span class="thesis-meta-sep">·</span>
-        <span class="thesis-meta-item">2015</span>
-      </div>
-    </div>
-    <div class="thesis-divider-line"></div>
-    <div class="thesis-content-grid">
-      <div class="thesis-article">
-        <div class="thesis-drop-cap-section">
-          <div class="thesis-section-kicker">Preface</div>
-          <p class="thesis-lead">This thesis examines the economic dimensions of the Prophet Muhammad's life through a rigorous interdisciplinary lens, drawing on classical Islamic sources and contemporary economic analysis.</p>
-          <p>The study aims to illuminate neglected dimensions of prophetic biography — specifically the economic and commercial activities of the Prophet — using methodologies from both Islamic jurisprudence and modern economic science. The research reveals a coherent and principled economic framework embedded within the prophetic tradition.</p>
-        </div>
-        <div class="thesis-section-kicker">Chapter I · Pre-Prophetic Period</div>
-        <p>Examines trade practices in 6th-century Arabia, the Prophet's early commercial activities as a merchant and trade agent for Khadijah, partnership arrangements (mudaraba), and the ethical principles he established before his prophethood — principles that would later form the backbone of Islamic commercial law.</p>
-        <div class="thesis-section-kicker">Chapter II · The Medina Market</div>
-        <p>Analyses the construction of the first Islamic market in Medina, the prohibition of monopolistic and deceptive practices, introduction of standardised weights and measures (the mudd and sa'), and the foundational principles of Islamic economic justice that distinguished the Muslim community's commerce.</p>
-      </div>
-      <div class="thesis-article">
-        <div class="thesis-section-kicker">Chapter III · Fiscal Policy</div>
-        <p>Covers the administration of zakat as a redistributive institution, the rules governing spoils of war (ghanimah) and their equitable distribution, land taxation (kharaj), and the Prophet's sophisticated approach to public finance — a system that balanced communal welfare with individual property rights.</p>
-        <div class="thesis-section-kicker">Chapter IV · Legacy &amp; Modern Relevance</div>
-        <p>Discusses the enduring influence of prophetic economic principles on Islamic finance, waqf (endowment) institutions, profit-sharing structures, and contemporary Muslim-majority economies. The chapter draws a line from 7th-century Medina to modern instruments such as sukuk and participation banking.</p>
-        <div class="thesis-section-kicker">Conclusion</div>
-        <p>The Prophet's economic model constitutes a coherent system that balances spiritual imperatives with pragmatic governance. Its emphasis on transparency, prohibition of exploitation, and communal solidarity offers a framework with continued relevance for Islamic economics and ethical finance today.</p>
-        <div class="thesis-pullquote">
-          "A principled economic model rooted in justice, transparency, and communal solidarity."
-        </div>
-      </div>
-    </div>
-    <div class="thesis-footer">
-      <div class="thesis-footer-left">
-        <span class="thesis-footer-label">Istanbul University · Department of Basic Islamic Sciences</span>
-      </div>
-      <div class="thesis-footer-right">
-        <a class="thesis-catalog-link" href="https://katalog.isam.org.tr/?dil=0&p=1&q=Halil+%C4%B0brahim+Ci%C4%9Fer&alan=qYazarlar_txt" target="_blank" rel="noopener">ISAM Academic Catalog &#8599;</a>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
 </body>
 </html>
