@@ -107,7 +107,7 @@ nav {
   display:flex; align-items:center; position:relative;
   transition: color .25s;
   opacity: 0.85;
-}
+text-transform:uppercase;}
 .nav-links a::after {
   content:''; position:absolute; bottom:0; left:18px; right:18px;
   height:2px; background:var(--gold);
@@ -1758,18 +1758,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
       <div class="pod-sec" id="ps-analiz">
         <div class="pod-sh"><span class="pod-st">Analiz ve Görüşler</span><span class="pod-ct" id="ct-analiz"></span></div>
         <!-- Cover + playlist embed side by side -->
-        <div style="display:flex;gap:20px;padding:20px;border-bottom:1px solid var(--border2);background:var(--bg2);align-items:flex-start;">
-          <div style="display:flex;flex-direction:column;align-items:center;gap:10px;min-width:140px;">
-            <img src="analiz_ve_gorusler.jpg" style="width:100px;height:100px;border-radius:6px;object-fit:cover" alt="">
-            <div style="font-family:'Playfair Display',serif;font-size:13px;font-style:italic;color:var(--ink);text-align:center;line-height:1.2;transition:color .3s">Analiz ve Görüşler</div>
-            <a href="https://analiz.transistor.fm/" target="_blank" rel="noopener" style="font-family:'Josefin Sans',sans-serif;font-weight:200;font-size:8px;letter-spacing:.14em;color:var(--gold);text-decoration:none;text-transform:uppercase">transistor.fm ↗</a>
-          </div>
-          <div style="flex:1;">
-            <iframe width="100%" height="390" frameborder="no" scrolling="no" seamless
-              src="https://share.transistor.fm/e/anadolu-ajansi/playlist"
-              style="display:block;border-radius:6px"></iframe>
-          </div>
-        </div>
+        
         <!-- Episode list -->
         <div id="ep-analiz"><div class="loading">Yükleniyor...</div></div>
       </div>
@@ -2109,7 +2098,28 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
             </div>
             </div>
-            <div class="vid-info"><div class="vid-title">Aşık geleneğinin son temsilcilerinden: Aşık Veysel</div></div>
+            <div class="vid-info"><div class="vid-title">Aşık geleneğinin son temsilcilerinden: Aşık Veysel</div>
+          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=wh9kkc71iMc','_blank')" onmouseenter="previewVid(this,'wh9kkc71iMc')" onmouseleave="stopPreview(this,'wh9kkc71iMc')">
+            <div class="vid-thumb" id="vt-wh9kkc71iMc">
+              <img src="https://img.youtube.com/vi/wh9kkc71iMc/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info"><div class="vid-title">ABD'de seçim günü: Amerikalı gençler ne diyor?</div></div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=4VIA5wig-pM','_blank')" onmouseenter="previewVid(this,'4VIA5wig-pM')" onmouseleave="stopPreview(this,'4VIA5wig-pM')">
+            <div class="vid-thumb" id="vt-4VIA5wigpM">
+              <img src="https://img.youtube.com/vi/4VIA5wig-pM/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info"><div class="vid-title">Hatay'ın yeniden canlandırılması projesi lansmanı</div></div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=-dR5jui0B18','_blank')" onmouseenter="previewVid(this,'-dR5jui0B18')" onmouseleave="stopPreview(this,'-dR5jui0B18')">
+            <div class="vid-thumb" id="vt-dR5jui0B18b">
+              <img src="https://img.youtube.com/vi/-dR5jui0B18/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info"><div class="vid-title">Gazze ABD seçimlerine nasıl etki edecek?</div></div>
+          </div></div>
           </div>
         </div>
     </div>
@@ -2326,34 +2336,40 @@ function buildTicker(){
 
 /* ══ NEWS ══ */
 function newsHTML(n, feat){
-  const lbl=n.l==='tr'?(lang==='en'?'Turkish':'Türkçe'):n.l==='en'?(lang==='en'?'English':'EN'):(n.ll||'Other');
-  const cls=feat?'nbrick feat':'nbrick';
-  const imgH=n.i
-    ?`<div class="nb-img"><img src="${n.i}" alt="" loading="lazy"></div>`
-    :`<div class="nb-noimg"><span class="nb-noimg-lbl">${n.s}</span></div>`;
-  const esc=s=>(s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'");
-  return `<a class="${cls}" href="#" onclick="npOpen('${esc(n.u)}','${esc(n.t)}','${esc(n.s)}','${esc(n.i||'')}');return false;">
-    ${imgH}
-    <div class="nb-body">
-      <div class="nb-lang">${lbl}</div>
-      <div class="nb-title">${n.t}</div>
-      <div class="nb-src">${n.s}<span class="nb-arr">↗</span></div>
-    </div></a>`;
+  var lbl = n.l==='tr' ? (lang==='en'?'Turkish':'Türkçe') :
+            n.l==='en' ? (lang==='en'?'English':'EN') :
+            (n.ll||'Other');
+  var cls = feat ? 'nbrick feat' : 'nbrick';
+  var img = n.i
+    ? '<div class="nb-img"><img src="' + n.i + '" alt="" loading="lazy"></div>'
+    : '<div class="nb-noimg"><span class="nb-noimg-lbl">' + n.s + '</span></div>';
+  var u2 = (n.u||'').replace(/'/g,'%27');
+  var t2 = (n.t||'').replace(/'/g,'&#39;');
+  var s2 = (n.s||'').replace(/'/g,'&#39;');
+  var i2 = (n.i||'').replace(/'/g,'%27');
+  var onclick = "npOpen('" + u2 + "','" + t2 + "','" + s2 + "','" + i2 + "');return false;";
+  return '<a class="' + cls + '" href="#" onclick="' + onclick + '">' +
+    img +
+    '<div class="nb-body">' +
+      '<div class="nb-lang">' + lbl + '</div>' +
+      '<div class="nb-title">' + n.t + '</div>' +
+      '<div class="nb-src">' + n.s + '<span class="nb-arr">&#8599;</span></div>' +
+    '</div></a>';
 }
 function buildHomeNews(f){
-  const g=document.getElementById('home-news-grid');
-  // Default filter: if called without arg, use current lang
-  const filter=f||(lang==='en'?'en':'tr');
-  g.innerHTML=ND.filter(n=>n.l===filter).map((n,i)=>newsHTML(n,i===0)).join('');
+  var g=document.getElementById('home-news-grid');
+  if(!g)return;
+  var filter=f||(lang==='en'?'en':'tr');
+  g.innerHTML=ND.filter(function(n){return n.l===filter;}).map(function(n,i){return newsHTML(n,i===0);}).join('');
 }
-function filterHomeNews(btn,f){document.querySelectorAll('.ntab').forEach(b=>b.classList.remove('on'));btn.classList.add('on');buildHomeNews(f);}
+function filterHomeNews(btn,f){document.querySelectorAll('.ntab').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');buildHomeNews(f);}
 function getDefaultNewsLang(){return lang==='en'?'en':'tr';}
 function buildInnerNews(){
   const g=document.getElementById('nwall');
   if(!g)return;
-  g.innerHTML=ND.map(n=>newsHTML(n,false)).join('');
+  g.innerHTML=ND.map(function(n){return newsHTML(n,false);}).join('');
 }
-function filterInner(btn,f){document.querySelectorAll('.lf-tab').forEach(b=>b.classList.remove('on'));btn.classList.add('on');buildInnerNews(f);}
+function filterInner(btn,f){document.querySelectorAll('.lf-tab').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');buildInnerNews();}
 
 /* ══ PODCAST PLAYER ══ */
 const audio=document.getElementById('main-audio');
@@ -2632,6 +2648,38 @@ async function loadRSS(url,elId,progName,cover,limit){
   }catch(e){if(el)el.innerHTML='<div class="loading">Yüklenemedi</div>';}
 }
 
+
+/\* ══ BUILD ANALIZ SECTION ══ \*/
+function buildAnalizSection(container, coverImg){
+  if(!container)return;
+  container.innerHTML='';
+  var ANALIZ_IDS=['772ce83c','4ec6ccc4','5b91640a','b0a6b377','a0bcd7a5'];
+  var ANALIZ_TITLES=[
+    "Biden'\u0131n \u0130nsan Haklar\u0131 Sicili",
+    "Ortado\u011fu Analizi",
+    "Siyasi De\u011ferlendirme",
+    "Ekonomi ve Politika",
+    "D\u0131\u015f Politika Analizi"
+  ];
+  var grid=document.createElement('div');
+  grid.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:16px;';
+  ANALIZ_IDS.forEach(function(id, i){
+    var card=document.createElement('div');
+    card.style.cssText='background:var(--bg2);border-radius:6px;overflow:hidden;border:.5px solid var(--border2);';
+    var iframe=document.createElement('iframe');
+    iframe.width='100%';iframe.height='180';iframe.frameBorder='0';
+    iframe.setAttribute('scrolling','no');iframe.setAttribute('seamless','');
+    iframe.src='https://share.transistor.fm/e/'+id;
+    var label=document.createElement('div');
+    label.style.cssText='padding:8px 12px;font-size:11px;color:var(--ink2);';
+    label.textContent=ANALIZ_TITLES[i]||('Bölüm '+(i+1));
+    card.appendChild(iframe);
+    card.appendChild(label);
+    grid.appendChild(card);
+  });
+  container.appendChild(grid);
+}
+
 function initPod(){
   // Portre: 3-col embed grid (playlist already in HTML)
   buildEpGrid('ep-portre', PORTRE_IDS, null, false);
@@ -2734,106 +2782,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(pages.indexOf(hash)>=0){navTo(hash);}else{showHome();}
   })();
 });
-
-/* ══ ANALIZ VE GÖRÜŞLER SPECIAL PLAYER ══ */
-const ANALIZ_FIRST5 = ['772ce83c', '4ec6ccc4', '5b91640a', 'b0a6b377', 'a0bcd7a5'];
-let analizAudio = null;
-let analizCurrent = null;
-
-function buildAnalizSection(container, coverImg){
-  container.innerHTML='';
-  // Playlist embed at top
-  const playlistDiv=document.createElement('div');
-  playlistDiv.style.cssText='padding:0 0 16px;';
-  playlistDiv.innerHTML='<iframe width="100%" height="390" frameborder="no" scrolling="no" seamless src="https://share.transistor.fm/e/anadolu-ajansi/playlist" style="display:block;border-radius:6px"></iframe>';
-  container.appendChild(playlistDiv);
-
-  // RSS episode list
-  fetch('https://feeds.transistor.fm/anadolu-ajansi').then(r=>r.text()).then(txt=>{
-    const doc=new DOMParser().parseFromString(txt,'application/xml');
-    const allItems=Array.from(doc.querySelectorAll('item')).slice(0,200);
-    const listWrap=document.createElement('div');
-    listWrap.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:20px;width:100%;box-sizing:border-box;';
-    allItems.forEach((it,i)=>{
-      const title=it.querySelector('title')?.textContent||'Bölüm '+(i+1);
-      const audioUrl=it.querySelector('enclosure')?.getAttribute('url')||'';
-      const pd=it.querySelector('pubDate')?.textContent||'';
-      const ds=pd?new Date(pd).toLocaleDateString('tr-TR',{day:'numeric',month:'short',year:'numeric'}):'';
-      const ep=document.createElement('div');
-      ep.className='analiz-card';
-      ep.style.cssText='border:1px solid var(--border2);border-radius:6px;overflow:hidden;background:var(--card);display:flex;flex-direction:column;transition:border-color .2s,background .2s;cursor:pointer;';
-      ep.innerHTML=`
-        <div style="padding:14px 16px;flex:1;">
-          <div style="font-family:'Space Mono',monospace;font-size:8px;color:var(--muted);margin-bottom:6px;">${String(i+1).padStart(2,'0')}</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:500;color:var(--ink);line-height:1.4;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">${title}</div>
-          <div style="font-family:'Space Mono',monospace;font-size:8px;color:var(--muted);margin-top:6px;">${ds}</div>
-        </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-top:1px solid var(--border2);background:var(--bg2);">
-          <button onclick="event.stopPropagation();playAnalizEp(this)" data-url="${audioUrl}" data-title="${title.replace(/"/g,'&quot;').replace(/'/g,'&#39;')}"
-            style="display:flex;align-items:center;gap:6px;background:var(--gold);border:none;border-radius:3px;padding:6px 12px;cursor:pointer;font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#fff;">
-            <svg viewBox="0 0 24 24" style="width:10px;height:10px;fill:#fff"><path d="M8 5v14l11-7z"/></svg> <span class="btn-play-label" data-tr="Dinle" data-en="Play">${lang==='en'?'Play':'Dinle'}</span>
-          </button>
-          <div style="display:flex;gap:8px;">
-            <a href="https://open.spotify.com/search/${encodeURIComponent(title)}" target="_blank" style="font-size:16px;text-decoration:none;">🎵</a>
-            <a href="https://podcasts.apple.com/search?term=${encodeURIComponent(title)}" target="_blank" style="font-size:16px;text-decoration:none;">🎙️</a>
-          
-          <div class="vid-card" onclick="window.open('https://www.youtube.com/results?search_query=Amerikalı+gençler+ne+diyor+Halil+ibrahim+ciger','_blank')" onmouseenter="previewVid(this,'')">
-            <div class="vid-thumb" id="vt-usyouth">
-              <img src="https://img.youtube.com/vi/dR5jui0B18/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-            </div>
-            <div class="vid-info"><div class="vid-title">ABD'de seçim günü: Amerikalı gençler ne diyor?</div></div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://www.youtube.com/results?search_query=Hatay+canlandırılması+projesi+lansmanı+anadolu','_blank')" onmouseenter="previewVid(this,'')">
-            <div class="vid-thumb" id="vt-hatayproject">
-              <img src="https://img.youtube.com/vi/3206450/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-            </div>
-            <div class="vid-info"><div class="vid-title">Hatay'ın yeniden canlandırılması projesi lansmanı</div></div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=-dR5jui0B18','_blank')" onmouseenter="previewVid(this,'-dR5jui0B18')">
-            <div class="vid-thumb" id="vt-dR5jui0B18">
-              <img src="https://img.youtube.com/vi/-dR5jui0B18/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-            </div>
-            <div class="vid-info"><div class="vid-title">Gazze ABD seçimlerine nasıl etki edecek?</div></div>
-          </div></div>
-        </div>`;
-      ep.addEventListener('mouseenter',()=>ep.style.borderColor='var(--gold)');
-      ep.addEventListener('mouseleave',()=>ep.style.borderColor='var(--border2)');
-      // Whole card click = play
-      ep.addEventListener('click',(e)=>{
-        if(e.target.tagName==='A'||e.target.tagName==='BUTTON')return;
-        const btn=ep.querySelector('button[data-url]');
-        if(btn) playAnalizEp(btn);
-      });
-      listWrap.appendChild(ep);
-    });
-    container.appendChild(listWrap);
-  }).catch(()=>{});
-}
-
-function analizOpenShare(id){
-  const iframe=document.getElementById('analiz-frame-'+id);
-  if(!iframe)return;
-  if(iframe.style.display==='none'){
-    iframe.src='https://share.transistor.fm/e/'+id;
-    iframe.style.display='block';
-    iframe.style.height='180px';
-  }else{
-    iframe.style.display='none';
-    iframe.style.height='0';
-    iframe.src='';
-  }
-}
-
-function playAnalizEp(btn){
-  const url=btn.getAttribute('data-url');
-  const title=btn.getAttribute('data-title')||btn.getAttribute('data-title');
-  if(!url){console.warn('No audio URL');return;}
-  playAudio(url,title,'Analiz ve Görüşler');
-}
-
 
 /* ══ SWIPE/DRAG for video carousel ══ */
 function initDragScroll(trackId){
