@@ -84,13 +84,13 @@ nav{position:fixed;top:0;left:0;right:0;height:62px;background:var(--nav-bg);bac
 }
 .nav-links a {
   font-family: 'Josefin Sans', sans-serif;
-  font-weight:400; font-size:13.5px; letter-spacing:.08em; text-transform:uppercase;
+  font-weight:400; font-size:13.5px; letter-spacing:.08em; text-transform:none;
   color: var(--ink2);
   text-decoration:none; padding:0 18px; height:62px;
   display:flex; align-items:center; position:relative;
   transition: color .25s;
   opacity: 0.85;
-text-transform:uppercase;}
+text-transform:none;}
 .nav-links a::after {
   content:''; position:absolute; bottom:0; left:18px; right:18px;
   height:2px; background:var(--gold);
@@ -523,7 +523,7 @@ text-transform:uppercase;}
 }
 .vid-ring svg { fill:var(--gold2); width:18px; height:18px; margin-left:2px; }
 .vid-info { padding:18px 22px 22px; }
-.vid-title { font-family:'Cormorant Garamond',serif; font-size:16px; font-weight:500; color:var(--ink); line-height:1.42; transition:color .3s; }
+.vid-title { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:500; color:var(--ink); line-height:1.42; transition:color .3s; }
 .vid-sub { font-family:'Josefin Sans',sans-serif; font-weight:100; font-size:9px; letter-spacing:.14em; color:var(--muted); text-transform:uppercase; margin-top:7px; }
 .vid-arrows { display:flex; gap:8px; margin-top:22px; }
 .vid-arr {
@@ -1145,21 +1145,21 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 }
 
 /* ══ VOD ALL OVERLAY ══ */
-.vod-overlay{position:fixed;inset:0;background:rgba(10,12,20,.94);z-index:900;display:none;flex-direction:column;overflow:hidden}
+.vod-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);z-index:4000;display:none;align-items:center;justify-content:center}
 .vod-overlay.open{display:flex}
-.vod-overlay-head{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2rem;border-bottom:.5px solid rgba(255,255,255,.1);flex-shrink:0}
-.vod-overlay-title{font-family:'Playfair Display',serif;font-size:22px;color:#f0ece0;letter-spacing:.04em}
-.vod-overlay-close{background:none;border:1px solid rgba(255,255,255,.2);color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px;transition:background .2s}
-.vod-overlay-close:hover{background:rgba(255,255,255,.1)}
-.vod-overlay-grid{flex:1;overflow-y:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;padding:1.5rem 2rem}
-.vov-card{background:#161d2a;border-radius:6px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s}
-.vov-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.4)}
-.vov-thumb{position:relative;aspect-ratio:16/9;overflow:hidden}
-.vov-thumb img{width:100%;height:100%;object-fit:cover}
-.vov-ring{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.35);opacity:0;transition:opacity .2s}
-.vov-card:hover .vov-ring{opacity:1}
-.vov-ring svg{width:32px;height:32px;fill:#fff}
-.vov-title{padding:8px 10px;font-family:'Josefin Sans',sans-serif;font-size:11px;color:rgba(240,236,224,.85);line-height:1.4}
+.vod-modal{background:var(--bg);width:100%;max-width:860px;max-height:85vh;overflow-y:auto;border:1px solid var(--border2);border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.vod-modal-head{padding:24px 36px 18px;border-bottom:1px solid var(--border2);display:flex;align-items:center;justify-content:space-between}
+.vod-modal-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--ink)}
+.vod-modal-close{background:none;border:.5px solid var(--border2);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:18px;color:var(--ink2);transition:all .2s}
+.vod-modal-close:hover{background:var(--border2)}
+.vod-item{display:flex;align-items:center;gap:16px;padding:16px 36px;border-bottom:.5px solid var(--border2);text-decoration:none;transition:background .18s;cursor:pointer}
+.vod-item:last-child{border-bottom:none}
+.vod-item:hover{background:var(--bg2)}
+.vod-item-num{font-family:'Josefin Sans',sans-serif;font-size:12px;color:var(--muted);width:28px;flex-shrink:0}
+.vod-item-thumb{width:120px;height:68px;object-fit:cover;border-radius:4px;flex-shrink:0;background:var(--bg3)}
+.vod-item-body{flex:1;min-width:0}
+.vod-item-section{font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.vod-item-title{font-family:'Josefin Sans',sans-serif;font-size:14px;font-weight:600;color:var(--ink);line-height:1.35}
 </style>
 </head>
 <body>
@@ -1671,6 +1671,44 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
+          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=wh9kkc71iMc','_blank')" onmouseenter="previewVid(this,'wh9kkc71iMc')" onmouseleave="stopPreview(this,'wh9kkc71iMc')">
+            <div class="vid-thumb" id="vt-wh9kkc71iMc">
+              <img src="https://img.youtube.com/vi/wh9kkc71iMc/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info"><div class="vid-title">ABD'de seçim günü: Amerikalı gençler ne diyor?</div></div>
+          </div>
+
+          <div class="vid-card" onclick="window.open('https://youtu.be/tRGdi6D06ww','_blank')" onmouseenter="previewVid(this,'tRGdi6D06ww')" onmouseleave="stopPreview(this,'tRGdi6D06ww')">
+            <div class="vid-thumb" id="vt-tRGdi6D06ww">
+              <img src="https://img.youtube.com/vi/tRGdi6D06ww/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+            </div>
+            <div class="vid-info"><div class="vid-title">Aşık geleneğinin son temsilcilerinden: Aşık Veysel</div>          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=4VIA5wig-pM','_blank')" onmouseenter="previewVid(this,'4VIA5wig-pM')" onmouseleave="stopPreview(this,'4VIA5wig-pM')">
+            <div class="vid-thumb" id="vt-4VIA5wigpM">
+              <img src="https://img.youtube.com/vi/4VIA5wig-pM/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info"><div class="vid-title">Hatay'ın yeniden canlandırılması projesi lansmanı</div></div>
+          </div>
+
+          <div class="vid-card" onclick="window.open('https://youtu.be/q8nKNiOuSfU','_blank')" onmouseenter="previewVid(this,'q8nKNiOuSfU')" onmouseleave="stopPreview(this,'q8nKNiOuSfU')">
+            <div class="vid-thumb" id="vt-q8nKNiOuSfU">
+              <img src="https://img.youtube.com/vi/q8nKNiOuSfU/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+            </div>
+            <div class="vid-info"><div class="vid-title">Türk Savunma sanayisinin bağımsızlığına adanmış bir ömür: Özdemir Bayraktar</div></div>
+          </div>          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=-dR5jui0B18','_blank')" onmouseenter="previewVid(this,'-dR5jui0B18')" onmouseleave="stopPreview(this,'-dR5jui0B18')">
+            <div class="vid-thumb" id="vt-dR5jui0B18b">
+              <img src="https://img.youtube.com/vi/-dR5jui0B18/hqdefault.jpg" alt="" loading="lazy">
+              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="vid-info"><div class="vid-title">Gazze ABD seçimlerine nasıl etki edecek?</div></div>
+          </div></div>
+          </div>
+
         </div>
       </div>
       <div class="vid-arrows">
@@ -1784,7 +1822,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 <div id="page-vodcast" class="ip">
   <div class="iph">
     <div class="iph-eye" data-tr="Ses ve Görüntü Arşivi" data-en="Audio & Video Archive">Audio & Video Archive</div>
-    <h1 class="iph-title" style="cursor:pointer" onclick="showAllVods()" title="Tüm videoları gör">Vodcast ↗</h1>
+    <h1 class="iph-title" style="cursor:pointer" onclick="showAllVods()" title="Tüm videoları gör">Vodcast</h1>
   </div>
   <div class="vod-body">
     
@@ -1825,6 +1863,18 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
           </div>
             </div>
             <div class="vid-info"><div class="vid-title">What does future hold for Bitcoin?</div></div>
+          </div
+          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=wh9kkc71iMc','_blank')" onmouseenter="previewVid(this,'wh9kkc71iMc')" onmouseleave="stopPreview(this,'wh9kkc71iMc')">
+            <div class="vid-thumb" id="vt-wh9k"><img src="https://img.youtube.com/vi/wh9kkc71iMc/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
+            <div class="vid-info"><div class="vid-title">ABD'de seçim günü: Amerikalı gençler ne diyor?</div></div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=4VIA5wig-pM','_blank')" onmouseenter="previewVid(this,'4VIA5wig-pM')" onmouseleave="stopPreview(this,'4VIA5wig-pM')">
+            <div class="vid-thumb" id="vt-4via"><img src="https://img.youtube.com/vi/4VIA5wig-pM/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
+            <div class="vid-info"><div class="vid-title">Hatay'ın yeniden canlandırılması projesi lansmanı</div></div>
+          </div>
+          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=-dR5jui0B18','_blank')" onmouseenter="previewVid(this,'-dR5jui0B18')" onmouseleave="stopPreview(this,'-dR5jui0B18')">
+            <div class="vid-thumb" id="vt-dr5j"><img src="https://img.youtube.com/vi/-dR5jui0B18/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
+            <div class="vid-info"><div class="vid-title">Gazze ABD seçimlerine nasıl etki edecek?</div></div>
           </div>
         </div>
       </div>
@@ -2060,73 +2110,14 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
             </div>
             <div class="vid-info"><div class="vid-title">İtalya'nın ilk kadın Başbakanı: Giorgia Meloni</div></div>
           </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/nbdcfaQ9ssQ','_blank')" onmouseenter="previewVid(this,'nbdcfaQ9ssQ')" onmouseleave="stopPreview(this,'nbdcfaQ9ssQ')">
-            <div class="vid-thumb" id="vt-nbdcfaQ9ssQ">
-              <img src="https://img.youtube.com/vi/nbdcfaQ9ssQ/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            </div>
-            </div>
-            <div class="vid-info"><div class="vid-title">Türk Filozof ve Bilim İnsanı: Şaban Teoman Duralı</div></div>
           </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/N_xmvIiPQDY','_blank')" onmouseenter="previewVid(this,'N_xmvIiPQDY')" onmouseleave="stopPreview(this,'N_xmvIiPQDY')">
-            <div class="vid-thumb" id="vt-N_xmvIiPQDY">
-              <img src="https://img.youtube.com/vi/N_xmvIiPQDY/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            </div>
-            </div>
-            <div class="vid-info"><div class="vid-title">ABD'li girişimci Elon Musk: Elon Reeve Musk</div></div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/5FMUgnx4BdI','_blank')" onmouseenter="previewVid(this,'5FMUgnx4BdI')" onmouseleave="stopPreview(this,'5FMUgnx4BdI')">
-            <div class="vid-thumb" id="vt-5FMUgnx4BdI">
-              <img src="https://img.youtube.com/vi/5FMUgnx4BdI/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            </div>
-            </div>
-            <div class="vid-info"><div class="vid-title">Hayatını dünyayı güzelleştirmeye adayan Mimar ve Düşünce adamı: Turgut Cansever</div></div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/q8nKNiOuSfU','_blank')" onmouseenter="previewVid(this,'q8nKNiOuSfU')" onmouseleave="stopPreview(this,'q8nKNiOuSfU')">
-            <div class="vid-thumb" id="vt-q8nKNiOuSfU">
-              <img src="https://img.youtube.com/vi/q8nKNiOuSfU/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            </div>
-            </div>
-            <div class="vid-info"><div class="vid-title">Türk Savunma sanayisinin bağımsızlığına adanmış bir ömür: Özdemir Bayraktar</div></div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://youtu.be/tRGdi6D06ww','_blank')" onmouseenter="previewVid(this,'tRGdi6D06ww')" onmouseleave="stopPreview(this,'tRGdi6D06ww')">
-            <div class="vid-thumb" id="vt-tRGdi6D06ww">
-              <img src="https://img.youtube.com/vi/tRGdi6D06ww/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            </div>
-            </div>
-            <div class="vid-info"><div class="vid-title">Aşık geleneğinin son temsilcilerinden: Aşık Veysel</div>
-          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=wh9kkc71iMc','_blank')" onmouseenter="previewVid(this,'wh9kkc71iMc')" onmouseleave="stopPreview(this,'wh9kkc71iMc')">
-            <div class="vid-thumb" id="vt-wh9kkc71iMc">
-              <img src="https://img.youtube.com/vi/wh9kkc71iMc/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-            </div>
-            <div class="vid-info"><div class="vid-title">ABD'de seçim günü: Amerikalı gençler ne diyor?</div></div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=4VIA5wig-pM','_blank')" onmouseenter="previewVid(this,'4VIA5wig-pM')" onmouseleave="stopPreview(this,'4VIA5wig-pM')">
-            <div class="vid-thumb" id="vt-4VIA5wigpM">
-              <img src="https://img.youtube.com/vi/4VIA5wig-pM/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-            </div>
-            <div class="vid-info"><div class="vid-title">Hatay'ın yeniden canlandırılması projesi lansmanı</div></div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=-dR5jui0B18','_blank')" onmouseenter="previewVid(this,'-dR5jui0B18')" onmouseleave="stopPreview(this,'-dR5jui0B18')">
-            <div class="vid-thumb" id="vt-dR5jui0B18b">
-              <img src="https://img.youtube.com/vi/-dR5jui0B18/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-            </div>
-            <div class="vid-info"><div class="vid-title">Gazze ABD seçimlerine nasıl etki edecek?</div></div>
-          </div></div>
-          </div>
-        </div>
-    </div>
-  </div>
-</div>
-</div>
 
+
+</div>
+</div>
+</div>
+</div>
+</div>
 <!-- AUDIO BAR -->
 <div class="abar" id="abar">
   <img class="a-cover" id="a-cover" src="" alt="">
@@ -2654,18 +2645,17 @@ function buildAnalizSection(container, coverImg){
   if(!container)return;
   container.innerHTML='';
 
-  // 1. Playlist embed
-  var plDiv=document.createElement('div');
-  plDiv.className='pod-ep-playlist';
-  plDiv.style.cssText='padding:0 0 16px 0;';
-  plDiv.innerHTML='<iframe width="100%" height="390" frameborder="no" scrolling="no" seamless '+
-    'src="https://share.transistor.fm/s/3dc9b12d"></iframe>';
-  container.appendChild(plDiv);
+  // Analiz ve Görüşler - Transistor playlist embed (ilk 200 bölüm)
+  var plWrap=document.createElement('div');
+  plWrap.className='pod-ep-playlist';
+  plWrap.innerHTML='<iframe width="100%" height="390" frameborder="no" scrolling="no" seamless '+
+    'src="https://share.transistor.fm/s/3dc9b12d" style="width:100%;height:390px;"></iframe>';
+  container.appendChild(plWrap);
 
-  // 2. Episode grid (transistor embeds)
-  var ANALIZ_IDS=['772ce83c','4ec6ccc4','5b91640a','b0a6b377','a0bcd7a5','9ad2b242','81f75796'];
+  // Episode grid - ilk 5 bölüm transistor embed
+  var ANALIZ_IDS=['772ce83c','4ec6ccc4','5b91640a','b0a6b377','a0bcd7a5'];
   var grid=document.createElement('div');
-  grid.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 0 16px;';
+  grid.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:16px 0;';
   ANALIZ_IDS.forEach(function(id){
     var cell=document.createElement('div');
     cell.style.cssText='background:var(--bg2);border-radius:6px;overflow:hidden;border:.5px solid var(--border2);';
@@ -2678,24 +2668,23 @@ function buildAnalizSection(container, coverImg){
   });
   container.appendChild(grid);
 
-  // 3. RSS episode list (async)
+  // RSS'den ilk 200 bölümü listele
   var listDiv=document.createElement('div');
   listDiv.style.cssText='padding:8px 0;';
-  listDiv.innerHTML="<div style='padding:12px;font-size:11px;color:var(--muted);'>Yükleniyor...</div>";
+  listDiv.innerHTML='<div style="padding:10px;font-size:13px;color:var(--muted);">Bölümler yükleniyor...</div>';
   container.appendChild(listDiv);
-
   fetch('https://feeds.transistor.fm/anadolu-ajansi-analiz-ve-gorusler')
     .then(function(r){return r.text();})
     .then(function(txt){
       var doc=new DOMParser().parseFromString(txt,'application/xml');
-      var items=Array.from(doc.querySelectorAll('item')).slice(0,30);
+      var items=Array.from(doc.querySelectorAll('item')).slice(0,200);
       listDiv.innerHTML='';
       items.forEach(function(it,i){
-        var title=it.querySelector('title')?it.querySelector('title').textContent:'Bölüm '+(i+1);
-        var audioUrl=it.querySelector('enclosure')?it.querySelector('enclosure').getAttribute('url'):'';
-        var pd=it.querySelector('pubDate')?it.querySelector('pubDate').textContent:'';
+        var title=(it.querySelector('title')||{textContent:''}).textContent;
+        var audioUrl=it.querySelector('enclosure')?(it.querySelector('enclosure').getAttribute('url')||''):'';
+        var pd=(it.querySelector('pubDate')||{textContent:''}).textContent;
         var ds=pd?new Date(pd).toLocaleDateString('tr-TR',{day:'numeric',month:'short',year:'numeric'}):'';
-        if(audioUrl) listDiv.appendChild(makeEpRow(title,audioUrl,ds,String(i+1).padStart(2,'0'),'Analiz ve Görüşler',coverImg||'analiz_ve_gorusler.jpg'));
+        if(audioUrl&&title) listDiv.appendChild(makeEpRow(title,audioUrl,ds,String(i+1).padStart(2,'0'),'Analiz ve Görüşler',coverImg||'analiz_ve_gorusler.jpg'));
       });
     })
     .catch(function(){listDiv.innerHTML='';});
@@ -2926,22 +2915,32 @@ document.addEventListener('keydown',e=>{
 
 /* ══ ALL VODS OVERLAY ══ */
 function showAllVods(){
-  var grid=document.getElementById('vov-grid');
-  if(!grid)return;
-  if(grid.children.length===0){
-    var cards=document.querySelectorAll('.vid-card');
+  var list=document.getElementById('vov-list');
+  if(!list)return;
+  if(!list.hasChildNodes()){
+    var cards=document.querySelectorAll('#page-vodcast .vid-card');
+    var num=1;
     cards.forEach(function(vc){
       var img=vc.querySelector('img');
       var title=vc.querySelector('.vid-title');
       var oc=vc.getAttribute('onclick')||'';
       var urlM=oc.match(/open\('([^']+)'/);
       if(!img||!urlM)return;
-      var card=document.createElement('div');
-      card.className='vov-card';
-      card.onclick=function(){window.open(urlM[1],'_blank');};
-      card.innerHTML='<div class="vov-thumb"><img src="'+img.src+'" loading="lazy" alt=""><div class="vov-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>'+
-        '<div class="vov-title">'+(title?title.textContent:'')+'</div>';
-      grid.appendChild(card);
+      // Hangi section?
+      var sec='';
+      var secEl=vc.closest('.vod-sec-body');
+      if(secEl){var eye=secEl.previousElementSibling;if(eye)sec=eye.textContent.trim();}
+      var item=document.createElement('div');
+      item.className='vod-item';
+      item.onclick=function(){window.open(urlM[1],'_blank');};
+      item.innerHTML='<span class="vod-item-num">'+String(num).padStart(2,'0')+'</span>'+
+        '<img class="vod-item-thumb" src="'+img.src+'" loading="lazy" alt="">'+
+        '<div class="vod-item-body">'+
+          (sec?'<div class="vod-item-section">'+sec+'</div>':'')+
+          '<div class="vod-item-title">'+(title?title.textContent:'')+'</div>'+
+        '</div>';
+      list.appendChild(item);
+      num++;
     });
   }
   document.getElementById('vod-overlay').classList.add('open');
@@ -3067,12 +3066,14 @@ function closeAllVods(){
 </div>
 
 <!-- VOD ALL OVERLAY -->
-<div class="vod-overlay" id="vod-overlay">
-  <div class="vod-overlay-head">
-    <div class="vod-overlay-title" data-tr="Tüm Videolar" data-en="All Videos">All Videos</div>
-    <button class="vod-overlay-close" onclick="closeAllVods()">&#10005;</button>
+<div class="vod-overlay" id="vod-overlay" onclick="if(event.target===this)closeAllVods()">
+  <div class="vod-modal">
+    <div class="vod-modal-head">
+      <div class="vod-modal-title" data-tr="Tüm Videolar" data-en="All Videos">All Videos</div>
+      <button class="vod-modal-close" onclick="closeAllVods()">&#10005;</button>
+    </div>
+    <div id="vov-list"></div>
   </div>
-  <div class="vod-overlay-grid" id="vov-grid"></div>
 </div>
 
 </body>
