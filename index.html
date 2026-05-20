@@ -60,16 +60,7 @@ body {
 }
 
 /* ════ NAV ════ */
-nav {
-  position: fixed; top:0; left:0; right:0; z-index:1000;
-  height: 62px;
-  display: flex; align-items:center; justify-content:space-between;
-  padding: 0 52px;
-  background: var(--nav-bg);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid var(--border2);
-  transition: background .3s, border-color .3s;
-}
+nav{position:fixed;top:0;left:0;right:0;height:62px;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:.5px solid var(--border2);z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;transition:background .3s}
 
 /* LOGO */
 .logo {
@@ -77,15 +68,7 @@ nav {
   display: flex; flex-direction:column; gap:6px;
   padding-bottom: 2px;
 }
-.logo-hic {
-  font-family: 'Cormorant SC', serif;
-  font-size: 32px; font-weight:600;
-  letter-spacing: .38em;
-  color: var(--gold);
-  line-height: 1;
-  transition: color .3s;
-  text-shadow: 0 1px 12px rgba(184,137,42,.18);
-}
+.logo-hic{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--gold);letter-spacing:.08em}
 .logo-hic:hover { color: var(--gold2); }
 .logo-line {
   height: 1px;
@@ -101,7 +84,7 @@ nav {
 }
 .nav-links a {
   font-family: 'Josefin Sans', sans-serif;
-  font-weight:400; font-size:13.5px; letter-spacing:.08em; text-transform:none;
+  font-weight:400; font-size:13.5px; letter-spacing:.08em; text-transform:uppercase;
   color: var(--ink2);
   text-decoration:none; padding:0 18px; height:62px;
   display:flex; align-items:center; position:relative;
@@ -1160,6 +1143,23 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   .thesis-banner{padding:14px 18px;}
   .thesis-main-title{font-size:16px;}
 }
+
+/* ══ VOD ALL OVERLAY ══ */
+.vod-overlay{position:fixed;inset:0;background:rgba(10,12,20,.94);z-index:900;display:none;flex-direction:column;overflow:hidden}
+.vod-overlay.open{display:flex}
+.vod-overlay-head{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2rem;border-bottom:.5px solid rgba(255,255,255,.1);flex-shrink:0}
+.vod-overlay-title{font-family:'Playfair Display',serif;font-size:22px;color:#f0ece0;letter-spacing:.04em}
+.vod-overlay-close{background:none;border:1px solid rgba(255,255,255,.2);color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px;transition:background .2s}
+.vod-overlay-close:hover{background:rgba(255,255,255,.1)}
+.vod-overlay-grid{flex:1;overflow-y:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;padding:1.5rem 2rem}
+.vov-card{background:#161d2a;border-radius:6px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.vov-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.vov-thumb{position:relative;aspect-ratio:16/9;overflow:hidden}
+.vov-thumb img{width:100%;height:100%;object-fit:cover}
+.vov-ring{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.35);opacity:0;transition:opacity .2s}
+.vov-card:hover .vov-ring{opacity:1}
+.vov-ring svg{width:32px;height:32px;fill:#fff}
+.vov-title{padding:8px 10px;font-family:'Josefin Sans',sans-serif;font-size:11px;color:rgba(240,236,224,.85);line-height:1.4}
 </style>
 </head>
 <body>
@@ -1745,7 +1745,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
       <div class="pod-ni" onclick="switchPod(this,'analiz')">Analiz ve Görüşler</div>
       <div class="pod-ni" onclick="switchPod(this,'birbakista')">Bir Bakışta</div>
       <div class="pod-ni" onclick="switchPod(this,'mahrec')">Mahreç Dünya</div>
-      <div class="pod-ni" onclick="switchPod(this,'atalks')">Anadolu Talks</div>
+      <div class="pod-ni" onclick="switchPod(this,'atalks')">Anadolu Talk Zone</div>
     </div>
     <div class="pod-main">
       <div class="pod-sec on" id="ps-portre">
@@ -1771,7 +1771,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
         <div id="ep-mahrec"><div class="loading">Yükleniyor...</div></div>
       </div>
       <div class="pod-sec" id="ps-atalks">
-        <div class="pod-sh"><span class="pod-st">Anadolu Talks</span></div>
+        <div class="pod-sh"><span class="pod-st">Anadolu Talk Zone</span></div>
         <div class="pod-emb"><iframe width="100%" height="180" frameborder="no" scrolling="no" seamless src="https://share.transistor.fm/e/3dc9b12d" loading="lazy"></iframe></div>
       </div>
       <!-- Mahreç Dünya removed from Anadolu Talks section -->
@@ -1784,7 +1784,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 <div id="page-vodcast" class="ip">
   <div class="iph">
     <div class="iph-eye" data-tr="Ses ve Görüntü Arşivi" data-en="Audio & Video Archive">Audio & Video Archive</div>
-    <h1 class="iph-title">Vodcast</h1>
+    <h1 class="iph-title" style="cursor:pointer" onclick="showAllVods()" title="Tüm videoları gör">Vodcast ↗</h1>
   </div>
   <div class="vod-body">
     
@@ -2199,7 +2199,7 @@ const PLAYLISTS = [
     ]
   },
   {
-    label:'Anadolu Talks', cover:'anadolu_talk_zone.webp', link:'https://anadolutalkzone.transistor.fm/',
+    label:'Anadolu Talk Zone', cover:'anadolu_talk_zone.webp', link:'https://anadolutalkzone.transistor.fm/',
     embeds:[
       'https://share.transistor.fm/e/3dc9b12d'
     ]
@@ -2533,7 +2533,7 @@ function switchPl(idx){
     // Embed-based: 3-col grid, NO playlist for BBK/Mahrec, Portre gets playlist
     const playlistUrl = {
       'Portre': 'https://share.transistor.fm/e/aa-portre/playlist',
-      'Anadolu Talks': ''
+      'Anadolu Talk Zone': ''
     }[pl.label] || '';
     
     setTimeout(()=>{
@@ -2653,31 +2653,52 @@ async function loadRSS(url,elId,progName,cover,limit){
 function buildAnalizSection(container, coverImg){
   if(!container)return;
   container.innerHTML='';
-  var ANALIZ_IDS=['772ce83c','4ec6ccc4','5b91640a','b0a6b377','a0bcd7a5'];
-  var ANALIZ_TITLES=[
-    "Biden'\u0131n \u0130nsan Haklar\u0131 Sicili",
-    "Ortado\u011fu Analizi",
-    "Siyasi De\u011ferlendirme",
-    "Ekonomi ve Politika",
-    "D\u0131\u015f Politika Analizi"
-  ];
+
+  // 1. Playlist embed
+  var plDiv=document.createElement('div');
+  plDiv.className='pod-ep-playlist';
+  plDiv.style.cssText='padding:0 0 16px 0;';
+  plDiv.innerHTML='<iframe width="100%" height="390" frameborder="no" scrolling="no" seamless '+
+    'src="https://share.transistor.fm/s/3dc9b12d"></iframe>';
+  container.appendChild(plDiv);
+
+  // 2. Episode grid (transistor embeds)
+  var ANALIZ_IDS=['772ce83c','4ec6ccc4','5b91640a','b0a6b377','a0bcd7a5','9ad2b242','81f75796'];
   var grid=document.createElement('div');
-  grid.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:16px;';
-  ANALIZ_IDS.forEach(function(id, i){
-    var card=document.createElement('div');
-    card.style.cssText='background:var(--bg2);border-radius:6px;overflow:hidden;border:.5px solid var(--border2);';
+  grid.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 0 16px;';
+  ANALIZ_IDS.forEach(function(id){
+    var cell=document.createElement('div');
+    cell.style.cssText='background:var(--bg2);border-radius:6px;overflow:hidden;border:.5px solid var(--border2);';
     var iframe=document.createElement('iframe');
     iframe.width='100%';iframe.height='180';iframe.frameBorder='0';
     iframe.setAttribute('scrolling','no');iframe.setAttribute('seamless','');
     iframe.src='https://share.transistor.fm/e/'+id;
-    var label=document.createElement('div');
-    label.style.cssText='padding:8px 12px;font-size:11px;color:var(--ink2);';
-    label.textContent=ANALIZ_TITLES[i]||('Bölüm '+(i+1));
-    card.appendChild(iframe);
-    card.appendChild(label);
-    grid.appendChild(card);
+    cell.appendChild(iframe);
+    grid.appendChild(cell);
   });
   container.appendChild(grid);
+
+  // 3. RSS episode list (async)
+  var listDiv=document.createElement('div');
+  listDiv.style.cssText='padding:8px 0;';
+  listDiv.innerHTML="<div style='padding:12px;font-size:11px;color:var(--muted);'>Yükleniyor...</div>";
+  container.appendChild(listDiv);
+
+  fetch('https://feeds.transistor.fm/anadolu-ajansi-analiz-ve-gorusler')
+    .then(function(r){return r.text();})
+    .then(function(txt){
+      var doc=new DOMParser().parseFromString(txt,'application/xml');
+      var items=Array.from(doc.querySelectorAll('item')).slice(0,30);
+      listDiv.innerHTML='';
+      items.forEach(function(it,i){
+        var title=it.querySelector('title')?it.querySelector('title').textContent:'Bölüm '+(i+1);
+        var audioUrl=it.querySelector('enclosure')?it.querySelector('enclosure').getAttribute('url'):'';
+        var pd=it.querySelector('pubDate')?it.querySelector('pubDate').textContent:'';
+        var ds=pd?new Date(pd).toLocaleDateString('tr-TR',{day:'numeric',month:'short',year:'numeric'}):'';
+        if(audioUrl) listDiv.appendChild(makeEpRow(title,audioUrl,ds,String(i+1).padStart(2,'0'),'Analiz ve Görüşler',coverImg||'analiz_ve_gorusler.jpg'));
+      });
+    })
+    .catch(function(){listDiv.innerHTML='';});
 }
 
 function initPod(){
@@ -3015,6 +3036,15 @@ document.addEventListener('keydown',e=>{
       <a class="thesis-link" href="https://katalog.isam.org.tr/?dil=0&p=1&q=Halil+%C4%B0brahim+Ci%C4%9Fer&alan=qYazarlar_txt" target="_blank" rel="noopener">ISAM Catalog ↗</a>
     </div>
   </div>
+</div>
+
+<!-- VOD ALL OVERLAY -->
+<div class="vod-overlay" id="vod-overlay">
+  <div class="vod-overlay-head">
+    <div class="vod-overlay-title" data-tr="Tüm Videolar" data-en="All Videos">All Videos</div>
+    <button class="vod-overlay-close" onclick="closeAllVods()">&#10005;</button>
+  </div>
+  <div class="vod-overlay-grid" id="vov-grid"></div>
 </div>
 
 </body>
