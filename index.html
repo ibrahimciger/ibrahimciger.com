@@ -389,8 +389,11 @@ text-transform:none;}
   grid-template-columns:1fr;
 }
 .pl-body.embed-mode .pl-left {
-  display:none;
+  display:flex; flex-direction:column; align-items:center;
+  padding:16px; gap:8px;
+  background:var(--bg2); border-right:1px solid var(--border2);
 }
+.pl-left img.pl-cover { width:100px; height:100px; object-fit:cover; border-radius:8px; }
 .pl-left {
   border-right:1px solid var(--border2); padding:32px 24px;
   display:flex; flex-direction:column; align-items:center; gap:14px;
@@ -729,7 +732,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 }
 
 /* ════ VODCAST PAGE ════ */
-.vod-body { padding:0 80px 80px; }
+.vod-body { padding:0 80px 24px; }
 .vod-section { margin-bottom:64px; }
 .vod-sec-head { padding:48px 0 20px; border-bottom:1px solid var(--border2); margin-bottom:28px; }
 .vod-sec-eye {
@@ -1272,7 +1275,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   letter-spacing:.08em;
 }
 /* cursor: microphone on podcast page */
-#page-podcast { cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Cpath fill='%23b8892a' d='M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1 1.93c-3.94-.49-7-3.85-7-7.93h2c0 3.31 2.69 6 6 6s6-2.69 6-6h2c0 4.08-3.06 7.44-7 7.93V22h-2v-4.07z'/%3E%3C/svg%3E") 12 32, auto; }
+#page-podcast { }
 
 /* ── Video carousel arrow buttons ── */
 .vid-track-wrap { position:relative; }
@@ -1287,6 +1290,14 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .vid-arr-btn:hover { background:var(--gold); color:#fff; border-color:var(--gold); }
 .arr-prev { left:10px; }
 .arr-next { right:10px; }
+
+/* Podcast section no top gap */
+#sec-podcast .sec-head { padding-top: 8px; }
+
+/* Investigative special layout */
+#page-vodcast .vid-card.wide { grid-column: span 2; }
+.inv-last-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; grid-column:1/-1; padding:0; }
+#page-podcast { cursor: none; }
 </style>
 </head>
 <body>
@@ -1912,7 +1923,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
             <div class="vid-thumb" id="vt-EwX7lrKT"><img src="https://img.youtube.com/vi/EwX7lrKThiQ/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
             <div class="vid-info"><div class="vid-title">Rachel Corrie'nin anne ve babası Anadolu Talk Zone'a konuştu</div></div>
           </div>
-          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=H9Yxw84F0PI','_blank')" onmouseenter="previewVid(this,'H9Yxw84F0PI')" onmouseleave="stopPreview(this,'H9Yxw84F0PI')">
+          <div class="vid-card wide" onclick="window.open('https://www.youtube.com/watch?v=H9Yxw84F0PI','_blank')" onmouseenter="previewVid(this,'H9Yxw84F0PI')" onmouseleave="stopPreview(this,'H9Yxw84F0PI')">
             <div class="vid-thumb" id="vt-H9Yxw84F"><img src="https://img.youtube.com/vi/H9Yxw84F0PI/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
             <div class="vid-info"><div class="vid-title">Gaza War's Impact on US Election</div></div>
           </div>
@@ -1928,6 +1939,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
             <div class="vid-thumb" id="vt-wh9kkc71"><img src="https://img.youtube.com/vi/wh9kkc71iMc/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
             <div class="vid-info"><div class="vid-title">ABD'de seçim günü: Amerikalı gençler ne diyor?</div></div>
           </div>
+          <div class="inv-last-row">
           <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=4VIA5wig-pM','_blank')" onmouseenter="previewVid(this,'4VIA5wig-pM')" onmouseleave="stopPreview(this,'4VIA5wig-pM')">
             <div class="vid-thumb" id="vt-4VIA5wig"><img src="https://img.youtube.com/vi/4VIA5wig-pM/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
             <div class="vid-info"><div class="vid-title">Hatay'ın yeniden canlandırılması projesi lansmanı</div></div>
@@ -1935,6 +1947,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
           <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=-dR5jui0B18','_blank')" onmouseenter="previewVid(this,'-dR5jui0B18')" onmouseleave="stopPreview(this,'-dR5jui0B18')">
             <div class="vid-thumb" id="vt-ndR5jui0"><img src="https://img.youtube.com/vi/-dR5jui0B18/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
             <div class="vid-info"><div class="vid-title">Gazze ABD seçimlerine nasıl etki edecek?</div></div>
+          </div>
           </div>
         </div>
       </div>
@@ -2114,16 +2127,16 @@ const ND = [
   {l:'tr',t:'Georgia eyalet temsilcisi Romman, ABD seçimlerinde ilklerin yaşandığını söyledi',u:'https://www.aa.com.tr/tr/ayrimcilikhatti/ayrimcilik/georgia-eyalet-temsilcisi-romman-abd-secimlerinde-ilklerin-yasandigini-soyledi/1821707',s:'AA',i:'romman.jpg',feat:true},
   {l:'tr',t:'İsrail\'in buldozerle ezerek öldürdüğü Rachel Corrie\'nin anne ve babası Anadolu Talk Zone\'a konuştu',u:'https://www.aa.com.tr/tr/israil-filistin-catismasi/israil-in-buldozerle-ezerek-oldurdugu-rachel-corrie-nin-anne-ve-babasi-anadolu-talk-zone-a-konustu/3042205',s:'AA',i:'corrie.jpg'},
   {l:'tr',t:'ABD\'de İsrail lobisi AIPAC, Netanyahu\'yu alkışlayan senatörlere milyonlarca dolar bağışladı',u:'https://www.aa.com.tr/tr/abd-baskanlik-secimleri-2024/abdde-israil-lobisi-aipac-netanyahuyu-alkislayan-senatorlere-milyonlarca-dolar-bagisladi/3331246',s:'AA',i:'netanyahu_AIPAC.jpg'},
-  {l:'tr',t:'İsrail donanmasından uluslararası sularda küresel Sumud filosuna saldırı',u:'https://www.aa.com.tr/tr/live-blog/israil-donanmasindan-uluslararasi-sularda-kuresel-sumud-filosuna-saldiri/1798',s:'AA',i:'sumud.jpg'},
+  {l:'tr',t:'İsrail donanmasından uluslararası sularda küresel Sumud filosuna saldırı',u:'https://www.aa.com.tr/tr/live-blog/israil-donanmasindan-uluslararasi-sularda-kuresel-sumud-filosuna-saldiri/1798',s:'AA',i:'sumud.jpg',feat:true},
   {l:'en',t:'Parents of Rachel Corrie who was crushed to death by Israeli bulldozers spoke to Anadolu\'s English podcast show',u:'https://www.aa.com.tr/en/americas/parents-of-rachel-corrie-who-was-crushed-to-death-by-israeli-bulldozers-spoke-to-anadolu-s-english-podcast-show/3042256',s:'AA',i:'corrie.jpg',feat:true},
   {l:'en',t:'Gaza War to influence 2024 US Presidential Election',u:'https://www.aa.com.tr/en/americas/gaza-war-to-influence-2024-us-presidential-election/3329626',s:'AA',i:'gaza_war_to_influence.jpg'},
   {l:'en',t:'Many firsts in US politics: 1st Muslim woman lawmaker in southern state of Georgia',u:'https://www.aa.com.tr/en/americas/many-firsts-in-us-politics-1st-muslim-woman-lawmaker-in-southern-state-of-georgia/3332737',s:'AA',i:'romman.jpg'},
-  {l:'en',t:'Biden\'s human rights record under scrutiny for support of Israeli genocide in Gaza',u:'https://www.aa.com.tr/en/americas/bidens-human-rights-record-under-scrutiny-for-support-of-israeli-genocide-in-gaza/3459188',s:'AA',i:'bidens_human_rights.jpg'},
-  {l:'en',t:'Council on American Islamic Relations sues US government over genocide in Gaza',u:'https://www.aa.com.tr/en/americas/council-on-american-islamic-relations-sues-us-government-over-genocide-in-gaza/3486926',s:'AA',i:'awad.jpg',feat:true},
+  {l:'en',t:'Biden\'s human rights record under scrutiny for support of Israeli genocide in Gaza',u:'https://www.aa.com.tr/en/americas/bidens-human-rights-record-under-scrutiny-for-support-of-israeli-genocide-in-gaza/3459188',s:'AA',i:'bidens_human_rights.jpg',feat:true},
   {l:'en',t:'All available resources mobilized after Israeli attack disrupts Gaza-bound aid flotilla',u:'https://www.aa.com.tr/en/middle-east/all-available-resources-mobilized-after-israeli-attack-disrupts-gaza-bound-aid-flotilla-organizer-says/3923348',s:'AA',i:'all_available_resources.jpg',feat:true},
+  {l:'en',t:'Council on American Islamic Relations sues US government over genocide in Gaza',u:'https://www.aa.com.tr/en/americas/council-on-american-islamic-relations-sues-us-government-over-genocide-in-gaza/3486926',s:'AA',i:'awad.jpg'},
   {l:'other',ll:'عربي',t:'أيباك تغدق العطاء على أعضاء الكونغرس تقريراً',u:'https://www.aa.com.tr/ar/%D8%A5%D8%B3%D8%B1%D8%A7%D8%A6%D9%8A%D9%84/%D9%84%D8%AF%D8%B9%D9%85%D9%87%D9%85-%D9%86%D8%AA%D9%86%D9%8A%D8%A7%D9%87%D9%88-%D8%A3%D9%8A%D8%A8%D8%A7%D9%83-%D8%AA%D8%BA%D8%AF%D9%82-%D8%A7%D9%84%D8%B9%D8%B7%D8%A7%D8%A1-%D8%B9%D9%84%D9%89-%D8%A3%D8%B9%D8%B6%D8%A7%D8%A1-%D8%A7%D9%84%D9%83%D9%88%D9%86%D8%BA%D8%B1%D8%B3-%D8%AA%D9%82%D8%B1%D9%8A%D8%B1/3333547',s:'الأناضول',i:'netanyahu_AIPAC.jpg'},
   {l:'other',ll:'Français',t:'Le conseil des relations américano-islamique poursuit les États-Unis pour complicité dans le génocide à Gaza',u:'https://www.aa.com.tr/fr/monde/le-conseil-des-relations-am%C3%A9ricano-islamiques-poursuit-les-%C3%A9tats-unis-pour-complicit%C3%A9-dans-le-g%C3%A9nocide-%C3%A0-gaza/3487047',s:'Agence Anadolu',i:'awad.jpg'},
-  {l:'other',ll:'Русский',t:'Поддержка Израиля негативно отразилась на репутации Байдена',u:'https://www.aa.com.tr/ru/%D0%BC%D0%B8%D1%80/%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%B0-%D0%B8%D0%B7%D1%80%D0%B0%D0%B8%D0%BB%D1%8F-%D0%BD%D0%B5%D0%B3%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%BE-%D0%BE%D1%82%D1%80%D0%B0%D0%B7%D0%B8%D0%BB%D0%B0%D1%81%D1%8C-%D0%BD%D0%B0-%D1%80%D0%B5%D0%BF%D1%83%D1%82%D0%B0%D1%86%D0%B8%D0%B8-%D0%B1%D0%B0%D0%B9%D0%B4%D0%B5%D0%BD%D0%B0/3459175',s:'Анадолу',i:'bidens_human_rights.jpg',feat:true},
+  {l:'other',ll:'Русский',t:'Поддержка Израиля негативно отразилась на репутации Байдена',u:'https://www.aa.com.tr/ru/%D0%BC%D0%B8%D1%80/%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%B0-%D0%B8%D0%B7%D1%80%D0%B0%D0%B8%D0%BB%D1%8F-%D0%BD%D0%B5%D0%B3%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%BE-%D0%BE%D1%82%D1%80%D0%B0%D0%B7%D0%B8%D0%BB%D0%B0%D1%81%D1%8C-%D0%BD%D0%B0-%D1%80%D0%B5%D0%BF%D1%83%D1%82%D0%B0%D1%86%D0%B8%D0%B8-%D0%B1%D0%B0%D0%B9%D0%B4%D0%B5%D0%BD%D0%B0/3459175',s:'Анадолу',i:'bidens_human_rights.jpg',feat:true}
 ];
 
 const CAR = [ND[0],ND[1],ND[2],ND[7],ND[13],ND[14],ND[15]];
@@ -2231,6 +2244,7 @@ function showHome(){
   return false;
 }
 function navTo(page){
+  if(page!=='podcast') hidePodCursor();
   // 1. Home'u gizle
   document.getElementById('page-home').style.display='none';
   // 2. Tüm .ip sayfalarından inline style ve class temizle
@@ -2250,7 +2264,7 @@ function navTo(page){
   document.body.scrollTop=0;
   // 6. İçerik
   if(page==='haberlerim') buildInnerNews();
-  if(page==='podcast'){if(!podInited){podInited=true;initPod();}initPod2();}
+  if(page==='podcast'){showPodCursor();if(!podInited){podInited=true;initPod();}initPod2();}
   if(page==='hakkimda'){setTimeout(function(){window.dispatchEvent(new Event('ab-init'));},100);}
     // Hash güncelle
   history.replaceState(null,'','#'+page);
@@ -2457,7 +2471,7 @@ function switchPl(idx){
   document.querySelectorAll('.pl-tab').forEach((t,i)=>t.classList.toggle('on',i===idx));
   // Update cover
   const plLeft=document.querySelector('.pl-left');
-  if(plLeft) plLeft.style.display=(pl.label==='Analiz ve Görüşler')?'none':'';
+  if(plLeft) plLeft.style.display='';
   const img=document.getElementById('pl-img');
   img.src=pl.cover;
   document.getElementById('pl-name').textContent=pl.label;
@@ -2617,28 +2631,63 @@ async function loadRSS(url,elId,progName,cover,limit){
 function buildAnalizSection(container, coverImg){
   if(!container)return;
   container.innerHTML='';
+  // Playlist embed
   var plDiv=document.createElement('div');
   plDiv.style.cssText='padding:0 0 16px 0;';
   plDiv.innerHTML='<iframe width="100%" height="390" frameborder="no" scrolling="no" seamless src="https://share.transistor.fm/e/anadolu-ajansi/playlist" style="display:block;border-radius:6px;"></iframe>';
   container.appendChild(plDiv);
-  var listDiv=document.createElement('div');
-  listDiv.innerHTML='<div class="loading">Bölümler yükleniyor...</div>';
-  container.appendChild(listDiv);
+  // 3-col episode grid
+  var grid=document.createElement('div');
+  grid.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:8px 0 24px;';
+  var loadDiv=document.createElement('div');
+  loadDiv.style.cssText='grid-column:1/-1;padding:16px;font-size:12px;color:var(--muted);text-align:center;';
+  loadDiv.textContent='Bölümler yükleniyor...';
+  grid.appendChild(loadDiv);
+  container.appendChild(grid);
+  // RSS fetch - 200 episodes
   fetch('https://feeds.transistor.fm/anadolu-ajansi')
     .then(function(r){return r.text();})
     .then(function(txt){
       var doc=new DOMParser().parseFromString(txt,'application/xml');
       var items=Array.from(doc.querySelectorAll('item')).slice(0,200);
-      listDiv.innerHTML='';
+      grid.innerHTML='';
       items.forEach(function(it,i){
         var title=(it.querySelector('title')||{textContent:''}).textContent;
         var audioUrl=it.querySelector('enclosure')?it.querySelector('enclosure').getAttribute('url'):'';
         var pd=(it.querySelector('pubDate')||{textContent:''}).textContent;
         var ds=pd?new Date(pd).toLocaleDateString('tr-TR',{day:'numeric',month:'short',year:'numeric'}):'';
-        if(audioUrl&&title) listDiv.appendChild(makeEpRow(title,audioUrl,ds,String(i+1).padStart(2,'0'),'Analiz ve Görüşler',coverImg||'analiz_ve_gorusler.jpg'));
+        if(!audioUrl||!title)return;
+        var card=document.createElement('div');
+        card.style.cssText='background:var(--bg2);border:.5px solid var(--border2);border-radius:6px;padding:12px;display:flex;flex-direction:column;gap:6px;cursor:pointer;transition:background .18s;';
+        card.onmouseenter=function(){this.style.background='var(--bg3)';};
+        card.onmouseleave=function(){this.style.background='var(--bg2)';};
+        var numEl=document.createElement('div');
+        numEl.style.cssText="font-family:'Josefin Sans',sans-serif;font-size:10px;color:var(--muted);";
+        numEl.textContent=String(i+1).padStart(2,'0');
+        var titleEl=document.createElement('div');
+        titleEl.style.cssText="font-family:'Josefin Sans',sans-serif;font-size:12px;font-weight:600;color:var(--ink);line-height:1.4;flex:1;";
+        titleEl.textContent=title;
+        var metaEl=document.createElement('div');
+        metaEl.style.cssText='font-size:11px;color:var(--muted);';
+        metaEl.textContent=ds;
+        var playBtn=document.createElement('button');
+        playBtn.style.cssText="align-self:flex-start;margin-top:4px;background:var(--gold);border:none;border-radius:4px;padding:4px 10px;font-size:11px;color:#fff;cursor:pointer;font-family:'Josefin Sans',sans-serif;";
+        playBtn.textContent='▶ Oynat';
+        playBtn.addEventListener('click',function(e){
+          e.stopPropagation();
+          playAudio(audioUrl,title,'Analiz ve Görüşler');
+        });
+        card.appendChild(numEl);
+        card.appendChild(titleEl);
+        card.appendChild(metaEl);
+        card.appendChild(playBtn);
+        card.addEventListener('click',function(){playAudio(audioUrl,title,'Analiz ve Görüşler');});
+        grid.appendChild(card);
       });
     })
-    .catch(function(){listDiv.innerHTML='<div class="loading">Bölümler yüklenemedi.</div>';});
+    .catch(function(){
+      grid.innerHTML='<div style="grid-column:1/-1;padding:16px;color:var(--muted);text-align:center;">Bölümler yüklenemedi.</div>';
+    });
 }
 
 function initPod(){
@@ -2982,6 +3031,34 @@ function loadAnalizEps2(elId){
       });
     })
     .catch(function(){el.innerHTML='<div class="pod-loading">Yüklenemedi.</div>';});
+}
+
+
+/* ══ PODCAST EMOJI CURSOR ══ */
+var podCursorEl=null;
+function initPodCursor(){
+  if(podCursorEl)return;
+  podCursorEl=document.createElement('div');
+  podCursorEl.id='pod-cursor';
+  podCursorEl.textContent='🎙️';
+  podCursorEl.style.cssText='position:fixed;pointer-events:none;z-index:99999;font-size:28px;transform:translate(-4px,-28px);transition:none;display:none;';
+  document.body.appendChild(podCursorEl);
+  document.addEventListener('mousemove',movePodCursor);
+}
+function movePodCursor(e){
+  if(!podCursorEl||!podCursorEl._active)return;
+  podCursorEl.style.left=e.clientX+'px';
+  podCursorEl.style.top=e.clientY+'px';
+}
+function showPodCursor(){
+  initPodCursor();
+  podCursorEl._active=true;
+  podCursorEl.style.display='block';
+  document.body.style.cursor='none';
+}
+function hidePodCursor(){
+  if(podCursorEl){podCursorEl._active=false;podCursorEl.style.display='none';}
+  document.body.style.cursor='';
 }
 
 </script>
