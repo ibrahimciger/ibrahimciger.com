@@ -320,6 +320,8 @@ text-transform:none;}
 }
 .nbrick:hover { background:var(--surf); }
 .nbrick.feat { grid-column:span 2; }
+.nbrick.feat .nb-img { height:240px; }
+.nbrick.feat .nb-img img { width:100%; height:100%; object-fit:cover; }
 .nb-img { width:100%; overflow:hidden; background:var(--bg3); display:block; line-height:0; }
 /* Fixed height for both — so images and titles align perfectly */
 .nbrick .nb-img { height:220px; }
@@ -1271,6 +1273,20 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 }
 /* cursor: microphone on podcast page */
 #page-podcast { cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Cpath fill='%23b8892a' d='M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1 1.93c-3.94-.49-7-3.85-7-7.93h2c0 3.31 2.69 6 6 6s6-2.69 6-6h2c0 4.08-3.06 7.44-7 7.93V22h-2v-4.07z'/%3E%3C/svg%3E") 12 32, auto; }
+
+/* ── Video carousel arrow buttons ── */
+.vid-track-wrap { position:relative; }
+.vid-arr-btn {
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:44px; height:44px; border-radius:50%;
+  background:rgba(245,242,235,.92); border:1px solid var(--border2);
+  font-size:20px; color:var(--ink); cursor:pointer; z-index:10;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 2px 12px rgba(0,0,0,.15); transition:all .2s;
+}
+.vid-arr-btn:hover { background:var(--gold); color:#fff; border-color:var(--gold); }
+.arr-prev { left:10px; }
+.arr-next { right:10px; }
 </style>
 </head>
 <body>
@@ -1366,11 +1382,12 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 
   <!-- PODCAST -->
   <section id="sec-video" class="section">
-    <div class="sec-head">      <h2 class="sec-title">Vodcast</h2>
+    <div class="sec-head">
+      <h2 class="sec-title" data-tr="Vodcast" data-en="Vodcast">Vodcast</h2>
     </div>
     <div class="vid-body">
       <div class="vid-track-wrap">
-        <button class="vid-arr-overlay arr-prev" onclick="vidScroll(-1)" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+        <button class="vid-arr-btn arr-prev" onclick="vidScroll(-1)" aria-label="Previous">&#8592;</button>
         <div class="vid-track" id="vid-track">
           <div class="vid-card" onclick="window.open('https://youtu.be/H9Yxw84F0PI','_blank')" onmouseenter="previewVid(this,'H9Yxw84F0PI')" onmouseleave="stopPreview(this,'H9Yxw84F0PI')">
             <div class="vid-thumb" id="vt-H9Yxw84F0PI">
@@ -1588,7 +1605,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
           </div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Milli Muharip uçağımız KAAN ne aşamada? Epstein dosyalarının içeriğinde ne var?</div>
+              <div class="vid-title">Milli Muharip uçağımız KAAN ne aşamada?</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1643,7 +1660,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
           </div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">İran'daki protestolar ne boyutta?</div>
+              <div class="vid-title">İran'daki protestolar ne boyutta? (2)</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1654,7 +1671,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
           </div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">KGB ajanlığından Rusya'nın liderliğine uzanan hikaye: Vladimir Vladimiroviç Putin</div>
+              <div class="vid-title">KGB ajanlığından Rusya'nın liderliğine uzanan hikaye: Vladimir Putin</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1753,7 +1770,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
           </div>
             </div>
             <div class="vid-info">
-              <div class="vid-title">Hayatını dünyayı güzelleştirmeye adayan Mimar ve Düşünce adamı: Turgut Cansever</div>
+              <div class="vid-title">Hayatını dünyayı güzelleştirmeye adayan Mimar: Turgut Cansever</div>
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
@@ -1779,105 +1796,22 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
               <div class="vid-sub">YouTube</div>
             </div>
           </div>
-          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=wh9kkc71iMc','_blank')" onmouseenter="previewVid(this,'wh9kkc71iMc')" onmouseleave="stopPreview(this,'wh9kkc71iMc')">
-            <div class="vid-thumb" id="vt-wh9kkc71iMc">
-              <img src="https://img.youtube.com/vi/wh9kkc71iMc/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-            </div>
-            <div class="vid-info"><div class="vid-title">ABD'de seçim günü: Amerikalı gençler ne diyor?</div></div>
-          </div>
+        </div>
+        <button class="vid-arr-btn arr-next" onclick="vidScroll(1)" aria-label="Next">&#8594;</button>
+      </div>
+    </div>
+  </section>
 
-          <div class="vid-card" onclick="window.open('https://youtu.be/tRGdi6D06ww','_blank')" onmouseenter="previewVid(this,'tRGdi6D06ww')" onmouseleave="stopPreview(this,'tRGdi6D06ww')">
-            <div class="vid-thumb" id="vt-tRGdi6D06ww">
-              <img src="https://img.youtube.com/vi/tRGdi6D06ww/hqdefault.jpg" alt="" loading="lazy">
-              <div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            </div>
-        <div id="page-podcast" class="ip pod-page">
-  <div class="pod-hero">
-    <div class="pod-hero-icon">
-      <svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1 1.93c-3.94-.49-7-3.85-7-7.93h2c0 3.31 2.69 6 6 6s6-2.69 6-6h2c0 4.08-3.06 7.44-7 7.93V22h-2v-4.07z"/></svg>
+  <!-- PODCAST SECTION -->
+  <section id="sec-podcast" class="section">
+    <div class="sec-head">
+      <h2 class="sec-title" data-tr="Podcast" data-en="Podcast">Podcast</h2>
     </div>
-    <div class="pod-hero-text">
-      <h1>Podcast</h1>
-      <p data-tr="Ses Arşivi · 5 Kanal" data-en="Audio Archive · 5 Channels">Audio Archive · 5 Channels</p>
-    </div>
-  </div>
-  <div class="pod-channels">
-    <button class="pod-ch-tab on" onclick="switchPod2(this,'portre')">Portre</button>
-    <button class="pod-ch-tab" onclick="switchPod2(this,'analiz')">Analiz ve Görüşler</button>
-    <button class="pod-ch-tab" onclick="switchPod2(this,'birbakista')">Bir Bakışta</button>
-    <button class="pod-ch-tab" onclick="switchPod2(this,'mahrec')">Mahreç Dünya</button>
-    <button class="pod-ch-tab" onclick="switchPod2(this,'atalks')">Anadolu Talk Zone</button>
-  </div>
-  <div class="pod-content">
-    <div class="pod-channel-panel on" id="pp-portre">
-      <div class="pod-ch-header">
-        <img class="pod-ch-cover" src="portre.jpg" alt="Portre">
-        <div class="pod-ch-info">
-          <h2>Portre</h2>
-          <p data-tr="AA Portre · Kişilik Hikayeleri" data-en="AA Portre · Profile Stories">AA Portre · Profile Stories</p>
-        </div>
-      </div>
-      <div class="pod-embed-wrap">
-        <iframe width="100%" height="390" frameborder="no" scrolling="no" seamless
-          src="https://share.transistor.fm/e/aa-portre/playlist" style="border-radius:8px;display:block;"></iframe>
-      </div>
-      <div id="ep-portre2" class="pod-ep-list"><div class="pod-loading">Yükleniyor...</div></div>
-    </div>
-    <div class="pod-channel-panel" id="pp-analiz">
-      <div class="pod-ch-header">
-        <img class="pod-ch-cover" src="analiz_ve_gorusler.jpg" alt="Analiz ve Görüşler">
-        <div class="pod-ch-info">
-          <h2>Analiz ve Görüşler</h2>
-          <p data-tr="AA Analiz · Derinlemesine Analiz" data-en="AA Analysis · In-depth Analysis">AA Analysis · In-depth Analysis</p>
-        </div>
-      </div>
-      <div class="pod-embed-wrap">
-        <iframe width="100%" height="390" frameborder="no" scrolling="no" seamless
-          src="https://share.transistor.fm/s/3dc9b12d" style="border-radius:8px;display:block;"></iframe>
-      </div>
-      <div id="ep-analiz2" class="pod-ep-list"><div class="pod-loading">Yükleniyor...</div></div>
-    </div>
-    <div class="pod-channel-panel" id="pp-birbakista">
-      <div class="pod-ch-header">
-        <img class="pod-ch-cover" src="bir_bakista.webp" alt="Bir Bakışta">
-        <div class="pod-ch-info">
-          <h2>Bir Bakışta</h2>
-          <p data-tr="AA Bir Bakışta · Haber Yorumları" data-en="AA Bir Bakışta · News Commentary">AA Bir Bakışta · News Commentary</p>
-        </div>
-      </div>
-      <div id="ep-birbakista2" class="pod-ep-list"><div class="pod-loading">Yükleniyor...</div></div>
-    </div>
-    <div class="pod-channel-panel" id="pp-mahrec">
-      <div class="pod-ch-header">
-        <img class="pod-ch-cover" src="mahrec.jpg" alt="Mahreç Dünya">
-        <div class="pod-ch-info">
-          <h2>Mahreç Dünya</h2>
-          <p data-tr="AA Mahreç · Dünya Gündemi" data-en="AA Mahreç · World Agenda">AA Mahreç · World Agenda</p>
-        </div>
-      </div>
-      <div id="ep-mahrec2" class="pod-ep-list"><div class="pod-loading">Yükleniyor...</div></div>
-    </div>
-    <div class="pod-channel-panel" id="pp-atalks">
-      <div class="pod-ch-header">
-        <img class="pod-ch-cover" src="anadolu_talk_zone.webp" alt="Anadolu Talk Zone">
-        <div class="pod-ch-info">
-          <h2>Anadolu Talk Zone</h2>
-          <p data-tr="AA Talk Zone · Özel Söyleşiler" data-en="AA Talk Zone · Special Talks">AA Talk Zone · Special Talks</p>
-        </div>
-      </div>
-      <div class="pod-embed-wrap">
-        <iframe width="100%" height="180" frameborder="no" scrolling="no" seamless
-          src="https://share.transistor.fm/e/3dc9b12d" style="border-radius:8px;display:block;" loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ══════ VODCAST ══════ -->
-
-="pl-img" src="" alt="" onerror="this.style.opacity='.3'">
+    <div class="pl-tabs" id="pl-tabs"></div>
+    <div class="pl-body">
+      <div class="pl-left">
+        <a id="pl-link" href="#" target="_blank" rel="noopener" style="display:block;text-decoration:none">
+          <img class="pl-cover" id="pl-img" src="" alt="" onerror="this.style.opacity='.3'">
         </a>
         <div>
           <a id="pl-name-link" href="#" target="_blank" rel="noopener" style="text-decoration:none">
@@ -1893,12 +1827,9 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
       <div class="f-sig" data-tr="Yeşil ve tatlı Dünya'dan hoş sadâlar" data-en="Pleasant echoes from the verdant and captivating Earth">Pleasant echoes from the verdant and captivating Earth</div>
       <div class="f-dt" id="ft0"></div>
     </footer>
-
-        </div>
-      </div>
-    </div>
-</section>
+  </section>
 </div>
+
 
 <div id="page-haberlerim" class="ip">
   <div class="iph">
@@ -1948,9 +1879,6 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
       </div>
       <div class="pod-sec" id="ps-analiz">
         <div class="pod-sh"><span class="pod-st">Analiz ve Görüşler</span><span class="pod-ct" id="ct-analiz"></span></div>
-        <!-- Cover + playlist embed side by side -->
-        
-        <!-- Episode list -->
         <div id="ep-analiz"><div class="loading">Yükleniyor...</div></div>
       </div>
       <div class="pod-sec" id="ps-birbakista">
@@ -1965,13 +1893,11 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
         <div class="pod-sh"><span class="pod-st">Anadolu Talk Zone</span></div>
         <div class="pod-emb"><iframe width="100%" height="180" frameborder="no" scrolling="no" seamless src="https://share.transistor.fm/e/3dc9b12d" loading="lazy"></iframe></div>
       </div>
-      <!-- Mahreç Dünya removed from Anadolu Talk Zone section -->
     </div>
   </div>
 </div>
 
 
-<!-- ══════ VODCAST ══════ -->
 <div id="page-vodcast" class="ip">
   <div class="iph">
     <div class="iph-eye" data-tr="Ses ve Görüntü Arşivi" data-en="Audio & Video Archive">Audio & Video Archive</div>
@@ -2185,19 +2111,19 @@ const ND = [
   {l:'tr',t:'Seçmenler, Gazze meselesine tepkilerini sandıkta göstermek istiyor',u:'https://www.aa.com.tr/tr/ayrimcilikhatti/ayrimcilik/secmenler-gazze-meselesine-tepkilerini-sandikta-gostermek-istiyor/1821638',s:'AA',i:'secmenler_gazze.jpg'},
   {l:'tr',t:'Hatay\'ın Yeniden Canlandırılması Projesi ile Hatay Master Planının lansmanı yapıldı',u:'https://www.aa.com.tr/tr/gundem/hatayin-yeniden-canlandirilmasi-projesi-ile-hatay-master-planinin-lansmani-yapildi/3206450',s:'AA',i:'hatay_.jpg'},
   {l:'tr',t:'Amerikan İslam İlişkileri Konseyi, Gazze\'deki soykırım nedeniyle ABD yönetimine dava açtı',u:'https://www.aa.com.tr/tr/dunya/amerikan-islam-iliskileri-konseyi-gazze-deki-soykirim-nedeniyle-abd-yonetimine-dava-acti/3486493',s:'AA',i:'awad.jpg'},
-  {l:'tr',t:'Georgia eyalet temsilcisi Romman, ABD seçimlerinde ilklerin yaşandığını söyledi',u:'https://www.aa.com.tr/tr/ayrimcilikhatti/ayrimcilik/georgia-eyalet-temsilcisi-romman-abd-secimlerinde-ilklerin-yasandigini-soyledi/1821707',s:'AA',i:'romman.jpg'},
+  {l:'tr',t:'Georgia eyalet temsilcisi Romman, ABD seçimlerinde ilklerin yaşandığını söyledi',u:'https://www.aa.com.tr/tr/ayrimcilikhatti/ayrimcilik/georgia-eyalet-temsilcisi-romman-abd-secimlerinde-ilklerin-yasandigini-soyledi/1821707',s:'AA',i:'romman.jpg',feat:true},
   {l:'tr',t:'İsrail\'in buldozerle ezerek öldürdüğü Rachel Corrie\'nin anne ve babası Anadolu Talk Zone\'a konuştu',u:'https://www.aa.com.tr/tr/israil-filistin-catismasi/israil-in-buldozerle-ezerek-oldurdugu-rachel-corrie-nin-anne-ve-babasi-anadolu-talk-zone-a-konustu/3042205',s:'AA',i:'corrie.jpg'},
   {l:'tr',t:'ABD\'de İsrail lobisi AIPAC, Netanyahu\'yu alkışlayan senatörlere milyonlarca dolar bağışladı',u:'https://www.aa.com.tr/tr/abd-baskanlik-secimleri-2024/abdde-israil-lobisi-aipac-netanyahuyu-alkislayan-senatorlere-milyonlarca-dolar-bagisladi/3331246',s:'AA',i:'netanyahu_AIPAC.jpg'},
   {l:'tr',t:'İsrail donanmasından uluslararası sularda küresel Sumud filosuna saldırı',u:'https://www.aa.com.tr/tr/live-blog/israil-donanmasindan-uluslararasi-sularda-kuresel-sumud-filosuna-saldiri/1798',s:'AA',i:'sumud.jpg'},
   {l:'en',t:'Parents of Rachel Corrie who was crushed to death by Israeli bulldozers spoke to Anadolu\'s English podcast show',u:'https://www.aa.com.tr/en/americas/parents-of-rachel-corrie-who-was-crushed-to-death-by-israeli-bulldozers-spoke-to-anadolu-s-english-podcast-show/3042256',s:'AA',i:'corrie.jpg'},
   {l:'en',t:'Gaza War to influence 2024 US Presidential Election',u:'https://www.aa.com.tr/en/americas/gaza-war-to-influence-2024-us-presidential-election/3329626',s:'AA',i:'gaza_war_to_influence.jpg'},
-  {l:'en',t:'Many firsts in US politics: 1st Muslim woman lawmaker in southern state of Georgia',u:'https://www.aa.com.tr/en/americas/many-firsts-in-us-politics-1st-muslim-woman-lawmaker-in-southern-state-of-georgia/3332737',s:'AA',i:'romman.jpg'},
+  {l:'en',t:'Many firsts in US politics: 1st Muslim woman lawmaker in southern state of Georgia',u:'https://www.aa.com.tr/en/americas/many-firsts-in-us-politics-1st-muslim-woman-lawmaker-in-southern-state-of-georgia/3332737',s:'AA',i:'romman.jpg',feat:true},
   {l:'en',t:'Biden\'s human rights record under scrutiny for support of Israeli genocide in Gaza',u:'https://www.aa.com.tr/en/americas/bidens-human-rights-record-under-scrutiny-for-support-of-israeli-genocide-in-gaza/3459188',s:'AA',i:'bidens_human_rights.jpg'},
   {l:'en',t:'Council on American Islamic Relations sues US government over genocide in Gaza',u:'https://www.aa.com.tr/en/americas/council-on-american-islamic-relations-sues-us-government-over-genocide-in-gaza/3486926',s:'AA',i:'awad.jpg'},
-  {l:'en',t:'All available resources mobilized after Israeli attack disrupts Gaza-bound aid flotilla',u:'https://www.aa.com.tr/en/middle-east/all-available-resources-mobilized-after-israeli-attack-disrupts-gaza-bound-aid-flotilla-organizer-says/3923348',s:'AA',i:'all_available_resources.jpg'},
+  {l:'en',t:'All available resources mobilized after Israeli attack disrupts Gaza-bound aid flotilla',u:'https://www.aa.com.tr/en/middle-east/all-available-resources-mobilized-after-israeli-attack-disrupts-gaza-bound-aid-flotilla-organizer-says/3923348',s:'AA',i:'all_available_resources.jpg',feat:true},
   {l:'other',ll:'عربي',t:'أيباك تغدق العطاء على أعضاء الكونغرس تقريراً',u:'https://www.aa.com.tr/ar/%D8%A5%D8%B3%D8%B1%D8%A7%D8%A6%D9%8A%D9%84/%D9%84%D8%AF%D8%B9%D9%85%D9%87%D9%85-%D9%86%D8%AA%D9%86%D9%8A%D8%A7%D9%87%D9%88-%D8%A3%D9%8A%D8%A8%D8%A7%D9%83-%D8%AA%D8%BA%D8%AF%D9%82-%D8%A7%D9%84%D8%B9%D8%B7%D8%A7%D8%A1-%D8%B9%D9%84%D9%89-%D8%A3%D8%B9%D8%B6%D8%A7%D8%A1-%D8%A7%D9%84%D9%83%D9%88%D9%86%D8%BA%D8%B1%D8%B3-%D8%AA%D9%82%D8%B1%D9%8A%D8%B1/3333547',s:'الأناضول',i:'netanyahu_AIPAC.jpg'},
   {l:'other',ll:'Français',t:'Le conseil des relations américano-islamique poursuit les États-Unis pour complicité dans le génocide à Gaza',u:'https://www.aa.com.tr/fr/monde/le-conseil-des-relations-am%C3%A9ricano-islamiques-poursuit-les-%C3%A9tats-unis-pour-complicit%C3%A9-dans-le-g%C3%A9nocide-%C3%A0-gaza/3487047',s:'Agence Anadolu',i:'awad.jpg'},
-  {l:'other',ll:'Русский',t:'Поддержка Израиля негативно отразилась на репутации Байдена',u:'https://www.aa.com.tr/ru/%D0%BC%D0%B8%D1%80/%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%B0-%D0%B8%D0%B7%D1%80%D0%B0%D0%B8%D0%BB%D1%8F-%D0%BD%D0%B5%D0%B3%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%BE-%D0%BE%D1%82%D1%80%D0%B0%D0%B7%D0%B8%D0%BB%D0%B0%D1%81%D1%8C-%D0%BD%D0%B0-%D1%80%D0%B5%D0%BF%D1%83%D1%82%D0%B0%D1%86%D0%B8%D0%B8-%D0%B1%D0%B0%D0%B9%D0%B4%D0%B5%D0%BD%D0%B0/3459175',s:'Анадолу',i:'bidens_human_rights.jpg'},
+  {l:'other',ll:'Русский',t:'Поддержка Израиля негативно отразилась на репутации Байдена',u:'https://www.aa.com.tr/ru/%D0%BC%D0%B8%D1%80/%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%B0-%D0%B8%D0%B7%D1%80%D0%B0%D0%B8%D0%BB%D1%8F-%D0%BD%D0%B5%D0%B3%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%BE-%D0%BE%D1%82%D1%80%D0%B0%D0%B7%D0%B8%D0%BB%D0%B0%D1%81%D1%8C-%D0%BD%D0%B0-%D1%80%D0%B5%D0%BF%D1%83%D1%82%D0%B0%D1%86%D0%B8%D0%B8-%D0%B1%D0%B0%D0%B9%D0%B4%D0%B5%D0%BD%D0%B0/3459175',s:'Анадолу',i:'bidens_human_rights.jpg',feat:true},
 ];
 
 const CAR = [ND[0],ND[1],ND[2],ND[7],ND[13],ND[14],ND[15]];
@@ -2396,14 +2322,14 @@ function buildHomeNews(f){
   var g=document.getElementById('home-news-grid');
   if(!g)return;
   var filter=f||(lang==='en'?'en':'tr');
-  g.innerHTML=ND.filter(function(n){return n.l===filter;}).map(function(n,i){return newsHTML(n,i===0);}).join('');
+  g.innerHTML=ND.filter(function(n){return n.l===filter;}).map(function(n,i){return newsHTML(n,!!n.feat);}).join('');
 }
 function filterHomeNews(btn,f){document.querySelectorAll('.ntab').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');buildHomeNews(f);}
 function getDefaultNewsLang(){return lang==='en'?'en':'tr';}
 function buildInnerNews(){
   const g=document.getElementById('nwall');
   if(!g)return;
-  g.innerHTML=ND.map(function(n){return newsHTML(n,false);}).join('');
+  g.innerHTML=ND.map(function(n){return newsHTML(n,!!n.feat);}).join('');
 }
 function filterInner(btn,f){document.querySelectorAll('.lf-tab').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');buildInnerNews();}
 
@@ -2790,8 +2716,7 @@ function vidScroll(dir){
   const wrap=track.parentElement;
   const card=track.querySelector('.vid-card');
   const w=(card?card.offsetWidth:320)+8;
-  const curLeft=wrap.scrollLeft||0;
-  wrap.scrollTo({left:curLeft+dir*w,behavior:'smooth'});
+  wrap.scrollBy({left:dir*w,behavior:'smooth'});
 }
 function previewVid(el,id){
   clearTimeout(pvTimers[id]);
