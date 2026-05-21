@@ -2115,11 +2115,11 @@ const ND = [
   {l:'tr',t:'İsrail\'in buldozerle ezerek öldürdüğü Rachel Corrie\'nin anne ve babası Anadolu Talk Zone\'a konuştu',u:'https://www.aa.com.tr/tr/israil-filistin-catismasi/israil-in-buldozerle-ezerek-oldurdugu-rachel-corrie-nin-anne-ve-babasi-anadolu-talk-zone-a-konustu/3042205',s:'AA',i:'corrie.jpg'},
   {l:'tr',t:'ABD\'de İsrail lobisi AIPAC, Netanyahu\'yu alkışlayan senatörlere milyonlarca dolar bağışladı',u:'https://www.aa.com.tr/tr/abd-baskanlik-secimleri-2024/abdde-israil-lobisi-aipac-netanyahuyu-alkislayan-senatorlere-milyonlarca-dolar-bagisladi/3331246',s:'AA',i:'netanyahu_AIPAC.jpg'},
   {l:'tr',t:'İsrail donanmasından uluslararası sularda küresel Sumud filosuna saldırı',u:'https://www.aa.com.tr/tr/live-blog/israil-donanmasindan-uluslararasi-sularda-kuresel-sumud-filosuna-saldiri/1798',s:'AA',i:'sumud.jpg'},
-  {l:'en',t:'Parents of Rachel Corrie who was crushed to death by Israeli bulldozers spoke to Anadolu\'s English podcast show',u:'https://www.aa.com.tr/en/americas/parents-of-rachel-corrie-who-was-crushed-to-death-by-israeli-bulldozers-spoke-to-anadolu-s-english-podcast-show/3042256',s:'AA',i:'corrie.jpg'},
+  {l:'en',t:'Parents of Rachel Corrie who was crushed to death by Israeli bulldozers spoke to Anadolu\'s English podcast show',u:'https://www.aa.com.tr/en/americas/parents-of-rachel-corrie-who-was-crushed-to-death-by-israeli-bulldozers-spoke-to-anadolu-s-english-podcast-show/3042256',s:'AA',i:'corrie.jpg',feat:true},
   {l:'en',t:'Gaza War to influence 2024 US Presidential Election',u:'https://www.aa.com.tr/en/americas/gaza-war-to-influence-2024-us-presidential-election/3329626',s:'AA',i:'gaza_war_to_influence.jpg'},
-  {l:'en',t:'Many firsts in US politics: 1st Muslim woman lawmaker in southern state of Georgia',u:'https://www.aa.com.tr/en/americas/many-firsts-in-us-politics-1st-muslim-woman-lawmaker-in-southern-state-of-georgia/3332737',s:'AA',i:'romman.jpg',feat:true},
+  {l:'en',t:'Many firsts in US politics: 1st Muslim woman lawmaker in southern state of Georgia',u:'https://www.aa.com.tr/en/americas/many-firsts-in-us-politics-1st-muslim-woman-lawmaker-in-southern-state-of-georgia/3332737',s:'AA',i:'romman.jpg'},
   {l:'en',t:'Biden\'s human rights record under scrutiny for support of Israeli genocide in Gaza',u:'https://www.aa.com.tr/en/americas/bidens-human-rights-record-under-scrutiny-for-support-of-israeli-genocide-in-gaza/3459188',s:'AA',i:'bidens_human_rights.jpg'},
-  {l:'en',t:'Council on American Islamic Relations sues US government over genocide in Gaza',u:'https://www.aa.com.tr/en/americas/council-on-american-islamic-relations-sues-us-government-over-genocide-in-gaza/3486926',s:'AA',i:'awad.jpg'},
+  {l:'en',t:'Council on American Islamic Relations sues US government over genocide in Gaza',u:'https://www.aa.com.tr/en/americas/council-on-american-islamic-relations-sues-us-government-over-genocide-in-gaza/3486926',s:'AA',i:'awad.jpg',feat:true},
   {l:'en',t:'All available resources mobilized after Israeli attack disrupts Gaza-bound aid flotilla',u:'https://www.aa.com.tr/en/middle-east/all-available-resources-mobilized-after-israeli-attack-disrupts-gaza-bound-aid-flotilla-organizer-says/3923348',s:'AA',i:'all_available_resources.jpg',feat:true},
   {l:'other',ll:'عربي',t:'أيباك تغدق العطاء على أعضاء الكونغرس تقريراً',u:'https://www.aa.com.tr/ar/%D8%A5%D8%B3%D8%B1%D8%A7%D8%A6%D9%8A%D9%84/%D9%84%D8%AF%D8%B9%D9%85%D9%87%D9%85-%D9%86%D8%AA%D9%86%D9%8A%D8%A7%D9%87%D9%88-%D8%A3%D9%8A%D8%A8%D8%A7%D9%83-%D8%AA%D8%BA%D8%AF%D9%82-%D8%A7%D9%84%D8%B9%D8%B7%D8%A7%D8%A1-%D8%B9%D9%84%D9%89-%D8%A3%D8%B9%D8%B6%D8%A7%D8%A1-%D8%A7%D9%84%D9%83%D9%88%D9%86%D8%BA%D8%B1%D8%B3-%D8%AA%D9%82%D8%B1%D9%8A%D8%B1/3333547',s:'الأناضول',i:'netanyahu_AIPAC.jpg'},
   {l:'other',ll:'Français',t:'Le conseil des relations américano-islamique poursuit les États-Unis pour complicité dans le génocide à Gaza',u:'https://www.aa.com.tr/fr/monde/le-conseil-des-relations-am%C3%A9ricano-islamiques-poursuit-les-%C3%A9tats-unis-pour-complicit%C3%A9-dans-le-g%C3%A9nocide-%C3%A0-gaza/3487047',s:'Agence Anadolu',i:'awad.jpg'},
@@ -2456,6 +2456,8 @@ function switchPl(idx){
   // Update tabs
   document.querySelectorAll('.pl-tab').forEach((t,i)=>t.classList.toggle('on',i===idx));
   // Update cover
+  const plLeft=document.querySelector('.pl-left');
+  if(plLeft) plLeft.style.display=(pl.label==='Analiz ve Görüşler')?'none':'';
   const img=document.getElementById('pl-img');
   img.src=pl.cover;
   document.getElementById('pl-name').textContent=pl.label;
@@ -2615,36 +2617,14 @@ async function loadRSS(url,elId,progName,cover,limit){
 function buildAnalizSection(container, coverImg){
   if(!container)return;
   container.innerHTML='';
-
-  // Analiz ve Görüşler - Transistor playlist embed (ilk 200 bölüm)
-  var plWrap=document.createElement('div');
-  plWrap.className='pod-ep-playlist';
-  plWrap.innerHTML='<iframe width="100%" height="390" frameborder="no" scrolling="no" seamless '+
-    'src="https://share.transistor.fm/s/3dc9b12d" style="width:100%;height:390px;"></iframe>';
-  container.appendChild(plWrap);
-
-  // Episode grid - ilk 5 bölüm transistor embed
-  var ANALIZ_IDS=['772ce83c','4ec6ccc4','5b91640a','b0a6b377','a0bcd7a5'];
-  var grid=document.createElement('div');
-  grid.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:16px 0;';
-  ANALIZ_IDS.forEach(function(id){
-    var cell=document.createElement('div');
-    cell.style.cssText='background:var(--bg2);border-radius:6px;overflow:hidden;border:.5px solid var(--border2);';
-    var iframe=document.createElement('iframe');
-    iframe.width='100%';iframe.height='180';iframe.frameBorder='0';
-    iframe.setAttribute('scrolling','no');iframe.setAttribute('seamless','');
-    iframe.src='https://share.transistor.fm/e/'+id;
-    cell.appendChild(iframe);
-    grid.appendChild(cell);
-  });
-  container.appendChild(grid);
-
-  // RSS'den ilk 200 bölümü listele
+  var plDiv=document.createElement('div');
+  plDiv.style.cssText='padding:0 0 16px 0;';
+  plDiv.innerHTML='<iframe width="100%" height="390" frameborder="no" scrolling="no" seamless src="https://share.transistor.fm/e/anadolu-ajansi/playlist" style="display:block;border-radius:6px;"></iframe>';
+  container.appendChild(plDiv);
   var listDiv=document.createElement('div');
-  listDiv.style.cssText='padding:8px 0;';
-  listDiv.innerHTML='<div style="padding:10px;font-size:13px;color:var(--muted);">Bölümler yükleniyor...</div>';
+  listDiv.innerHTML='<div class="loading">Bölümler yükleniyor...</div>';
   container.appendChild(listDiv);
-  fetch('https://feeds.transistor.fm/anadolu-ajansi-analiz-ve-gorusler')
+  fetch('https://feeds.transistor.fm/anadolu-ajansi')
     .then(function(r){return r.text();})
     .then(function(txt){
       var doc=new DOMParser().parseFromString(txt,'application/xml');
@@ -2652,13 +2632,13 @@ function buildAnalizSection(container, coverImg){
       listDiv.innerHTML='';
       items.forEach(function(it,i){
         var title=(it.querySelector('title')||{textContent:''}).textContent;
-        var audioUrl=it.querySelector('enclosure')?(it.querySelector('enclosure').getAttribute('url')||''):'';
+        var audioUrl=it.querySelector('enclosure')?it.querySelector('enclosure').getAttribute('url'):'';
         var pd=(it.querySelector('pubDate')||{textContent:''}).textContent;
         var ds=pd?new Date(pd).toLocaleDateString('tr-TR',{day:'numeric',month:'short',year:'numeric'}):'';
         if(audioUrl&&title) listDiv.appendChild(makeEpRow(title,audioUrl,ds,String(i+1).padStart(2,'0'),'Analiz ve Görüşler',coverImg||'analiz_ve_gorusler.jpg'));
       });
     })
-    .catch(function(){listDiv.innerHTML='';});
+    .catch(function(){listDiv.innerHTML='<div class="loading">Bölümler yüklenemedi.</div>';});
 }
 
 function initPod(){
