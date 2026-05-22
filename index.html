@@ -320,7 +320,7 @@ text-transform:none;}
 }
 .nbrick:hover { background:var(--surf); }
 .nbrick.feat { grid-column:span 2; }
-.nbrick.feat .nb-img { height:240px; overflow:hidden; }
+.nbrick.feat .nb-img { height:240px !important; overflow:hidden; }
 .nb-img img { width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block; }
 .nbrick.feat .nb-img img { width:100%; height:100%; object-fit:cover; }
 .nb-img { width:100%; overflow:hidden; background:var(--bg3); display:block; line-height:0; }
@@ -481,7 +481,7 @@ text-transform:none;}
 .share-row { padding:0 16px; border-bottom:1px solid var(--border2); }
 
 /* ════ VIDEO SECTION ════ */
-.vid-body { padding:0 80px 80px; }
+.vid-body { padding:0 80px 80px; position:relative; }
 .vid-track-wrap { overflow-y:hidden; overflow-x:auto; scroll-behavior:smooth; scrollbar-width:none; -ms-overflow-style:none; }
 .vid-track-wrap::-webkit-scrollbar{display:none;}
 .vid-track {
@@ -838,8 +838,9 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   color:var(--ink); text-decoration:none; white-space:nowrap;
   padding:16px 48px; display:inline-flex; align-items:center;
   border-right:1px solid var(--border2); transition:color .25s;
-  flex-shrink:0;
+  flex-shrink:0; cursor:pointer; pointer-events:auto;
 }
+.muck-wrap:hover .muck-track { animation-play-state:paused; }
 .muck-item:hover { color:var(--gold); }
 @keyframes muckScroll {{ from{{transform:translateX(0)}} to{{transform:translateX(-50%)}} }}
 @media(max-width:768px){{ .muck-header{{padding:16px 20px 12px;}} .muck-item{{font-size:14px;padding:14px 32px;}} }}
@@ -1267,15 +1268,16 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .vid-track-wrap { overflow-y:hidden; position:relative; }
 .vid-arr-btn {
   position:absolute; top:50%; transform:translateY(-50%);
-  width:48px; height:48px; border-radius:50%;
-  background:rgba(28,26,20,.72); border:1.5px solid rgba(184,137,42,.5);
+  width:52px; height:52px; border-radius:50%;
+  background:var(--bg); border:2px solid var(--gold);
   display:flex; align-items:center; justify-content:center;
-  cursor:pointer; z-index:20; transition:background .2s,border-color .2s;
-  color:#e8c87a; font-size:22px; line-height:1;
+  cursor:pointer; z-index:30; transition:all .25s;
+  color:var(--gold); font-size:24px;
+  box-shadow:0 4px 20px rgba(0,0,0,.15);
 }
-.vid-arr-btn:hover{background:var(--gold);border-color:var(--gold);color:#fff;}
-.arr-prev{left:12px;}
-.arr-next{right:12px;}
+.vid-arr-btn:hover{background:var(--gold);color:var(--bg);box-shadow:0 6px 24px rgba(184,137,42,.35);}
+.arr-prev{left:16px;}
+.arr-next{right:16px;}
 
 /* Podcast section no top gap */
 #sec-podcast .sec-head { padding-top: 8px; }
@@ -1424,8 +1426,9 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
       <h2 class="sec-title" data-tr="Vodcast" data-en="Vodcast">Vodcast</h2>
     </div>
     <div class="vid-body">
+      <button class="vid-arr-btn arr-prev" onclick="vidScroll(-1)" aria-label="Previous">&#8592;</button>
+      <button class="vid-arr-btn arr-next" onclick="vidScroll(1)" aria-label="Next">&#8594;</button>
       <div class="vid-track-wrap">
-        <button class="vid-arr-btn arr-prev" onclick="vidScroll(-1)" aria-label="Previous">&#8592;</button>
         <div class="vid-track" id="vid-track">
           <div class="vid-card" onclick="window.open('https://youtu.be/H9Yxw84F0PI','_blank')" onmouseenter="previewVid(this,'H9Yxw84F0PI')" onmouseleave="stopPreview(this,'H9Yxw84F0PI')">
             <div class="vid-thumb" id="vt-H9Yxw84F0PI">
@@ -1835,7 +1838,6 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
             </div>
           </div>
         </div>
-        <button class="vid-arr-btn arr-next" onclick="vidScroll(1)" aria-label="Next">&#8594;</button>
       </div>
     </div>
   </section>
@@ -1908,6 +1910,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
       <div class="pod-ni pod-ni-img" onclick="switchPod(this,'birbakista')" title="Bir Bakışta"><img src="bir_bakista.webp" alt="Bir Bakışta" loading="lazy"></div>
       <div class="pod-ni pod-ni-img" onclick="switchPod(this,'mahrec')" title="Mahreç Dünya"><img src="mahrec.jpg" alt="Mahreç Dünya" loading="lazy"></div>
       <div class="pod-ni pod-ni-img" onclick="switchPod(this,'atalks')" title="Anadolu Talk Zone"><img src="anadolu_talk_zone.webp" alt="Anadolu Talk Zone" loading="lazy"></div>
+            <div class="pod-ni pod-ni-img" onclick="switchPod(this,'seruven')" title="100 Yıllık Serüven"><img src="bir_bakista.webp" alt="100 Yıllık Serüven" loading="lazy"></div>
     </div>
     </div>
     <div class="pod-main">
@@ -1943,9 +1946,6 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
       </div>
     </div>
   </div>
-      <div class="pod-ni pod-ni-img" onclick="switchPod(this,'seruven')" title="100 Yıllık Serüven"><img src="bir_bakista.webp" alt="100 Yıllık Serüven" loading="lazy"></div>
-
-
 
 <div id="page-vodcast" class="ip">
   <div class="iph">
@@ -2180,8 +2180,8 @@ const ND = [
   {l:'en',s:'AA',t:'Rachel Corrie`s parents speak to Anadolu Talk Zone',u:'https://www.aa.com.tr/tr/israil-filistin-catismasi/israil-in-buldozerle-ezerek-oldurdugu-rachel-corrie-nin-anne-ve-babasi-anadolu-talk-zone-a-konustu/3042205',i:'corrie.jpg'},
   {l:'en',s:'AA',t:'AIPAC donates millions to senators who applauded Netanyahu',u:'https://www.aa.com.tr/tr/abd-baskanlik-secimleri-2024/abdde-israil-lobisi-aipac-netanyahuyu-alkislayan-senatorlere-milyonlarca-dolar-bagisladi/3331246',i:'netanyahu_AIPAC.jpg',feat:true},
   {l:'tr',s:'AA',t:'Seçmenler Gazze meselesine tepkilerini sandıkta göstermek istiyor',u:'https://www.aa.com.tr/tr/dosya-haber/secmenler-gazze-meselesine-tepkilerini-sandikta-gostermek-istiyor/3329269',i:'secmenler_gazze.jpg'},
-  {l:'tr',s:'AA',t:'Bireysel sporlardaki tarihi serüven',u:'https://www.aa.com.tr/tr/podcast/bireysel-sporlardaki-tarihi-seruven-gelecege-nasil-bir-miras-birakti/3034671',i:'bir_bakista.webp',fullrow:true},
-  {l:'tr',s:'AA',t:'Cumhuriyet`in yüzyıllık serüveninde takım sporlarındaki başarılar',u:'https://www.aa.com.tr/tr/podcast/cumhuriyet-in-yuzyillik-seruveninde-takim-sporlarinda-hangi-basarilara-imza-atildi/3034515',i:'bir_bakista.webp',fullrow:true}
+  {l:'tr',s:'AA',t:'Bireysel sporlardaki tarihi serüven',u:'https://www.aa.com.tr/tr/podcast/bireysel-sporlardaki-tarihi-seruven-gelecege-nasil-bir-miras-birakti/3034671',i:'analiz_ve_gorusler.jpg',fullrow:true},
+  {l:'tr',s:'AA',t:'Cumhuriyet`in yüzyıllık serüveninde takım sporlarındaki başarılar',u:'https://www.aa.com.tr/tr/podcast/cumhuriyet-in-yuzyillik-seruveninde-takim-sporlarinda-hangi-basarilara-imza-atildi/3034515',i:'portre.jpg',fullrow:true}
 ];
 
 const CAR = [ND[0],ND[1],ND[2],ND[7],ND[13],ND[14],ND[15]];
@@ -2240,7 +2240,7 @@ const PLAYLISTS = [
   },,
   {
     label:'100 Yıllık Serüven',
-    cover:'seruven.png',
+    cover:'bir_bakista.webp',
     link:'https://www.aa.com.tr/tr/podcast',
     type:'embed',
     embeds:['https://share.transistor.fm/e/a59302ce','https://share.transistor.fm/e/f8560090']
