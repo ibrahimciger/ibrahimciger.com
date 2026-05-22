@@ -320,7 +320,8 @@ text-transform:none;}
 }
 .nbrick:hover { background:var(--surf); }
 .nbrick.feat { grid-column:span 2; }
-.nbrick.feat .nb-img { height:240px; }
+.nbrick.feat .nb-img { height:240px; overflow:hidden; }
+.nb-img img { width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block; }
 .nbrick.feat .nb-img img { width:100%; height:100%; object-fit:cover; }
 .nb-img { width:100%; overflow:hidden; background:var(--bg3); display:block; line-height:0; }
 /* Fixed height for both — so images and titles align perfectly */
@@ -570,7 +571,7 @@ text-transform:none;}
 .nwall { padding:40px 80px; display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border2); }
 
 /* Podcast inner */
-.pod-layout { display:grid; grid-template-columns:180px 1fr; min-height:calc(100vh - 62px); }
+.pod-layout { display:grid; grid-template-columns:120px 1fr; min-height:calc(100vh - 62px); }
 .pod-sb { border-right:1px solid var(--border2); padding:28px 0; position:sticky; top:62px; height:calc(100vh - 62px); overflow-y:auto; background:var(--bg); transition:background .3s; }
 .pod-sb-lbl { font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:11px; letter-spacing:.1em; color:var(--ink); text-transform:none; padding:20px 20px 12px; opacity:0.7; border-bottom:1px solid var(--border2); margin-bottom:8px; }
 .pod-ni { padding:12px 20px; cursor:pointer; font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:10.5px; letter-spacing:.08em; color:var(--ink2); text-transform:uppercase; transition:all .25s; border-left:2px solid transparent; margin-left:-1px; opacity:0.85; line-height:1.4; word-break:keep-all; hyphens:none; }
@@ -1164,7 +1165,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .vid-arr-overlay svg { width:20px; height:20px; }
 .vid-arr-overlay svg path { fill:var(--ink); transition:fill .2s; }
 
-#page-vodcast .vid-title { font-size:16px; line-height:1.4; }
+#page-vodcast .vid-title { font-size:20px; line-height:1.4; }
 
 /* ══ PODCAST PAGE NEW DESIGN ══ */
 .pod-page { min-height:100vh; background:var(--bg); }
@@ -1266,15 +1267,15 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .vid-track-wrap { overflow-y:hidden; position:relative; }
 .vid-arr-btn {
   position:absolute; top:50%; transform:translateY(-50%);
-  width:44px; height:44px; border-radius:50%;
-  background:rgba(245,242,235,.92); border:1px solid var(--border2);
-  font-size:20px; color:var(--ink); cursor:pointer; z-index:10;
+  width:48px; height:48px; border-radius:50%;
+  background:rgba(28,26,20,.72); border:1.5px solid rgba(184,137,42,.5);
   display:flex; align-items:center; justify-content:center;
-  box-shadow:0 2px 12px rgba(0,0,0,.15); transition:all .2s;
+  cursor:pointer; z-index:20; transition:background .2s,border-color .2s;
+  color:#e8c87a; font-size:22px; line-height:1;
 }
-.vid-arr-btn:hover { background:var(--gold); color:#fff; border-color:var(--gold); }
-.arr-prev { left:10px; }
-.arr-next { right:10px; }
+.vid-arr-btn:hover{background:var(--gold);border-color:var(--gold);color:#fff;}
+.arr-prev{left:12px;}
+.arr-next{right:12px;}
 
 /* Podcast section no top gap */
 #sec-podcast .sec-head { padding-top: 8px; }
@@ -1283,7 +1284,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 /* Investigative special layout */
 #page-vodcast .vid-card.wide { grid-column: span 2; }
 .inv-last-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; grid-column:1/-1; padding:0; }
-#page-podcast { cursor: none; }
+#page-podcast, #page-podcast * { cursor: none !important; }
 
 .nbrick.fullrow { grid-column: 1 / -1; }
 .nbrick.fullrow .nb-img { height:260px; }
@@ -1305,7 +1306,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 
 /* Podcast page channel image selector */
 .pod-ni-img {
-  width:60px; height:60px; padding:4px;
+  width:78px; height:78px; padding:4px;
   border-radius:8px; overflow:hidden;
   border:2px solid transparent; background:none;
   cursor:pointer; margin-bottom:6px;
@@ -1933,8 +1934,16 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
         <div class="pod-sh"><span class="pod-st">Anadolu Talk Zone</span></div>
         <div class="pod-emb"><iframe width="100%" height="180" frameborder="no" scrolling="no" seamless src="https://share.transistor.fm/e/3dc9b12d" loading="lazy"></iframe></div>
       </div>
+      <div class="pod-sec" id="ps-seruven">
+        <div class="pod-sh"><span class="pod-st">100 Yıllık Serüven</span><span class="pod-ct">2 bölüm</span></div>
+        <div class="pod-emb" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:16px 0;">
+          <iframe width="100%" height="180" frameborder="no" scrolling="no" seamless src="https://share.transistor.fm/e/a59302ce" loading="lazy" style="border-radius:6px;display:block;"></iframe>
+          <iframe width="100%" height="180" frameborder="no" scrolling="no" seamless src="https://share.transistor.fm/e/f8560090" loading="lazy" style="border-radius:6px;display:block;"></iframe>
+        </div>
+      </div>
     </div>
   </div>
+      <div class="pod-ni pod-ni-img" onclick="switchPod(this,'seruven')" title="100 Yıllık Serüven"><img src="bir_bakista.webp" alt="100 Yıllık Serüven" loading="lazy"></div>
 
 
 
@@ -2164,7 +2173,15 @@ const ND = [
   {l:'en',t:'All available resources mobilized after Israeli attack disrupts Gaza-bound aid flotilla',u:'https://www.aa.com.tr/en/middle-east/all-available-resources-mobilized-after-israeli-attack-disrupts-gaza-bound-aid-flotilla-organizer-says/3923348',s:'AA',i:'all_available_resources.jpg',feat:true},
   {l:'other',ll:'عربي',t:'أيباك تغدق العطاء على أعضاء الكونغرس تقريراً',u:'https://www.aa.com.tr/ar/%D8%A5%D8%B3%D8%B1%D8%A7%D8%A6%D9%8A%D9%84/%D9%84%D8%AF%D8%B9%D9%85%D9%87%D9%85-%D9%86%D8%AA%D9%86%D9%8A%D8%A7%D9%87%D9%88-%D8%A3%D9%8A%D8%A8%D8%A7%D9%83-%D8%AA%D8%BA%D8%AF%D9%82-%D8%A7%D9%84%D8%B9%D8%B7%D8%A7%D8%A1-%D8%B9%D9%84%D9%89-%D8%A3%D8%B9%D8%B6%D8%A7%D8%A1-%D8%A7%D9%84%D9%83%D9%88%D9%86%D8%BA%D8%B1%D8%B3-%D8%AA%D9%82%D8%B1%D9%8A%D8%B1/3333547',s:'الأناضول',i:'netanyahu_AIPAC.jpg'},
   {l:'other',ll:'Français',t:'Le conseil des relations américano-islamique poursuit les États-Unis pour complicité dans le génocide à Gaza',u:'https://www.aa.com.tr/fr/monde/le-conseil-des-relations-am%C3%A9ricano-islamiques-poursuit-les-%C3%A9tats-unis-pour-complicit%C3%A9-dans-le-g%C3%A9nocide-%C3%A0-gaza/3487047',s:'Agence Anadolu',i:'awad.jpg'},
-  {l:'other',ll:'Русский',t:'Поддержка Израиля негативно отразилась на репутации Байдена',u:'https://www.aa.com.tr/ru/%D0%BC%D0%B8%D1%80/%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%B0-%D0%B8%D0%B7%D1%80%D0%B0%D0%B8%D0%BB%D1%8F-%D0%BD%D0%B5%D0%B3%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%BE-%D0%BE%D1%82%D1%80%D0%B0%D0%B7%D0%B8%D0%BB%D0%B0%D1%81%D1%8C-%D0%BD%D0%B0-%D1%80%D0%B5%D0%BF%D1%83%D1%82%D0%B0%D1%86%D0%B8%D0%B8-%D0%B1%D0%B0%D0%B9%D0%B4%D0%B5%D0%BD%D0%B0/3459175',s:'Анадолу',i:'bidens_human_rights.jpg',feat:true}
+  {l:'other',ll:'Русский',t:'Поддержка Израиля негативно отразилась на репутации Байдена',u:'https://www.aa.com.tr/ru/%D0%BC%D0%B8%D1%80/%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%B0-%D0%B8%D0%B7%D1%80%D0%B0%D0%B8%D0%BB%D1%8F-%D0%BD%D0%B5%D0%B3%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%BE-%D0%BE%D1%82%D1%80%D0%B0%D0%B7%D0%B8%D0%BB%D0%B0%D1%81%D1%8C-%D0%BD%D0%B0-%D1%80%D0%B5%D0%BF%D1%83%D1%82%D0%B0%D1%86%D0%B8%D0%B8-%D0%B1%D0%B0%D0%B9%D0%B4%D0%B5%D0%BD%D0%B0/3459175',s:'Анадолу',i:'bidens_human_rights.jpg',feat:true},
+  {l:'tr',s:'AA',t:'Bitcoin`i gelecekte ne bekliyor?',u:'https://www.aa.com.tr/tr/arastirma/bitcoin-i-gelecekte-ne-bekliyor-/2103905',i:'https://cdnuploads.aa.com.tr/uploads/Contents/2019/11/16/thumbs_b_c_6f7e8a4a7c6c4a3b3d3e3f3a3b3c3d3.jpg',feat:true},
+  {l:'tr',s:'AA',t:'Hatay`ın yeni tasarım planı hazır',u:'https://www.aa.com.tr/tr/podcast/hatay-in-yeni-tasarim-plani-hazir/3205426',i:'hatay_.jpg'},
+  {l:'tr',s:'AA',t:'ABD`de seçim günü: Amerikalı gençler ne diyor?',u:'https://www.aa.com.tr/tr/abd-baskanlik-secimleri-2020/abdde-secim-gunu-amerikali-gencler-ne-diyor/2030797',i:'https://cdnuploads.aa.com.tr/uploads/Contents/2020/11/03/thumbs_b_c_electoral.jpg'},
+  {l:'en',s:'AA',t:'Rachel Corrie`s parents speak to Anadolu Talk Zone',u:'https://www.aa.com.tr/tr/israil-filistin-catismasi/israil-in-buldozerle-ezerek-oldurdugu-rachel-corrie-nin-anne-ve-babasi-anadolu-talk-zone-a-konustu/3042205',i:'corrie.jpg'},
+  {l:'en',s:'AA',t:'AIPAC donates millions to senators who applauded Netanyahu',u:'https://www.aa.com.tr/tr/abd-baskanlik-secimleri-2024/abdde-israil-lobisi-aipac-netanyahuyu-alkislayan-senatorlere-milyonlarca-dolar-bagisladi/3331246',i:'netanyahu_AIPAC.jpg',feat:true},
+  {l:'tr',s:'AA',t:'Seçmenler Gazze meselesine tepkilerini sandıkta göstermek istiyor',u:'https://www.aa.com.tr/tr/dosya-haber/secmenler-gazze-meselesine-tepkilerini-sandikta-gostermek-istiyor/3329269',i:'secmenler_gazze.jpg'},
+  {l:'tr',s:'AA',t:'Bireysel sporlardaki tarihi serüven',u:'https://www.aa.com.tr/tr/podcast/bireysel-sporlardaki-tarihi-seruven-gelecege-nasil-bir-miras-birakti/3034671',i:'bir_bakista.webp',fullrow:true},
+  {l:'tr',s:'AA',t:'Cumhuriyet`in yüzyıllık serüveninde takım sporlarındaki başarılar',u:'https://www.aa.com.tr/tr/podcast/cumhuriyet-in-yuzyillik-seruveninde-takim-sporlarinda-hangi-basarilara-imza-atildi/3034515',i:'bir_bakista.webp',fullrow:true}
 ];
 
 const CAR = [ND[0],ND[1],ND[2],ND[7],ND[13],ND[14],ND[15]];
@@ -2220,7 +2237,14 @@ const PLAYLISTS = [
       'https://share.transistor.fm/e/adfad647','https://share.transistor.fm/e/9f7dace5',
       'https://share.transistor.fm/e/599dbc49','https://share.transistor.fm/e/bd7cc0b7'
     ]
-  },
+  },,
+  {
+    label:'100 Yıllık Serüven',
+    cover:'bir_bakista.webp',
+    link:'https://www.aa.com.tr/tr/podcast',
+    type:'embed',
+    embeds:['https://share.transistor.fm/e/a59302ce','https://share.transistor.fm/e/f8560090']
+  }
 ];
 
 /* ══ STATE ══ */
@@ -2339,12 +2363,12 @@ function buildTicker(){
 }
 
 /* ══ NEWS ══ */
-function newsHTML(n, feat){
+function newsHTML(n, feat, fullrow){
   var lbl = n.l==='tr' ? (lang==='en'?'Turkish':'Türkçe') :
             n.l==='en' ? (lang==='en'?'English':'EN') :
             (n.ll||'Other');
   var isOther=(n.l==='other');
-  var cls=isOther?'nbrick fullrow':(feat?'nbrick feat':'nbrick');
+  var cls=(n.fullrow||fullrow)?'nbrick fullrow':isOther?'nbrick fullrow':(feat?'nbrick feat':'nbrick');
   var img = n.i
     ? '<div class="nb-img"><img src="' + n.i + '" alt="" loading="lazy"></div>'
     : '<div class="nb-noimg"><span class="nb-noimg-lbl">' + n.s + '</span></div>';
@@ -2353,7 +2377,7 @@ function newsHTML(n, feat){
   var s2 = (n.s||'').replace(/'/g,'&#39;');
   var i2 = (n.i||'').replace(/'/g,'%27');
   var onclick = "npOpen('" + u2 + "','" + t2 + "','" + s2 + "','" + i2 + "');return false;";
-  return '<a class="' + cls + '" href="#" onclick="' + onclick + '">' +
+  return '<a class="' + cls + '" href="' + (n.u||'#') + '" target="_blank" rel="noopener" onclick="return true;">' +
     img +
     '<div class="nb-body">' +
       '<div class="nb-lang">' + lbl + '</div>' +
@@ -2365,14 +2389,14 @@ function buildHomeNews(f){
   var g=document.getElementById('home-news-grid');
   if(!g)return;
   var filter=f||(lang==='en'?'en':'tr');
-  g.innerHTML=ND.filter(function(n){return n.l===filter;}).map(function(n,i){return newsHTML(n,!!n.feat);}).join('');
+  g.innerHTML=ND.filter(function(n){return n.l===filter;}).map(function(n,i){return newsHTML(n,!!n.feat,!!n.fullrow);}).join('');
 }
 function filterHomeNews(btn,f){document.querySelectorAll('.ntab').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');buildHomeNews(f);}
 function getDefaultNewsLang(){return lang==='en'?'en':'tr';}
 function buildInnerNews(){
   const g=document.getElementById('nwall');
   if(!g)return;
-  g.innerHTML=ND.map(function(n){return newsHTML(n,!!n.feat);}).join('');
+  g.innerHTML=ND.map(function(n){return newsHTML(n,!!n.feat,!!n.fullrow);}).join('');
 }
 function filterInner(btn,f){document.querySelectorAll('.lf-tab').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');buildInnerNews();}
 
@@ -2500,8 +2524,7 @@ function switchPl(idx){
   // Update tabs
   document.querySelectorAll('.pl-tab').forEach((t,i)=>t.classList.toggle('on',i===idx));
   // Update cover
-  const img=document.getElementById('pl-img');
-  img.src=pl.cover;
+  // pl-left hidden - no cover to update
   document.getElementById('pl-name').textContent=pl.label;
   document.getElementById('pl-ct').textContent=pl.embeds&&pl.embeds.length?pl.embeds.length+' bölüm':'';
   // Links
