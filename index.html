@@ -320,7 +320,7 @@ text-transform:none;}
 }
 .nbrick:hover { background:var(--surf); }
 .nbrick.feat { grid-column:span 2; }
-.nbrick.feat .nb-img { height:200px; }
+.nbrick.feat .nb-img { height:240px; }
 .nbrick.feat .nb-img img { width:100%; height:100%; object-fit:cover; }
 .nb-img { width:100%; overflow:hidden; background:var(--bg3); display:block; line-height:0; }
 /* Fixed height for both — so images and titles align perfectly */
@@ -360,7 +360,7 @@ text-transform:none;}
 
 /* ════ PODCAST SECTION ════ */
 .pod-head { padding:80px 80px 0; }
-.pl-tabs { margin-top:16px; display:flex; flex-direction:row; gap:10px; padding:0 80px 8px; overflow-x:auto; scrollbar-width:none; }
+.pl-tabs { margin-top:24px; }
 
 /* Playlist tabs */
 .pl-tabs {
@@ -381,13 +381,19 @@ text-transform:none;}
 
 /* Playlist body */
 .pl-body {
-  display:block;
-  margin:0 80px 0;
+  display:grid; grid-template-columns:220px 1fr;
+  margin:0 80px 80px; border:1px solid var(--border2);
+  background:var(--card); transition:background .3s;
 }
 .pl-body.embed-mode {
   grid-template-columns:1fr;
 }
-.pl-body.embed-mode .pl-left { display:none; }
+.pl-body.embed-mode .pl-left {
+  display:flex; flex-direction:column; align-items:center;
+  padding:16px; gap:8px;
+  background:var(--bg2); border-right:1px solid var(--border2);
+}
+.pl-left img.pl-cover { width:100px; height:100px; object-fit:cover; border-radius:8px; }
 .pl-left img.pl-cover { width:100px; height:100px; object-fit:cover; border-radius:8px; }
 .pl-left {
   border-right:1px solid var(--border2); padding:32px 24px;
@@ -1908,11 +1914,12 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   <div class="pod-layout">
     <div class="pod-sb">
       <div class="pod-sb-lbl" data-tr="Kanallar" data-en="Channels">Channels</div>
-      <div class="pod-ni pod-ni-img on" onclick="switchPod(this,'portre')" title="portre"><img src="portre.jpg" alt="portre" loading="lazy"></div>
-      <div class="pod-ni pod-ni-img on" onclick="switchPod(this,'analiz')" title="analiz"><img src="analiz_ve_gorusler.jpg" alt="analiz" loading="lazy"></div>
-      <div class="pod-ni pod-ni-img on" onclick="switchPod(this,'birbakista')" title="birbakista"><img src="bir_bakista.webp" alt="birbakista" loading="lazy"></div>
-      <div class="pod-ni pod-ni-img on" onclick="switchPod(this,'mahrec')" title="mahrec"><img src="mahrec.jpg" alt="mahrec" loading="lazy"></div>
-      <div class="pod-ni pod-ni-img on" onclick="switchPod(this,'atalks')" title="atalks"><img src="anadolu_talk_zone.webp" alt="atalks" loading="lazy"></div>
+      <div class="pod-ni on" onclick="switchPod(this,'portre')">Portre</div>
+      <div class="pod-ni" onclick="switchPod(this,'analiz')">Analiz ve Görüşler</div>
+      <div class="pod-ni" onclick="switchPod(this,'birbakista')">Bir Bakışta</div>
+      <div class="pod-ni" onclick="switchPod(this,'mahrec')">Mahreç Dünya</div>
+      <div class="pod-ni" onclick="switchPod(this,'atalks')">Anadolu Talk Zone</div>
+    </div>
     </div>
     <div class="pod-main">
       <div class="pod-sec on" id="ps-portre">
@@ -1940,7 +1947,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
       </div>
     </div>
   </div>
-</div>
+
 
 
 <div id="page-vodcast" class="ip">
@@ -1953,13 +1960,13 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
         <div class="vod-sec-head">          <h3 class="vod-sec-title" data-tr="Araştırma Haberleri &amp; Özel Röportajlar" data-en="Investigative Reports &amp; Exclusive Interviews">Investigative Reports &amp; Exclusive Interviews</h3>
         </div>
         <div class="vod-grid">
-          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=4VIA5wig-pM','_blank')" onmouseenter="previewVid(this,'4VIA5wig-pM')" onmouseleave="stopPreview(this,'4VIA5wig-pM')">
-            <div class="vid-thumb" id="vt-4VIA5wignp"><img src="https://img.youtube.com/vi/4VIA5wig-pM/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
-            <div class="vid-info"><div class="vid-title">Hatay'ın yeniden canlandırılması projesi lansmanı</div></div>
+          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=EwX7lrKThiQ','_blank')" onmouseenter="previewVid(this,'EwX7lrKThiQ')" onmouseleave="stopPreview(this,'EwX7lrKThiQ')">
+            <div class="vid-thumb" id="vt-EwX7lrKThi"><img src="https://img.youtube.com/vi/EwX7lrKThiQ/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
+            <div class="vid-info"><div class="vid-title">Rachel Corrie'nin anne ve babası Anadolu Talk Zone'a konuştu</div></div>
           </div>
-          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=-dR5jui0B18','_blank')" onmouseenter="previewVid(this,'-dR5jui0B18')" onmouseleave="stopPreview(this,'-dR5jui0B18')">
-            <div class="vid-thumb" id="vt-ndR5jui0B1"><img src="https://img.youtube.com/vi/-dR5jui0B18/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
-            <div class="vid-info"><div class="vid-title">Gazze ABD seçimlerine nasıl etki edecek?</div></div>
+          <div class="vid-card wide" onclick="window.open('https://www.youtube.com/watch?v=H9Yxw84F0PI','_blank')" onmouseenter="previewVid(this,'H9Yxw84F0PI')" onmouseleave="stopPreview(this,'H9Yxw84F0PI')">
+            <div class="vid-thumb" id="vt-H9Yxw84F0P"><img src="https://img.youtube.com/vi/H9Yxw84F0PI/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
+            <div class="vid-info"><div class="vid-title">Gaza War's Impact on US Election</div></div>
           </div>
           <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=jNJ1Ver2k1w','_blank')" onmouseenter="previewVid(this,'jNJ1Ver2k1w')" onmouseleave="stopPreview(this,'jNJ1Ver2k1w')">
             <div class="vid-thumb" id="vt-jNJ1Ver2k1"><img src="https://img.youtube.com/vi/jNJ1Ver2k1w/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
@@ -1973,13 +1980,15 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
             <div class="vid-thumb" id="vt-wh9kkc71iM"><img src="https://img.youtube.com/vi/wh9kkc71iMc/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
             <div class="vid-info"><div class="vid-title">ABD'de seçim günü: Amerikalı gençler ne diyor?</div></div>
           </div>
-          <div class="vid-card wide" onclick="window.open('https://www.youtube.com/watch?v=H9Yxw84F0PI','_blank')" onmouseenter="previewVid(this,'H9Yxw84F0PI')" onmouseleave="stopPreview(this,'H9Yxw84F0PI')">
-            <div class="vid-thumb" id="vt-H9Yxw84F0P"><img src="https://img.youtube.com/vi/H9Yxw84F0PI/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
-            <div class="vid-info"><div class="vid-title">Gaza War's Impact on US Election</div></div>
-          </div>
-          <div class="vid-card tall" onclick="window.open('https://www.youtube.com/watch?v=EwX7lrKThiQ','_blank')" onmouseenter="previewVid(this,'EwX7lrKThiQ')" onmouseleave="stopPreview(this,'EwX7lrKThiQ')">
-            <div class="vid-thumb" id="vt-EwX7lrKThi"><img src="https://img.youtube.com/vi/EwX7lrKThiQ/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
-            <div class="vid-info"><div class="vid-title">Rachel Corrie'nin anne ve babası Anadolu Talk Zone'a konuştu</div></div>
+          <div class="inv-last-row">
+            <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=4VIA5wig-pM','_blank')" onmouseenter="previewVid(this,'4VIA5wig-pM')" onmouseleave="stopPreview(this,'4VIA5wig-pM')">
+              <div class="vid-thumb" id="vt-4VIA5wignp"><img src="https://img.youtube.com/vi/4VIA5wig-pM/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
+              <div class="vid-info"><div class="vid-title">Hatay'ın yeniden canlandırılması projesi lansmanı</div></div>
+            </div>
+            <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=-dR5jui0B18','_blank')" onmouseenter="previewVid(this,'-dR5jui0B18')" onmouseleave="stopPreview(this,'-dR5jui0B18')">
+              <div class="vid-thumb" id="vt-ndR5jui0B1"><img src="https://img.youtube.com/vi/-dR5jui0B18/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
+              <div class="vid-info"><div class="vid-title">Gazze ABD seçimlerine nasıl etki edecek?</div></div>
+            </div>
           </div>
         </div></div>
         </div>
@@ -2165,8 +2174,8 @@ const ND = [
   {l:'en',t:'Gaza War to influence 2024 US Presidential Election',u:'https://www.aa.com.tr/en/americas/gaza-war-to-influence-2024-us-presidential-election/3329626',s:'AA',i:'gaza_war_to_influence.jpg'},
   {l:'en',t:'Many firsts in US politics: 1st Muslim woman lawmaker in southern state of Georgia',u:'https://www.aa.com.tr/en/americas/many-firsts-in-us-politics-1st-muslim-woman-lawmaker-in-southern-state-of-georgia/3332737',s:'AA',i:'romman.jpg'},
   {l:'en',t:'Biden\'s human rights record under scrutiny for support of Israeli genocide in Gaza',u:'https://www.aa.com.tr/en/americas/bidens-human-rights-record-under-scrutiny-for-support-of-israeli-genocide-in-gaza/3459188',s:'AA',i:'bidens_human_rights.jpg',feat:true},
-  {l:'en',t:'All available resources mobilized after Israeli attack disrupts Gaza-bound aid flotilla',u:'https://www.aa.com.tr/en/middle-east/all-available-resources-mobilized-after-israeli-attack-disrupts-gaza-bound-aid-flotilla-organizer-says/3923348',s:'AA',i:'all_available_resources.jpg',feat:true},
   {l:'en',t:'Council on American Islamic Relations sues US government over genocide in Gaza',u:'https://www.aa.com.tr/en/americas/council-on-american-islamic-relations-sues-us-government-over-genocide-in-gaza/3486926',s:'AA',i:'awad.jpg'},
+  {l:'en',t:'All available resources mobilized after Israeli attack disrupts Gaza-bound aid flotilla',u:'https://www.aa.com.tr/en/middle-east/all-available-resources-mobilized-after-israeli-attack-disrupts-gaza-bound-aid-flotilla-organizer-says/3923348',s:'AA',i:'all_available_resources.jpg',feat:true},
   {l:'other',ll:'عربي',t:'أيباك تغدق العطاء على أعضاء الكونغرس تقريراً',u:'https://www.aa.com.tr/ar/%D8%A5%D8%B3%D8%B1%D8%A7%D8%A6%D9%8A%D9%84/%D9%84%D8%AF%D8%B9%D9%85%D9%87%D9%85-%D9%86%D8%AA%D9%86%D9%8A%D8%A7%D9%87%D9%88-%D8%A3%D9%8A%D8%A8%D8%A7%D9%83-%D8%AA%D8%BA%D8%AF%D9%82-%D8%A7%D9%84%D8%B9%D8%B7%D8%A7%D8%A1-%D8%B9%D9%84%D9%89-%D8%A3%D8%B9%D8%B6%D8%A7%D8%A1-%D8%A7%D9%84%D9%83%D9%88%D9%86%D8%BA%D8%B1%D8%B3-%D8%AA%D9%82%D8%B1%D9%8A%D8%B1/3333547',s:'الأناضول',i:'netanyahu_AIPAC.jpg'},
   {l:'other',ll:'Français',t:'Le conseil des relations américano-islamique poursuit les États-Unis pour complicité dans le génocide à Gaza',u:'https://www.aa.com.tr/fr/monde/le-conseil-des-relations-am%C3%A9ricano-islamiques-poursuit-les-%C3%A9tats-unis-pour-complicit%C3%A9-dans-le-g%C3%A9nocide-%C3%A0-gaza/3487047',s:'Agence Anadolu',i:'awad.jpg'},
   {l:'other',ll:'Русский',t:'Поддержка Израиля негативно отразилась на репутации Байдена',u:'https://www.aa.com.tr/ru/%D0%BC%D0%B8%D1%80/%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%B0-%D0%B8%D0%B7%D1%80%D0%B0%D0%B8%D0%BB%D1%8F-%D0%BD%D0%B5%D0%B3%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%BE-%D0%BE%D1%82%D1%80%D0%B0%D0%B7%D0%B8%D0%BB%D0%B0%D1%81%D1%8C-%D0%BD%D0%B0-%D1%80%D0%B5%D0%BF%D1%83%D1%82%D0%B0%D1%86%D0%B8%D0%B8-%D0%B1%D0%B0%D0%B9%D0%B4%D0%B5%D0%BD%D0%B0/3459175',s:'Анадолу',i:'bidens_human_rights.jpg',feat:true}
@@ -2348,8 +2357,7 @@ function newsHTML(n, feat){
   var lbl = n.l==='tr' ? (lang==='en'?'Turkish':'Türkçe') :
             n.l==='en' ? (lang==='en'?'English':'EN') :
             (n.ll||'Other');
-  var isOther = n.l === 'other';
-  var cls = isOther ? 'nbrick fullrow' : (feat ? 'nbrick feat' : 'nbrick');
+  var cls = feat ? 'nbrick feat' : 'nbrick';
   var img = n.i
     ? '<div class="nb-img"><img src="' + n.i + '" alt="" loading="lazy"></div>'
     : '<div class="nb-noimg"><span class="nb-noimg-lbl">' + n.s + '</span></div>';
@@ -2490,9 +2498,8 @@ function buildPlaylists(){
   const tabs=document.getElementById('pl-tabs');
   PLAYLISTS.forEach((pl,i)=>{
     const btn=document.createElement('button');
-    btn.className='pl-tab pl-tab-img'+(i===0?' on':'');
-    btn.title=pl.label;
-    btn.innerHTML='<img src="'+pl.cover+'" alt="'+pl.label+'" loading="lazy">';
+    btn.className='pl-tab'+(i===0?' on':'');
+    btn.textContent=pl.label;
     btn.onclick=()=>switchPl(i);
     tabs.appendChild(btn);
   });
