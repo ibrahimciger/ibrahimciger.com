@@ -1172,7 +1172,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .vid-arr-overlay svg { width:20px; height:20px; }
 .vid-arr-overlay svg path { fill:var(--ink); transition:fill .2s; }
 
-#page-vodcast .vid-title{font-size:25px;line-height:1.4;}
+#page-vodcast .vid-title{font-size:21px;line-height:1.4;}
 
 /* ══ PODCAST PAGE NEW DESIGN ══ */
 .pod-page { min-height:100vh; background:var(--bg); }
@@ -1338,23 +1338,27 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 /* ── Coming Soon split animation ── */
 .coming-soon-wrap{display:flex;gap:16px;justify-content:center;align-items:center;overflow:hidden;}
 .cs-left{
-  font-family:'Josefin Sans',sans-serif;font-size:28px;font-weight:300;
-  letter-spacing:0.18em;color:var(--gold);
-  animation:csSlideLeft 1.1s cubic-bezier(.22,1,.36,1) both;
+  font-family:'Josefin Sans',sans-serif;font-size:24px;font-weight:100;
+  letter-spacing:0.32em;color:var(--gold);text-transform:uppercase;
+  animation:csSlideLeft 2.4s cubic-bezier(.16,1,.3,1) both;
 }
 .cs-right{
-  font-family:'Josefin Sans',sans-serif;font-size:28px;font-weight:300;
-  letter-spacing:0.18em;color:var(--gold);
-  animation:csSlideRight 1.1s cubic-bezier(.22,1,.36,1) both;
+  font-family:'Josefin Sans',sans-serif;font-size:24px;font-weight:100;
+  letter-spacing:0.32em;color:var(--gold);text-transform:uppercase;
+  animation:csSlideRight 2.4s cubic-bezier(.16,1,.3,1) both;
 }
-@keyframes csSlideLeft{from{transform:translateX(-120px);opacity:0;}to{transform:translateX(0);opacity:1;}}
-@keyframes csSlideRight{from{transform:translateX(120px);opacity:0;}to{transform:translateX(0);opacity:1;}}
+@keyframes csSlideLeft{from{transform:translateX(-160px);opacity:0;}to{transform:translateX(0);opacity:1;}}to{transform:translateX(0);opacity:1;}}
+@keyframes csSlideRight{from{transform:translateX(160px);opacity:0;}to{transform:translateX(0);opacity:1;}}to{transform:translateX(0);opacity:1;}}
 
 /* Podcast page cursor */
 #page-podcast{cursor:none;}
 #page-podcast *{cursor:none !important;}
 nav *{cursor:auto !important;}
 nav a{cursor:pointer !important;}
+
+/* Vodcast thumbnail %20 bigger */
+#page-vodcast .vid-card .vid-thumb{aspect-ratio:unset;padding-bottom:67.5%;height:0;position:relative;}
+#page-vodcast .vid-card .vid-thumb img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
 </style>
 </head>
 <body>
@@ -1439,7 +1443,7 @@ nav a{cursor:pointer !important;}
   <div class="muck-section">
     <div class="muck-header">
       <div class="muck-eye" data-tr="Haberler" data-en="News">News</div>
-      <a href="#" onclick="showAllNews();return false;" class="muck-link" data-tr="Öne Çıkanlar ↗" data-en="Featured News ↗">Featured News ↗</a>
+      <a href="#" onclick="showAllNews();return false;" class="muck-link" data-tr="Öne Çıkanlar" data-en="Featured News">Featured News</a>
     </div>
     <div class="muck-wrap">
       <div class="muck-track" id="muck-track">
@@ -1940,8 +1944,7 @@ nav a{cursor:pointer !important;}
       <div class="pod-ni pod-ni-img" onclick="switchPod(this,'birbakista')" title="Bir Bakışta"><img src="bir_bakista.webp" alt="Bir Bakışta" loading="lazy"></div>
       <div class="pod-ni pod-ni-img" onclick="switchPod(this,'mahrec')" title="Mahreç Dünya"><img src="mahrec.jpg" alt="Mahreç Dünya" loading="lazy"></div>
       <div class="pod-ni pod-ni-img" onclick="switchPod(this,'atalks')" title="Anadolu Talk Zone"><img src="anadolu_talk_zone.webp" alt="Anadolu Talk Zone" loading="lazy"></div>
-            <div class="pod-ni pod-ni-img" onclick="switchPod(this,'seruven')" title="100 Yıllık Serüven"><img src="bir_bakista.webp" alt="100 Yıllık Serüven" loading="lazy"></div>
-    </div>
+      <div class="pod-ni pod-ni-img" onclick="switchPod(this,'seruven')" title="100 Yıllık Serüven"><img src="bir_bakista.webp" alt="100 Yıllık Serüven" loading="lazy"></div>
     </div>
     <div class="pod-main">
       <div class="pod-sec on" id="ps-portre">
@@ -1976,6 +1979,8 @@ nav a{cursor:pointer !important;}
       </div>
     </div>
   </div>
+</div>
+
 
 <div id="page-vodcast" class="ip">
   <div class="iph">
@@ -2188,10 +2193,10 @@ const ND = [
   {l:'tr',t:'Hatay\'ın Yeniden Canlandırılması Projesi ile Hatay Master Planının lansmanı yapıldı',u:'https://www.aa.com.tr/tr/gundem/hatayin-yeniden-canlandirilmasi-projesi-ile-hatay-master-planinin-lansmani-yapildi/3206450',s:'AA',i:'hatay_.jpg'},
   {l:'tr',t:'Amerikan İslam İlişkileri Konseyi, Gazze\'deki soykırım nedeniyle ABD yönetimine dava açtı',u:'https://www.aa.com.tr/tr/dunya/amerikan-islam-iliskileri-konseyi-gazze-deki-soykirim-nedeniyle-abd-yonetimine-dava-acti/3486493',s:'AA',i:'awad.jpg'},
   {l:'tr',t:'Georgia eyalet temsilcisi Romman, ABD seçimlerinde ilklerin yaşandığını söyledi',u:'https://www.aa.com.tr/tr/ayrimcilikhatti/ayrimcilik/georgia-eyalet-temsilcisi-romman-abd-secimlerinde-ilklerin-yasandigini-soyledi/1821707',s:'AA',i:'romman.jpg',feat:true},
-  {l:'tr',t:'İsrail\'in buldozerle ezerek öldürdüğü Rachel Corrie\'nin anne ve babası Anadolu Talk Zone\'a konuştu',u:'https://www.aa.com.tr/tr/israil-filistin-catismasi/israil-in-buldozerle-ezerek-oldurdugu-rachel-corrie-nin-anne-ve-babasi-anadolu-talk-zone-a-konustu/3042205',s:'AA',i:'corrie.jpg'},
+  {l:'tr',t:'İsrail\'in buldozerle ezerek öldürdüğü Rachel Corrie\'nin anne ve babası Anadolu Talk Zone\'a konuştu',u:'https://www.aa.com.tr/tr/israil-filistin-catismasi/israil-in-buldozerle-ezerek-oldurdugu-rachel-corrie-nin-anne-ve-babasi-anadolu-talk-zone-a-konustu/3042205',s:'AA',i:'https://web-cdnprod.aa.com.tr/uploads/Contents/2023/11/03/thumbs_b_c_ad77aa6cd4558be40e3700abcfa64cc3.jpg?v=115409'},
   {l:'tr',t:'ABD\'de İsrail lobisi AIPAC, Netanyahu\'yu alkışlayan senatörlere milyonlarca dolar bağışladı',u:'https://www.aa.com.tr/tr/abd-baskanlik-secimleri-2024/abdde-israil-lobisi-aipac-netanyahuyu-alkislayan-senatorlere-milyonlarca-dolar-bagisladi/3331246',s:'AA',i:'netanyahu_AIPAC.jpg'},
   {l:'tr',t:'İsrail donanmasından uluslararası sularda küresel Sumud filosuna saldırı',u:'https://www.aa.com.tr/tr/live-blog/israil-donanmasindan-uluslararasi-sularda-kuresel-sumud-filosuna-saldiri/1798',s:'AA',i:'sumud.jpg',feat:true},
-  {l:'en',t:'Parents of Rachel Corrie who was crushed to death by Israeli bulldozers spoke to Anadolu\'s English podcast show',u:'https://www.aa.com.tr/en/americas/parents-of-rachel-corrie-who-was-crushed-to-death-by-israeli-bulldozers-spoke-to-anadolu-s-english-podcast-show/3042256',s:'AA',i:'corrie.jpg',feat:true},
+  {l:'en',t:'Parents of Rachel Corrie who was crushed to death by Israeli bulldozers spoke to Anadolu\'s English podcast show',u:'https://www.aa.com.tr/en/americas/parents-of-rachel-corrie-who-was-crushed-to-death-by-israeli-bulldozers-spoke-to-anadolu-s-english-podcast-show/3042256',s:'AA',i:'https://web-cdnprod.aa.com.tr/uploads/Contents/2023/11/03/thumbs_b_c_ad77aa6cd4558be40e3700abcfa64cc3.jpg?v=115409',feat:true},
   {l:'en',t:'Gaza War to influence 2024 US Presidential Election',u:'https://www.aa.com.tr/en/americas/gaza-war-to-influence-2024-us-presidential-election/3329626',s:'AA',i:'gaza_war_to_influence.jpg'},
   {l:'en',t:'Many firsts in US politics: 1st Muslim woman lawmaker in southern state of Georgia',u:'https://www.aa.com.tr/en/americas/many-firsts-in-us-politics-1st-muslim-woman-lawmaker-in-southern-state-of-georgia/3332737',s:'AA',i:'romman.jpg'},
   {l:'en',t:'Biden\'s human rights record under scrutiny for support of Israeli genocide in Gaza',u:'https://www.aa.com.tr/en/americas/bidens-human-rights-record-under-scrutiny-for-support-of-israeli-genocide-in-gaza/3459188',s:'AA',i:'bidens_human_rights.jpg',feat:true},
@@ -2203,7 +2208,7 @@ const ND = [
   {l:'tr',s:'AA',t:'Bitcoin`i gelecekte ne bekliyor?',u:'https://www.aa.com.tr/tr/arastirma/bitcoin-i-gelecekte-ne-bekliyor-/2103905',i:'https://web-cdnprod.aa.com.tr/uploads/Contents/2021/01/09/thumbs_b_c_1f2fdf58d6db2c5d9d1b33b5c251b6ff.jpg',feat:true},
   {l:'tr',s:'AA',t:'Hatay`ın yeni tasarım planı hazır',u:'https://www.aa.com.tr/tr/podcast/hatay-in-yeni-tasarim-plani-hazir/3205426',i:'hatay_.jpg'},
   {l:'tr',s:'AA',t:'ABD`de seçim günü: Amerikalı gençler ne diyor?',u:'https://www.aa.com.tr/tr/abd-baskanlik-secimleri-2020/abdde-secim-gunu-amerikali-gencler-ne-diyor/2030797',i:'https://web-cdnprod.aa.com.tr/uploads/Contents/2020/11/03/thumbs_b_c_765d41cf0bbd46b71ac5054642df0f22.jpg?v=204227'},
-  {l:'en',s:'AA',t:'Rachel Corrie`s parents speak to Anadolu Talk Zone',u:'https://www.aa.com.tr/tr/israil-filistin-catismasi/israil-in-buldozerle-ezerek-oldurdugu-rachel-corrie-nin-anne-ve-babasi-anadolu-talk-zone-a-konustu/3042205',i:'corrie.jpg'},
+  {l:'en',s:'AA',t:'Rachel Corrie`s parents speak to Anadolu Talk Zone',u:'https://www.aa.com.tr/tr/israil-filistin-catismasi/israil-in-buldozerle-ezerek-oldurdugu-rachel-corrie-nin-anne-ve-babasi-anadolu-talk-zone-a-konustu/3042205',i:'https://web-cdnprod.aa.com.tr/uploads/Contents/2023/11/03/thumbs_b_c_ad77aa6cd4558be40e3700abcfa64cc3.jpg?v=115409',feat:true},
   {l:'en',s:'AA',t:'AIPAC donates millions to senators who applauded Netanyahu',u:'https://www.aa.com.tr/tr/abd-baskanlik-secimleri-2024/abdde-israil-lobisi-aipac-netanyahuyu-alkislayan-senatorlere-milyonlarca-dolar-bagisladi/3331246',i:'netanyahu_AIPAC.jpg',feat:true},
   {l:'tr',s:'AA',t:'Seçmenler Gazze meselesine tepkilerini sandıkta göstermek istiyor',u:'https://www.aa.com.tr/tr/dosya-haber/secmenler-gazze-meselesine-tepkilerini-sandikta-gostermek-istiyor/3329269',i:'secmenler_gazze.jpg'},
   {l:'tr',s:'AA',t:'Bireysel sporlardaki tarihi serüven',u:'https://www.aa.com.tr/tr/podcast/bireysel-sporlardaki-tarihi-seruven-gelecege-nasil-bir-miras-birakti/3034671',i:'https://web-cdnprod.aa.com.tr/uploads/Contents/2023/10/27/thumbs_b_c_af9ebb2cd67ed9c1c3229bd3ed90ac54.jpg?v=164337',fullrow:true},
