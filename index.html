@@ -68,7 +68,7 @@ nav{position:fixed;top:0;left:0;right:0;height:62px;background:var(--nav-bg);bac
   display: flex; flex-direction:column; gap:6px;
   padding-bottom: 2px;
 }
-.logo-hic{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--gold);letter-spacing:.08em}
+.logo-hic{font-family:'Playfair Display',serif;font-size:31px;font-weight:600;color:var(--gold);letter-spacing:.08em}
 .logo-hic:hover { color: var(--gold2); }
 .logo-line {
   height: 1px;
@@ -320,8 +320,8 @@ text-transform:none;}
 }
 .nbrick:hover { background:var(--surf); }
 .nbrick.feat { grid-column:span 2; }
-.nbrick.feat .nb-img { height:240px !important; overflow:hidden; }
-.nb-img img { width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block; }
+.nbrick.feat .nb-img { height:220px !important; overflow:hidden; }
+.nb-img img{width:100%;height:100% !important;object-fit:cover;object-position:center 25%;display:block;}
 .nbrick.feat .nb-img img { width:100%; height:100%; object-fit:cover; }
 .nb-img { width:100%; overflow:hidden; background:var(--bg3); display:block; line-height:0; }
 /* Fixed height for both — so images and titles align perfectly */
@@ -356,8 +356,8 @@ text-transform:none;}
   font-size:9px; letter-spacing:.13em; color:var(--muted);
   text-transform:uppercase; display:flex; align-items:center; justify-content:space-between;
 }
-.nb-arr { opacity:0; transition:opacity .25s,transform .25s; color:var(--gold); }
-.nbrick:hover .nb-arr { opacity:1; transform:translateX(4px); }
+.nb-arr{display:none !important;}
+.nbrick:hover .nb-arr{display:none !important;}
 
 /* ════ PODCAST SECTION ════ */
 .pod-head { padding:80px 80px 0; }
@@ -515,7 +515,7 @@ text-transform:none;}
 .vid-ring svg { fill:var(--gold2); width:18px; height:18px; margin-left:2px; }
 .vid-info { padding:18px 22px 22px; }
 .vid-title { font-family:'Cormorant Garamond',serif; font-size:13px; font-weight:500; color:var(--ink); line-height:1.35; transition:color .3s; }
-.vid-sub { font-family:'Josefin Sans',sans-serif; font-weight:100; font-size:9px; letter-spacing:.14em; color:var(--muted); text-transform:uppercase; margin-top:7px; }
+.vid-sub{display:none !important;}
 .vid-arrows { display:flex; gap:8px; margin-top:22px; }
 .vid-arr {
   width:40px; height:40px; border:1px solid var(--border2);
@@ -558,7 +558,7 @@ text-transform:none;}
 .ip.on { display:block !important; }
 @keyframes pgIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
 
-.iph { padding:64px 80px 40px; border-bottom:1px solid var(--border2); position:relative; }
+.iph { padding:20px 80px 20px; border-bottom:1px solid var(--border2); position:relative; }
 .iph::before { content:''; position:absolute; top:0; left:0; width:52px; height:2px; background:var(--gold); }
 .iph-eye { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.1em; color:var(--gold); opacity:.8; text-transform:none; margin-bottom:12px; display:flex; align-items:center; gap:12px; }
 .iph-eye::before { content:''; width:16px; height:1px; background:var(--gold); display:block; }
@@ -569,15 +569,17 @@ text-transform:none;}
 .lf-tab { font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:13px; letter-spacing:.06em; text-transform:capitalize; color:var(--ink2); padding:14px 22px; background:transparent; border:none; border-bottom:2px solid transparent; cursor:pointer; transition:all .25s; margin-bottom:-1px; opacity:0.85; }
 .lf-tab:hover{color:var(--ink);opacity:1;} .lf-tab.on{color:var(--gold);border-bottom-color:var(--gold);opacity:1;}
 .nwall { padding:40px 80px; display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border2); }
+.nwall>.nbrick{align-self:stretch;}
+.nwall>.nbrick .nb-img{flex-shrink:0;}
 
 /* Podcast inner */
-.pod-layout { display:grid; grid-template-columns:120px 1fr; min-height:calc(100vh - 62px); }
+.pod-layout { display:grid; grid-template-columns:110px 1fr; min-height:calc(100vh - 62px); }
 .pod-sb { border-right:1px solid var(--border2); padding:28px 0; position:sticky; top:62px; height:calc(100vh - 62px); overflow-y:auto; background:var(--bg); transition:background .3s; }
 .pod-sb-lbl { font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:11px; letter-spacing:.1em; color:var(--ink); text-transform:none; padding:20px 20px 12px; opacity:0.7; border-bottom:1px solid var(--border2); margin-bottom:8px; }
 .pod-ni { padding:12px 20px; cursor:pointer; font-family:'Josefin Sans',sans-serif; font-weight:400; font-size:10.5px; letter-spacing:.08em; color:var(--ink2); text-transform:uppercase; transition:all .25s; border-left:2px solid transparent; margin-left:-1px; opacity:0.85; line-height:1.4; word-break:keep-all; hyphens:none; }
 .pod-ni:hover{color:var(--ink);opacity:1;} .pod-ni.on{color:var(--gold);border-left-color:var(--gold);background:rgba(184,137,42,.06);opacity:1;}
 .pod-main { overflow-y:auto; max-height:calc(100vh - 62px); background:var(--bg); transition:background .3s; }
-.pod-sec{display:none;} .pod-sec.on{display:block;}
+.pod-sec{display:none;} .pod-sec.on{display:flex;flex-direction:column;}
 .pod-sh { padding:28px 40px 18px; border-bottom:1px solid var(--border2); display:flex; align-items:baseline; gap:14px; position:sticky; top:0; background:var(--bg); z-index:10; transition:background .3s; }
 .pod-st { font-family:'Playfair Display',serif; font-size:26px; font-style:italic; font-weight:700; color:var(--ink); transition:color .3s; }
 .pod-ct { font-family:'Space Mono',monospace; font-size:9px; color:var(--muted); }
@@ -655,6 +657,8 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   .hero-content { padding:0 44px 60px; }
   .hero-ticker-wrap { width:46%; }
   .sec-head,.news-tabs,.pl-tabs,.pl-body,.pod-head,.vid-body,.iph,.lf-bar,.nwall { padding-left:36px; padding-right:36px; }
+.nwall>.nbrick{align-self:stretch;}
+.nwall>.nbrick .nb-img{flex-shrink:0;}
   .pl-body{display:block;margin:0 80px 0;}
   .vid-card { width:calc(65vw - 64px); }
 }
@@ -694,6 +698,8 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   .iph{padding:40px 20px 28px;}
   .lf-bar{padding:0 20px;}
   .nwall{padding:0;display:block;background:var(--bg);}
+.nwall>.nbrick{align-self:stretch;}
+.nwall>.nbrick .nb-img{flex-shrink:0;}
   .nwall .nbrick{border-bottom:1px solid var(--border2);}
   .nwall .nbrick .nb-body{padding:18px 20px 20px;}
   .vid-body{padding:0 20px 48px;}
@@ -720,7 +726,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 /* ════ VODCAST PAGE ════ */
 .vod-body { padding:0 80px 24px; }
 .vod-section { margin-bottom:64px; }
-.vod-sec-head { padding:48px 0 20px; border-bottom:1px solid var(--border2); margin-bottom:28px; }
+.vod-sec-head { padding:24px 0 16px; border-bottom:1px solid var(--border2); margin-bottom:28px; }
 .vod-sec-eye {
   font-family:'Josefin Sans',sans-serif; font-weight:400;
   font-size:14px; letter-spacing:.1em; text-transform:none;
@@ -1166,7 +1172,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .vid-arr-overlay svg { width:20px; height:20px; }
 .vid-arr-overlay svg path { fill:var(--ink); transition:fill .2s; }
 
-#page-vodcast .vid-title { font-size:20px; line-height:1.4; }
+#page-vodcast .vid-title{font-size:25px;line-height:1.4;}
 
 /* ══ PODCAST PAGE NEW DESIGN ══ */
 .pod-page { min-height:100vh; background:var(--bg); }
@@ -1268,16 +1274,17 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .vid-track-wrap { overflow-y:hidden; position:relative; }
 .vid-arr-btn {
   position:absolute; top:50%; transform:translateY(-50%);
-  width:52px; height:52px; border-radius:50%;
-  background:var(--bg); border:2px solid var(--gold);
+  width:48px; height:48px; border-radius:50%;
+  background:rgba(10,10,10,0.45); backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,0.18);
   display:flex; align-items:center; justify-content:center;
-  cursor:pointer; z-index:30; transition:all .25s;
-  color:var(--gold); font-size:24px;
-  box-shadow:0 4px 20px rgba(0,0,0,.15);
+  cursor:pointer; z-index:30; transition:all .22s;
+  color:rgba(255,255,255,0.88); font-size:22px; line-height:1;
+  pointer-events:all;
 }
-.vid-arr-btn:hover{background:var(--gold);color:var(--bg);box-shadow:0 6px 24px rgba(184,137,42,.35);}
-.arr-prev{left:16px;}
-.arr-next{right:16px;}
+.vid-arr-btn:hover{background:rgba(184,137,42,0.80);border-color:var(--gold);color:#fff;}
+.arr-prev{left:14px;}
+.arr-next{right:14px;}
 
 /* Podcast section no top gap */
 #sec-podcast .sec-head { padding-top: 8px; }
@@ -1286,7 +1293,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 /* Investigative special layout */
 #page-vodcast .vid-card.wide { grid-column: span 2; }
 .inv-last-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; grid-column:1/-1; padding:0; }
-#page-podcast, #page-podcast * { cursor: none !important; }
+
 
 .nbrick.fullrow { grid-column: 1 / -1; }
 .nbrick.fullrow .nb-img { height:260px; }
@@ -1327,6 +1334,27 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 #page-vodcast .vid-card.tall .vid-thumb img { height:100%; object-fit:cover; }
 
 #sec-podcast{padding-bottom:0;}
+
+/* ── Coming Soon split animation ── */
+.coming-soon-wrap{display:flex;gap:16px;justify-content:center;align-items:center;overflow:hidden;}
+.cs-left{
+  font-family:'Josefin Sans',sans-serif;font-size:28px;font-weight:300;
+  letter-spacing:0.18em;color:var(--gold);
+  animation:csSlideLeft 1.1s cubic-bezier(.22,1,.36,1) both;
+}
+.cs-right{
+  font-family:'Josefin Sans',sans-serif;font-size:28px;font-weight:300;
+  letter-spacing:0.18em;color:var(--gold);
+  animation:csSlideRight 1.1s cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes csSlideLeft{from{transform:translateX(-120px);opacity:0;}to{transform:translateX(0);opacity:1;}}
+@keyframes csSlideRight{from{transform:translateX(120px);opacity:0;}to{transform:translateX(0);opacity:1;}}
+
+/* Podcast page cursor */
+#page-podcast{cursor:none;}
+#page-podcast *{cursor:none !important;}
+nav *{cursor:auto !important;}
+nav a{cursor:pointer !important;}
 </style>
 </head>
 <body>
@@ -1397,12 +1425,13 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 
   <!-- HABERLER -->
   <section id="sec-haberler" class="section">
-    <div class="sec-head">      <h2 class="sec-title" data-tr="Haberlerim" data-en="News">News</h2>
-    </div>
-    <div class="news-tabs">
-      <button class="ntab on" onclick="filterHomeNews(this,'en')" data-tr="Türkçe" data-en="English">English</button>
-      <button class="ntab" onclick="filterHomeNews(this,'tr')" data-tr="İngilizce" data-en="Turkish">Turkish</button>
-      <button class="ntab" onclick="filterHomeNews(this,'other')" data-tr="Diğer" data-en="Other">Other</button>
+    <div class="sec-head" style="display:flex;align-items:center;justify-content:space-between;">
+      <h2 class="sec-title" data-tr="Haberlerim" data-en="News">News</h2>
+      <div class="news-tabs" style="margin:0;">
+        <button class="ntab on" onclick="filterHomeNews(this,'en')" data-tr="Türkçe" data-en="English">English</button>
+        <button class="ntab" onclick="filterHomeNews(this,'tr')" data-tr="İngilizce" data-en="Turkish">Turkish</button>
+        <button class="ntab" onclick="filterHomeNews(this,'other')" data-tr="Diğer" data-en="Other">Other</button>
+      </div>
     </div>
     <div class="news-grid" id="home-news-grid"></div>
 
@@ -1892,11 +1921,12 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   <div class="void-page">
     <div class="void-word">Perspektif</div>
     <div class="void-line"></div>
-    <div class="void-sub" data-tr="Yakında..." data-en="Coming soon...">Yakında...</div>
+    <div class="coming-soon-wrap">
+      <span class="cs-left" data-tr="Yakında" data-en="Coming">Coming</span>
+      <span class="cs-right" data-tr="..." data-en="Soon">Soon</span>
+    </div>
   </div>
 </div>
-
-<!-- ══════ PODCAST (inner) ══════ -->
 <div id="page-podcast" class="ip">
   <div class="iph">
     <div class="iph-eye" data-tr="Ses Arşivi" data-en="Audio Archive">Audio Archive</div>
@@ -2068,11 +2098,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
           </div>
           <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=I2IeBiPcojw','_blank')" onmouseenter="previewVid(this,'I2IeBiPcojw')" onmouseleave="stopPreview(this,'I2IeBiPcojw')">
             <div class="vid-thumb" id="vt-I2IeBiPc"><img src="https://img.youtube.com/vi/I2IeBiPcojw/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
-            <div class="vid-info"><div class="vid-title">İran'daki protestolar ne boyutta? (1)</div></div>
-          </div>
-          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=wL2piThpUOo','_blank')" onmouseenter="previewVid(this,'wL2piThpUOo')" onmouseleave="stopPreview(this,'wL2piThpUOo')">
-            <div class="vid-thumb" id="vt-wL2piThp"><img src="https://img.youtube.com/vi/wL2piThpUOo/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
-            <div class="vid-info"><div class="vid-title">İran'daki protestolar ne boyutta? (2)</div></div>
+            <div class="vid-info"><div class="vid-title">İran'daki protestolar ne boyutta?</div></div>
           </div>
         </div>
       </div>
@@ -2174,14 +2200,14 @@ const ND = [
   {l:'other',ll:'عربي',t:'أيباك تغدق العطاء على أعضاء الكونغرس تقريراً',u:'https://www.aa.com.tr/ar/%D8%A5%D8%B3%D8%B1%D8%A7%D8%A6%D9%8A%D9%84/%D9%84%D8%AF%D8%B9%D9%85%D9%87%D9%85-%D9%86%D8%AA%D9%86%D9%8A%D8%A7%D9%87%D9%88-%D8%A3%D9%8A%D8%A8%D8%A7%D9%83-%D8%AA%D8%BA%D8%AF%D9%82-%D8%A7%D9%84%D8%B9%D8%B7%D8%A7%D8%A1-%D8%B9%D9%84%D9%89-%D8%A3%D8%B9%D8%B6%D8%A7%D8%A1-%D8%A7%D9%84%D9%83%D9%88%D9%86%D8%BA%D8%B1%D8%B3-%D8%AA%D9%82%D8%B1%D9%8A%D8%B1/3333547',s:'الأناضول',i:'netanyahu_AIPAC.jpg'},
   {l:'other',ll:'Français',t:'Le conseil des relations américano-islamique poursuit les États-Unis pour complicité dans le génocide à Gaza',u:'https://www.aa.com.tr/fr/monde/le-conseil-des-relations-am%C3%A9ricano-islamiques-poursuit-les-%C3%A9tats-unis-pour-complicit%C3%A9-dans-le-g%C3%A9nocide-%C3%A0-gaza/3487047',s:'Agence Anadolu',i:'awad.jpg'},
   {l:'other',ll:'Русский',t:'Поддержка Израиля негативно отразилась на репутации Байдена',u:'https://www.aa.com.tr/ru/%D0%BC%D0%B8%D1%80/%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%B0-%D0%B8%D0%B7%D1%80%D0%B0%D0%B8%D0%BB%D1%8F-%D0%BD%D0%B5%D0%B3%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%BE-%D0%BE%D1%82%D1%80%D0%B0%D0%B7%D0%B8%D0%BB%D0%B0%D1%81%D1%8C-%D0%BD%D0%B0-%D1%80%D0%B5%D0%BF%D1%83%D1%82%D0%B0%D1%86%D0%B8%D0%B8-%D0%B1%D0%B0%D0%B9%D0%B4%D0%B5%D0%BD%D0%B0/3459175',s:'Анадолу',i:'bidens_human_rights.jpg',feat:true},
-  {l:'tr',s:'AA',t:'Bitcoin`i gelecekte ne bekliyor?',u:'https://www.aa.com.tr/tr/arastirma/bitcoin-i-gelecekte-ne-bekliyor-/2103905',i:'https://cdnuploads.aa.com.tr/uploads/Contents/2019/11/16/thumbs_b_c_6f7e8a4a7c6c4a3b3d3e3f3a3b3c3d3.jpg',feat:true},
+  {l:'tr',s:'AA',t:'Bitcoin`i gelecekte ne bekliyor?',u:'https://www.aa.com.tr/tr/arastirma/bitcoin-i-gelecekte-ne-bekliyor-/2103905',i:'https://web-cdnprod.aa.com.tr/uploads/Contents/2021/01/09/thumbs_b_c_1f2fdf58d6db2c5d9d1b33b5c251b6ff.jpg',feat:true},
   {l:'tr',s:'AA',t:'Hatay`ın yeni tasarım planı hazır',u:'https://www.aa.com.tr/tr/podcast/hatay-in-yeni-tasarim-plani-hazir/3205426',i:'hatay_.jpg'},
-  {l:'tr',s:'AA',t:'ABD`de seçim günü: Amerikalı gençler ne diyor?',u:'https://www.aa.com.tr/tr/abd-baskanlik-secimleri-2020/abdde-secim-gunu-amerikali-gencler-ne-diyor/2030797',i:'https://cdnuploads.aa.com.tr/uploads/Contents/2020/11/03/thumbs_b_c_electoral.jpg'},
+  {l:'tr',s:'AA',t:'ABD`de seçim günü: Amerikalı gençler ne diyor?',u:'https://www.aa.com.tr/tr/abd-baskanlik-secimleri-2020/abdde-secim-gunu-amerikali-gencler-ne-diyor/2030797',i:'https://web-cdnprod.aa.com.tr/uploads/Contents/2020/11/03/thumbs_b_c_765d41cf0bbd46b71ac5054642df0f22.jpg?v=204227'},
   {l:'en',s:'AA',t:'Rachel Corrie`s parents speak to Anadolu Talk Zone',u:'https://www.aa.com.tr/tr/israil-filistin-catismasi/israil-in-buldozerle-ezerek-oldurdugu-rachel-corrie-nin-anne-ve-babasi-anadolu-talk-zone-a-konustu/3042205',i:'corrie.jpg'},
   {l:'en',s:'AA',t:'AIPAC donates millions to senators who applauded Netanyahu',u:'https://www.aa.com.tr/tr/abd-baskanlik-secimleri-2024/abdde-israil-lobisi-aipac-netanyahuyu-alkislayan-senatorlere-milyonlarca-dolar-bagisladi/3331246',i:'netanyahu_AIPAC.jpg',feat:true},
   {l:'tr',s:'AA',t:'Seçmenler Gazze meselesine tepkilerini sandıkta göstermek istiyor',u:'https://www.aa.com.tr/tr/dosya-haber/secmenler-gazze-meselesine-tepkilerini-sandikta-gostermek-istiyor/3329269',i:'secmenler_gazze.jpg'},
-  {l:'tr',s:'AA',t:'Bireysel sporlardaki tarihi serüven',u:'https://www.aa.com.tr/tr/podcast/bireysel-sporlardaki-tarihi-seruven-gelecege-nasil-bir-miras-birakti/3034671',i:'analiz_ve_gorusler.jpg',fullrow:true},
-  {l:'tr',s:'AA',t:'Cumhuriyet`in yüzyıllık serüveninde takım sporlarındaki başarılar',u:'https://www.aa.com.tr/tr/podcast/cumhuriyet-in-yuzyillik-seruveninde-takim-sporlarinda-hangi-basarilara-imza-atildi/3034515',i:'portre.jpg',fullrow:true}
+  {l:'tr',s:'AA',t:'Bireysel sporlardaki tarihi serüven',u:'https://www.aa.com.tr/tr/podcast/bireysel-sporlardaki-tarihi-seruven-gelecege-nasil-bir-miras-birakti/3034671',i:'https://web-cdnprod.aa.com.tr/uploads/Contents/2023/10/27/thumbs_b_c_af9ebb2cd67ed9c1c3229bd3ed90ac54.jpg?v=164337',fullrow:true},
+  {l:'tr',s:'AA',t:'Cumhuriyet`in yüzyıllık serüveninde takım sporlarındaki başarılar',u:'https://www.aa.com.tr/tr/podcast/cumhuriyet-in-yuzyillik-seruveninde-takim-sporlarinda-hangi-basarilara-imza-atildi/3034515',i:'https://web-cdnprod.aa.com.tr/uploads/Contents/2023/10/27/thumbs_b_c_5e266ea323af270d6993cf0f94b9b3f6.jpg?v=141424',fullrow:true}
 ];
 
 const CAR = [ND[0],ND[1],ND[2],ND[7],ND[13],ND[14],ND[15]];
@@ -2240,7 +2266,7 @@ const PLAYLISTS = [
   },,
   {
     label:'100 Yıllık Serüven',
-    cover:'seruven.png',
+    cover:'bir_bakista.webp',
     link:'https://www.aa.com.tr/tr/podcast',
     type:'embed',
     embeds:['https://share.transistor.fm/e/a59302ce','https://share.transistor.fm/e/f8560090']
@@ -2521,71 +2547,52 @@ function buildPlaylists(){
 function switchPl(idx){
   plIdx=idx;
   const pl=PLAYLISTS[idx];
-  // Update tabs
   document.querySelectorAll('.pl-tab').forEach((t,i)=>t.classList.toggle('on',i===idx));
-  // Update cover
-  // pl-left hidden - no cover to update
-  document.getElementById('pl-name').textContent=pl.label;
-  document.getElementById('pl-ct').textContent=pl.embeds&&pl.embeds.length?pl.embeds.length+' bölüm':'';
-  // Links
+  // pl-left hidden via CSS
+  const plBody=document.querySelector('.pl-body');
+  if(plBody) plBody.classList.toggle('embed-mode', pl.type!=='rss');
+  const ctEl=document.getElementById('pl-ct');
+  if(ctEl) ctEl.textContent=pl.embeds&&pl.embeds.length?pl.embeds.length+' bölüm':'';
   const lnk=pl.link||'#';
   const linkEl=document.getElementById('pl-link');
   const nameLinkEl=document.getElementById('pl-name-link');
   if(linkEl)linkEl.href=lnk;
   if(nameLinkEl)nameLinkEl.href=lnk;
-  // Hide left panel for embed playlists (they have their own cover inside)
-  const plBody=document.querySelector('.pl-body');
-  if(plBody) plBody.classList.toggle('embed-mode', pl.type!=='rss');
-  // Episodes — always re-render
+  const nameEl=document.getElementById('pl-name');
+  if(nameEl)nameEl.textContent=pl.label;
+  // Episodes — cache by idx to prevent reload flash
   const eps=document.getElementById('pl-eps');
+  if(!eps)return;
+  if(eps.dataset.loaded===String(idx))return;
+  eps.dataset.loaded=String(idx);
   eps.innerHTML='<div class="loading">Yükleniyor...</div>';
-
-  if(pl.type==='rss'){
-    if(pl.label==='Analiz ve Görüşler'){
-      buildAnalizSection(eps, pl.cover);
-    } else {
-      fetch(pl.rss).then(r=>r.text()).then(txt=>{
-        const doc=new DOMParser().parseFromString(txt,'application/xml');
-        const items=Array.from(doc.querySelectorAll('item')).slice(0,30);
-        document.getElementById('pl-ct').textContent=items.length+' bölüm';
-        eps.innerHTML='';
-        items.forEach((it,i)=>{
-          const title=it.querySelector('title')?.textContent||'Bölüm '+(i+1);
-          const audioUrl=it.querySelector('enclosure')?.getAttribute('url')||'';
-          const pd=it.querySelector('pubDate')?.textContent||'';
-          const ds=pd?new Date(pd).toLocaleDateString('tr-TR',{day:'numeric',month:'short'}):'';
-          eps.appendChild(makeEpRow(title,audioUrl,ds,String(i+1).padStart(2,'0'),pl.label,pl.cover));
-        });
-      }).catch(()=>{eps.innerHTML='<div class="loading">Yüklenemedi</div>';});
-    }
-  } else {
-    // Embed-based: 3-col grid, NO playlist for BBK/Mahrec, Portre gets playlist
-    const playlistUrl = {
-      'Portre': 'https://share.transistor.fm/e/aa-portre/playlist',
-      'Anadolu Talk Zone': ''
-    }[pl.label] || '';
-    
-    setTimeout(()=>{
-      let html = '';
-      // Show playlist only for Portre
-      if(playlistUrl && pl.label==='Portre'){
-        html += `<div style="display:flex;gap:16px;padding:16px;background:var(--bg2);border-bottom:1px solid var(--border2);align-items:flex-start;">
-          <div style="display:flex;flex-direction:column;align-items:center;gap:8px;min-width:120px;">
-            <img src="${pl.cover}" style="width:88px;height:88px;border-radius:6px;object-fit:cover;" alt="">
-            <div style="font-family:'Playfair Display',serif;font-size:12px;font-style:italic;color:var(--ink);text-align:center;line-height:1.2;">${pl.label}</div>
-          </div>
-          <div style="flex:1;">
-            <iframe width="100%" height="390" frameborder="no" scrolling="no" seamless src="${playlistUrl}" style="display:block;border-radius:6px"></iframe>
-          </div>
-        </div>`;
-      }
-      // 3-col episode grid for all
-      html += `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:16px;">`;
-      pl.embeds.forEach(url=>{
-        html += `<div><iframe width="100%" height="180" frameborder="no" scrolling="no" seamless src="${url}" loading="lazy" style="display:block;border-radius:4px"></iframe></div>`;
+  if(pl.label==='Analiz ve Görüşler'){
+    buildAnalizSection(eps,pl.cover);
+  }else if(pl.type==='rss'){
+    fetch(pl.rss).then(r=>r.text()).then(txt=>{
+      const doc=new DOMParser().parseFromString(txt,'application/xml');
+      const items=Array.from(doc.querySelectorAll('item')).slice(0,30);
+      if(ctEl)ctEl.textContent=items.length+' bölüm';
+      eps.innerHTML='';
+      items.forEach((it,i)=>{
+        const title=it.querySelector('title')?.textContent||'Bölüm '+(i+1);
+        const audioUrl=it.querySelector('enclosure')?.getAttribute('url')||'';
+        const pd=it.querySelector('pubDate')?.textContent||'';
+        const ds=pd?new Date(pd).toLocaleDateString('tr-TR',{day:'numeric',month:'short'}):'';
+        eps.appendChild(makeEpRow(title,audioUrl,ds,String(i+1).padStart(2,'0'),pl.label,pl.cover));
       });
-      html += '</div>';
-      eps.innerHTML = html;
+    }).catch(()=>{eps.innerHTML='<div class="loading">Yüklenemedi</div>';});
+  }else{
+    setTimeout(()=>{
+      let html='';
+      if(pl.embeds&&pl.embeds.length){
+        html+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:16px;">';
+        pl.embeds.forEach(url=>{
+          html+='<div><iframe width="100%" height="180" frameborder="no" scrolling="no" seamless src="'+url+'" loading="lazy" style="display:block;border-radius:4px"></iframe></div>';
+        });
+        html+='</div>';
+      }
+      eps.innerHTML=html;
     },50);
   }
 }
@@ -2827,6 +2834,10 @@ document.addEventListener('DOMContentLoaded',()=>{
     const enVal=el.getAttribute('data-en');
     if(enVal)el.textContent=enVal;
   });
+  const h=window.location.hash.replace('#','');
+  if(h&&h!=='home'&&document.getElementById('page-'+h)){
+    navTo(h);
+  }
   document.querySelectorAll('[data-tip-tr]').forEach(el=>{
     const tip=el.querySelector('.p-tip');
     if(tip){const v=el.getAttribute('data-tip-en');if(v)tip.textContent=v;}
@@ -3092,23 +3103,21 @@ function initPodCursor(){
   podCursorEl=document.createElement('div');
   podCursorEl.id='pod-cursor';
   podCursorEl.textContent='🎙️';
-  podCursorEl.style.cssText='position:fixed;pointer-events:none;z-index:99999;font-size:28px;transform:translate(-4px,-28px);transition:font-size .1s;display:none;line-height:1;user-select:none;';
+  podCursorEl.style.cssText='position:fixed;pointer-events:none;z-index:99999;font-size:28px;transform:translate(-4px,-28px);transition:font-size .12s;display:none;line-height:1;user-select:none;';
   document.body.appendChild(podCursorEl);
-  document.addEventListener('mousemove',movePodCursor);
+  document.addEventListener('mousemove',movePodCursor,{passive:true});
   document.addEventListener('mousedown',pressPodCursor);
   document.addEventListener('mouseup',releasePodCursor);
+  document.addEventListener('mouseleave',()=>{if(podCursorEl)podCursorEl.style.display='none';});
+  document.addEventListener('mouseenter',()=>{if(podCursorEl&&podCursorEl._active)podCursorEl.style.display='block';});
 }
 function movePodCursor(e){
   if(!podCursorEl||!podCursorEl._active)return;
   podCursorEl.style.left=e.clientX+'px';
   podCursorEl.style.top=e.clientY+'px';
 }
-function pressPodCursor(){
-  if(podCursorEl&&podCursorEl._active) podCursorEl.style.fontSize='42px';
-}
-function releasePodCursor(){
-  if(podCursorEl&&podCursorEl._active) podCursorEl.style.fontSize='28px';
-}
+function pressPodCursor(){if(podCursorEl&&podCursorEl._active)podCursorEl.style.fontSize='42px';}
+function releasePodCursor(){if(podCursorEl&&podCursorEl._active)podCursorEl.style.fontSize='28px';}
 function showPodCursor(){
   initPodCursor();
   podCursorEl._active=true;
