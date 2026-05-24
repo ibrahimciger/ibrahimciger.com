@@ -837,7 +837,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .muck-wrap::before, .muck-wrap::after { content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none; }
 .muck-wrap::before { left:0; background:linear-gradient(to right,var(--bg2),transparent); }
 .muck-wrap::after { right:0; background:linear-gradient(to left,var(--bg2),transparent); }
-.muck-track { display:flex; flex-direction:row; width:max-content; animation:muckScroll 60s linear infinite; }
+.muck-track { display:flex; flex-direction:row; width:max-content; animation:muckScroll 60s linear infinite;  pointer-events:auto;}
 .muck-track:hover { animation-play-state:paused; }
 .muck-item {
   font-family:'Cormorant Garamond',serif; font-size:15px; font-weight:500;
@@ -1274,21 +1274,23 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .vid-track-wrap { overflow-y:hidden; position:relative; }
 .vid-arr-btn {
   position:absolute; top:50%; transform:translateY(-50%);
-  width:48px; height:48px; border-radius:50%;
-  background:rgba(10,10,10,0.45); backdrop-filter:blur(6px);
-  border:1px solid rgba(255,255,255,0.18);
+  width:40px; height:72px; border-radius:4px;
+  background:rgba(0,0,0,0); border:none; padding:0;
   display:flex; align-items:center; justify-content:center;
-  cursor:pointer; z-index:30; transition:all .22s;
-  color:rgba(255,255,255,0.88); font-size:22px; line-height:1;
-  pointer-events:all;
+  cursor:pointer; z-index:30; transition:background .2s;
+  color:rgba(255,255,255,0.0);
 }
-.vid-arr-btn:hover{background:rgba(184,137,42,0.80);border-color:var(--gold);color:#fff;}
-.arr-prev{left:14px;}
-.arr-next{right:14px;}
+.vid-arr-btn:hover {
+  background:rgba(0,0,0,0.28);
+  color:rgba(255,255,255,0.95);
+}
+.vid-arr-btn svg { width:28px; height:28px; stroke:currentColor; stroke-width:2.5; fill:none; stroke-linecap:round; stroke-linejoin:round; filter:drop-shadow(0 1px 4px rgba(0,0,0,0.5)); transition:color .2s; }
+.arr-prev{left:0px;}
+.arr-next{right:0px;}
 
 /* Podcast section no top gap */
 #sec-podcast .sec-head { padding-top: 8px; }
-#sec-podcast { padding-bottom: 0; }
+#sec-podcast { padding-bottom: 0;  padding-top:24px;}
 
 /* Investigative special layout */
 #page-vodcast .vid-card.wide { grid-column: span 2; }
@@ -1459,8 +1461,8 @@ nav a{cursor:pointer !important;}
       <h2 class="sec-title" data-tr="Vodcast" data-en="Vodcast">Vodcast</h2>
     </div>
     <div class="vid-body">
-      <button class="vid-arr-btn arr-prev" onclick="vidScroll(-1)" aria-label="Previous">&#8592;</button>
-      <button class="vid-arr-btn arr-next" onclick="vidScroll(1)" aria-label="Next">&#8594;</button>
+      <button class="vid-arr-btn arr-prev" onclick="vidScroll(-1)" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="vid-arr-btn arr-next" onclick="vidScroll(1)" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
       <div class="vid-track-wrap">
         <div class="vid-track" id="vid-track">
           <div class="vid-card" onclick="window.open('https://youtu.be/H9Yxw84F0PI','_blank')" onmouseenter="previewVid(this,'H9Yxw84F0PI')" onmouseleave="stopPreview(this,'H9Yxw84F0PI')">
@@ -1879,10 +1881,10 @@ nav a{cursor:pointer !important;}
 
   <!-- PODCAST SECTION -->
   <section id="sec-podcast" class="section">
-    <div class="sec-head">
+    <div class="sec-head" style="display:flex;align-items:center;justify-content:space-between;padding:0 80px;">
       <h2 class="sec-title" data-tr="Podcast" data-en="Podcast">Podcast</h2>
+      <div class="pl-tabs" id="pl-tabs" style="margin:0;padding:0;"></div>
     </div>
-    <div class="pl-tabs" id="pl-tabs"></div>
     <div class="pl-body">
       <div class="pl-left">
         <a id="pl-link" href="#" target="_blank" rel="noopener" style="display:block;text-decoration:none">
@@ -2013,11 +2015,11 @@ nav a{cursor:pointer !important;}
             <div class="vid-thumb" id="vt-wh9kkc71iM"><img src="https://img.youtube.com/vi/wh9kkc71iMc/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
             <div class="vid-info"><div class="vid-title">ABD'de seçim günü: Amerikalı gençler ne diyor?</div></div>
           </div>
-          <div class="vid-card wide" onclick="window.open('https://www.youtube.com/watch?v=H9Yxw84F0PI','_blank')" onmouseenter="previewVid(this,'H9Yxw84F0PI')" onmouseleave="stopPreview(this,'H9Yxw84F0PI')">
+          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=H9Yxw84F0PI','_blank')" onmouseenter="previewVid(this,'H9Yxw84F0PI')" onmouseleave="stopPreview(this,'H9Yxw84F0PI')">
             <div class="vid-thumb" id="vt-H9Yxw84F0P"><img src="https://img.youtube.com/vi/H9Yxw84F0PI/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
             <div class="vid-info"><div class="vid-title">Gaza War's Impact on US Election</div></div>
           </div>
-          <div class="vid-card tall" onclick="window.open('https://www.youtube.com/watch?v=EwX7lrKThiQ','_blank')" onmouseenter="previewVid(this,'EwX7lrKThiQ')" onmouseleave="stopPreview(this,'EwX7lrKThiQ')">
+          <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=EwX7lrKThiQ','_blank')" onmouseenter="previewVid(this,'EwX7lrKThiQ')" onmouseleave="stopPreview(this,'EwX7lrKThiQ')">
             <div class="vid-thumb" id="vt-EwX7lrKThi"><img src="https://img.youtube.com/vi/EwX7lrKThiQ/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
             <div class="vid-info"><div class="vid-title">Rachel Corrie'nin anne ve babası Anadolu Talk Zone'a konuştu</div></div>
           </div>
@@ -2091,7 +2093,7 @@ nav a{cursor:pointer !important;}
           </div>
           <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=LCMei0pLEWk','_blank')" onmouseenter="previewVid(this,'LCMei0pLEWk')" onmouseleave="stopPreview(this,'LCMei0pLEWk')">
             <div class="vid-thumb" id="vt-LCMei0pL"><img src="https://img.youtube.com/vi/LCMei0pLEWk/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
-            <div class="vid-info"><div class="vid-title">Çin ordusunun generallerine neden soruşturma başlandı?</div></div>
+            <div class="vid-info"><div class="vid-title">Çin ordusunun generallerine neden soruşturma başlatıldı?</div></div>
           </div>
           <div class="vid-card" onclick="window.open('https://www.youtube.com/watch?v=AxESQi3xOW8','_blank')" onmouseenter="previewVid(this,'AxESQi3xOW8')" onmouseleave="stopPreview(this,'AxESQi3xOW8')">
             <div class="vid-thumb" id="vt-AxESQi3x"><img src="https://img.youtube.com/vi/AxESQi3xOW8/hqdefault.jpg" alt="" loading="lazy"><div class="vid-ov"><div class="vid-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
@@ -2208,11 +2210,11 @@ const ND = [
   {l:'tr',s:'AA',t:'Bitcoin`i gelecekte ne bekliyor?',u:'https://www.aa.com.tr/tr/arastirma/bitcoin-i-gelecekte-ne-bekliyor-/2103905',i:'https://web-cdnprod.aa.com.tr/uploads/Contents/2021/01/09/thumbs_b_c_1f2fdf58d6db2c5d9d1b33b5c251b6ff.jpg',feat:true},
   {l:'tr',s:'AA',t:'Hatay`ın yeni tasarım planı hazır',u:'https://www.aa.com.tr/tr/podcast/hatay-in-yeni-tasarim-plani-hazir/3205426',i:'hatay_.jpg'},
   {l:'tr',s:'AA',t:'ABD`de seçim günü: Amerikalı gençler ne diyor?',u:'https://www.aa.com.tr/tr/abd-baskanlik-secimleri-2020/abdde-secim-gunu-amerikali-gencler-ne-diyor/2030797',i:'https://web-cdnprod.aa.com.tr/uploads/Contents/2020/11/03/thumbs_b_c_765d41cf0bbd46b71ac5054642df0f22.jpg?v=204227',feat:true},
+  {l:'tr',s:'AA',t:'Seçmenler Gazze meselesine tepkilerini sandıkta göstermek istiyor',u:'https://www.aa.com.tr/tr/dosya-haber/secmenler-gazze-meselesine-tepkilerini-sandikta-gostermek-istiyor/3329269',i:'secmenler_gazze.jpg'},
   {l:'en',s:'AA',t:'Rachel Corrie`s parents speak to Anadolu Talk Zone',u:'https://www.aa.com.tr/tr/israil-filistin-catismasi/israil-in-buldozerle-ezerek-oldurdugu-rachel-corrie-nin-anne-ve-babasi-anadolu-talk-zone-a-konustu/3042205',i:'https://web-cdnprod.aa.com.tr/uploads/Contents/2023/11/03/thumbs_b_c_ad77aa6cd4558be40e3700abcfa64cc3.jpg?v=115409',feat:true},
   {l:'en',s:'AA',t:'AIPAC donates millions to senators who applauded Netanyahu',u:'https://www.aa.com.tr/tr/abd-baskanlik-secimleri-2024/abdde-israil-lobisi-aipac-netanyahuyu-alkislayan-senatorlere-milyonlarca-dolar-bagisladi/3331246',i:'netanyahu_AIPAC.jpg'},
-  {l:'tr',s:'AA',t:'Seçmenler Gazze meselesine tepkilerini sandıkta göstermek istiyor',u:'https://www.aa.com.tr/tr/dosya-haber/secmenler-gazze-meselesine-tepkilerini-sandikta-gostermek-istiyor/3329269',i:'secmenler_gazze.jpg'},
-  {l:'tr',s:'AA',t:'Bireysel sporlardaki tarihi serüven',u:'https://www.aa.com.tr/tr/podcast/bireysel-sporlardaki-tarihi-seruven-gelecege-nasil-bir-miras-birakti/3034671',i:'https://web-cdnprod.aa.com.tr/uploads/Contents/2023/10/27/thumbs_b_c_af9ebb2cd67ed9c1c3229bd3ed90ac54.jpg?v=164337',fullrow:true},
-  {l:'tr',s:'AA',t:'Cumhuriyet`in yüzyıllık serüveninde takım sporlarındaki başarılar',u:'https://www.aa.com.tr/tr/podcast/cumhuriyet-in-yuzyillik-seruveninde-takim-sporlarinda-hangi-basarilara-imza-atildi/3034515',i:'https://web-cdnprod.aa.com.tr/uploads/Contents/2023/10/27/thumbs_b_c_5e266ea323af270d6993cf0f94b9b3f6.jpg?v=141424',fullrow:true}
+  {l:'tr',s:'AA',t:'Bireysel sporlardaki tarihi serüven',u:'https://www.aa.com.tr/tr/podcast/bireysel-sporlardaki-tarihi-seruven-gelecege-nasil-bir-miras-birakti/3034671',i:'https://web-cdnprod.aa.com.tr/uploads/Contents/2023/10/27/thumbs_b_c_af9ebb2cd67ed9c1c3229bd3ed90ac54.jpg?v=164337'},
+  {l:'tr',s:'AA',t:'Cumhuriyet`in yüzyıllık serüveninde takım sporlarındaki başarılar',u:'https://www.aa.com.tr/tr/podcast/cumhuriyet-in-yuzyillik-seruveninde-takim-sporlarinda-hangi-basarilara-imza-atildi/3034515',i:'https://web-cdnprod.aa.com.tr/uploads/Contents/2023/10/27/thumbs_b_c_5e266ea323af270d6993cf0f94b9b3f6.jpg?v=141424'}
 ];
 
 const CAR = [ND[0],ND[1],ND[2],ND[7],ND[13],ND[14],ND[15]];
@@ -2268,7 +2270,7 @@ const PLAYLISTS = [
       'https://share.transistor.fm/e/adfad647','https://share.transistor.fm/e/9f7dace5',
       'https://share.transistor.fm/e/599dbc49','https://share.transistor.fm/e/bd7cc0b7'
     ]
-  },,
+  },
   {
     label:'100 Yıllık Serüven',
     cover:'bir_bakista.webp',
@@ -2314,6 +2316,7 @@ function toggleLang(){
 
 /* ══ ROUTING ══ */
 function showHome(){
+  hidePodCursor();
   document.querySelectorAll('.ip').forEach(function(el){
     el.style.display='';
     el.classList.remove('on');
@@ -3120,7 +3123,10 @@ function movePodCursor(e){
   if(!podCursorEl||!podCursorEl._active)return;
   podCursorEl.style.left=e.clientX+'px';
   podCursorEl.style.top=e.clientY+'px';
-  if(podCursorEl.style.display==='none')podCursorEl.style.display='block';
+  if(podCursorEl.style.display==='none'||podCursorEl.style.opacity==='0'){
+    podCursorEl.style.display='block';
+    podCursorEl.style.opacity='1';
+  }
 }
 function pressPodCursor(){if(podCursorEl&&podCursorEl._active)podCursorEl.style.fontSize='42px';}
 function releasePodCursor(){if(podCursorEl&&podCursorEl._active)podCursorEl.style.fontSize='28px';}
@@ -3131,13 +3137,17 @@ function showPodCursor(){
   podCursorEl.style.opacity='1';
   document.body.style.cursor='none';
   document.documentElement.style.cursor='none';
-  // Force reactivate mousemove
-  document.dispatchEvent(new MouseEvent('mousemove',{clientX:0,clientY:0}));
+  document.body.classList.add('pod-cursor-active');
 }
 function hidePodCursor(){
-  if(podCursorEl){podCursorEl._active=false;podCursorEl.style.display='none';}
+  if(podCursorEl){
+    podCursorEl._active=false;
+    podCursorEl.style.display='none';
+    podCursorEl.style.opacity='0';
+  }
   document.body.style.cursor='';
   document.documentElement.style.cursor='';
+  document.body.classList.remove('pod-cursor-active');
 }
 
 </script>
