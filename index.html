@@ -67,8 +67,8 @@ nav{position:fixed;top:0;left:0;right:0;height:62px;background:var(--nav-bg);bac
   text-decoration: none;
   display: flex; flex-direction:column; gap:6px;
   padding-bottom: 2px;
-}
-.logo-hic{font-family:'Playfair Display',serif;font-size:31px;font-weight:600;color:var(--gold);letter-spacing:.08em;cursor:pointer;}
+ cursor:pointer !important;}
+.logo-hic{font-family:'Playfair Display',serif;font-size:31px;font-weight:600;color:var(--gold);letter-spacing:.08em;cursor:pointer !important;}
 .logo-hic:hover { color: var(--gold2); }
 .logo-line {
   height: 1px;
@@ -1352,8 +1352,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 /* Podcast page cursor */
 #page-podcast{cursor:none;}
 #page-podcast *{cursor:none !important;}
-nav *{cursor:auto !important;}
-nav a{cursor:pointer !important;}
+nav a, nav .logo-hic, nav .logo{cursor:pointer !important;}
 
 /* Vodcast thumbnail %20 bigger */
 #page-vodcast .vid-card .vid-thumb{aspect-ratio:16/9;padding-bottom:0;height:auto;position:relative;overflow:hidden;}
