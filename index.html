@@ -68,7 +68,7 @@ nav{position:fixed;top:0;left:0;right:0;height:62px;background:var(--nav-bg);bac
   display: flex; flex-direction:column; gap:6px;
   padding-bottom: 2px;
 }
-.logo-hic{font-family:'Playfair Display',serif;font-size:31px;font-weight:600;color:var(--gold);letter-spacing:.08em}
+.logo-hic{font-family:'Playfair Display',serif;font-size:31px;font-weight:600;color:var(--gold);letter-spacing:.08em;cursor:pointer;}
 .logo-hic:hover { color: var(--gold2); }
 .logo-line {
   height: 1px;
@@ -338,7 +338,7 @@ text-transform:none;}
 .nbrick.feat .nb-body { padding:22px 30px 28px; margin-top:0; }
 .nb-lang {
   font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.08em;
-  color:var(--gold); text-transform:none; margin-bottom:12px;
+  color:var(--gold); text-transform:capitalize; margin-bottom:12px;
   display:flex; align-items:center; gap:8px;
 }
 .nb-lang::before { content:''; width:12px; height:1px; background:var(--gold); }
@@ -348,6 +348,8 @@ text-transform:none;}
   transition:color .3s;
   min-height:3.2em;
   display:flex; align-items:flex-start;
+
+  font-size:13px;
 }
 .nbrick.feat .nb-title { font-size:22px; }
 .nbrick:not(.feat) .nb-title { font-size:17px; }
@@ -412,12 +414,7 @@ text-transform:none;}
 .pl-embed-item iframe { display:block; touch-action:manipulation; }
 
 /* Episode grid: 3 per row */
-.pl-eps {
-  padding:16px;
-  display:block;
-  max-height:700px;
-  overflow-y:auto;
-}
+.pl-eps { transition: opacity 0.2s ease; }
 .pl-eps::-webkit-scrollbar { width:3px; }
 .pl-eps::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
 .pl-embed-item { grid-column:span 1; }
@@ -481,7 +478,7 @@ text-transform:none;}
 .share-row { padding:0 16px; border-bottom:1px solid var(--border2); }
 
 /* ════ VIDEO SECTION ════ */
-.vid-body { padding:0 80px 80px; position:relative; }
+.vid-body { padding:0 80px 40px; position:relative; }
 .vid-track-wrap { overflow-y:hidden; overflow-x:auto; scroll-behavior:smooth; scrollbar-width:none; -ms-overflow-style:none; }
 .vid-track-wrap::-webkit-scrollbar{display:none;}
 .vid-track {
@@ -681,7 +678,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   .pl-left{display:none;}
   .pl-cover-img{width:56px;height:56px;border-radius:4px;}
   .pl-prog-name{font-size:15px;text-align:left;}
-  .pl-eps{grid-template-columns:1fr;padding:14px;gap:8px;max-height:none;}
+  .pl-eps { transition: opacity 0.2s ease; }
   .pl-tabs{display:flex;flex-direction:row;gap:8px;padding:12px 80px 0;overflow-x:auto;scrollbar-width:none;}
   .pod-head{padding:48px 20px 0;}
   .pod-layout{grid-template-columns:1fr;}
@@ -720,11 +717,11 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
   .news-tabs,.pl-tabs,.lf-bar{padding-left:16px;padding-right:16px;}
   .pl-body{display:block;margin:0 80px 0;}
   .vid-body{padding:0 16px 32px;}
-  .pl-eps{grid-template-columns:1fr;}
+  .pl-eps { transition: opacity 0.2s ease; }
 }
 
 /* ════ VODCAST PAGE ════ */
-.vod-body { padding:0 80px 24px; }
+.vod-body { padding:0 70px 24px; }
 .vod-section { margin-bottom:64px; }
 .vod-sec-head { padding:24px 0 16px; border-bottom:1px solid var(--border2); margin-bottom:28px; }
 .vod-sec-eye {
@@ -1290,7 +1287,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 
 /* Podcast section no top gap */
 #sec-podcast .sec-head { padding-top: 8px; }
-#sec-podcast { padding-bottom: 0;  padding-top:24px;}
+#sec-podcast { padding-bottom: 0;  padding-top:12px;}
 
 /* Investigative special layout */
 #page-vodcast .vid-card.wide { grid-column: span 2; }
@@ -1342,7 +1339,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 .cs-left{
   font-family:'Josefin Sans',sans-serif;font-size:19px;font-weight:100;
   letter-spacing:0.32em;color:var(--gold);text-transform:uppercase;
-  animation:csSlideLeft 2.4s cubic-bezier(.16,1,.3,1) 2;
+  animation:csSlideRight 2.4s cubic-bezier(.16,1,.3,1) 2;
 }
 .cs-right{
   font-family:'Josefin Sans',sans-serif;font-size:19px;font-weight:100;
@@ -1359,8 +1356,8 @@ nav *{cursor:auto !important;}
 nav a{cursor:pointer !important;}
 
 /* Vodcast thumbnail %20 bigger */
-#page-vodcast .vid-card .vid-thumb{aspect-ratio:unset;padding-bottom:81%;height:0;position:relative;}
-#page-vodcast .vid-card .vid-thumb img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
+#page-vodcast .vid-card .vid-thumb{aspect-ratio:16/9;padding-bottom:0;height:auto;position:relative;overflow:hidden;}
+#page-vodcast .vid-card .vid-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
 </style>
 </head>
 <body>
@@ -2213,7 +2210,7 @@ const ND = [
   {l:'tr',s:'AA',t:'Seçmenler Gazze meselesine tepkilerini sandıkta göstermek istiyor',u:'https://www.aa.com.tr/tr/dosya-haber/secmenler-gazze-meselesine-tepkilerini-sandikta-gostermek-istiyor/3329269',i:'secmenler_gazze.jpg'},
   {l:'en',s:'AA',t:'Rachel Corrie`s parents speak to Anadolu Talk Zone',u:'https://www.aa.com.tr/tr/israil-filistin-catismasi/israil-in-buldozerle-ezerek-oldurdugu-rachel-corrie-nin-anne-ve-babasi-anadolu-talk-zone-a-konustu/3042205',i:'https://web-cdnprod.aa.com.tr/uploads/Contents/2023/11/03/thumbs_b_c_ad77aa6cd4558be40e3700abcfa64cc3.jpg?v=115409',feat:true},
   {l:'en',s:'AA',t:'AIPAC donates millions to senators who applauded Netanyahu',u:'https://www.aa.com.tr/tr/abd-baskanlik-secimleri-2024/abdde-israil-lobisi-aipac-netanyahuyu-alkislayan-senatorlere-milyonlarca-dolar-bagisladi/3331246',i:'netanyahu_AIPAC.jpg'},
-  {l:'tr',s:'AA',t:'Bireysel sporlardaki tarihi serüven',u:'https://www.aa.com.tr/tr/podcast/bireysel-sporlardaki-tarihi-seruven-gelecege-nasil-bir-miras-birakti/3034671',i:'https://web-cdnprod.aa.com.tr/uploads/Contents/2023/10/27/thumbs_b_c_af9ebb2cd67ed9c1c3229bd3ed90ac54.jpg?v=164337'},
+  {l:'tr',s:'AA',t:'Bireysel sporlardaki tarihi serüven',u:'https://www.aa.com.tr/tr/podcast/bireysel-sporlardaki-tarihi-seruven-gelecege-nasil-bir-miras-birakti/3034671',i:'https://web-cdnprod.aa.com.tr/uploads/Contents/2023/10/27/thumbs_b_c_af9ebb2cd67ed9c1c3229bd3ed90ac54.jpg?v=164337',feat:true},
   {l:'tr',s:'AA',t:'Cumhuriyet`in yüzyıllık serüveninde takım sporlarındaki başarılar',u:'https://www.aa.com.tr/tr/podcast/cumhuriyet-in-yuzyillik-seruveninde-takim-sporlarinda-hangi-basarilara-imza-atildi/3034515',i:'https://web-cdnprod.aa.com.tr/uploads/Contents/2023/10/27/thumbs_b_c_5e266ea323af270d6993cf0f94b9b3f6.jpg?v=141424'}
 ];
 
@@ -2398,9 +2395,9 @@ function buildTicker(){
 
 /* ══ NEWS ══ */
 function newsHTML(n, feat, fullrow){
-  var lbl = n.l==='tr' ? (lang==='en'?'Turkish':'Türkçe') :
-            n.l==='en' ? (lang==='en'?'English':'EN') :
-            (n.ll||'Other');
+  var lbl = n.l==='tr' ? (lang==='en'?'turkish':'türkçe') :
+            n.l==='en' ? (lang==='en'?'english':'en') :
+            ((n.ll||'other').toLowerCase());
   var isOther=(n.l==='other');
   var cls=(n.fullrow||fullrow)?'nbrick fullrow':isOther?'nbrick fullrow':(feat?'nbrick feat':'nbrick');
   var img = n.i
@@ -2556,53 +2553,56 @@ function switchPl(idx){
   plIdx=idx;
   const pl=PLAYLISTS[idx];
   document.querySelectorAll('.pl-tab').forEach((t,i)=>t.classList.toggle('on',i===idx));
-  // pl-left hidden via CSS
   const plBody=document.querySelector('.pl-body');
   if(plBody) plBody.classList.toggle('embed-mode', pl.type!=='rss');
   const ctEl=document.getElementById('pl-ct');
-  if(ctEl) ctEl.textContent=pl.embeds&&pl.embeds.length?pl.embeds.length+' bölüm':'';
   const lnk=pl.link||'#';
-  const linkEl=document.getElementById('pl-link');
-  const nameLinkEl=document.getElementById('pl-name-link');
-  if(linkEl)linkEl.href=lnk;
-  if(nameLinkEl)nameLinkEl.href=lnk;
+  ['pl-link','pl-name-link'].forEach(id=>{const el=document.getElementById(id);if(el)el.href=lnk;});
   const nameEl=document.getElementById('pl-name');
   if(nameEl)nameEl.textContent=pl.label;
-  // Episodes — cache by idx to prevent reload flash
   const eps=document.getElementById('pl-eps');
   if(!eps)return;
-  if(eps.dataset.loaded===String(idx))return;
+  // Cache: already loaded, no flicker
+  if(eps.dataset.loaded===String(idx)){
+    if(ctEl)ctEl.textContent=pl.embeds&&pl.embeds.length?pl.embeds.length+' bölüm':'';
+    return;
+  }
   eps.dataset.loaded=String(idx);
-  eps.innerHTML='<div class="loading">Yükleniyor...</div>';
-  if(pl.label==='Analiz ve Görüşler'){
-    buildAnalizSection(eps,pl.cover);
-  }else if(pl.type==='rss'){
-    fetch(pl.rss).then(r=>r.text()).then(txt=>{
-      const doc=new DOMParser().parseFromString(txt,'application/xml');
-      const items=Array.from(doc.querySelectorAll('item')).slice(0,30);
-      if(ctEl)ctEl.textContent=items.length+' bölüm';
-      eps.innerHTML='';
-      items.forEach((it,i)=>{
-        const title=it.querySelector('title')?.textContent||'Bölüm '+(i+1);
-        const audioUrl=it.querySelector('enclosure')?.getAttribute('url')||'';
-        const pd=it.querySelector('pubDate')?.textContent||'';
-        const ds=pd?new Date(pd).toLocaleDateString('tr-TR',{day:'numeric',month:'short'}):'';
-        eps.appendChild(makeEpRow(title,audioUrl,ds,String(i+1).padStart(2,'0'),pl.label,pl.cover));
-      });
-    }).catch(()=>{eps.innerHTML='<div class="loading">Yüklenemedi</div>';});
-  }else{
-    setTimeout(()=>{
-      let html='';
+  // Smooth fade: don't clear, just load into hidden container
+  eps.style.opacity='0';
+  const loadContent=()=>{
+    eps.innerHTML='';
+    if(pl.label==='Analiz ve Görüşler'){
+      buildAnalizSection(eps,pl.cover);
+      eps.style.opacity='1';
+    }else if(pl.type==='rss'){
+      fetch(pl.rss).then(r=>r.text()).then(txt=>{
+        const doc=new DOMParser().parseFromString(txt,'application/xml');
+        const items=Array.from(doc.querySelectorAll('item')).slice(0,30);
+        if(ctEl)ctEl.textContent=items.length+' bölüm';
+        items.forEach((it,i)=>{
+          const title=it.querySelector('title')?.textContent||'Bölüm '+(i+1);
+          const audioUrl=it.querySelector('enclosure')?.getAttribute('url')||'';
+          const pd=it.querySelector('pubDate')?.textContent||'';
+          const ds=pd?new Date(pd).toLocaleDateString('tr-TR',{day:'numeric',month:'short'}):'';
+          eps.appendChild(makeEpRow(title,audioUrl,ds,String(i+1).padStart(2,'0'),pl.label,pl.cover));
+        });
+        eps.style.opacity='1';
+      }).catch(()=>{eps.innerHTML='<div class="loading">Yüklenemedi</div>';eps.style.opacity='1';});
+    }else{
       if(pl.embeds&&pl.embeds.length){
-        html+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:16px;">';
+        let html='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:16px;">';
         pl.embeds.forEach(url=>{
           html+='<div><iframe width="100%" height="180" frameborder="no" scrolling="no" seamless src="'+url+'" loading="lazy" style="display:block;border-radius:4px"></iframe></div>';
         });
         html+='</div>';
+        eps.innerHTML=html;
       }
-      eps.innerHTML=html;
-    },50);
-  }
+      if(ctEl)ctEl.textContent=pl.embeds&&pl.embeds.length?pl.embeds.length+' bölüm':'';
+      eps.style.opacity='1';
+    }
+  };
+  requestAnimationFrame(loadContent);
 }
 
 /* ══ PODCAST INNER PAGE ══ */
