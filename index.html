@@ -338,7 +338,7 @@ text-transform:none;}
 .nbrick.feat .nb-body { padding:22px 30px 28px; margin-top:0; }
 .nb-lang {
   font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.08em;
-  color:var(--gold); text-transform:capitalize; margin-bottom:12px;
+  color:var(--gold); text-transform:lowercase; margin-bottom:12px;
   display:flex; align-items:center; gap:8px;
 }
 .nb-lang::before { content:''; width:12px; height:1px; background:var(--gold); }
@@ -721,7 +721,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 }
 
 /* ════ VODCAST PAGE ════ */
-.vod-body { padding:0 70px 24px; }
+.vod-body { padding:0 80px 24px; }
 .vod-section { margin-bottom:64px; }
 .vod-sec-head { padding:24px 0 16px; border-bottom:1px solid var(--border2); margin-bottom:28px; }
 .vod-sec-eye {
@@ -968,7 +968,7 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 /* ── Newspaper modal ── */
 .np-overlay{position:fixed;inset:0;z-index:5000;background:rgba(0,0,0,0.72);backdrop-filter:blur(5px);display:none;align-items:center;justify-content:center;padding:20px;}
 .np-overlay.open{display:flex;}
-.np-modal{background:#faf8f3;color:#111;width:100%;max-width:760px;max-height:88vh;border-radius:3px;overflow:hidden;display:flex;flex-direction:column;animation:np-roll .5s cubic-bezier(.22,1,.36,1);box-shadow:0 20px 60px rgba(0,0,0,.4);}
+.np-modal{background:#faf8f3;color:#111;width:100%;max-width:760px;max-height:88vh;border-radius:3px;overflow:hidden;display:flex;flex-direction:column;animation:np-roll .5s cubic-bezier(.22,1,.36,1);box-shadow:0 20px 60px rgba(0,0,0,.4); overflow-y:auto;}
 @keyframes np-roll{from{opacity:0;transform:translateY(50px) rotate(-1deg) scale(.96)}to{opacity:1;transform:none}}
 .np-head{padding:18px 24px 14px;border-bottom:2px solid #111;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;background:#faf8f3;}
 .np-masthead{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.28em;color:#888;text-transform:uppercase;margin-bottom:6px;}
@@ -1337,14 +1337,14 @@ footer { padding:32px 80px; border-top:1px solid var(--border2); display:flex; a
 /* ── Coming Soon split animation ── */
 .coming-soon-wrap{display:flex;gap:16px;justify-content:center;align-items:center;overflow:hidden; margin-top:32px;}
 .cs-left{
-  font-family:'Josefin Sans',sans-serif;font-size:19px;font-weight:100;
-  letter-spacing:0.32em;color:var(--gold);text-transform:uppercase;
-  animation:csSlideRight 2.4s cubic-bezier(.16,1,.3,1) 2;
+  font-family:'EB Garamond',Georgia,serif;font-size:16px;font-weight:300;
+  letter-spacing:0.55em;color:var(--gold);text-transform:lowercase;
+  animation:csSlideLeft 2.4s cubic-bezier(.16,1,.3,1) 2 both;
 }
 .cs-right{
-  font-family:'Josefin Sans',sans-serif;font-size:19px;font-weight:100;
-  letter-spacing:0.32em;color:var(--gold);text-transform:uppercase;
-  animation:csSlideRight 2.4s cubic-bezier(.16,1,.3,1) 2;
+  font-family:'EB Garamond',Georgia,serif;font-size:16px;font-weight:300;
+  letter-spacing:0.55em;color:var(--gold);text-transform:lowercase;
+  animation:csSlideRight 2.4s cubic-bezier(.16,1,.3,1) 2 both;
 }
 @keyframes csSlideLeft{from{transform:translateX(-160px);opacity:0;}to{transform:translateX(0);opacity:1;}}to{transform:translateX(0);opacity:1;}}
 @keyframes csSlideRight{from{transform:translateX(160px);opacity:0;}to{transform:translateX(0);opacity:1;}}to{transform:translateX(0);opacity:1;}}
@@ -1357,6 +1357,9 @@ nav a, nav .logo-hic, nav .logo{cursor:pointer !important;}
 /* Vodcast thumbnail %20 bigger */
 #page-vodcast .vid-card .vid-thumb{aspect-ratio:16/9;padding-bottom:0;height:auto;position:relative;overflow:hidden;}
 #page-vodcast .vid-card .vid-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* Prevent flash on load */
+body.loading #page-home { display:none !important; }
 </style>
 </head>
 <body>
@@ -1942,7 +1945,7 @@ nav a, nav .logo-hic, nav .logo{cursor:pointer !important;}
       <div class="pod-ni pod-ni-img" onclick="switchPod(this,'birbakista')" title="Bir Bakışta"><img src="bir_bakista.webp" alt="Bir Bakışta" loading="lazy"></div>
       <div class="pod-ni pod-ni-img" onclick="switchPod(this,'mahrec')" title="Mahreç Dünya"><img src="mahrec.jpg" alt="Mahreç Dünya" loading="lazy"></div>
       <div class="pod-ni pod-ni-img" onclick="switchPod(this,'atalks')" title="Anadolu Talk Zone"><img src="anadolu_talk_zone.webp" alt="Anadolu Talk Zone" loading="lazy"></div>
-      <div class="pod-ni pod-ni-img" onclick="switchPod(this,'seruven')" title="100 Yıllık Serüven"><img src="bir_bakista.webp" alt="100 Yıllık Serüven" loading="lazy"></div>
+      <div class="pod-ni pod-ni-img" onclick="switchPod(this,'seruven')" title="100 Yıllık Serüven"><img src="seruven.png" alt="100 Yıllık Serüven" loading="lazy"></div>
     </div>
     <div class="pod-main">
       <div class="pod-sec on" id="ps-portre">
@@ -2843,6 +2846,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
   const h=window.location.hash.replace('#','');
   if(h&&h!=='home'&&document.getElementById('page-'+h)){
+    document.getElementById('page-home').style.display='none';
     navTo(h);
   }
   document.querySelectorAll('[data-tip-tr]').forEach(el=>{
@@ -2934,10 +2938,27 @@ function npOpen(url,title,src,img){
   document.getElementById('np-title').textContent=title||'';
   document.getElementById('np-src').textContent=src||'';
   document.getElementById('np-bar').textContent=src||'AA';
-  document.getElementById('np-link').href=url||'#';
+  const lnk=document.getElementById('np-link');
+  if(lnk){lnk.href=url||'#';lnk.textContent=lang==='en'?'Read full story at source ↗':'Kaynakta oku ↗';}
   const imgEl=document.getElementById('np-img');
   if(img){imgEl.src=img;imgEl.style.display='block';}else{imgEl.src='';imgEl.style.display='none';}
-  document.getElementById('np-desc').textContent=lang==='en'?'Read the full story at the source.':'Haberin tamamını kaynakta okuyun.';
+  const desc=document.getElementById('np-desc');
+  if(desc)desc.textContent=lang==='en'?'Loading article...':'Haber yükleniyor...';
+  // Try iframe
+  const iframe=document.getElementById('np-iframe');
+  if(iframe&&url&&url!=='#'){
+    iframe.style.display='none';
+    iframe.src='';
+    setTimeout(()=>{
+      iframe.src=url;
+      iframe.style.display='block';
+      if(desc)desc.textContent='';
+      iframe.onerror=()=>{
+        iframe.style.display='none';
+        if(desc)desc.textContent=lang==='en'?'This article opens in the source.':'Bu haber kaynakta açılmaktadır.';
+      };
+    },100);
+  }
   ov.classList.add('open');document.body.style.overflow='hidden';
 }
 function npClose(){
@@ -3160,7 +3181,12 @@ function hidePodCursor(){
     </div>
     <div class="np-bar" id="np-bar"></div>
     <img class="np-img" id="np-img" alt="">
-    <div class="np-body"><p id="np-desc"></p><a class="np-link" id="np-link" href="#" target="_blank" rel="noopener">Read full story ↗</a></div>
+    <div class="np-body">
+    <div id="np-loading" style="display:none;text-align:center;padding:32px;color:var(--muted);font-size:13px;">Yükleniyor...</div>
+    <p id="np-desc"></p>
+    <iframe id="np-iframe" style="display:none;width:100%;height:520px;border:none;border-radius:6px;margin:16px 0;" loading="lazy" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+    <a class="np-link" id="np-link" href="#" target="_blank" rel="noopener">Read full story ↗</a>
+  </div>
   </div>
 </div>
 
